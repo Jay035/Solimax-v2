@@ -4,7 +4,7 @@ type Props = {};
 
 export default function Wallet({}: Props) {
   return (
-    <section className="flex items-center gap-[0.62rem] justify-end pr-20 pt-8 pb-[1.31rem] border-b border-[#424242]">
+    <section className="flex items-center gap-[0.62rem] justify-end px-10 md:px-20 pt-8 pb-[1.31rem] border-b border-[#424242]">
       <button className="bg-[#28282B] p-[0.625rem] border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]">
         <Image
           width={36}

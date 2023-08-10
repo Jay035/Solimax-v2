@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} grid lg:grid-cols-[20rem_auto]`}>
+      <body className={`${inter.className} grid lg:grid-cols-[19rem_auto]`}>
         <Navbar />
         <main>
           <Wallet />
