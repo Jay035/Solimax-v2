@@ -1,10 +1,11 @@
+import HotAirdrops from "@/components/HotAirdrops";
 import LatestPools from "@/components/LatestPools";
+import NewTokens from "@/components/NewTokens";
 import TrendingPools from "@/components/TrendingPools";
 
 export default function Home() {
   return (
-    <section className="mt-5 pl-[1.69rem] pr-10 sm:pr-16">
-      <LatestPools />
+    <>
       <div className="mt-8 text-white ">
         <h1 className="text-4xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
           The{" "}
@@ -25,10 +26,11 @@ export default function Home() {
           <button className="text-[0.875rem]">Learn more</button>
         </div>
       </div>
+      {/* ------------------------------ */}
       {/* CARDS */}
-      <div className="mt-[3.69rem] mb-[5.19rem] grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[0.88rem]">
+      <div className="mt-[3.69rem] mb-[5.19rem] w-fit flex flex-wrap gap-[0.88rem]">
         {/* TOTAL LIQUIDITY RAISED */}
-        <section>
+        <section className="w-fit min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL LIQUIDITY RAISED
@@ -39,7 +41,7 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL PROJECTS LAUNCHED */}
-        <section>
+        <section className="w-fit min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PROJECTS LAUNCHED
@@ -50,7 +52,7 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL PARTICIPANTS */}
-        <section>
+        <section className="w-fit min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PARTICIPANTS
@@ -61,7 +63,7 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL VALUE LOCKED */}
-        <section>
+        <section className="w-fit min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL VALUE LOCKED
@@ -73,6 +75,10 @@ export default function Home() {
         </section>
       </div>
       <TrendingPools />
-    </section>
+      <div className="mt-[3.12rem] grid md:grid-cols-2 gap-12 sm:gap-8">
+        <HotAirdrops />
+        <NewTokens />
+      </div>
+    </>
   );
 }
