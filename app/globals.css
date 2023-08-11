@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 
-*{
+/* *{
   border: 2px solid red;
-}
+} */
 body {
   background-color: #171719;
 }
