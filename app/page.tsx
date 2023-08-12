@@ -1,12 +1,11 @@
 import HotAirdrops from "@/components/HotAirdrops";
-import LatestPools from "@/components/LatestPools";
 import NewTokens from "@/components/NewTokens";
 import TrendingPools from "@/components/TrendingPools";
 
 export default function Home() {
   return (
     <>
-      <div className="mt-8 text-white ">
+      <div className="mt-8 text-white w-fit">
         <h1 className="text-4xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
           The{" "}
           <span className="bg-gradient-linear bg-clip-text text-transparent">

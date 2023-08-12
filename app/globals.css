@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* *{
   border: 2px solid red;
 } */
 body {
   background-color: #171719;
+}
+
+thead {
+  padding-left: 3.75rem;
 }

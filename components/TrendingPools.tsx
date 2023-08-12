@@ -29,7 +29,7 @@ export default function TrendingPools({}: Props) {
         </div>
       </div>
       {/* table */}
-      <section className="overflow-x-scroll pr-[2.31rem] rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20] w-full ">
+      <section className="hidden overflow-x-scroll pr-[2.31rem] rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20] w-fit">
         <div className="whitespace-nowrap py-[0.8rem] border-b border-[#51525C] pl-[3.75rem] pr-[2.31rem] grid grid-cols-7 items-center gap-[6.94rem] w-full">
           <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
             PROJECT
@@ -106,6 +106,127 @@ export default function TrendingPools({}: Props) {
           </div>
         </div>
       </section>
+      <div className="w-fit grid grid-cols-1 overflow-x-auto rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20]">
+        <table
+          className="w-full border-collapse table pr-[2.31rem]"
+          cellPadding={16}
+        >
+          <thead className="">
+            <tr className="whitespace-nowrap border-b border-[#51525C]">
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="project-name"
+              >
+                &nbsp;
+              </th>
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="project-name"
+              >
+                PROJECT
+              </th>
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="sale-type"
+              >
+                SALE TYPE
+              </th>
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="price"
+              >
+                PRICE
+              </th>
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="min-buy"
+              >
+                MIN BUY
+              </th>
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="max-buy"
+              >
+                MAX BUY
+              </th>
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="total-supply"
+              >
+                TOTAL SUPPLY
+              </th>
+              <th
+                className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
+                id="date-of-completion"
+              >
+                DATE OF COMPLETION
+              </th>
+            </tr>
+          </thead>
+          <tbody className="mt-[1.19rem]">
+            <tr>
+              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
+                1.
+              </th>
+              <td headers="project one">Cardashian</td>
+              <td headers="sale-type one">Public</td>
+              <td headers="price one">$10</td>
+              <td headers="min-buy one">$100</td>
+              <td headers="max-buy one">$1000</td>
+              <td headers="total-supply one">$1000000</td>
+              <td headers="date one">17th April, 10:00am UTC +1</td>
+            </tr>
+            <tr>
+              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
+                1.
+              </th>
+              <td headers="project one">Cardashian</td>
+              <td headers="sale-type one">Public</td>
+              <td headers="price one">$10</td>
+              <td headers="min-buy one">$100</td>
+              <td headers="max-buy one">$1000</td>
+              <td headers="total-supply one">$1000000</td>
+              <td headers="date one">17th April, 10:00am UTC +1</td>
+            </tr>
+            <tr>
+              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
+                1.
+              </th>
+              <td headers="project one">Cardashian</td>
+              <td headers="sale-type one">Public</td>
+              <td headers="price one">$10</td>
+              <td headers="min-buy one">$100</td>
+              <td headers="max-buy one">$1000</td>
+              <td headers="total-supply one">$1000000</td>
+              <td headers="date one">17th April, 10:00am UTC +1</td>
+            </tr>
+            <tr>
+              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
+                1.
+              </th>
+              <td headers="project one">Cardashian</td>
+              <td headers="sale-type one">Public</td>
+              <td headers="price one">$10</td>
+              <td headers="min-buy one">$100</td>
+              <td headers="max-buy one">$1000</td>
+              <td headers="total-supply one">$1000000</td>
+              <td headers="date one">17th April, 10:00am UTC +1</td>
+            </tr>
+            <tr>
+              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
+                1.
+              </th>
+              <td headers="project one">Cardashian</td>
+              <td headers="sale-type one">Public</td>
+              <td headers="price one">$10</td>
+              <td headers="min-buy one">$100</td>
+              <td headers="max-buy one">$1000</td>
+              <td headers="total-supply one">$1000000</td>
+              <td headers="date one">17th April, 10:00am UTC +1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }
