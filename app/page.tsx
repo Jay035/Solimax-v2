@@ -1,12 +1,11 @@
 import HotAirdrops from "@/components/HotAirdrops";
-import LatestPools from "@/components/LatestPools";
 import NewTokens from "@/components/NewTokens";
 import TrendingPools from "@/components/TrendingPools";
 
 export default function Home() {
   return (
     <>
-      <div className="mt-8 text-white ">
+      <div className="mt-8 text-white w-fit">
         <h1 className="text-4xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
           The{" "}
           <span className="bg-gradient-linear bg-clip-text text-transparent">
@@ -30,45 +29,45 @@ export default function Home() {
       {/* CARDS */}
       <div className="mt-[3.69rem] mb-[5.19rem] w-fit flex flex-wrap gap-[0.88rem]">
         {/* TOTAL LIQUIDITY RAISED */}
-        <section className="w-fit min-w-[12rem]">
+        <section className="w-full md:w-fit md:min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL LIQUIDITY RAISED
             </h3>
-            <h1 className="tracking-[-0.02rem] text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
+            <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
               $422.6M
             </h1>
           </div>
         </section>
         {/* TOTAL PROJECTS LAUNCHED */}
-        <section className="w-fit min-w-[12rem]">
+        <section className="w-full md:w-fit md:min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PROJECTS LAUNCHED
             </h3>
-            <h1 className="tracking-[-0.02rem] text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
+            <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
               540
             </h1>
           </div>
         </section>
         {/* TOTAL PARTICIPANTS */}
-        <section className="w-fit min-w-[12rem]">
+        <section className="w-full md:w-fit md:min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PARTICIPANTS
             </h3>
-            <h1 className="tracking-[-0.02rem] text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
+            <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
               500.2K
             </h1>
           </div>
         </section>
         {/* TOTAL VALUE LOCKED */}
-        <section className="w-fit min-w-[12rem]">
+        <section className="w-full md:w-fit md:min-w-[12rem]">
           <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL VALUE LOCKED
             </h3>
-            <h1 className="tracking-[-0.02rem] text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
+            <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
               $222.4M
             </h1>
           </div>
