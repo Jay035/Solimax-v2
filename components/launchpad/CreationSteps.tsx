@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 type Props = {};
 
 export default function CreationSteps({}: Props) {
+  const [currentStep, setCurrentStep] = useState(1);
   const steptitles = [
     {
       id: "verify-your-token",
@@ -32,7 +35,14 @@ export default function CreationSteps({}: Props) {
       {steptitles?.map((item) => (
         <div
           key={item?.id}
-          className="flex items-center gap-2 p-6 border-b border-[#26272B]"
+          className={`${
+            currentStep === item.tag
+              ? "border-b-2 border-b-[#F3CE92] lg:border-l-2 lg:border-l-[#F3CE92] lg:border-b-[#26272B]"
+              : ""
+          } ${
+            currentStep === 1 ? "rounded-t-[0.625rem]" : ""
+          } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-pointer`}
+          onClick={() => setCurrentStep(item.tag)}
         >
           <div className="w-8 p-[0.625rem]">{item.tag}.</div>
           <div className="flex flex-col ">

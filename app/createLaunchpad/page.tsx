@@ -7,6 +7,7 @@ import CustomSelect from "@/components/launchpad/CustomSelect";
 export default function CreateLaunchpad() {
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
+  const [tokenAddress, setTokenAddress] = useState("");
   const tabs = [
     {
       id: "presale",
@@ -70,6 +71,8 @@ export default function CreateLaunchpad() {
               className="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               type="text"
               placeholder="0x..."
+              value={tokenAddress}
+              onChange={(e) => setTokenAddress(e.target.value)}
               required
             />
             {/* create pool fee */}
@@ -78,9 +81,7 @@ export default function CreateLaunchpad() {
             </p>
           </div>
           <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-            <label htmlFor="currency">
-              Select Currency<span className="text-[#F04438]">*</span>
-            </label>
+            <label htmlFor="currency">Select Currency</label>
             <CustomSelect options={currencyOptions} onSelect={handleSelect} />
             {/* create pool fee */}
             <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
@@ -122,7 +123,12 @@ export default function CreateLaunchpad() {
             Make sure the token has &apos;Exclude transfer fee&apos; function if
             it has transfer fees.
           </div>
-          <button className="bg-[#C38CC3] w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]">Next</button>
+          <button
+            disabled={tokenAddress === ""}
+            className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+          >
+            Next
+          </button>
         </form>
       </section>
     </main>
