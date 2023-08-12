@@ -32,11 +32,11 @@ export default function CreateLaunchpad() {
     console.log("Selected option:", selectedValue);
   };
   return (
-    <main className="mt-[2.5rem] text-white flex gap-8">
+    <main className="mt-[2.5rem]  text-white flex items-start gap-8">
       {/* LEFT COLUMN */}
       <CreationSteps />
       {/* RIGHT COLUMN */}
-      <section className="bg-[#1D1C20] rounded-[0.625rem] px-6 pt-8 text-white border border-[#26272B] w-full">
+      <section className="bg-[#1D1C20] pb-[6rem] rounded-[0.625rem] px-6 pt-8 text-white border border-[#26272B] w-full">
         <div className="flex justify-between mb-8 md:items-center gap-4 pr-11">
           {/* presale_fair Launch group */}
           <div className="">
@@ -118,10 +118,11 @@ export default function CreateLaunchpad() {
               1.5% BNB raised + 1.5% token raised
             </label>
           </div>
-          <div className="text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2c] rounded-[0.625rem]">
+          <div className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
             Make sure the token has &apos;Exclude transfer fee&apos; function if
             it has transfer fees.
           </div>
+          <button className="bg-[#C38CC3] w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]">Next</button>
         </form>
       </section>
     </main>
