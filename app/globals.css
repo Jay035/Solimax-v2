@@ -12,3 +12,69 @@ body {
 thead {
   padding-left: 3.75rem;
 }
+
+/* ----------------------------- */
+/* CUSTOM SELECT BOX */
+/* --------------------------- */
+
+/* .custom-select-container {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select {
+  appearance: none;
+  background-color: #26272b;
+  border: 1px solid #f4f4f5;
+  border-radius: 0.625rem;
+  padding: 0.875rem 1.1875rem;
+  width: 100%;
+  cursor: pointer;
+} */
+
+/* .custom-select:focus {
+  outline: none;
+  border-color: #454fda;
+  box-shadow: 0 0 3px #454fda;
+} */
+
+.custom-dropdown {
+  position: relative;
+  background-color: #26272b;
+  border: 1px solid #f4f4f5;
+  border-radius: 0.625rem;
+  padding: 0.875rem 1.1875rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Custom arrow icon */
+.custom-dropdown::after {
+  content: url("../public/icons/chevron-down.svg");
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
+.dropdown-options {
+  z-index: 99999;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-top: none;
+  display: block;
+}
+
+.custom-option {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.custom-option:hover {
+  background-color: #ddd;
+}
