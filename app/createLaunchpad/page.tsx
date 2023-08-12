@@ -29,16 +29,16 @@ export default function CreateLaunchpad() {
     { value: "USDC", label: "USDC", imageSrc: "/icons/check.svg" },
   ];
 
-  const handleSelect = (selectedValue: string) => {
-    console.log("Selected option:", selectedValue);
-  };
+  // const handleSelect = (selectedValue: string) => {
+  //   console.log("Selected option:", selectedValue);
+  // };
   return (
-    <main className="mt-[2.5rem]  text-white flex items-start gap-8">
+    <main className="mt-[2.5rem]  text-white flex flex-col md:flex-row md:items-start gap-8">
       {/* LEFT COLUMN */}
       <CreationSteps />
       {/* RIGHT COLUMN */}
       <section className="bg-[#1D1C20] pb-[6rem] rounded-[0.625rem] px-6 pt-8 text-white border border-[#26272B] w-full">
-        <div className="flex justify-between mb-8 md:items-center gap-4 pr-11">
+        <div className="flex flex-col md:flex-row justify-between mb-8 md:items-center gap-4 pr-11">
           {/* presale_fair Launch group */}
           <div className="">
             {tabs?.map((tab) => (
@@ -82,7 +82,7 @@ export default function CreateLaunchpad() {
           </div>
           <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
             <label htmlFor="currency">Select Currency</label>
-            <CustomSelect options={currencyOptions} onSelect={handleSelect} />
+            <CustomSelect options={currencyOptions} />
             {/* create pool fee */}
             <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               Users will pay with {selectedCurrency} for your token
@@ -99,8 +99,8 @@ export default function CreateLaunchpad() {
               <input
                 className="w-6 h-6 accent-[#A4D0F2]"
                 type="radio"
-                checked
-                name=""
+                defaultChecked
+                name="fee-options"
                 id=""
               />
               % BNB raised only
@@ -111,9 +111,9 @@ export default function CreateLaunchpad() {
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
               <input
-                className="w-6 h-6 accent-[#F4F4F5]"
+                className="w-6 h-6 accent-[#A4D0F2]"
                 type="radio"
-                name=""
+                name="fee-options"
                 id=""
               />
               1.5% BNB raised + 1.5% token raised

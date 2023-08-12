@@ -1,15 +1,14 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function CustomSelect({ options, onSelect }: any) {
+export default function CustomSelect({ options }: any) {
   const [selectedOption, setSelectedOption] = useState("BNB");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleOptionClick = (event: any) => {
-    const selectedValue = event.target.value;
-    setSelectedOption(selectedValue);
+  const handleOptionClick = (value: any) => {
+    setSelectedOption(value);
     setDropdownOpen(false);
-    onSelect(selectedValue);
+    // onSelect(selectedValue);
   };
   return (
     <div className="custom-dropdown">
@@ -25,12 +24,12 @@ export default function CustomSelect({ options, onSelect }: any) {
         {selectedOption}
       </div>
       {dropdownOpen && (
-        <div className="dropdown-options">
+        <div className="dropdown-options flex flex-col gap-2">
           {options?.map((option: SelectProps) => (
             <div
               key={option.value}
               onClick={() => handleOptionClick(option.value)}
-              className="custom-option bg-[#3F3F46] py-2 tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              className="custom-option last:border-b-0 bg-[#3F3F46] py-2 tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             >
               {option.label}
             </div>
