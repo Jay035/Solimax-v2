@@ -1,4 +1,5 @@
 import Image from "next/image";
+import chevronDown from "../public/icons/chevron-down.svg";
 
 type Props = {};
 
@@ -20,10 +21,8 @@ export default function TrendingPools({}: Props) {
         <div className="flex items-center gap-1">
           <h3>All pools</h3>
           <Image
-            className="-rotate-90"
-            width={14}
-            height={14}
-            src="/icons/chevron-down.svg"
+            className="-rotate-90 w-[14px]"
+            src={chevronDown}
             alt="caret"
           />
         </div>
@@ -163,7 +162,7 @@ export default function TrendingPools({}: Props) {
               </th>
             </tr>
           </thead>
-          <tbody className="mt-[1.19rem]">
+          <tbody className="mt-[1.19rem] ">
             <tr>
               <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
                 1.

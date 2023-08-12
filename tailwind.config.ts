@@ -16,6 +16,7 @@ const config: Config = {
       },
       fontFamily: {
         questrial: ["var(--font-questrial)"],
+        neueHaas: ["var(--font-neuehaas)"],
       },
     },
   },
