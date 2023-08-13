@@ -3,15 +3,20 @@ import Link from "next/link";
 import navLogo from "/public/icons/logo-icon.svg";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Props = {};
 
 export default function Navbar({}: Props) {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const showOptions = () => {
     setOptionsOpen((prevstate) => !prevstate);
   };
+  console.log(pathname);
+
+  // const isActive = pathname.startsWith(link.href)
 
   return (
     <nav
