@@ -1,13 +1,23 @@
 "use client";
 import { useState } from "react";
 import CreationSteps from "@/components/launchpad/CreationSteps";
-import Image from "next/image";
-import CustomSelect from "@/components/launchpad/CustomSelect";
+import Form from "@/components/launchpad/Form";
 
 export default function CreateLaunchpad() {
+  const [currentStep, setCurrentStep] = useState(1);
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [tokenAddress, setTokenAddress] = useState("");
+  const [softcap, setSoftcap] = useState(0);
+  const [minBuy, setMinBuy] = useState(0);
+  const [maxBuy, setMaxBuy] = useState(0);
+  const [router, setRouter] = useState("");
+  const [refundType, setRefundType] = useState("");
+  const [liquidity, setLiquidity] = useState(0);
+  const [listingRate, setListingRate] = useState(0);
+  const [presaleRate, setPresaleRate] = useState(0);
+  const [error, setError] = useState("");
+
   const tabs = [
     {
       id: "presale",
@@ -23,23 +33,26 @@ export default function CreateLaunchpad() {
 
   //   currency options
   const currencyOptions = [
-    { value: "BNB", label: "BNB", imageSrc: "/icons/check.svg" },
-    { value: "BUSD", label: "BUSD", imageSrc: "/icons/check.svg" },
-    { value: "USDT", label: "USDT", imageSrc: "/icons/check.svg" },
-    { value: "USDC", label: "USDC", imageSrc: "/icons/check.svg" },
+    { value: "BNB", label: "BNB" },
+    { value: "BUSD", label: "BUSD" },
+    { value: "USDT", label: "USDT" },
+    { value: "USDC", label: "USDC" },
   ];
 
-  // const handleSelect = (selectedValue: string) => {
-  //   console.log("Selected option:", selectedValue);
-  // };
   return (
     <main className="mt-[2.5rem]  text-white flex flex-col md:flex-row md:items-start gap-8">
       {/* LEFT COLUMN */}
-      <CreationSteps />
+      <CreationSteps
+        currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
+        tokenAddress={tokenAddress}
+        error={error}
+        setError={setError}
+      />
       {/* RIGHT COLUMN */}
       <section className="bg-[#1D1C20] pb-[6rem] rounded-[0.625rem] px-6 pt-8 text-white border border-[#26272B] w-full">
         <div className="flex flex-col md:flex-row justify-between mb-8 md:items-center gap-4 pr-11">
-          {/* presale_fair Launch group */}
+          {/* presale_ fair Launch group */}
           <div className="">
             {tabs?.map((tab) => (
               <button
@@ -58,78 +71,34 @@ export default function CreateLaunchpad() {
           {/* Create token button */}
           <button>Create token</button>
         </div>
-        <form className="flex flex-col gap-6">
-          <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
-            <span className="text-[#F04438]">(*) </span>is required field
-          </p>
-          <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-            <label htmlFor="token-address">
-              Token Address<span className="text-[#F04438]">*</span>
-            </label>
-            <input
-              id="token-address"
-              className="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              type="text"
-              placeholder="0x..."
-              value={tokenAddress}
-              onChange={(e) => setTokenAddress(e.target.value)}
-              required
-            />
-            {/* create pool fee */}
-            <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
-              Create pool fee <span className="text-[#F3CE92]">15BNB</span>
-            </p>
-          </div>
-          <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-            <label htmlFor="currency">Select Currency</label>
-            <CustomSelect options={currencyOptions} />
-            {/* create pool fee */}
-            <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
-              Users will pay with {selectedCurrency} for your token
-            </p>
-          </div>
-          <div className="flex flex-col gap-4" role="fee-options">
-            <h3 className="text-base text-[#E4E4E7] tracking-[-0.01rem]">
-              Fee Options
-            </h3>
-            <label
-              htmlFor=""
-              className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
-            >
-              <input
-                className="w-6 h-6 accent-[#A4D0F2]"
-                type="radio"
-                defaultChecked
-                name="fee-options"
-                id=""
-              />
-              % BNB raised only
-              <span className="text-[#F3CE92]"> (Recommended)</span>
-            </label>
-            <label
-              htmlFor=""
-              className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
-            >
-              <input
-                className="w-6 h-6 accent-[#A4D0F2]"
-                type="radio"
-                name="fee-options"
-                id=""
-              />
-              1.5% BNB raised + 1.5% token raised
-            </label>
-          </div>
-          <div className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
-            Make sure the token has &apos;Exclude transfer fee&apos; function if
-            it has transfer fees.
-          </div>
-          <button
-            disabled={tokenAddress === ""}
-            className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
-          >
-            Next
-          </button>
-        </form>
+
+        <Form
+          error={error}
+          setError={setError}
+          softcap={softcap}
+          minBuy={minBuy}
+          maxBuy={maxBuy}
+          liquidity={liquidity}
+          refundType={refundType}
+          router={router}
+          listingRate={listingRate}
+          setListingRate={setListingRate}
+          setRouter={setRouter}
+          setSoftcap={setSoftcap}
+          setMinBuy={setMinBuy}
+          setMaxBuy={setMaxBuy}
+          setRefundType={setRefundType}
+          setLiquidity={setLiquidity}
+          currentStep={currentStep}
+          currencyOptions={currencyOptions}
+          tokenAddress={tokenAddress}
+          presaleRate={presaleRate}
+          selectedCurrency={selectedCurrency}
+          setPresaleRate={setPresaleRate}
+          setCurrentStep={setCurrentStep}
+          setTokenAddress={setTokenAddress}
+          setSelectedCurrency={setSelectedCurrency}
+        />
       </section>
     </main>
   );

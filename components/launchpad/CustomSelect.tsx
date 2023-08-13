@@ -1,14 +1,16 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function CustomSelect({ options }: any) {
-  const [selectedOption, setSelectedOption] = useState("BNB");
+export default function CustomSelect({
+  options,
+  selectedCurrency,
+  setSelectedCurrency,
+}: any) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleOptionClick = (value: any) => {
-    setSelectedOption(value);
+    setSelectedCurrency(value);
     setDropdownOpen(false);
-    // onSelect(selectedValue);
   };
   return (
     <div className="custom-dropdown">
@@ -17,11 +19,10 @@ export default function CustomSelect({ options }: any) {
         id="currency"
         onClick={() => {
           setDropdownOpen((prevState) => !prevState);
-          console.log("clciked");
         }}
       >
         <Image width={24} height={24} src="/icons/check.svg" alt="check icon" />
-        {selectedOption}
+        {selectedCurrency}
       </div>
       {dropdownOpen && (
         <div className="dropdown-options flex flex-col gap-2">
