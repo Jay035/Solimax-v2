@@ -59,14 +59,16 @@ export default function CreationSteps({
             currentStep === 1 ? "rounded-t-[0.625rem]" : ""
           } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-pointer`}
           onClick={() => {
-            setCurrentStep(item.tag);
             if (tokenAddress === "") {
               setCurrentStep(1);
               if (currentStep === 1) {
-                setError("");
-              } else {
                 setError("Token address must be entered");
+                console.log(error);
+              } else {
+                setError("");
               }
+            } else {
+              setCurrentStep(item.tag);
             }
           }}
         >

@@ -39,6 +39,17 @@ export default function Form({
   liquidity,
   presaleRate,
   listingRate,
+  tabs,
+  selectedTab,
+  selectedCurrency,
+  error,
+  startDate,
+  endDate,
+  liquidityLockup,
+  setStartDate,
+  setEndDate,
+  setLiquidityLockup,
+  setSelectedTab,
   setListingRate,
   setRouter,
   setSoftcap,
@@ -47,10 +58,8 @@ export default function Form({
   setMinBuy,
   setRefundType,
   setPresaleRate,
-  selectedCurrency,
   setSelectedCurrency,
   setCurrentStep,
-  error,
   setError,
 }: FormProps) {
   const handleNextStep = () => {
@@ -62,23 +71,29 @@ export default function Form({
   };
   return (
     <section>
-      <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
-        <span className="text-[#F04438]">(*) </span>is required field
-      </p>
-      <p className="text-[#F04438] mt-4 text-sm sm:text-base">
-        {error !== "" && error}
-      </p>
+      {/* {currentStep === 1 && (
+        <div className="">
+          <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
+            <span className="text-[#F04438]">(*) </span>is required field
+          </p>
+          <p className="text-[#F04438] mt-4 text-sm sm:text-base">
+            {error && error}
+          </p>
+        </div>
+      )} */}
 
       {/* ------------------------------------- */}
       {/* START OF STEP 1 */}
       {currentStep === 1 && (
         <StepOne
           currentStep={currentStep}
+          error={error}
           setCurrentStep={setCurrentStep}
           tokenAddress={tokenAddress}
           setError={setError}
           setTokenAddress={setTokenAddress}
           options={currencyOptions}
+          handleNextStep={handleNextStep}
           selectedCurrency={selectedCurrency}
           setSelectedCurrency={setSelectedCurrency}
         />
@@ -90,12 +105,24 @@ export default function Form({
       {/* START OF STEP 2 */}
       {currentStep === 2 && (
         <StepTwo
+          tabs={tabs}
           minBuy={minBuy}
           maxBuy={maxBuy}
           softcap={softcap}
           presaleRate={presaleRate}
           refundType={refundType}
           currentStep={currentStep}
+          startDate={startDate}
+          liquidityLockup={liquidityLockup}
+          endDate={endDate}
+          error={error}
+          setEndDate={setEndDate}
+          handlePreviousStep={handlePreviousStep}
+          handleNextStep={handleNextStep}
+          setStartDate={setStartDate}
+          setLiquidityLockup={setLiquidityLockup}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
           setRefundType={setRefundType}
           setSoftcap={setSoftcap}
           setMaxBuy={setMaxBuy}
@@ -113,7 +140,7 @@ export default function Form({
       )}
       {/* CTA buttons */}
 
-      <div className="flex gap-[3.16rem] items-center">
+      {/* <div className="flex gap-[3.16rem] items-center">
         {currentStep > 1 && (
           <button
             onClick={(e: any) => {
@@ -126,7 +153,6 @@ export default function Form({
           </button>
         )}
         <button
-          //   disabled={tokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
             if (tokenAddress === "") {
@@ -139,7 +165,7 @@ export default function Form({
         >
           Next
         </button>
-      </div>
+      </div> */}
     </section>
   );
 }

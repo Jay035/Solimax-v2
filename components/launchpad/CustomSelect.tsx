@@ -1,17 +1,14 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function CustomSelect({
-  options,
-  selectedCurrency,
-  setSelectedCurrency,
-}: any) {
+export default function CustomSelect({ options, header, setHeader }: any) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleOptionClick = (value: any) => {
-    setSelectedCurrency(value);
+    setHeader(value);
     setDropdownOpen(false);
   };
+
   return (
     <div className="custom-dropdown">
       <div
@@ -22,13 +19,13 @@ export default function CustomSelect({
         }}
       >
         <Image width={24} height={24} src="/icons/check.svg" alt="check icon" />
-        {selectedCurrency}
+        {header}
       </div>
       {dropdownOpen && (
         <div className="dropdown-options flex flex-col gap-2">
-          {options?.map((option: SelectProps) => (
+          {options?.map((option: SelectProps, index: number) => (
             <div
-              key={option.value}
+              key={index}
               onClick={() => handleOptionClick(option.value)}
               className="custom-option last:border-b-0 bg-[#3F3F46] py-2 tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             >
