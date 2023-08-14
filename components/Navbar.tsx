@@ -2,7 +2,7 @@
 import Link from "next/link";
 import navLogo from "/public/icons/logo-icon.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 type Props = {};

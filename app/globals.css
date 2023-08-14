@@ -19,6 +19,18 @@ thead {
   padding-left: 3.75rem;
 }
 
+/* card */
+.card {
+  border: 2px solid #374151;
+  border-image: linear-gradient(
+    to bottom,
+    #51525c,
+    #28282a
+  );
+  border-image-slice: 1;
+  border-radius: 0.625rem;
+}
+
 /* ----------------------------- */
 /* CUSTOM SELECT BOX */
 /* --------------------------- */
