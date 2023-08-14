@@ -20,6 +20,17 @@ type FormProps = {
   router?: string;
   options?: any[];
   error?: string;
+  tabs?: any;
+  selectedTab?: string;
+  startDate?: string;
+  endDate?: string;
+  liquidityLockup?: string;
+  handlePreviousStep?: (x: string) => void;
+  handleNextStep?: (x: string) => void;
+  setLiquidityLockup?: (x: string) => void;
+  setEndDate?: (x: string) => void;
+  setStartDate?: (x: string) => void;
+  setSelectedTab?: (x: string) => void;
   setRouter?: (x: string) => void;
   setSoftcap?: (x: number) => void;
   setMinBuy?: (x: number) => void;
