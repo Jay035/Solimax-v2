@@ -1,8 +1,6 @@
-import { useState } from "react";
-import CustomSelect from "./CustomSelect";
-import CustomInput from "../CustomInput";
 import StepOne from "./presale/StepOne";
 import StepTwo from "./presale/StepTwo";
+import StepThree from "./presale/StepThree";
 
 export default function Form({
   currentStep,
@@ -56,17 +54,6 @@ export default function Form({
   };
   return (
     <section>
-      {/* {currentStep === 1 && (
-        <div className="">
-          <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
-            <span className="text-[#F04438]">(*) </span>is required field
-          </p>
-          <p className="text-[#F04438] mt-4 text-sm sm:text-base">
-            {error && error}
-          </p>
-        </div>
-      )} */}
-
       {/* ------------------------------------- */}
       {/* START OF STEP 1 */}
       {currentStep === 1 && (
@@ -135,6 +122,21 @@ export default function Form({
           setSelectedCurrency={setSelectedCurrency}
         />
       )}
+      {/* END OF STEP 2 */}
+      {/* ------------------------------------- */}
+
+      {/* ------------------------------------- */}
+      {/* START OF STEP 3 */}
+      {currentStep === 3 && (
+        <StepThree
+          error={error}
+          currentStep={currentStep}
+          setError={setError}
+          setCurrentStep={setCurrentStep}
+        />
+      )}
+      {/* END OF STEP 2 */}
+      {/* ------------------------------------- */}
     </section>
   );
 }

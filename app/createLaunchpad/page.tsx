@@ -59,12 +59,12 @@ export default function CreateLaunchpad() {
       {/* RIGHT COLUMN */}
       <section
         className={`${
-          currentStep === 1
+          currentStep !== 2
             ? "bg-[#1D1C20] border border-[#26272B] pb-[6rem] rounded-[0.625rem] px-6 pt-8"
             : ""
         }  text-white  w-full`}
       >
-        {currentStep === 1 && (
+        {currentStep !== 2 && (
           <ButtonGroup
             tabs={tabs}
             selectedTab={selectedTab}
