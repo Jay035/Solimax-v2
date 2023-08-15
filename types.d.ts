@@ -25,6 +25,12 @@ type FormProps = {
   startDate?: string;
   endDate?: string;
   liquidityLockup?: string;
+  presaleToken?: string;
+  vestingPeriod?: string;
+  firstRelease?: string;
+  setFirstRelease?: (x: string) => void;
+  setVestingPeriod?: (x: string) => void;
+  setPresaleToken?: (x: string) => void;
   handlePreviousStep?: (x: string) => void;
   handleNextStep?: (x: string) => void;
   setLiquidityLockup?: (x: string) => void;

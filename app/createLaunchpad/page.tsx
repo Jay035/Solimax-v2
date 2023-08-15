@@ -20,6 +20,9 @@ export default function CreateLaunchpad() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [liquidityLockup, setLiquidityLockup] = useState("");
+  const [firstRelease, setFirstRelease] = useState("");
+  const [vestingPeriod, setVestingPeriod] = useState("");
+  const [presaleToken, setPresaleToken] = useState("");
   const [error, setError] = useState("");
 
   const tabs = [
@@ -84,6 +87,12 @@ export default function CreateLaunchpad() {
           startDate={startDate}
           liquidityLockup={liquidityLockup}
           endDate={endDate}
+          firstRelease={firstRelease}
+          presaleToken={presaleToken}
+          vestingPeriod={vestingPeriod}
+          setVestingPeriod={setVestingPeriod}
+          setPresaleToken={setPresaleToken}
+          setFirstRelease={setFirstRelease}
           setEndDate={setEndDate}
           setStartDate={setStartDate}
           setLiquidityLockup={setLiquidityLockup}

@@ -4,28 +4,6 @@ import CustomInput from "../CustomInput";
 import StepOne from "./presale/StepOne";
 import StepTwo from "./presale/StepTwo";
 
-// type FormProps = {
-//   currencyOptions: any;
-//   currentStep: number;
-//   tokenAddress: string;
-//   presaleRate: number;
-//   softcap?: string;
-//   minBuy?: string;
-//   refundType?: string;
-//   liquidity?: string;
-//   selectedCurrency: string;
-//   error: string;
-//   setSoftcap?: (err: string) => void;
-//   setMinBuy?: (err: string) => void;
-//   setRefundType?: (err: string) => void;
-//   setLiquidity?: (err: string) => void;
-//   setError: (err: string) => void;
-//   setTokenAddress?: (address: string) => void;
-//   setPresaleRate?: (rate: number) => void;
-//   setSelectedCurrency?: (address: string) => void;
-//   setCurrentStep: (step: number) => void;
-// };
-
 export default function Form({
   currentStep,
   currencyOptions,
@@ -46,6 +24,12 @@ export default function Form({
   startDate,
   endDate,
   liquidityLockup,
+  firstRelease,
+  presaleToken,
+  vestingPeriod,
+  setVestingPeriod,
+  setPresaleToken,
+  setFirstRelease,
   setStartDate,
   setEndDate,
   setLiquidityLockup,
@@ -53,6 +37,7 @@ export default function Form({
   setListingRate,
   setRouter,
   setSoftcap,
+  setHardcap,
   setLiquidity,
   setMaxBuy,
   setMinBuy,
@@ -116,7 +101,19 @@ export default function Form({
           liquidityLockup={liquidityLockup}
           endDate={endDate}
           error={error}
+          firstRelease={firstRelease}
+          presaleToken={presaleToken}
+          vestingPeriod={vestingPeriod}
+          listingRate={listingRate}
+          liquidity={liquidity}
+          setPresaleRate={setPresaleRate}
+          setHardcap={setHardcap}
+          setLiquidity={setLiquidity}
+          setVestingPeriod={setVestingPeriod}
+          setPresaleToken={setPresaleToken}
+          setFirstRelease={setFirstRelease}
           setEndDate={setEndDate}
+          setListingRate={setListingRate}
           handlePreviousStep={handlePreviousStep}
           handleNextStep={handleNextStep}
           setStartDate={setStartDate}
@@ -138,34 +135,6 @@ export default function Form({
           setSelectedCurrency={setSelectedCurrency}
         />
       )}
-      {/* CTA buttons */}
-
-      {/* <div className="flex gap-[3.16rem] items-center">
-        {currentStep > 1 && (
-          <button
-            onClick={(e: any) => {
-              e.preventDefault();
-              handlePreviousStep();
-            }}
-            className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
-          >
-            Back
-          </button>
-        )}
-        <button
-          onClick={(e: any) => {
-            e.preventDefault();
-            if (tokenAddress === "") {
-              setError("Token address must be entered");
-            } else {
-              handleNextStep();
-            }
-          }}
-          className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
-        >
-          Next
-        </button>
-      </div> */}
     </section>
   );
 }

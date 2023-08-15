@@ -28,7 +28,7 @@ export default function CustomSelect({ options, header, setHeader }: any) {
   return (
     <div className="custom-dropdown" ref={dropdownRef}>
       <div
-        className="dropdown-header flex items-center gap-[0.6rem]"
+        className={`dropdown-header flex items-center gap-[0.6rem] ${header === "Select router exchange" && 'text-[#A0A0AB]'}`}
         id="currency"
         onClick={() => {
           setDropdownOpen((prevState) => !prevState);
