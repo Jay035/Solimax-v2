@@ -202,7 +202,8 @@ export default function StepTwo({
           </section>
           <section className="grid md:grid-cols-2 gap-6">
             {/* REFUND TYPE */}
-            <div className="">
+            <div className="flex flex-col gap-[0.62rem]">
+              <h3>Refund type</h3>
               <CustomSelect
                 options={refundTypeOptions}
                 header={refundType}
@@ -210,11 +211,14 @@ export default function StepTwo({
               />
             </div>
             {/* ROUTER */}
-            <CustomSelect
-              options={routerOptions}
-              header={router}
-              setHeader={setRouter}
-            />
+            <div className=" flex flex-col gap-[0.62rem]">
+              <h3>Router</h3>
+              <CustomSelect
+                options={routerOptions}
+                header={router}
+                setHeader={setRouter}
+              />
+            </div>
           </section>
           <section className="grid md:grid-cols-2 gap-6">
             {/* LIQUIDITY */}

@@ -3,24 +3,27 @@ import { useState, useEffect, useRef } from "react";
 
 export default function CustomSelect({ options, header, setHeader }: any) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleOptionClick = (value: any) => {
     setHeader(value);
     setDropdownOpen(false);
   };
 
-  // useEffect(() => {
-  //   let handleClick = (e: any) => {
-  //     console.log("clicked");
-  //     if (dropdownOpen) {
-  //       if (dropdownRef.current && !dropdownRef.current?.contains(e.target)) {
-  //       }
-  //     }
-  //     setDropdownOpen(false);
-  //   };
-  //   document.addEventListener("mousedown", handleClick);
-  // });
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setDropdownOpen(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleOutsideClick);
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div className="custom-dropdown" ref={dropdownRef}>
