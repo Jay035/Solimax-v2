@@ -1,16 +1,32 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function CustomSelect({ options, header, setHeader }: any) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleOptionClick = (value: any) => {
     setHeader(value);
     setDropdownOpen(false);
   };
 
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setDropdownOpen(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleOutsideClick);
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
-    <div className="custom-dropdown">
+    <div className="custom-dropdown" ref={dropdownRef}>
       <div
         className="dropdown-header flex items-center gap-[0.6rem]"
         id="currency"

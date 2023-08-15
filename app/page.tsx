@@ -29,8 +29,8 @@ export default function Home() {
       {/* CARDS */}
       <div className="mt-[3.69rem] mb-[5.19rem] w-fit flex flex-wrap gap-[0.88rem]">
         {/* TOTAL LIQUIDITY RAISED */}
-        <section className="w-full md:w-fit md:min-w-[12rem]">
-          <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
+        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+          <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL LIQUIDITY RAISED
             </h3>
@@ -40,8 +40,8 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL PROJECTS LAUNCHED */}
-        <section className="w-full md:w-fit md:min-w-[12rem]">
-          <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
+        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+          <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PROJECTS LAUNCHED
             </h3>
@@ -51,8 +51,8 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL PARTICIPANTS */}
-        <section className="w-full md:w-fit md:min-w-[12rem]">
-          <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
+        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+          <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PARTICIPANTS
             </h3>
@@ -62,8 +62,8 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL VALUE LOCKED */}
-        <section className="w-full md:w-fit md:min-w-[12rem]">
-          <div className="border border-[#51525C] bg-[#1D1C20] rounded-[0.625rem] w-full">
+        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+          <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL VALUE LOCKED
             </h3>

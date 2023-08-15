@@ -19,7 +19,6 @@ export default function StepOne({
   setTokenAddress,
   setError,
   handleNextStep,
-  
 }: FormProps) {
   return (
     <section className="">
