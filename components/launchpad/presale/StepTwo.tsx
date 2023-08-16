@@ -18,6 +18,12 @@ export default function StepTwo({
   startDate,
   endDate,
   liquidityLockup,
+  firstRelease,
+  presaleToken,
+  vestingPeriod,
+  setVestingPeriod,
+  setPresaleToken,
+  setFirstRelease,
   handleNextStep,
   handlePreviousStep,
   setStartDate,
@@ -78,6 +84,7 @@ export default function StepTwo({
           </p>
         </div>
         <form className="flex flex-col gap-6">
+          {/* Presale rate */}
           <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
             <CustomInput
               id="presale-rate"
@@ -142,7 +149,7 @@ export default function StepTwo({
                 value={softcap}
                 onChange={(e) => {
                   setSoftcap?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -161,7 +168,7 @@ export default function StepTwo({
               value={hardcap}
               onChange={(e) => {
                 setHardcap?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -179,7 +186,7 @@ export default function StepTwo({
                 value={minBuy}
                 onChange={(e) => {
                   setMinBuy?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -195,7 +202,7 @@ export default function StepTwo({
               value={maxBuy}
               onChange={(e) => {
                 setMaxBuy?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -203,7 +210,9 @@ export default function StepTwo({
           <section className="grid md:grid-cols-2 gap-6">
             {/* REFUND TYPE */}
             <div className="flex flex-col gap-[0.62rem]">
-              <h3>Refund type</h3>
+              <h3>
+                Refund type<span className="text-[#F04438]">*</span>
+              </h3>
               <CustomSelect
                 options={refundTypeOptions}
                 header={refundType}
@@ -212,7 +221,9 @@ export default function StepTwo({
             </div>
             {/* ROUTER */}
             <div className=" flex flex-col gap-[0.62rem]">
-              <h3>Router</h3>
+              <h3>
+                Router<span className="text-[#F04438]">*</span>
+              </h3>
               <CustomSelect
                 options={routerOptions}
                 header={router}
@@ -233,7 +244,7 @@ export default function StepTwo({
                 value={liquidity}
                 onChange={(e) => {
                   setLiquidity?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -250,7 +261,7 @@ export default function StepTwo({
                 value={listingRate}
                 onChange={(e) => {
                   setListingRate?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -287,11 +298,11 @@ export default function StepTwo({
               value={startDate}
               onChange={(e) => {
                 setStartDate?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
-            {/* HARD CAP */}
+            {/* End date (UTC) */}
             <CustomInput
               id="end-date"
               className="flex flex-col gap-[0.62rem]"
@@ -302,12 +313,12 @@ export default function StepTwo({
               value={endDate}
               onChange={(e) => {
                 setEndDate?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
           </section>
-          {/* Start date (UTC) */}
+          {/* Liquidity lockup */}
           <CustomInput
             id="liquidity-Lockup"
             className="flex flex-col gap-[0.62rem]"
@@ -318,7 +329,7 @@ export default function StepTwo({
             value={liquidityLockup}
             onChange={(e) => {
               setLiquidityLockup?.(e.target.value);
-              setError("");
+              setError?.("");
             }}
             isRequired={true}
           />
@@ -335,6 +346,58 @@ export default function StepTwo({
             />
             Using vesting contributor?
           </label>
+          <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
+            Vesting Contributor does not support rebase tokens.
+          </p>
+          {/* Liquidity lockup */}
+          <CustomInput
+            id="first-release-for-presale"
+            className="flex flex-col gap-[0.62rem]"
+            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            label="First release for presale (%)"
+            type="text"
+            placeholder="40%"
+            value={firstRelease}
+            onChange={(e) => {
+              setFirstRelease?.(e.target.value);
+              setError?.("");
+            }}
+            isRequired={true}
+          />
+
+          <section className="grid md:grid-cols-2 items-center gap-6">
+            {/* Vesting period each cycle */}
+            <CustomInput
+              id="Vesting-period"
+              className="flex flex-col gap-[0.62rem]"
+              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              label="Vesting period each cycle (days)"
+              type="number"
+              placeholder="21"
+              value={vestingPeriod}
+              onChange={(e) => {
+                setVestingPeriod?.(e.target.value);
+                setError?.("");
+              }}
+              isRequired={true}
+            />
+            {/* Presale token release each cycle (%) */}
+            <CustomInput
+              id="Presale-token"
+              className="flex flex-col gap-[0.62rem]"
+              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              label="Presale token release each cycle (%)"
+              type="text"
+              placeholder="20%"
+              value={presaleToken}
+              onChange={(e) => {
+                setPresaleToken?.(e.target.value);
+                setError?.("");
+              }}
+              isRequired={true}
+            />
+          </section>
+
           <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 mt-[1.163rem]">
             <p className="text-[#E4E4E7] text-base tracking-[-0.01rem]">
               Need <span className="text-[#F3CE92]">0 SLM</span> to create
@@ -352,8 +415,26 @@ export default function StepTwo({
                 Back
               </button>
               <button
+                disabled={
+                  !presaleRate &&
+                  !softcap &&
+                  !hardcap &&
+                  !minBuy &&
+                  !maxBuy &&
+                  !refundType &&
+                  !router &&
+                  !liquidity &&
+                  !listingRate &&
+                  !startDate &&
+                  !endDate &&
+                  !liquidityLockup &&
+                  !firstRelease &&
+                  !vestingPeriod &&
+                  !presaleToken
+                }
                 onClick={(e: any) => {
                   e.preventDefault();
+                  handleNextStep?.(e);
                   // if (tokenAddress === "") {
                   //   setError("Token address must be entered");
                   // } else {

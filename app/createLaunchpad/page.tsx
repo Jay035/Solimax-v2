@@ -10,6 +10,7 @@ export default function CreateLaunchpad() {
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [tokenAddress, setTokenAddress] = useState("");
   const [softcap, setSoftcap] = useState(0);
+  const [hardcap, setHardcap] = useState(0);
   const [minBuy, setMinBuy] = useState(0);
   const [maxBuy, setMaxBuy] = useState(0);
   const [router, setRouter] = useState("Select router exchange");
@@ -20,7 +21,19 @@ export default function CreateLaunchpad() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [liquidityLockup, setLiquidityLockup] = useState("");
+  const [firstRelease, setFirstRelease] = useState("");
+  const [vestingPeriod, setVestingPeriod] = useState("");
+  const [presaleToken, setPresaleToken] = useState("");
   const [error, setError] = useState("");
+  const [websiteURL, setWebsiteURL] = useState("");
+  const [telegramURL, setTelegramURL] = useState("");
+  const [twitterURL, setTwitterURL] = useState("");
+  const [discordURL, setDiscordURL] = useState("");
+  const [instagramURL, setInstagramURL] = useState("");
+  const [githubURL, setGithubURL] = useState("");
+  const [facebookURL, setFacebookURL] = useState("");
+  const [youtubeURL, setYoutubeURL] = useState("");
+  const [description, setDescription] = useState("");
 
   const tabs = [
     {
@@ -52,16 +65,31 @@ export default function CreateLaunchpad() {
         tokenAddress={tokenAddress}
         error={error}
         setError={setError}
+        presaleRate={presaleRate}
+        softcap={softcap}
+        hardcap={hardcap}
+        minBuy={minBuy}
+        maxBuy={maxBuy}
+        refundType={refundType}
+        router={router}
+        liquidity={liquidity}
+        listingRate={listingRate}
+        startDate={startDate}
+        endDate={endDate}
+        liquidityLockup={liquidityLockup}
+        firstRelease={firstRelease}
+        vestingPeriod={vestingPeriod}
+        presaleToken={presaleToken}
       />
       {/* RIGHT COLUMN */}
       <section
         className={`${
-          currentStep === 1
+          currentStep !== 2 && currentStep !== 3
             ? "bg-[#1D1C20] border border-[#26272B] pb-[6rem] rounded-[0.625rem] px-6 pt-8"
             : ""
         }  text-white  w-full`}
       >
-        {currentStep === 1 && (
+        {currentStep !== 2 && currentStep !== 3 && (
           <ButtonGroup
             tabs={tabs}
             selectedTab={selectedTab}
@@ -73,6 +101,7 @@ export default function CreateLaunchpad() {
           error={error}
           setError={setError}
           softcap={softcap}
+          hardcap={hardcap}
           minBuy={minBuy}
           maxBuy={maxBuy}
           liquidity={liquidity}
@@ -84,6 +113,31 @@ export default function CreateLaunchpad() {
           startDate={startDate}
           liquidityLockup={liquidityLockup}
           endDate={endDate}
+          firstRelease={firstRelease}
+          presaleToken={presaleToken}
+          vestingPeriod={vestingPeriod}
+          websiteURL={websiteURL}
+          telegramURL={telegramURL}
+          twitterURL={twitterURL}
+          discordURL={discordURL}
+          instagramURL={instagramURL}
+          githubURL={githubURL}
+          facebookURL={facebookURL}
+          youtubeURL={youtubeURL}
+          description={description}
+          setDescription={setDescription}
+          setYoutubeURL={setYoutubeURL}
+          setFacebookURL={setFacebookURL}
+          setGithubURL={setGithubURL}
+          setInstagramURL={setInstagramURL}
+          setTwitterURL={setTwitterURL}
+          setDiscordURL={setDiscordURL}
+          setTelegramURL={setTelegramURL}
+          setWebsiteURL={setWebsiteURL}
+          setHardcap={setHardcap}
+          setVestingPeriod={setVestingPeriod}
+          setPresaleToken={setPresaleToken}
+          setFirstRelease={setFirstRelease}
           setEndDate={setEndDate}
           setStartDate={setStartDate}
           setLiquidityLockup={setLiquidityLockup}

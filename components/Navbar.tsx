@@ -62,8 +62,8 @@ export default function Navbar({}: Props) {
       </section>
       <div
         className={`${
-          menuOpen ? "left-0 top-0 px-10 pt-8" : "-left-full"
-        } absolute w-full h-full bg-[#1D1C20] lg:bg-transparent  lg:relative lg:left-0 lg:h-fit`}
+          menuOpen ? "left-0 top-0 px-10 pt-8 lg:px-0 lg:pt-0" : "-left-full lg:left-0"
+        } absolute w-full h-full bg-[#1D1C20] lg:bg-transparent lg:relative lg:left-0 lg:h-fit`}
       >
         {/* GENERAL SECTION */}
         <section className="mt-[3.56rem]">

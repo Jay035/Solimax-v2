@@ -42,7 +42,7 @@ export default function StepOne({
             value={tokenAddress}
             onChange={(e) => {
               setTokenAddress?.(e.target.value);
-              setError("");
+              setError?.("");
             }}
             isRequired={true}
           />
@@ -94,15 +94,15 @@ export default function StepOne({
             1.5% BNB raised + 1.5% token raised
           </label>
         </div>
-        <div className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
+        <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
           Make sure the token has &apos;Exclude transfer fee&apos; function if
           it has transfer fees.
-        </div>
+        </p>
         <button
           onClick={(e: any) => {
             e.preventDefault();
             if (tokenAddress === "") {
-              setError("Token address must be entered");
+              setError?.("Token address must be entered");
             } else {
               handleNextStep?.(e);
             }
