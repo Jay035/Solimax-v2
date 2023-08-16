@@ -48,6 +48,27 @@ export function BlogContextProvider({ children }: Props) {
   const value = {
     currentStep,
     selectedTab,
+    error,
+    websiteURL,
+    telegramURL,
+    twitterURL,
+    discordURL,
+    instagramURL,
+    githubURL,
+    facebookURL,
+    youtubeURL,
+    description,
+    setError,
+    setDescription,
+    setYoutubeURL,
+    setFacebookURL,
+    setGithubURL,
+    setInstagramURL,
+    setTwitterURL,
+    setSelectedTab,
+    setDiscordURL,
+    setTelegramURL,
+    setWebsiteURL,
   };
   return (
     <LaunchpadContext.Provider value={value}>

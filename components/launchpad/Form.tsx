@@ -1,6 +1,7 @@
 import StepOne from "./presale/StepOne";
 import StepTwo from "./presale/StepTwo";
 import StepThree from "./presale/StepThree";
+import StepFour from "./presale/StepFour";
 
 export default function Form({
   currentStep,
@@ -177,6 +178,14 @@ export default function Form({
         />
       )}
       {/* END OF STEP 3 */}
+      {/* ------------------------------------- */}
+      
+      {/* ------------------------------------- */}
+      {/* START OF STEP 4 */}
+      {currentStep === 4 && (
+        <StepFour currentStep={currentStep} error={error} />
+      )}
+      {/* END OF STEP 4 */}
       {/* ------------------------------------- */}
     </section>
   );

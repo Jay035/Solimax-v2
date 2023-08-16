@@ -67,9 +67,9 @@ export default function StepTwo({
     },
   ];
   return (
-    <div className="flex flex-col gap-6">
+    <section className="flex flex-col gap-6">
       {/* IST CARD  */}
-      <section className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
+      <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
         <ButtonGroup
           tabs={tabs}
           selectedTab={selectedTab}
@@ -271,7 +271,7 @@ export default function StepTwo({
             </div>
           </section>
         </form>
-      </section>
+      </div>
       <ul className="list-disc text-[#A4D0F2] text-xs tracking-[-0.0075rem] ml-3 mt-6">
         <li>
           Enter the percentage of raised funds that should be allocated to
@@ -284,7 +284,7 @@ export default function StepTwo({
         </li>
       </ul>
       {/* 2ND CARD */}
-      <section className="bg-[#1D1C20] pb-6 rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
+      <div className="bg-[#1D1C20] pb-6 rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
         <form className="flex flex-col gap-6">
           <section className="grid md:grid-cols-2 gap-6">
             {/* Start date (UTC) */}
@@ -448,7 +448,7 @@ export default function StepTwo({
             </div>
           </div>
         </form>
-      </section>
+      </div>
       <p className="text-[0.875rem] text-[#D1D1D6]">
         Disclaimer: Solimax Presale will never endorse or encourage that you
         invest in any of the projects listed and therefore, accept no liability
@@ -457,6 +457,6 @@ export default function StepTwo({
         information about (DYOR) can be found via{" "}
         <span className="underline">Binance Academy</span>.
       </p>
-    </div>
+    </section>
   );
 }

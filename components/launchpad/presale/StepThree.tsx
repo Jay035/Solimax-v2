@@ -41,8 +41,8 @@ export default function StepThree({
     inputRef?.current?.click();
   };
   return (
-    <div className="flex flex-col gap-6">
-      <section className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
+    <section className="flex flex-col gap-6">
+      <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
         <ButtonGroup
           tabs={tabs}
           selectedTab={selectedTab}
@@ -253,7 +253,7 @@ export default function StepThree({
             </button>
           </div>
         </form>
-      </section>
+      </div>
       <p className="text-[0.875rem] text-[#D1D1D6]">
         Disclaimer: Solimax Presale will never endorse or encourage that you
         invest in any of the projects listed and therefore, accept no liability
@@ -262,6 +262,6 @@ export default function StepThree({
         information about (DYOR) can be found via{" "}
         <span className="underline">Binance Academy</span>.
       </p>
-    </div>
+    </section>
   );
 }
