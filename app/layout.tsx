@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${questrial.variable} ${NeueHaasDisplay.variable} grid lg:grid-cols-[20rem_auto]`}
+        className={`${questrial.variable} ${NeueHaasDisplay.variable} grid xl:grid-cols-[20rem_auto]`}
       >
         <Navbar />
         <main>

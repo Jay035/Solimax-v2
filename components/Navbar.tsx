@@ -26,7 +26,7 @@ export default function Navbar({}: Props) {
       <section className="flex gap-3 items-center">
         {/* hamburger */}
         <div
-          className="z-50 flex flex-col gap-1 items-center cursor-pointer lg:hidden"
+          className="z-50 flex flex-col gap-1 items-center cursor-pointer xl:hidden"
           onClick={(e) => {
             e.preventDefault();
             setMenuOpen((prevState) => !prevState);
@@ -52,7 +52,7 @@ export default function Navbar({}: Props) {
         <div className="flex gap-[0.67rem] items-center">
           <Image
             src={navLogo}
-            className="w-[1.42rem] hidden lg:block"
+            className="w-[1.42rem] hidden xl:block"
             alt="logo"
           />
           <span className="text-white text-[1.3rem] leading-[-0.04rem]">
@@ -62,8 +62,8 @@ export default function Navbar({}: Props) {
       </section>
       <div
         className={`${
-          menuOpen ? "left-0 top-0 px-10 pt-8 lg:px-0 lg:pt-0" : "-left-full lg:left-0"
-        } absolute w-full h-full bg-[#1D1C20] lg:bg-transparent lg:relative lg:left-0 lg:h-fit`}
+          menuOpen ? "left-0 top-0 px-10 pt-8 xl:px-0 xl:pt-0" : "-left-full xl:left-0"
+        } absolute w-full h-full bg-[#1D1C20] xl:bg-transparent xl:relative xl:left-0 xl:h-fit`}
       >
         {/* GENERAL SECTION */}
         <section className="mt-[3.56rem]">

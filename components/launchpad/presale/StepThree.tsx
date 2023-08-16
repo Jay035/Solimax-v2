@@ -1,5 +1,7 @@
 import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "../ButtonGroup";
+import CustomFileDropbox from "@/components/CustomFileDropbox";
+import { useRef, useState } from "react";
 
 export default function StepThree({
   tabs,
@@ -28,6 +30,16 @@ export default function StepThree({
   setTelegramURL,
   setWebsiteURL,
 }: FormProps) {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const inputRef = useRef<any>(null);
+
+  const handleFileSelected = (file: File | null) => {
+    setSelectedFile(file);
+  };
+
+  const onButtonClick = () => {
+    inputRef?.current?.click();
+  };
   return (
     <div className="flex flex-col gap-6">
       <section className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
@@ -48,20 +60,20 @@ export default function StepThree({
           <section className="grid md:grid-cols-2 items-start gap-6">
             {/* LOGO */}
             <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-              <CustomInput
-                id="token-address"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Logo (attach document)"
-                type="file"
-                placeholder="Click to upload or drag and drop"
-                value=""
-                onChange={(e) => {
-                  //   setTokenAddress?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
+              <p>
+                Logo (attach document)<span className="text-[#F04438]">*</span>
+              </p>
+              <CustomFileDropbox
+                inputRef={inputRef}
+                selectedFile={selectedFile}
+                onFileSelected={handleFileSelected}
+                onButtonClick={onButtonClick}
               />
+              {selectedFile && (
+                <span className="text-[#A4D0F2]" onClick={onButtonClick}>
+                  Change file
+                </span>
+              )}
               {/* create pool fee */}
               <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
                 SVG, PNG, JPG or GIF (max. 400x400px)

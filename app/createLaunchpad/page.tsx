@@ -57,7 +57,7 @@ export default function CreateLaunchpad() {
   ];
 
   return (
-    <main className="mt-[2.5rem] text-white flex flex-col md:flex-row md:items-start gap-8">
+    <main className="mt-[2.5rem] text-white flex flex-col lg:flex-row lg:items-start gap-8">
       {/* LEFT COLUMN */}
       <CreationSteps
         currentStep={currentStep}
