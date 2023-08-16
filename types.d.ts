@@ -4,7 +4,7 @@ type SelectProps = {
   onSelect: (e: string) => void;
 };
 
-type FormProps = {
+interface FormProps {
   currencyOptions?: any;
   currentStep: number;
   tokenAddress?: string;
@@ -28,6 +28,24 @@ type FormProps = {
   presaleToken?: string;
   vestingPeriod?: string;
   firstRelease?: string;
+  websiteURL?: string;
+  twitterURL?: string;
+  telegramURL?: string;
+  discordURL?: string;
+  instagramURL?: string;
+  githubURL?: string;
+  facebookURL?: string;
+  youtubeURL?: string;
+  description?: string;
+  setDescription?: (x: string) => void;
+  setYoutubeURL?: (x: string) => void;
+  setFacebookURL?: (x: string) => void;
+  setGithubURL?: (x: string) => void;
+  setInstagramURL?: (x: string) => void;
+  setDiscordURL?: (x: string) => void;
+  setTelegramURL?: (x: string) => void;
+  setTwitterURL?: (x: string) => void;
+  setWebsiteURL?: (x: string) => void;
   setFirstRelease?: (x: string) => void;
   setVestingPeriod?: (x: string) => void;
   setPresaleToken?: (x: string) => void;
@@ -45,9 +63,9 @@ type FormProps = {
   setRefundType?: (x: string) => void;
   setLiquidity?: (x: number) => void;
   setListingRate?: (x: number) => void;
-  setError: (err: string) => void;
+  setError?: (err: string) => void;
   setTokenAddress?: (address: string) => void;
   setPresaleRate?: (rate: number) => void;
   setSelectedCurrency?: (address: string) => void;
-  setCurrentStep: (step: number) => void;
-};
+  setCurrentStep?: (step: number) => void;
+}

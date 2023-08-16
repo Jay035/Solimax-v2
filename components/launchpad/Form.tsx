@@ -25,6 +25,24 @@ export default function Form({
   firstRelease,
   presaleToken,
   vestingPeriod,
+  websiteURL,
+  telegramURL,
+  twitterURL,
+  discordURL,
+  instagramURL,
+  githubURL,
+  facebookURL,
+  youtubeURL,
+  description,
+  setDescription,
+  setYoutubeURL,
+  setFacebookURL,
+  setGithubURL,
+  setInstagramURL,
+  setTwitterURL,
+  setDiscordURL,
+  setTelegramURL,
+  setWebsiteURL,
   setVestingPeriod,
   setPresaleToken,
   setFirstRelease,
@@ -46,11 +64,11 @@ export default function Form({
   setError,
 }: FormProps) {
   const handleNextStep = () => {
-    setCurrentStep(currentStep + 1);
+    setCurrentStep?.(currentStep + 1);
   };
 
   const handlePreviousStep = () => {
-    if (currentStep > 1) setCurrentStep(currentStep - 1);
+    if (currentStep > 1) setCurrentStep?.(currentStep - 1);
   };
   return (
     <section>
@@ -133,9 +151,32 @@ export default function Form({
           currentStep={currentStep}
           setError={setError}
           setCurrentStep={setCurrentStep}
+          handlePreviousStep={handlePreviousStep}
+          handleNextStep={handleNextStep}
+          tabs={tabs}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          websiteURL={websiteURL}
+          telegramURL={telegramURL}
+          twitterURL={twitterURL}
+          discordURL={discordURL}
+          instagramURL={instagramURL}
+          githubURL={githubURL}
+          facebookURL={facebookURL}
+          youtubeURL={youtubeURL}
+          description={description}
+          setDescription={setDescription}
+          setYoutubeURL={setYoutubeURL}
+          setFacebookURL={setFacebookURL}
+          setGithubURL={setGithubURL}
+          setInstagramURL={setInstagramURL}
+          setTwitterURL={setTwitterURL}
+          setDiscordURL={setDiscordURL}
+          setTelegramURL={setTelegramURL}
+          setWebsiteURL={setWebsiteURL}
         />
       )}
-      {/* END OF STEP 2 */}
+      {/* END OF STEP 3 */}
       {/* ------------------------------------- */}
     </section>
   );

@@ -14,7 +14,22 @@ export default function CreationSteps({
   tokenAddress,
   error,
   setError,
-}: Props) {
+  presaleRate,
+  softcap,
+  hardcap,
+  minBuy,
+  maxBuy,
+  refundType,
+  router,
+  liquidity,
+  listingRate,
+  startDate,
+  endDate,
+  liquidityLockup,
+  firstRelease,
+  vestingPeriod,
+  presaleToken,
+}: FormProps) {
   const steptitles = [
     {
       id: "verify-your-token",
@@ -60,15 +75,36 @@ export default function CreationSteps({
           } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-pointer`}
           onClick={() => {
             if (tokenAddress === "") {
-              setCurrentStep(1);
+              setCurrentStep?.(1);
               if (currentStep === 1) {
-                setError("Token address must be entered");
+                setError?.("Token address must be entered");
                 console.log(error);
               } else {
-                setError("");
+                setError?.("");
               }
+            } else if (
+              currentStep === 2 &&
+              !presaleRate &&
+              !softcap &&
+              !hardcap &&
+              !minBuy &&
+              !maxBuy &&
+              !refundType &&
+              !router &&
+              !liquidity &&
+              !listingRate &&
+              !startDate &&
+              !endDate &&
+              !liquidityLockup &&
+              !firstRelease &&
+              !vestingPeriod &&
+              !presaleToken
+            ) {
+              console.log(currentStep);
+              setError?.("Fill all the required fields");
+              setCurrentStep?.(2);
             } else {
-              setCurrentStep(item.tag);
+              setCurrentStep?.(item.tag);
             }
           }}
         >

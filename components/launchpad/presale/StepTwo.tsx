@@ -149,7 +149,7 @@ export default function StepTwo({
                 value={softcap}
                 onChange={(e) => {
                   setSoftcap?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -168,7 +168,7 @@ export default function StepTwo({
               value={hardcap}
               onChange={(e) => {
                 setHardcap?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -186,7 +186,7 @@ export default function StepTwo({
                 value={minBuy}
                 onChange={(e) => {
                   setMinBuy?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -202,7 +202,7 @@ export default function StepTwo({
               value={maxBuy}
               onChange={(e) => {
                 setMaxBuy?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -210,7 +210,9 @@ export default function StepTwo({
           <section className="grid md:grid-cols-2 gap-6">
             {/* REFUND TYPE */}
             <div className="flex flex-col gap-[0.62rem]">
-              <h3>Refund type</h3>
+              <h3>
+                Refund type<span className="text-[#F04438]">*</span>
+              </h3>
               <CustomSelect
                 options={refundTypeOptions}
                 header={refundType}
@@ -219,7 +221,9 @@ export default function StepTwo({
             </div>
             {/* ROUTER */}
             <div className=" flex flex-col gap-[0.62rem]">
-              <h3>Router</h3>
+              <h3>
+                Router<span className="text-[#F04438]">*</span>
+              </h3>
               <CustomSelect
                 options={routerOptions}
                 header={router}
@@ -240,7 +244,7 @@ export default function StepTwo({
                 value={liquidity}
                 onChange={(e) => {
                   setLiquidity?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -257,7 +261,7 @@ export default function StepTwo({
                 value={listingRate}
                 onChange={(e) => {
                   setListingRate?.(e.target.value);
-                  setError("");
+                  setError?.("");
                 }}
                 isRequired={true}
               />
@@ -294,7 +298,7 @@ export default function StepTwo({
               value={startDate}
               onChange={(e) => {
                 setStartDate?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -309,7 +313,7 @@ export default function StepTwo({
               value={endDate}
               onChange={(e) => {
                 setEndDate?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -325,7 +329,7 @@ export default function StepTwo({
             value={liquidityLockup}
             onChange={(e) => {
               setLiquidityLockup?.(e.target.value);
-              setError("");
+              setError?.("");
             }}
             isRequired={true}
           />
@@ -356,7 +360,7 @@ export default function StepTwo({
             value={firstRelease}
             onChange={(e) => {
               setFirstRelease?.(e.target.value);
-              setError("");
+              setError?.("");
             }}
             isRequired={true}
           />
@@ -373,7 +377,7 @@ export default function StepTwo({
               value={vestingPeriod}
               onChange={(e) => {
                 setVestingPeriod?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -388,7 +392,7 @@ export default function StepTwo({
               value={presaleToken}
               onChange={(e) => {
                 setPresaleToken?.(e.target.value);
-                setError("");
+                setError?.("");
               }}
               isRequired={true}
             />
@@ -411,8 +415,26 @@ export default function StepTwo({
                 Back
               </button>
               <button
+                disabled={
+                  !presaleRate &&
+                  !softcap &&
+                  !hardcap &&
+                  !minBuy &&
+                  !maxBuy &&
+                  !refundType &&
+                  !router &&
+                  !liquidity &&
+                  !listingRate &&
+                  !startDate &&
+                  !endDate &&
+                  !liquidityLockup &&
+                  !firstRelease &&
+                  !vestingPeriod &&
+                  !presaleToken
+                }
                 onClick={(e: any) => {
                   e.preventDefault();
+                  handleNextStep?.(e);
                   // if (tokenAddress === "") {
                   //   setError("Token address must be entered");
                   // } else {
