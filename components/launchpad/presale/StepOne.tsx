@@ -42,7 +42,7 @@ export default function StepOne({
             value={tokenAddress}
             onChange={(e) => {
               setTokenAddress?.(e.target.value);
-              setError("");
+              setError?.("");
             }}
             isRequired={true}
           />
@@ -102,7 +102,7 @@ export default function StepOne({
           onClick={(e: any) => {
             e.preventDefault();
             if (tokenAddress === "") {
-              setError("Token address must be entered");
+              setError?.("Token address must be entered");
             } else {
               handleNextStep?.(e);
             }
