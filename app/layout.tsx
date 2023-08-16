@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import { Inter, Questrial } from "next/font/google";
 import Wallet from "@/components/Wallet";
 import LatestPools from "@/components/LatestPools";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 const questrial = Questrial({
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body
         className={`${questrial.variable} ${NeueHaasDisplay.variable} grid xl:grid-cols-[20rem_auto]`}
       >
+        <ScrollToTop />
         <Navbar />
         <main>
           <Wallet />

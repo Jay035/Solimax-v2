@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type Props = {
   currentStep: number;
@@ -61,6 +61,41 @@ export default function CreationSteps({
     },
   ];
 
+  const toggleStep =(tag: number) => {
+    if (tokenAddress === "") {
+      setCurrentStep?.(1);
+      if (currentStep === 1) {
+        setError?.("Token address must be entered");
+        console.log(error);
+      } else {
+        setError?.("");
+      }
+    } else if (
+      currentStep === 2 &&
+      !presaleRate &&
+      !softcap &&
+      !hardcap &&
+      !minBuy &&
+      !maxBuy &&
+      !refundType &&
+      !router &&
+      !liquidity &&
+      !listingRate &&
+      !startDate &&
+      !endDate &&
+      !liquidityLockup &&
+      !firstRelease &&
+      !vestingPeriod &&
+      !presaleToken
+    ) {
+      console.log(currentStep);
+      setError?.("Fill all the required fields");
+      setCurrentStep?.(2);
+    } else {
+      setCurrentStep?.(tag);
+    }
+  }
+
   return (
     <section className="bg-[#1D1C20] rounded-[0.625rem] border border-[#26272B] ">
       {steptitles?.map((item) => (
@@ -73,40 +108,7 @@ export default function CreationSteps({
           } ${
             currentStep === 1 ? "rounded-t-[0.625rem]" : ""
           } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-pointer`}
-          onClick={() => {
-            if (tokenAddress === "") {
-              setCurrentStep?.(1);
-              if (currentStep === 1) {
-                setError?.("Token address must be entered");
-                console.log(error);
-              } else {
-                setError?.("");
-              }
-            } else if (
-              currentStep === 2 &&
-              !presaleRate &&
-              !softcap &&
-              !hardcap &&
-              !minBuy &&
-              !maxBuy &&
-              !refundType &&
-              !router &&
-              !liquidity &&
-              !listingRate &&
-              !startDate &&
-              !endDate &&
-              !liquidityLockup &&
-              !firstRelease &&
-              !vestingPeriod &&
-              !presaleToken
-            ) {
-              console.log(currentStep);
-              setError?.("Fill all the required fields");
-              setCurrentStep?.(2);
-            } else {
-              setCurrentStep?.(item.tag);
-            }
-          }}
+          onClick={() => toggleStep(item?.tag)}
         >
           <div
             className={`w-8 h-8 flex items-center justify-center p-[0.625rem] rounded-[3.125rem] ${

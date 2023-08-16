@@ -42,7 +42,7 @@ const CustomFileDropbox: React.FC<CustomFileDropboxProps> = ({
 
   return (
     <div
-      className={`border-2 border-dashed border-[#A4D0F2] p-6 rounded-lg 
+      className={`border-2 border-dashed border-[#A4D0F2] py-[0.875rem] px-[1.1875rem] rounded-lg 
       `}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
