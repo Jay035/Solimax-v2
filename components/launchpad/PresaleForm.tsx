@@ -3,7 +3,7 @@ import StepTwo from "./presale/StepTwo";
 import StepThree from "./presale/StepThree";
 import StepFour from "./presale/StepFour";
 
-export default function Form({
+export default function PresaleForm({
   currentStep,
   currencyOptions,
   tokenAddress,
@@ -179,11 +179,17 @@ export default function Form({
       )}
       {/* END OF STEP 3 */}
       {/* ------------------------------------- */}
-      
+
       {/* ------------------------------------- */}
       {/* START OF STEP 4 */}
       {currentStep === 4 && (
-        <StepFour currentStep={currentStep} error={error} />
+        <StepFour
+          currentStep={currentStep}
+          error={error}
+          tabs={tabs}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        />
       )}
       {/* END OF STEP 4 */}
       {/* ------------------------------------- */}

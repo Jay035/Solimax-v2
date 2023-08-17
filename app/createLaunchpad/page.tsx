@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import CreationSteps from "@/components/launchpad/CreationSteps";
-import Form from "@/components/launchpad/Form";
 import ButtonGroup from "@/components/launchpad/ButtonGroup";
+import PresaleForm from "@/components/launchpad/PresaleForm";
 
 export default function CreateLaunchpad() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -84,12 +84,12 @@ export default function CreateLaunchpad() {
       {/* RIGHT COLUMN */}
       <section
         className={`${
-          currentStep !== 2 && currentStep !== 3
+          currentStep === 1
             ? "bg-[#1D1C20] border border-[#26272B] pb-[6rem] rounded-[0.625rem] px-6 pt-8"
             : ""
         }  text-white  w-full`}
       >
-        {currentStep !== 2 && currentStep !== 3 && (
+        {currentStep === 1 && (
           <ButtonGroup
             tabs={tabs}
             selectedTab={selectedTab}
@@ -97,68 +97,70 @@ export default function CreateLaunchpad() {
           />
         )}
 
-        <Form
-          error={error}
-          setError={setError}
-          softcap={softcap}
-          hardcap={hardcap}
-          minBuy={minBuy}
-          maxBuy={maxBuy}
-          liquidity={liquidity}
-          refundType={refundType}
-          router={router}
-          listingRate={listingRate}
-          tabs={tabs}
-          selectedTab={selectedTab}
-          startDate={startDate}
-          liquidityLockup={liquidityLockup}
-          endDate={endDate}
-          firstRelease={firstRelease}
-          presaleToken={presaleToken}
-          vestingPeriod={vestingPeriod}
-          websiteURL={websiteURL}
-          telegramURL={telegramURL}
-          twitterURL={twitterURL}
-          discordURL={discordURL}
-          instagramURL={instagramURL}
-          githubURL={githubURL}
-          facebookURL={facebookURL}
-          youtubeURL={youtubeURL}
-          description={description}
-          setDescription={setDescription}
-          setYoutubeURL={setYoutubeURL}
-          setFacebookURL={setFacebookURL}
-          setGithubURL={setGithubURL}
-          setInstagramURL={setInstagramURL}
-          setTwitterURL={setTwitterURL}
-          setDiscordURL={setDiscordURL}
-          setTelegramURL={setTelegramURL}
-          setWebsiteURL={setWebsiteURL}
-          setHardcap={setHardcap}
-          setVestingPeriod={setVestingPeriod}
-          setPresaleToken={setPresaleToken}
-          setFirstRelease={setFirstRelease}
-          setEndDate={setEndDate}
-          setStartDate={setStartDate}
-          setLiquidityLockup={setLiquidityLockup}
-          setSelectedTab={setSelectedTab}
-          setListingRate={setListingRate}
-          setRouter={setRouter}
-          setSoftcap={setSoftcap}
-          setMinBuy={setMinBuy}
-          setMaxBuy={setMaxBuy}
-          setRefundType={setRefundType}
-          setLiquidity={setLiquidity}
-          currentStep={currentStep}
-          currencyOptions={currencyOptions}
-          tokenAddress={tokenAddress}
-          presaleRate={presaleRate}
-          selectedCurrency={selectedCurrency}
-          setPresaleRate={setPresaleRate}
-          setCurrentStep={setCurrentStep}
-          setTokenAddress={setTokenAddress}
-          setSelectedCurrency={setSelectedCurrency}
-        />
+        {selectedTab === "presale" && (
+          <PresaleForm
+            error={error}
+            setError={setError}
+            softcap={softcap}
+            hardcap={hardcap}
+            minBuy={minBuy}
+            maxBuy={maxBuy}
+            liquidity={liquidity}
+            refundType={refundType}
+            router={router}
+            listingRate={listingRate}
+            tabs={tabs}
+            selectedTab={selectedTab}
+            startDate={startDate}
+            liquidityLockup={liquidityLockup}
+            endDate={endDate}
+            firstRelease={firstRelease}
+            presaleToken={presaleToken}
+            vestingPeriod={vestingPeriod}
+            websiteURL={websiteURL}
+            telegramURL={telegramURL}
+            twitterURL={twitterURL}
+            discordURL={discordURL}
+            instagramURL={instagramURL}
+            githubURL={githubURL}
+            facebookURL={facebookURL}
+            youtubeURL={youtubeURL}
+            description={description}
+            setDescription={setDescription}
+            setYoutubeURL={setYoutubeURL}
+            setFacebookURL={setFacebookURL}
+            setGithubURL={setGithubURL}
+            setInstagramURL={setInstagramURL}
+            setTwitterURL={setTwitterURL}
+            setDiscordURL={setDiscordURL}
+            setTelegramURL={setTelegramURL}
+            setWebsiteURL={setWebsiteURL}
+            setHardcap={setHardcap}
+            setVestingPeriod={setVestingPeriod}
+            setPresaleToken={setPresaleToken}
+            setFirstRelease={setFirstRelease}
+            setEndDate={setEndDate}
+            setStartDate={setStartDate}
+            setLiquidityLockup={setLiquidityLockup}
+            setSelectedTab={setSelectedTab}
+            setListingRate={setListingRate}
+            setRouter={setRouter}
+            setSoftcap={setSoftcap}
+            setMinBuy={setMinBuy}
+            setMaxBuy={setMaxBuy}
+            setRefundType={setRefundType}
+            setLiquidity={setLiquidity}
+            currentStep={currentStep}
+            currencyOptions={currencyOptions}
+            tokenAddress={tokenAddress}
+            presaleRate={presaleRate}
+            selectedCurrency={selectedCurrency}
+            setPresaleRate={setPresaleRate}
+            setCurrentStep={setCurrentStep}
+            setTokenAddress={setTokenAddress}
+            setSelectedCurrency={setSelectedCurrency}
+          />
+        )}
       </section>
     </main>
   );
