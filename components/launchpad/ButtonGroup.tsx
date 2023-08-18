@@ -9,12 +9,8 @@ type Props = {
   text: string;
 };
 
-export default function ButtonGroup(
-) {
-  const {
-    tabs,
-    selectedTab,
-    setSelectedTab} = GlobalContext()
+export default function ButtonGroup() {
+  const { tabs, selectedTab, setSelectedTab } = GlobalContext();
   const router = useRouter();
   const toggleTab = useCallback(
     (id: string) => {
@@ -37,7 +33,7 @@ export default function ButtonGroup(
               tab?.style
             } py-[0.81rem] px-4 w-full xl:px-[2.88rem] tracking-[-0.01rem] whitespace-nowrap`}
             onClick={() => {
-              console.log(tab.style)
+              console.log(tab.style);
               toggleTab(tab.id);
               router.push(`${tab.route}`);
             }}

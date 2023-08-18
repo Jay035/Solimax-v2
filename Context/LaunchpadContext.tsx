@@ -1,11 +1,5 @@
-"use client"
-import {
-  ReactNode,
-  useState,
-  useContext,
-  useEffect,
-  createContext,
-} from "react";
+"use client";
+import { ReactNode, useState, useContext, createContext } from "react";
 
 export const LaunchpadContext = createContext<FormProps>({
   currentStep: 1,
@@ -148,6 +142,4 @@ export function LaunchpadContextProvider({ children }: Props) {
   );
 }
 
-export function GlobalContext() {
-  return useContext(LaunchpadContext);
-}
+export const GlobalContext = () => useContext(LaunchpadContext);

@@ -19,7 +19,6 @@ export default function CreateFairLaunch() {
         }  text-white  w-full`}
       >
         {currentStep === 1 && <ButtonGroup />}
-
         <FairLaunchForm />
       </section>
     </main>
