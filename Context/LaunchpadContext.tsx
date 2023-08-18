@@ -1,3 +1,4 @@
+"use client"
 import {
   ReactNode,
   useState,
@@ -14,7 +15,7 @@ type Props = {
   children: ReactNode;
 };
 
-export function BlogContextProvider({ children }: Props) {
+export function LaunchpadContextProvider({ children }: Props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
@@ -45,7 +46,40 @@ export function BlogContextProvider({ children }: Props) {
   const [youtubeURL, setYoutubeURL] = useState("");
   const [description, setDescription] = useState("");
 
+  const tabs = [
+    {
+      id: "presale",
+      text: "Presale",
+      route: "/launchpad/presale",
+      style: "rounded-tl-[0.625rem] rounded-bl-[0.625rem]",
+    },
+    {
+      id: "fairLaunch",
+      text: "Fair launch",
+      route: "/launchpad/fair-launch",
+      style: "rounded-tr-[0.625rem] rounded-br-[0.625rem]",
+    },
+  ];
+
+  //   currency options
+  const currencyOptions = [
+    { value: "BNB", label: "BNB" },
+    { value: "BUSD", label: "BUSD" },
+    { value: "USDT", label: "USDT" },
+    { value: "USDC", label: "USDC" },
+  ];
+
+  const handleNextStep = () => {
+    setCurrentStep?.(currentStep + 1);
+  };
+
+  const handlePreviousStep = () => {
+    if (currentStep > 1) setCurrentStep?.(currentStep - 1);
+  };
+
   const value = {
+    tabs,
+    currencyOptions,
     currentStep,
     selectedTab,
     error,
@@ -58,6 +92,43 @@ export function BlogContextProvider({ children }: Props) {
     facebookURL,
     youtubeURL,
     description,
+    selectedCurrency,
+    tokenAddress,
+    softcap,
+    hardcap,
+    minBuy,
+    maxBuy,
+    router,
+    refundType,
+    liquidity,
+    listingRate,
+    presaleRate,
+    startDate,
+    endDate,
+    liquidityLockup,
+    firstRelease,
+    vestingPeriod,
+    presaleToken,
+    handleNextStep,
+    handlePreviousStep,
+    setTokenAddress,
+    setSoftcap,
+    setHardcap,
+    setMinBuy,
+    setMaxBuy,
+    setRouter,
+    setRefundType,
+    setLiquidity,
+    setListingRate,
+    setPresaleRate,
+    setStartDate,
+    setEndDate,
+    setFirstRelease,
+    setVestingPeriod,
+    setPresaleToken,
+    setCurrentStep,
+    setLiquidityLockup,
+    setSelectedCurrency,
     setError,
     setDescription,
     setYoutubeURL,

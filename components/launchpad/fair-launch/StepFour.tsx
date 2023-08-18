@@ -2,7 +2,7 @@ import { GlobalContext } from "@/context/LaunchpadContext";
 import ButtonGroup from "../ButtonGroup";
 
 export default function StepFour() {
-  const { error, handlePreviousStep } = GlobalContext();
+  const { error, tabs, selectedTab, setSelectedTab } = GlobalContext();
   return (
     <section className="flex flex-col gap-6">
       <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
@@ -165,7 +165,7 @@ export default function StepFour() {
               <button
                 onClick={(e: any) => {
                   e.preventDefault();
-                  handlePreviousStep?.(e);
+                  // handlePreviousStep?.(e);
                 }}
                 className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
               >

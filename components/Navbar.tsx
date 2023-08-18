@@ -104,7 +104,10 @@ export default function Navbar({}: Props) {
               {optionsOpen && (
                 <ul className="transition-all duration-100 ease-in-out pl-7 flex flex-col gap-[0.75rem] mt-[0.75rem] text-[0.875rem] text-[#A0A0AB]">
                   <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]">
-                    <Link href="/createLaunchpad">Create launchpad</Link>
+                    <Link href="/launchpad/presale">Create launchpad</Link>
+                  </li>
+                  <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]">
+                    <Link href="/launchpad/fair-launch">Create fair launch</Link>
                   </li>
                   <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]">
                     <Link href="">Create token</Link>

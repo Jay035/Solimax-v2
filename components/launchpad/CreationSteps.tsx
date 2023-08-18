@@ -1,3 +1,4 @@
+import { GlobalContext } from "@/context/LaunchpadContext";
 import { useCallback, useState } from "react";
 
 type Props = {
@@ -8,28 +9,52 @@ type Props = {
   setError: (err: string) => void;
 };
 
-export default function CreationSteps({
-  currentStep,
-  setCurrentStep,
-  tokenAddress,
-  error,
-  setError,
-  presaleRate,
-  softcap,
-  hardcap,
-  minBuy,
-  maxBuy,
-  refundType,
-  router,
-  liquidity,
-  listingRate,
-  startDate,
-  endDate,
-  liquidityLockup,
-  firstRelease,
-  vestingPeriod,
-  presaleToken,
-}: FormProps) {
+export default function CreationSteps() {
+//   {
+//   currentStep,
+//   setCurrentStep,
+//   tokenAddress,
+//   error,
+//   setError,
+//   presaleRate,
+//   softcap,
+//   hardcap,
+//   minBuy,
+//   maxBuy,
+//   refundType,
+//   router,
+//   liquidity,
+//   listingRate,
+//   startDate,
+//   endDate,
+//   liquidityLockup,
+//   firstRelease,
+//   vestingPeriod,
+//   presaleToken,
+// }: FormProps
+  const {
+    currentStep,
+    error,
+    tokenAddress,
+    softcap,
+    hardcap,
+    minBuy,
+    maxBuy,
+    router,
+    refundType,
+    liquidity,
+    listingRate,
+    presaleRate,
+    startDate,
+    endDate,
+    liquidityLockup,
+    firstRelease,
+    vestingPeriod,
+    presaleToken,
+    setCurrentStep,
+    setError,
+  } = GlobalContext();
+
   const steptitles = [
     {
       id: "verify-your-token",
@@ -61,7 +86,7 @@ export default function CreationSteps({
     },
   ];
 
-  const toggleStep =(tag: number) => {
+  const toggleStep = (tag: number) => {
     if (tokenAddress === "") {
       setCurrentStep?.(1);
       if (currentStep === 1) {
@@ -93,8 +118,9 @@ export default function CreationSteps({
       setCurrentStep?.(2);
     } else {
       setCurrentStep?.(tag);
+      console.log(tag)
     }
-  }
+  };
 
   return (
     <section className="bg-[#1D1C20] rounded-[0.625rem] border border-[#26272B] ">

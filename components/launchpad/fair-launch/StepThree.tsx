@@ -42,7 +42,6 @@ export default function StepThree() {
   const onButtonClick = () => {
     inputRef?.current?.click();
   };
-
   return (
     <section className="flex flex-col gap-6">
       <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">

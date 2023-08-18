@@ -2,6 +2,15 @@ import CustomInput from "@/components/CustomInput";
 import CustomSelect from "../CustomSelect";
 import { GlobalContext } from "@/context/LaunchpadContext";
 
+// type Props = {
+//   tokenAddress: string;
+//   options: string;
+//   selectedCurrency: string;
+//   setSelectedCurrency: (currency: string) => void;
+//   setTokenAddress: (address: string) => void;
+//   setError: (err: string) => void;
+// };
+
 export default function StepOne() {
   const {
     tokenAddress,
