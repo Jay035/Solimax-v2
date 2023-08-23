@@ -2,7 +2,7 @@ import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "../ButtonGroup";
 import CustomFileDropbox from "@/components/CustomFileDropbox";
 import { useRef, useState } from "react";
-import { GlobalContext } from "@/context/LaunchpadContext";
+import { GlobalContext } from "@/context/Context";
 
 export default function StepThree() {
   const {

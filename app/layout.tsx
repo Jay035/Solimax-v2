@@ -6,7 +6,7 @@ import { Inter, Questrial } from "next/font/google";
 import Wallet from "@/components/Wallet";
 import LatestPools from "@/components/LatestPools";
 import ScrollToTop from "@/components/ScrollToTop";
-import { LaunchpadContextProvider } from "@/context/LaunchpadContext";
+import { LaunchpadContextProvider } from "@/context/Context";
 
 const inter = Inter({ subsets: ["latin"] });
 const questrial = Questrial({

@@ -1,4 +1,4 @@
-import { GlobalContext } from "@/context/LaunchpadContext";
+import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "../ButtonGroup";
 
 export default function StepFour() {

@@ -1,7 +1,7 @@
 import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "../ButtonGroup";
 import CustomSelect from "../CustomSelect";
-import { GlobalContext } from "@/context/LaunchpadContext";
+import { GlobalContext } from "@/context/Context";
 
 export default function StepTwo() {
   const {

@@ -1,37 +1,15 @@
-import { GlobalContext } from "@/context/LaunchpadContext";
+import { GlobalContext } from "@/context/Context";
 import { useCallback, useState } from "react";
 
-type Props = {
-  currentStep: number;
-  setCurrentStep(stepNumber: number): void; // function to set the step in which we are currently at.
-  tokenAddress: string;
-  error: string;
-  setError: (err: string) => void;
-};
+// type Props = {
+//   currentStep: number;
+//   setCurrentStep(stepNumber: number): void; // function to set the step in which we are currently at.
+//   tokenAddress: string;
+//   error: string;
+//   setError: (err: string) => void;
+// };
 
-export default function CreationSteps() {
-//   {
-//   currentStep,
-//   setCurrentStep,
-//   tokenAddress,
-//   error,
-//   setError,
-//   presaleRate,
-//   softcap,
-//   hardcap,
-//   minBuy,
-//   maxBuy,
-//   refundType,
-//   router,
-//   liquidity,
-//   listingRate,
-//   startDate,
-//   endDate,
-//   liquidityLockup,
-//   firstRelease,
-//   vestingPeriod,
-//   presaleToken,
-// }: FormProps
+export default function CreationSteps({stepTitles} : any) {
   const {
     currentStep,
     error,
@@ -55,37 +33,7 @@ export default function CreationSteps() {
     setError,
   } = GlobalContext();
 
-  const steptitles = [
-    {
-      id: "verify-your-token",
-      tag: 1,
-      title: "Verify your token",
-      description: "Enter the token address and verify",
-      completed: true,
-    },
-    {
-      id: "deFi-launchpad",
-      tag: 2,
-      title: "DeFi Launchpad",
-      description: "Enter the launchpad information",
-      completed: false,
-    },
-    {
-      id: "additional-info",
-      tag: 3,
-      title: "Add Additional Info",
-      description: "Let people know who you are",
-      completed: false,
-    },
-    {
-      id: "finish",
-      tag: 4,
-      title: "Finish",
-      description: "Review your information and submit your presale",
-      completed: false,
-    },
-  ];
-
+  
   const toggleStep = (tag: number) => {
     if (tokenAddress === "") {
       setCurrentStep?.(1);
@@ -123,8 +71,8 @@ export default function CreationSteps() {
   };
 
   return (
-    <section className="bg-[#1D1C20] rounded-[0.625rem] border border-[#26272B] ">
-      {steptitles?.map((item) => (
+    <section className="bg-[#1D1C20] rounded-[0.625rem] border border-[#26272B] w-full">
+      {stepTitles?.map((item : stepTitleProps) => (
         <div
           key={item?.id}
           className={`${

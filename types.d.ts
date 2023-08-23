@@ -71,3 +71,11 @@ interface FormProps {
   setSelectedCurrency?: (address: string) => void;
   setCurrentStep?: (step: number) => void;
 }
+
+type stepTitleProps = {
+  id: string;
+  tag: number;
+  title: string;
+  description: string;
+  completed: boolean;
+};

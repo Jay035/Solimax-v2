@@ -1,6 +1,6 @@
 import CustomInput from "@/components/CustomInput";
 import CustomSelect from "../CustomSelect";
-import { GlobalContext } from "@/context/LaunchpadContext";
+import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "../ButtonGroup";
 
 export default function StepOne() {

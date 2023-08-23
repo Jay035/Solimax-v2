@@ -1,4 +1,4 @@
-import { GlobalContext } from "@/context/LaunchpadContext";
+import { GlobalContext } from "@/context/Context";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 

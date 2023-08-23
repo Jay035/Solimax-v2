@@ -1,14 +1,43 @@
 "use client";
 import CreationSteps from "@/components/launchpad/CreationSteps";
 import FairLaunchForm from "@/components/launchpad/fair-launch/FairLaunchForm";
-// import { GlobalContext } from "@/context/LaunchpadContext";
 
 export default function CreateFairLaunch() {
-  // const { currentStep } = GlobalContext();
+  const stepTitles = [
+    {
+      id: "verify-your-token",
+      tag: 1,
+      title: "Verify your token",
+      description: "Enter the token address and verify",
+      completed: true,
+    },
+    {
+      id: "deFi-launchpad",
+      tag: 2,
+      title: "DeFi Fairlaunch",
+      description: "Enter the launchpad information",
+      completed: false,
+    },
+    {
+      id: "additional-info",
+      tag: 3,
+      title: "Add Additional Info",
+      description: "Let people know who you are",
+      completed: false,
+    },
+    {
+      id: "finish",
+      tag: 4,
+      title: "Finish",
+      description: "Review your information and submit your presale",
+      completed: false,
+    },
+  ];
+
   return (
     <main className="mt-[2.5rem] text-white flex flex-col lg:flex-row lg:items-start gap-8">
       {/* LEFT COLUMN */}
-      <CreationSteps />
+      <CreationSteps stepTitles={stepTitles} />
       {/* RIGHT COLUMN */}
       <section>
         <FairLaunchForm />
