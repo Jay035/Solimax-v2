@@ -1,28 +1,28 @@
 "use client";
 import CreationSteps from "@/components/launchpad/CreationSteps";
-import ButtonGroup from "@/components/launchpad/ButtonGroup";
+// import ButtonGroup from "@/components/launchpad/ButtonGroup";
 import PresaleForm from "@/components/launchpad/presale/PresaleForm";
-import { GlobalContext } from "@/context/LaunchpadContext";
+// import { GlobalContext } from "@/context/LaunchpadContext";
 
 export default function CreateLaunchpad() {
-  const { currentStep } = GlobalContext();
+  // const { currentStep } = GlobalContext();
 
   return (
-    <main className="mt-[2.5rem] text-white flex flex-col lg:flex-row lg:items-start gap-8">
+    <main className="mt-[2.5rem] text-white grid lg:grid-cols-[17rem_auto] lg:items-start gap-8">
       {/* LEFT COLUMN */}
       <CreationSteps />
 
       {/* RIGHT COLUMN */}
-      <section
-        className={`${
-          currentStep === 1
-            ? "bg-[#1D1C20] border border-[#26272B] pb-[6rem] rounded-[0.625rem] px-6 pt-8"
-            : ""
-        }  text-white  w-full`}
-      >
-        {currentStep === 1 && <ButtonGroup />}
-
+      <section>
         <PresaleForm />
+        <p className="mt-8 text-[0.875rem] text-[#D1D1D6]">
+          Disclaimer: Solimax Presale will never endorse or encourage that you
+          invest in any of the projects listed and therefore, accept no
+          liability for any loss occasioned. It is the user(s) responsibility to
+          do their own research and seek financial advice from a professional.
+          More information about (DYOR) can be found via{" "}
+          <span className="underline">Binance Academy</span>.
+        </p>
       </section>
     </main>
   );

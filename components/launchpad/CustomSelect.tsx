@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
-export default function CustomSelect({ options, header, setHeader }: any) {
+export default function CustomSelect({ options, header, setHeader, currency }: any) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +46,7 @@ export default function CustomSelect({ options, header, setHeader }: any) {
               onClick={() => handleOptionClick(option.value)}
               className="custom-option last:border-b-0 bg-[#3F3F46] py-2 tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             >
-              {option.label}
+              {option.value}
             </div>
           ))}
         </div>

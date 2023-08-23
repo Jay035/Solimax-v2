@@ -19,9 +19,9 @@ export default function ButtonGroup() {
     [selectedTab]
   );
   return (
-    <div className="flex flex-col md:flex-row justify-between mb-8 md:items-center gap-4 md:pr-11">
+    <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 md:pr-11">
       {/* presale_ fair Launch group */}
-      <div className="flex">
+      <div className="flex items-center ">
         {tabs?.map((tab: Props) => (
           <button
             key={tab.id}
@@ -30,7 +30,9 @@ export default function ButtonGroup() {
                 ? "bg-[#454FDA] border border-[#454FDA]"
                 : "bg-[#3F3F46]"
             } ${
-              tab?.style
+              tab?.id === "presale"
+                ? "rounded-tl-[0.625rem] rounded-bl-[0.625rem]"
+                : "rounded-tr-[0.625rem] rounded-br-[0.625rem]"
             } py-[0.81rem] px-4 w-full xl:px-[2.88rem] tracking-[-0.01rem] whitespace-nowrap`}
             onClick={() => {
               console.log(tab.style);

@@ -9,7 +9,13 @@ export default function PresaleForm() {
   const { currentStep } = GlobalContext();
 
   return (
-    <section>
+    <section
+    //  className={`${
+    //   currentStep === 1
+    //     ? "bg-[#1D1C20] border border-[#26272B] pb-[6rem] rounded-[0.625rem] px-6 pt-8"
+    //     : ""
+    // }  text-white  w-full`}
+    >
       {/* ------------------------------------- */}
       {/* START OF STEP 1 */}
       {currentStep === 1 && <StepOne />}

@@ -6,8 +6,6 @@ import { GlobalContext } from "@/context/LaunchpadContext";
 
 export default function StepThree() {
   const {
-    tabs,
-    selectedTab,
     error,
     websiteURL,
     telegramURL,
@@ -27,7 +25,6 @@ export default function StepThree() {
     setGithubURL,
     setInstagramURL,
     setTwitterURL,
-    setSelectedTab,
     setDiscordURL,
     setTelegramURL,
     setWebsiteURL,
@@ -69,9 +66,9 @@ export default function StepThree() {
                 onButtonClick={onButtonClick}
               />
               {selectedFile && (
-                <span className="text-[#A4D0F2]" onClick={onButtonClick}>
+                <button className="text-[#A4D0F2] cursor-pointer" onClick={onButtonClick}>
                   Change file
-                </span>
+                </button>
               )}
               {/* create pool fee */}
               <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
@@ -253,14 +250,14 @@ export default function StepThree() {
           </div>
         </form>
       </div>
-      <p className="text-[0.875rem] text-[#D1D1D6]">
+      {/* <p className="text-[0.875rem] text-[#D1D1D6]">
         Disclaimer: Solimax Presale will never endorse or encourage that you
         invest in any of the projects listed and therefore, accept no liability
         for any loss occasioned. It is the user(s) responsibility to do their
         own research and seek financial advice from a professional. More
         information about (DYOR) can be found via{" "}
         <span className="underline">Binance Academy</span>.
-      </p>
+      </p> */}
     </section>
   );
 }

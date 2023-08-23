@@ -1,15 +1,7 @@
 import CustomInput from "@/components/CustomInput";
 import CustomSelect from "../CustomSelect";
 import { GlobalContext } from "@/context/LaunchpadContext";
-
-// type Props = {
-//   tokenAddress: string;
-//   options: string;
-//   selectedCurrency: string;
-//   setSelectedCurrency: (currency: string) => void;
-//   setTokenAddress: (address: string) => void;
-//   setError: (err: string) => void;
-// };
+import ButtonGroup from "../ButtonGroup";
 
 export default function StepOne() {
   const {
@@ -22,17 +14,19 @@ export default function StepOne() {
     setError,
     handleNextStep,
   } = GlobalContext();
+
   return (
-    <section className="">
+    <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
+      <ButtonGroup />
       <div className="">
         <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
           <span className="text-[#F04438]">(*) </span>is required field
         </p>
-        <p className="text-[#F04438] mt-4 text-sm sm:text-base">
-          {error && error}
-        </p>
+        {error && (
+          <p className="text-[#F04438] text-sm sm:text-base">{error}</p>
+        )}
       </div>
-      <form className="flex flex-col gap-6 mt-4">
+      <form className="flex flex-col gap-6">
         <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <CustomInput
             id="token-address"

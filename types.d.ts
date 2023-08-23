@@ -37,6 +37,8 @@ interface FormProps {
   facebookURL?: string;
   youtubeURL?: string;
   description?: string;
+  totalSellingAmount?: string;
+  setTotalSellingAmount?: (x: string) => void;
   setDescription?: (x: string) => void;
   setYoutubeURL?: (x: string) => void;
   setFacebookURL?: (x: string) => void;

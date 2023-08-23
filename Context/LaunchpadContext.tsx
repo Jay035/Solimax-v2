@@ -39,6 +39,7 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [facebookURL, setFacebookURL] = useState("");
   const [youtubeURL, setYoutubeURL] = useState("");
   const [description, setDescription] = useState("");
+  const [totalSellingAmount, setTotalSellingAmount] = useState("");
 
   const tabs = [
     {
@@ -103,6 +104,8 @@ export function LaunchpadContextProvider({ children }: Props) {
     firstRelease,
     vestingPeriod,
     presaleToken,
+    totalSellingAmount,
+    setTotalSellingAmount,
     handleNextStep,
     handlePreviousStep,
     setTokenAddress,

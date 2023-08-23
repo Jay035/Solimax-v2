@@ -15,14 +15,14 @@ export default function StepTwo() {
     router,
     liquidity,
     listingRate,
-    tabs,
-    selectedTab,
     startDate,
     endDate,
     liquidityLockup,
     firstRelease,
     presaleToken,
     vestingPeriod,
+    totalSellingAmount,
+    setTotalSellingAmount,
     setVestingPeriod,
     setPresaleToken,
     setFirstRelease,
@@ -31,7 +31,6 @@ export default function StepTwo() {
     setStartDate,
     setEndDate,
     setLiquidityLockup,
-    setSelectedTab,
     setListingRate,
     setLiquidity,
     setRouter,
@@ -45,27 +44,27 @@ export default function StepTwo() {
   } = GlobalContext();
   const refundTypeOptions = [
     {
-      value: "refund",
-      label: "Refund",
+      id: 1,
+      value: "Refund",
     },
     {
-      value: "burn",
-      label: "Burn",
+      id: 2,
+      value: "Burn",
     },
   ];
 
   const routerOptions = [
     {
       value: "Pancakeswap",
-      label: "Pancakeswap",
+      id: 1,
     },
     {
       value: "ApeSwap",
-      label: "ApeSwap",
+      id: 2,
     },
     {
       value: "MDex",
-      label: "MDex",
+      id: 3,
     },
   ];
   return (
@@ -73,26 +72,26 @@ export default function StepTwo() {
       {/* IST CARD  */}
       <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
         <ButtonGroup />
-        <div className="">
+        <div className="mt-4">
           <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
             <span className="text-[#F04438]">(*) </span>is required field
           </p>
-          <p className="text-[#F04438] mt-4 text-sm sm:text-base">
-            {error && error}
-          </p>
+          {error && (
+            <p className="text-[#F04438] mt-4 text-sm sm:text-base">{error}</p>
+          )}
         </div>
-        <form className="flex flex-col gap-6">
+        <form className="flex flex-col gap-6 mt-4">
           {/* Presale rate */}
           <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
             <CustomInput
-              id="presale-rate"
+              id="totalSellingAmount"
               className="flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Presale rate"
+              label="Total Selling Amount"
               type="number"
               placeholder="0"
-              value={presaleRate}
-              onChange={(e) => setPresaleRate?.(e.target.value)}
+              value={totalSellingAmount}
+              onChange={(e) => setTotalSellingAmount?.(e.target.value)}
               isRequired={true}
             />
             {/* create pool fee */}
