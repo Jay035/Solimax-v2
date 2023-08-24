@@ -5,6 +5,8 @@ import localFont from "next/font/local";
 import { Inter, Questrial } from "next/font/google";
 import Wallet from "@/components/Wallet";
 import LatestPools from "@/components/LatestPools";
+import ScrollToTop from "@/components/ScrollToTop";
+import { LaunchpadContextProvider } from "@/context/Context";
 
 const inter = Inter({ subsets: ["latin"] });
 const questrial = Questrial({
@@ -42,16 +44,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${questrial.variable} ${NeueHaasDisplay.variable} grid lg:grid-cols-[20rem_auto]`}
+        className={`${questrial.variable} ${NeueHaasDisplay.variable} grid xl:grid-cols-[20rem_auto]`}
       >
-        <Navbar />
-        <main>
-          <Wallet />
-          <section className="overflow-x-hidden font-questrial mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
-            <LatestPools />
-            {children}
-          </section>
-        </main>
+        <LaunchpadContextProvider>
+          <ScrollToTop />
+          <Navbar />
+          <main>
+            <Wallet />
+            <section className="overflow-x-hidden font-questrial mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
+              <LatestPools />
+              {children}
+            </section>
+          </main>
+        </LaunchpadContextProvider>
       </body>
     </html>
   );

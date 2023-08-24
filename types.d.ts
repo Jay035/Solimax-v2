@@ -37,6 +37,8 @@ interface FormProps {
   facebookURL?: string;
   youtubeURL?: string;
   description?: string;
+  totalSellingAmount?: string;
+  setTotalSellingAmount?: (x: string) => void;
   setDescription?: (x: string) => void;
   setYoutubeURL?: (x: string) => void;
   setFacebookURL?: (x: string) => void;
@@ -69,3 +71,11 @@ interface FormProps {
   setSelectedCurrency?: (address: string) => void;
   setCurrentStep?: (step: number) => void;
 }
+
+type stepTitleProps = {
+  id: string;
+  tag: number;
+  title: string;
+  description: string;
+  completed: boolean;
+};

@@ -6,14 +6,15 @@ import ButtonGroup from "../ButtonGroup";
 export default function StepOne() {
   const {
     tokenAddress,
+    options,
     selectedCurrency,
-    currencyOptions,
     error,
     setSelectedCurrency,
     setTokenAddress,
     setError,
     handleNextStep,
   } = GlobalContext();
+
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
@@ -22,7 +23,7 @@ export default function StepOne() {
           <span className="text-[#F04438]">(*) </span>is required field
         </p>
         {error && (
-          <p className="text-[#F04438] mt-4 text-sm sm:text-base">{error}</p>
+          <p className="text-[#F04438] text-sm sm:text-base">{error}</p>
         )}
       </div>
       <form className="flex flex-col gap-6">
@@ -47,9 +48,9 @@ export default function StepOne() {
           </p>
         </div>
         <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-          <p>Select Currency</p>
+          <label htmlFor="currency">Select Currency</label>
           <CustomSelect
-            options={currencyOptions}
+            options={options}
             header={selectedCurrency}
             setHeader={setSelectedCurrency}
           />
