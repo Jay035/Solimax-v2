@@ -1,5 +1,5 @@
 import { GlobalContext } from "@/context/Context";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
 export default function ButtonGroup() {
   const { tabs, selectedTab, setSelectedTab } = GlobalContext();
   const router = useRouter();
+  const pathname = usePathname();
   const toggleTab = useCallback(
     (id: string) => {
       setSelectedTab?.(id);
@@ -26,7 +27,7 @@ export default function ButtonGroup() {
           <button
             key={tab.id}
             className={`${
-              selectedTab === tab.id
+              selectedTab === tab.id || pathname === tab.route
                 ? "bg-[#454FDA] border border-[#454FDA]"
                 : "bg-[#3F3F46]"
             } ${
@@ -35,7 +36,7 @@ export default function ButtonGroup() {
                 : "rounded-tr-[0.625rem] rounded-br-[0.625rem]"
             } py-[0.81rem] px-4 w-full xl:px-[2.88rem] tracking-[-0.01rem] whitespace-nowrap`}
             onClick={() => {
-              console.log(tab.style);
+              console.log(tab.route);
               toggleTab(tab.id);
               router.push(`${tab.route}`);
             }}

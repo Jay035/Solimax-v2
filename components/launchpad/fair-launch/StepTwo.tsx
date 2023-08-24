@@ -2,6 +2,7 @@ import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "../ButtonGroup";
 import CustomSelect from "../CustomSelect";
 import { GlobalContext } from "@/context/Context";
+import { useState } from "react";
 
 export default function StepTwo() {
   const {
@@ -42,16 +43,6 @@ export default function StepTwo() {
     setPresaleRate,
     setError,
   } = GlobalContext();
-  const refundTypeOptions = [
-    {
-      id: 1,
-      value: "Refund",
-    },
-    {
-      id: 2,
-      value: "Burn",
-    },
-  ];
 
   const routerOptions = [
     {
@@ -67,6 +58,17 @@ export default function StepTwo() {
       id: 3,
     },
   ];
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (event: any) => {
+    setIsChecked(event.target.checked);
+    if (event.target.checked) {
+      // Run your function when checkbox is checked
+      console.log("Checkbox is checked!");
+      // You can replace the console.log with your desired function call
+    }
+  };
   return (
     <section className="flex flex-col gap-6">
       {/* IST CARD  */}
@@ -99,7 +101,7 @@ export default function StepTwo() {
               If I spend 1 BNB how many tokens will I receive?
             </span>
           </div>
-
+          {/* WHITELIST */}
           <div className="flex flex-col gap-4" role="fee-options">
             <h3 className="text-base text-[#E4E4E7] tracking-[-0.01rem]">
               Whitelist
@@ -133,140 +135,76 @@ export default function StepTwo() {
               You can enable/disable whitelist anytime.
             </span>
           </div>
-          <section className="grid md:grid-cols-2 gap-6">
-            <div className="">
-              {/* SOFT CAP */}
-              <CustomInput
-                id="soft-cap"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Softcap (BNB)"
-                type="number"
-                placeholder="0"
-                value={softcap}
-                onChange={(e) => {
-                  setSoftcap?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
-              />
-              <span className="mt-[0.62rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6] ">
-                Softcap must be {">"}= 25% of Hardcap!
-              </span>
-            </div>
-            {/* HARD CAP */}
+          {/* SOFT CAP */}
+          <div className="">
             <CustomInput
-              id="hard-cap"
+              id="soft-cap"
               className="flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Hardcap (BNB)"
+              label="Softcap (BNB)"
               type="number"
               placeholder="0"
-              value={hardcap}
+              value={softcap}
               onChange={(e) => {
-                setHardcap?.(e.target.value);
+                setSoftcap?.(e.target.value);
                 setError?.("");
               }}
               isRequired={true}
             />
-          </section>
-          <section className="grid md:grid-cols-2 gap-6">
-            {/* MINIMIUM BUY */}
-            <div className="">
-              <CustomInput
-                id="min-buy"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Minimium buy"
-                type="number"
-                placeholder="0"
-                value={minBuy}
-                onChange={(e) => {
-                  setMinBuy?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
+            <label
+              htmlFor="setting-max-contribution"
+              className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2"
+            >
+              <input
+                className="w-6 h-6 accent-[#A4D0F2] rounded-lg"
+                type="checkout"
+                name="setting-max-contribution"
+                id="setting-max-contribution"
               />
-            </div>
-            {/* MAXIMUM BUY */}
+              Setting max contribution?
+            </label>
+          </div>
+
+          {/* ROUTER */}
+          <div className=" flex flex-col gap-[0.62rem]">
+            <h3>
+              Router<span className="text-[#F04438]">*</span>
+            </h3>
+            <CustomSelect
+              options={routerOptions}
+              header={router}
+              setHeader={setRouter}
+            />
+          </div>
+          {/* LIQUIDITY */}
+          <div className="">
             <CustomInput
-              id="max-buy"
+              id="liquidity"
               className="flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Maximum buy"
+              label="Liquidity (%)"
               type="number"
               placeholder="0"
-              value={maxBuy}
+              value={liquidity}
               onChange={(e) => {
-                setMaxBuy?.(e.target.value);
+                setLiquidity?.(e.target.value);
                 setError?.("");
               }}
               isRequired={true}
             />
-          </section>
-          <section className="grid md:grid-cols-2 gap-6">
-            {/* REFUND TYPE */}
-            <div className="flex flex-col gap-[0.62rem]">
-              <h3>
-                Refund type<span className="text-[#F04438]">*</span>
-              </h3>
-              <CustomSelect
-                options={refundTypeOptions}
-                header={refundType}
-                setHeader={setRefundType}
+            <label
+              htmlFor="setting-max-contribution"
+              className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2"
+            >
+              <input
+                className="w-6 h-6 accent-[#A4D0F2] rounded-lg"
+                type="checkout"
+                name="setting-max-contribution"
+                id="setting-max-contribution"
               />
-            </div>
-            {/* ROUTER */}
-            <div className=" flex flex-col gap-[0.62rem]">
-              <h3>
-                Router<span className="text-[#F04438]">*</span>
-              </h3>
-              <CustomSelect
-                options={routerOptions}
-                header={router}
-                setHeader={setRouter}
-              />
-            </div>
-          </section>
-          <section className="grid md:grid-cols-2 gap-6">
-            {/* LIQUIDITY */}
-            <div className="">
-              <CustomInput
-                id="liquidity"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Liquidity (%)"
-                type="number"
-                placeholder="0"
-                value={liquidity}
-                onChange={(e) => {
-                  setLiquidity?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
-              />
-            </div>
-            {/* LISTING RATE */}
-            <div className="">
-              <CustomInput
-                id="listingRate"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Listing rate"
-                type="number"
-                placeholder="0"
-                value={listingRate}
-                onChange={(e) => {
-                  setListingRate?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
-              />
-              <span className="mt-[0.62rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6] ">
-                1BNB = 300SLM
-              </span>
-            </div>
-          </section>
+              Enable buyback?
+            </label>
+          </div>
         </form>
       </div>
       <ul className="list-disc text-[#A4D0F2] text-xs tracking-[-0.0075rem] ml-3 mt-6">
