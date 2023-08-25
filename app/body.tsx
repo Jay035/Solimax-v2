@@ -18,7 +18,7 @@ export default function BodyComponent({
       {isModalShowing === true && <CreateTokenModal />}
       <ScrollToTop />
       <Navbar />
-      <section id="body">
+      <section>
         <Wallet />
         <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
           <LatestPools />

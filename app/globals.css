@@ -23,10 +23,6 @@ thead {
   padding-left: 3.75rem;
 }
 
-#modal ~ #body {
-  overflow: hidden !important;
-}
-
 /* ----------------------------- */
 /* CUSTOM SELECT BOX */
 /* --------------------------- */
