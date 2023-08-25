@@ -120,7 +120,7 @@ export default function StepTwo() {
                 className={`rounded-full flex ${
                   isWhitelistDisabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
-                    : "border-0"
+                    : "border-2 border-white"
                 }`}
               >
                 <input
@@ -148,7 +148,7 @@ export default function StepTwo() {
                 className={`rounded-full flex ${
                   isWhitelistEnabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
-                    : "border-0"
+                    : "border-2 border-white"
                 }`}
               >
                 <input

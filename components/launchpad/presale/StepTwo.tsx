@@ -2,6 +2,7 @@ import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "../ButtonGroup";
 import CustomSelect from "../CustomSelect";
 import { GlobalContext } from "@/context/Context";
+import { useState } from "react";
 
 export default function StepTwo() {
   const {
@@ -43,6 +44,10 @@ export default function StepTwo() {
     setPresaleRate,
     setError,
   } = GlobalContext();
+  const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
+  const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
+  const [isVestingContributionChecked, setIsVestingContributionChecked] =
+    useState<boolean>(false);
 
   const refundTypeOptions = [
     {
@@ -110,25 +115,56 @@ export default function StepTwo() {
               htmlFor="disable"
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
-              <input
-                className="w-6 h-6 accent-[#A4D0F2]"
-                type="radio"
-                defaultChecked
-                name="whitelist"
-                id="disable"
-              />
+              <div
+                className={`rounded-full flex ${
+                  isWhitelistDisabled
+                    ? "border-2 p-0.5 border-[#A4D0F2]"
+                    : "border-2 border-white"
+                }`}
+              >
+                <input
+                  className={`appearance-none bg-[#26272B] rounded-full ${
+                    isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
+                  } checked:bg-[#A4D0F2]`}
+                  type="radio"
+                  defaultChecked
+                  checked={isWhitelistDisabled}
+                  onChange={(event: any) => {
+                    setIsWhitelistDisabled(event.target.checked);
+                    setIsWhitelistEnabled(false);
+                  }}
+                  name="whitelist"
+                  id="disable"
+                />
+              </div>
               Disable
             </label>
             <label
               htmlFor="enable"
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
-              <input
-                className="w-6 h-6 accent-[#A4D0F2]"
-                type="radio"
-                name="whitelist"
-                id="enable"
-              />
+              <div
+                className={`rounded-full flex ${
+                  isWhitelistEnabled
+                    ? "border-2 p-0.5 border-[#A4D0F2]"
+                    : "border-2 border-white"
+                }`}
+              >
+                <input
+                  className={`appearance-none bg-[#26272B] rounded-full ${
+                    isWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
+                  } checked:bg-[#A4D0F2]`}
+                  type="radio"
+                  // defaultChecked
+                  checked={isWhitelistEnabled}
+                  onChange={(event: any) => {
+                    setIsWhitelistDisabled(false);
+                    setIsWhitelistEnabled(event.target.checked);
+                  }}
+                  name="whitelist"
+                  id="disable"
+                />
+              </div>
               Enable
             </label>
             <span className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
@@ -337,12 +373,28 @@ export default function StepTwo() {
             htmlFor="disable"
             className="text-white text-[0.875rem] flex items-center gap-[0.62rem]"
           >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="checkbox"
-              name="whitelist"
-              id="disable"
-            />
+            <div
+              className={`relative flex ${
+                !isVestingContributionChecked &&
+                "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
+              } rounded-lg`}
+            >
+              <input
+                type="checkbox"
+                name="vesting-contribution"
+                id="vesting-contribution"
+                className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
+                checked={isVestingContributionChecked}
+                onChange={(event: any) => {
+                  setIsVestingContributionChecked(event.target.checked);
+                }}
+              />
+              <i
+                className={`ri-check-line text-xl absolute left-0.5 top-0 ${
+                  isVestingContributionChecked ? "text-black" : "hidden"
+                }`}
+              ></i>
+            </div>
             Using vesting contributor?
           </label>
           <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
