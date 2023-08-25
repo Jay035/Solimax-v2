@@ -1,15 +1,6 @@
 import { GlobalContext } from "@/context/Context";
-import { useCallback, useState } from "react";
 
-// type Props = {
-//   currentStep: number;
-//   setCurrentStep(stepNumber: number): void; // function to set the step in which we are currently at.
-//   tokenAddress: string;
-//   error: string;
-//   setError: (err: string) => void;
-// };
-
-export default function CreationSteps({stepTitles} : any) {
+export default function CreationSteps({ stepTitles }: any) {
   const {
     currentStep,
     error,
@@ -33,7 +24,6 @@ export default function CreationSteps({stepTitles} : any) {
     setError,
   } = GlobalContext();
 
-  
   const toggleStep = (tag: number) => {
     if (tokenAddress === "") {
       setCurrentStep?.(1);
@@ -66,21 +56,21 @@ export default function CreationSteps({stepTitles} : any) {
       setCurrentStep?.(2);
     } else {
       setCurrentStep?.(tag);
-      console.log(tag)
+      console.log(tag);
     }
   };
 
   return (
     <section className="bg-[#1D1C20] rounded-[0.625rem] border border-[#26272B] w-full">
-      {stepTitles?.map((item : stepTitleProps) => (
+      {stepTitles?.map((item: stepTitleProps, index: number) => (
         <div
           key={item?.id}
           className={`${
             currentStep >= item.tag
               ? "border-b-2 border-b-[#F3CE92] lg:border-l-2 lg:border-l-[#F3CE92] lg:border-b-[#26272B]"
               : ""
-          } ${
-            currentStep === 1 ? "rounded-t-[0.625rem]" : ""
+          } ${index === 0 ? "rounded-t-[0.625rem]" : ""} ${
+            index === 3 ? "rounded-b-[0.625rem]" : ""
           } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-pointer`}
           onClick={() => toggleStep(item?.tag)}
         >
