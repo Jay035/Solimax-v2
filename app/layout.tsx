@@ -47,7 +47,9 @@ export default function RootLayout({
       <body
         className={`${questrial.variable} ${NeueHaasDisplay.variable} relative grid xl:grid-cols-[20rem_auto]`}
       >
-        <BodyComponent>{children}</BodyComponent>
+        <LaunchpadContextProvider>
+          <BodyComponent>{children}</BodyComponent>
+        </LaunchpadContextProvider>
       </body>
     </html>
   );

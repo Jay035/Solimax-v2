@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
 import Wallet from "@/components/Wallet";
 import CreateTokenModal from "@/components/launchpad/CreateTokenModal";
-import { GlobalContext, LaunchpadContextProvider } from "@/context/Context";
+import { GlobalContext } from "@/context/Context";
 import React from "react";
 
 export default function BodyComponent({
@@ -14,21 +14,17 @@ export default function BodyComponent({
 }) {
   const { isModalShowing } = GlobalContext();
   return (
-    <LaunchpadContextProvider>
+    <main className="font-questrial">
       {isModalShowing === true && <CreateTokenModal />}
-      {/* <CreateTokenModal /> */}
-
       <ScrollToTop />
       <Navbar />
-      <main
-        className={`${isModalShowing ? "overflow-hidden" : ""} font-questrial`}
-      >
+      <section id="body">
         <Wallet />
-        <section className="overflow-x-hidden font-questrial mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
+        <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
           <LatestPools />
           {children}
-        </section>
-      </main>
-    </LaunchpadContextProvider>
+        </div>
+      </section>
+    </main>
   );
 }

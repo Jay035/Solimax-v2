@@ -59,8 +59,11 @@ export default function ButtonGroup() {
       <button
         onClick={(e: any) => {
           e.preventDefault();
-          setIsModalShowing?.((prevState: any) => !prevState);
-          console.log(isModalShowing);
+          window.scrollTo(0, 0);
+          setIsModalShowing?.(true);
+          if (typeof window != 'undefined' && window.document) {
+            document.body.style.overflow = 'hidden';
+        }
         }}
       >
         Create token
