@@ -7,6 +7,7 @@ import Wallet from "@/components/Wallet";
 import LatestPools from "@/components/LatestPools";
 import ScrollToTop from "@/components/ScrollToTop";
 import { LaunchpadContextProvider } from "@/context/Context";
+import BodyComponent from "./body";
 
 const inter = Inter({ subsets: ["latin"] });
 const questrial = Questrial({
@@ -44,19 +45,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${questrial.variable} ${NeueHaasDisplay.variable} grid xl:grid-cols-[20rem_auto]`}
+        className={`${questrial.variable} ${NeueHaasDisplay.variable} relative grid xl:grid-cols-[20rem_auto]`}
       >
-        <LaunchpadContextProvider>
-          <ScrollToTop />
-          <Navbar />
-          <main>
-            <Wallet />
-            <section className="overflow-x-hidden font-questrial mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
-              <LatestPools />
-              {children}
-            </section>
-          </main>
-        </LaunchpadContextProvider>
+        <BodyComponent>{children}</BodyComponent>
       </body>
     </html>
   );

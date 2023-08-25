@@ -59,10 +59,12 @@ export default function StepTwo() {
     },
   ];
 
-  const [isChecked, setIsChecked] = useState(false);
+  const [isMaxContributionChecked, setIsMaxContributionChecked] =
+    useState(false);
+  const [isBuyBackChecked, setIsBuyBackChecked] = useState(false);
 
   const handleCheckboxChange = (event: any) => {
-    setIsChecked(event.target.checked);
+    // setIsChecked(event.target.checked);
     if (event.target.checked) {
       // Run your function when checkbox is checked
       console.log("Checkbox is checked!");
@@ -151,17 +153,19 @@ export default function StepTwo() {
               }}
               isRequired={true}
             />
-            <label
-              htmlFor="setting-max-contribution"
-              className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2"
-            >
+
+            <label className=" text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
               <input
-                className="w-6 h-6 accent-[#A4D0F2] rounded-lg"
-                type="checkout"
+                type="checkbox"
                 name="setting-max-contribution"
                 id="setting-max-contribution"
+                className="appearance-none h-6 w-6 bg-[#26272B] border rounded border-[#efefef] checked:bg-[#A4D0F2] checked:border-transparent focus:outline-none"
+                checked={isMaxContributionChecked}
+                onChange={(event: any) => {
+                  setIsMaxContributionChecked(event.target.checked);
+                }}
               />
-              Setting max contribution?
+              <span className="text-[#F4F4F5]">Setting max contribution?</span>
             </label>
           </div>
 
@@ -192,18 +196,37 @@ export default function StepTwo() {
               }}
               isRequired={true}
             />
-            <label
+            {/* <label
               htmlFor="setting-max-contribution"
-              className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2"
+              className="label-container"
+              // className="relative text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2"
             >
               <input
-                className="w-6 h-6 accent-[#A4D0F2] rounded-lg"
+                className="input w-6 h-6 accent-[#A4D0F2] rounded-lg invisible"
                 type="checkout"
                 name="setting-max-contribution"
                 id="setting-max-contribution"
+                onChange={handleCheckboxChange}
               />
+              <span className="checkmark bg-[#26272B] w-6 h-6"></span>
               Enable buyback?
+            </label> */}
+            <label className="text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
+              <span className="bg-gradient-to-b rounded from-[#51525c] to-[#28282a] p-0.5 w-fit h-fit">
+                <input
+                  type="checkbox"
+                  name="enable-buyback"
+                  id="enable-buyback"
+                  className="appearance-none h-6 w-6 bg-[#26272B] checked:bg-[#A4D0F2]"
+                  checked={isBuyBackChecked}
+                  onChange={(event: any) => {
+                    setIsBuyBackChecked(event.target.checked);
+                  }}
+                />
+              </span>
+              <span className="text-[#F4F4F5]">Enable buyback?</span>
             </label>
+            {/* <div className=""></div> */}
           </div>
         </form>
       </div>
@@ -253,6 +276,10 @@ export default function StepTwo() {
               isRequired={true}
             />
           </section>
+          <p className="text-[#E4E4E7] text-xs tracking-[-0.0075rem]">
+            The duration between start time and end time must be less than 7
+            days
+          </p>
           {/* Liquidity lockup */}
           <CustomInput
             id="liquidity-Lockup"
@@ -268,70 +295,6 @@ export default function StepTwo() {
             }}
             isRequired={true}
           />
-
-          <label
-            htmlFor="disable"
-            className="text-white text-[0.875rem] flex items-center gap-[0.62rem]"
-          >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="checkbox"
-              name="whitelist"
-              id="disable"
-            />
-            Using vesting contributor?
-          </label>
-          <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
-            Vesting Contributor does not support rebase tokens.
-          </p>
-          {/* Liquidity lockup */}
-          <CustomInput
-            id="first-release-for-presale"
-            className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-            label="First release for presale (%)"
-            type="text"
-            placeholder="40%"
-            value={firstRelease}
-            onChange={(e) => {
-              setFirstRelease?.(e.target.value);
-              setError?.("");
-            }}
-            isRequired={true}
-          />
-
-          <section className="grid md:grid-cols-2 items-center gap-6">
-            {/* Vesting period each cycle */}
-            <CustomInput
-              id="Vesting-period"
-              className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Vesting period each cycle (days)"
-              type="number"
-              placeholder="21"
-              value={vestingPeriod}
-              onChange={(e) => {
-                setVestingPeriod?.(e.target.value);
-                setError?.("");
-              }}
-              isRequired={true}
-            />
-            {/* Presale token release each cycle (%) */}
-            <CustomInput
-              id="Presale-token"
-              className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Presale token release each cycle (%)"
-              type="text"
-              placeholder="20%"
-              value={presaleToken}
-              onChange={(e) => {
-                setPresaleToken?.(e.target.value);
-                setError?.("");
-              }}
-              isRequired={true}
-            />
-          </section>
 
           <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 mt-[1.163rem]">
             <p className="text-[#E4E4E7] text-base tracking-[-0.01rem]">
@@ -384,14 +347,6 @@ export default function StepTwo() {
           </div>
         </form>
       </div>
-      <p className="text-[0.875rem] text-[#D1D1D6]">
-        Disclaimer: Solimax Presale will never endorse or encourage that you
-        invest in any of the projects listed and therefore, accept no liability
-        for any loss occasioned. It is the user(s) responsibility to do their
-        own research and seek financial advice from a professional. More
-        information about (DYOR) can be found via{" "}
-        <span className="underline">Binance Academy</span>.
-      </p>
     </section>
   );
 }

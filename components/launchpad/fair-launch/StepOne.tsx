@@ -6,7 +6,7 @@ import ButtonGroup from "../ButtonGroup";
 export default function StepOne() {
   const {
     tokenAddress,
-    options,
+    currencyOptions,
     selectedCurrency,
     error,
     setSelectedCurrency,
@@ -48,9 +48,9 @@ export default function StepOne() {
           </p>
         </div>
         <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-          <label htmlFor="currency">Select Currency</label>
+          <p>Select Currency</p>
           <CustomSelect
-            options={options}
+            options={currencyOptions}
             header={selectedCurrency}
             setHeader={setSelectedCurrency}
           />

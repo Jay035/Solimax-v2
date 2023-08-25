@@ -1,6 +1,6 @@
 import { GlobalContext } from "@/context/Context";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 type Props = {
   id: string;
@@ -19,6 +19,10 @@ export default function ButtonGroup() {
     },
     [selectedTab]
   );
+
+  useEffect(() => {
+    setSelectedTab?.(pathname)
+  })
   return (
     <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 md:pr-11">
       {/* presale_ fair Launch group */}
@@ -27,7 +31,7 @@ export default function ButtonGroup() {
           <button
             key={tab.id}
             className={`${
-              selectedTab === tab.id || pathname === tab.route
+               pathname === tab.route
                 ? "bg-[#454FDA] border border-[#454FDA]"
                 : "bg-[#3F3F46]"
             } ${

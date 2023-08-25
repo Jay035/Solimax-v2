@@ -38,6 +38,10 @@ interface FormProps {
   youtubeURL?: string;
   description?: string;
   totalSellingAmount?: string;
+  isModalShowing?: boolean;
+  nameOfToken?: string;
+  setNameOfToken?: (x: string) => void;
+  setIsModalShowing?: (x: any) => void;
   setTotalSellingAmount?: (x: string) => void;
   setDescription?: (x: string) => void;
   setYoutubeURL?: (x: string) => void;

@@ -46,7 +46,7 @@ export default function StepThree() {
     <section className="flex flex-col gap-6">
       <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
         <ButtonGroup />
-        <div className="">
+        <div className="mt-4">
           <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
             <span className="text-[#F04438]">(*) </span>is required field
           </p>
