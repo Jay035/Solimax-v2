@@ -14,7 +14,7 @@ export default function BodyComponent({
 }) {
   const { isModalShowing } = GlobalContext();
   return (
-    <main className="font-questrial">
+    <main className="font-questrial grid xl:grid-cols-[20rem_auto]">
       {isModalShowing === true && <CreateTokenModal />}
       <ScrollToTop />
       <Navbar />
