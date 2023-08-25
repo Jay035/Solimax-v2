@@ -1,6 +1,6 @@
 import { GlobalContext } from "@/context/Context";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 type Props = {
   id: string;
@@ -10,7 +10,13 @@ type Props = {
 };
 
 export default function ButtonGroup() {
-  const { tabs, selectedTab, setSelectedTab } = GlobalContext();
+  const {
+    tabs,
+    selectedTab,
+    isModalShowing,
+    setSelectedTab,
+    setIsModalShowing,
+  } = GlobalContext();
   const router = useRouter();
   const pathname = usePathname();
   const toggleTab = useCallback(
@@ -19,6 +25,10 @@ export default function ButtonGroup() {
     },
     [selectedTab]
   );
+
+  useEffect(() => {
+    setSelectedTab?.(pathname);
+  });
   return (
     <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 md:pr-11">
       {/* presale_ fair Launch group */}
@@ -27,7 +37,7 @@ export default function ButtonGroup() {
           <button
             key={tab.id}
             className={`${
-              selectedTab === tab.id || pathname === tab.route
+              pathname === tab.route
                 ? "bg-[#454FDA] border border-[#454FDA]"
                 : "bg-[#3F3F46]"
             } ${
@@ -46,7 +56,15 @@ export default function ButtonGroup() {
         ))}
       </div>
       {/* Create token button */}
-      <button>Create token</button>
+      <button
+        onClick={(e: any) => {
+          e.preventDefault();
+          setIsModalShowing?.((prevState: any) => !prevState);
+          console.log(isModalShowing);
+        }}
+      >
+        Create token
+      </button>
     </div>
   );
 }

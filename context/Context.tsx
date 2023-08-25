@@ -11,6 +11,7 @@ type Props = {
 
 export function LaunchpadContextProvider({ children }: Props) {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isModalShowing, setIsModalShowing] = useState(false);
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [tokenAddress, setTokenAddress] = useState("");
@@ -40,6 +41,7 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [youtubeURL, setYoutubeURL] = useState("");
   const [description, setDescription] = useState("");
   const [totalSellingAmount, setTotalSellingAmount] = useState("");
+  const [nameOfToken, setNameOfToken] = useState("");
 
   const tabs = [
     {
@@ -105,6 +107,10 @@ export function LaunchpadContextProvider({ children }: Props) {
     vestingPeriod,
     presaleToken,
     totalSellingAmount,
+    isModalShowing,
+    nameOfToken,
+    setNameOfToken,
+    setIsModalShowing,
     setTotalSellingAmount,
     handleNextStep,
     handlePreviousStep,

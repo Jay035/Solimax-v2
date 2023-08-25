@@ -172,12 +172,6 @@ export default function StepFour() {
             <button
               onClick={(e: any) => {
                 e.preventDefault();
-                // handleNextStep?.(e);
-                // if (tokenAddress === "") {
-                //   setError("Token address must be entered");
-                // } else {
-                //   handleNextStep();
-                // }
               }}
               className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
             >
