@@ -13,6 +13,7 @@ export default function BodyComponent({
   children: React.ReactNode;
 }) {
   const { isModalShowing } = GlobalContext();
+  console.log(isModalShowing)
   return (
     <main className="font-questrial grid xl:grid-cols-[20rem_auto]">
       {isModalShowing === true && <CreateTokenModal />}
