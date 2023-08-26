@@ -113,7 +113,7 @@ export default function Navbar({}: Props) {
                     <Link href="">Create token</Link>
                   </li>
                   <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem]">
-                    <Link href="">Launchpad list</Link>
+                    <Link href="/launchpad/launchpadList">Launchpad list</Link>
                   </li>
                 </ul>
               )}

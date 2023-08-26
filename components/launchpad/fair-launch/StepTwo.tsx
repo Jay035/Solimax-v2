@@ -126,7 +126,7 @@ export default function StepTwo() {
                 <input
                   className={`appearance-none bg-[#26272B] rounded-full ${
                     isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
-                  } checked:bg-[#A4D0F2]`}
+                  } checked:bg-[#A4D0F2] cursor-pointer`}
                   type="radio"
                   defaultChecked
                   checked={isWhitelistDisabled}
@@ -154,7 +154,7 @@ export default function StepTwo() {
                 <input
                   className={`appearance-none bg-[#26272B] rounded-full ${
                     isWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
-                  } checked:bg-[#A4D0F2]`}
+                  } checked:bg-[#A4D0F2] cursor-pointer`}
                   type="radio"
                   // defaultChecked
                   checked={isWhitelistEnabled}
@@ -197,7 +197,7 @@ export default function StepTwo() {
                 className={`relative flex ${
                   !isMaxContributionChecked &&
                   "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-                } rounded-lg`}
+                } rounded-lg cursor-pointer`}
               >
                 <input
                   type="checkbox"
@@ -221,7 +221,7 @@ export default function StepTwo() {
               <CustomInput
                 id="max-contribution"
                 className="mt-4 flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] cursor-pointer border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Max Contribution (BNB)"
                 type="number"
                 placeholder="0"

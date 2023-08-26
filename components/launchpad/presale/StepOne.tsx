@@ -63,6 +63,34 @@ export default function StepOne() {
             Fee Options
           </h3>
 
+          {/* <label
+              htmlFor="disable"
+              className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
+            >
+              <div
+                className={`rounded-full flex ${
+                  isWhitelistDisabled
+                    ? "border-2 p-0.5 border-[#A4D0F2]"
+                    : "border-2 border-white"
+                }`}
+              >
+                <input
+                  className={`appearance-none bg-[#26272B] rounded-full ${
+                    isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
+                  } checked:bg-[#A4D0F2]`}
+                  type="radio"
+                  defaultChecked
+                  checked={isWhitelistDisabled}
+                  onChange={(event: any) => {
+                    setIsWhitelistDisabled(event.target.checked);
+                    setIsWhitelistEnabled(false);
+                  }}
+                  name="whitelist"
+                  id="disable"
+                />
+              </div>
+              Disable
+            </label> */}
           <label
             htmlFor="fee-option-(%-BNB-raised)"
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
