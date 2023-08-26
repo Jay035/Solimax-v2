@@ -7,6 +7,10 @@
   border: 2px solid red;
 } */
 
+#modal ::-webkit-scrollbar-thumb {
+  background-color: #171719;
+}
+
 body {
   background-color: #171719;
 }

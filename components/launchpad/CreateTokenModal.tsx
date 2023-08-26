@@ -26,9 +26,9 @@ export default function CreateTokenModal() {
     },
   ];
   return (
-    <main className="bg-[#3F3F46] w-full absolute flex min-h-screen justify-center items-center z-[9999999999]">
+    <main id="modal" className="bg-[#3F3F46]/50 w-full absolute flex min-h-screen justify-center items-center z-[9999999999]">
       {/* modal */}
-      <div className="bg-[#1D1C20] rounded-[0.625rem] p-6 pt-10 w-full h-fit max-h-[30rem] overflow-y-scroll max-w-[45rem]">
+      <div className="bg-[#1D1C20] rounded-[0.625rem] p-6 pt-10 w-[90%] md:w-full h-fit max-h-[30rem] overflow-y-scroll max-w-[45rem]">
         <section className="text-white pb-[1.5rem] flex justify-between items-center border-b border-[#26272b]">
           <h1 className="tracking-[-0.015rem] text-xl md:text-2xl">
             Create token
@@ -39,9 +39,10 @@ export default function CreateTokenModal() {
             height="20"
             viewBox="0 0 20 20"
             fill="none"
-            className="mr-[2.13rem]"
+            className="mr-[2.13rem] cursor-pointer"
             onClick={() => {
               setIsModalShowing?.(false)
+              document.body.style.overflow = 'unset';
             }}
           >
             <path

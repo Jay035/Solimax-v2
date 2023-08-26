@@ -44,12 +44,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body
-        className={`${questrial.variable} ${NeueHaasDisplay.variable} relative grid xl:grid-cols-[20rem_auto]`}
+        className={`${questrial.variable} ${NeueHaasDisplay.variable} relative`}
       >
         <LaunchpadContextProvider>
-
-        <BodyComponent>{children}</BodyComponent>
+          <BodyComponent>{children}</BodyComponent>
         </LaunchpadContextProvider>
       </body>
     </html>

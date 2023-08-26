@@ -59,9 +59,13 @@ export default function StepTwo() {
     },
   ];
 
+  const [buybackPercent, setBuybackPercent] = useState<string>("");
+  const [maxContribution, setMaxContribution] = useState<string>("");
   const [isMaxContributionChecked, setIsMaxContributionChecked] =
-    useState(false);
-  const [isBuyBackChecked, setIsBuyBackChecked] = useState(false);
+    useState<boolean>(false);
+  const [isBuyBackChecked, setIsBuyBackChecked] = useState<boolean>(false);
+  const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
+  const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
 
   const handleCheckboxChange = (event: any) => {
     // setIsChecked(event.target.checked);
@@ -91,7 +95,7 @@ export default function StepTwo() {
               id="totalSellingAmount"
               className="flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Total Selling Amount"
+              label="Total selling amount"
               type="number"
               placeholder="0"
               value={totalSellingAmount}
@@ -112,25 +116,56 @@ export default function StepTwo() {
               htmlFor="disable"
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
-              <input
-                className="w-6 h-6 accent-[#A4D0F2]"
-                type="radio"
-                defaultChecked
-                name="whitelist"
-                id="disable"
-              />
+              <div
+                className={`rounded-full flex ${
+                  isWhitelistDisabled
+                    ? "border-2 p-0.5 border-[#A4D0F2]"
+                    : "border-2 border-white"
+                }`}
+              >
+                <input
+                  className={`appearance-none bg-[#26272B] rounded-full ${
+                    isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
+                  } checked:bg-[#A4D0F2]`}
+                  type="radio"
+                  defaultChecked
+                  checked={isWhitelistDisabled}
+                  onChange={(event: any) => {
+                    setIsWhitelistDisabled(event.target.checked);
+                    setIsWhitelistEnabled(false);
+                  }}
+                  name="whitelist"
+                  id="disable"
+                />
+              </div>
               Disable
             </label>
             <label
               htmlFor="enable"
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
-              <input
-                className="w-6 h-6 accent-[#A4D0F2]"
-                type="radio"
-                name="whitelist"
-                id="enable"
-              />
+              <div
+                className={`rounded-full flex ${
+                  isWhitelistEnabled
+                    ? "border-2 p-0.5 border-[#A4D0F2]"
+                    : "border-2 border-white"
+                }`}
+              >
+                <input
+                  className={`appearance-none bg-[#26272B] rounded-full ${
+                    isWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
+                  } checked:bg-[#A4D0F2]`}
+                  type="radio"
+                  // defaultChecked
+                  checked={isWhitelistEnabled}
+                  onChange={(event: any) => {
+                    setIsWhitelistDisabled(false);
+                    setIsWhitelistEnabled(event.target.checked);
+                  }}
+                  name="whitelist"
+                  id="disable"
+                />
+              </div>
               Enable
             </label>
             <span className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
@@ -154,19 +189,50 @@ export default function StepTwo() {
               isRequired={true}
             />
 
-            <label className=" text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                name="setting-max-contribution"
-                id="setting-max-contribution"
-                className="appearance-none h-6 w-6 bg-[#26272B] border rounded border-[#efefef] checked:bg-[#A4D0F2] checked:border-transparent focus:outline-none"
-                checked={isMaxContributionChecked}
-                onChange={(event: any) => {
-                  setIsMaxContributionChecked(event.target.checked);
-                }}
-              />
+            <label
+              htmlFor="setting-max-contribution"
+              className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
+            >
+              <div
+                className={`relative flex ${
+                  !isMaxContributionChecked &&
+                  "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
+                } rounded-lg`}
+              >
+                <input
+                  type="checkbox"
+                  name="setting-max-contribution"
+                  id="setting-max-contribution"
+                  className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
+                  checked={isMaxContributionChecked}
+                  onChange={(event: any) => {
+                    setIsMaxContributionChecked(event.target.checked);
+                  }}
+                />
+                <i
+                  className={`ri-check-line text-xl absolute left-0.5 top-0 ${
+                    isMaxContributionChecked ? "text-black" : "hidden"
+                  }`}
+                ></i>
+              </div>
               <span className="text-[#F4F4F5]">Setting max contribution?</span>
             </label>
+            {isMaxContributionChecked && (
+              <CustomInput
+                id="max-contribution"
+                className="mt-4 flex flex-col gap-[0.62rem]"
+                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                label="Max Contribution (BNB)"
+                type="number"
+                placeholder="0"
+                value={maxContribution}
+                onChange={(e) => {
+                  setMaxContribution?.(e.target.value);
+                  setError?.("");
+                }}
+                isRequired={true}
+              />
+            )}
           </div>
 
           {/* ROUTER */}
@@ -196,37 +262,63 @@ export default function StepTwo() {
               }}
               isRequired={true}
             />
-            {/* <label
-              htmlFor="setting-max-contribution"
-              className="label-container"
-              // className="relative text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2"
-            >
-              <input
-                className="input w-6 h-6 accent-[#A4D0F2] rounded-lg invisible"
-                type="checkout"
-                name="setting-max-contribution"
-                id="setting-max-contribution"
-                onChange={handleCheckboxChange}
-              />
-              <span className="checkmark bg-[#26272B] w-6 h-6"></span>
-              Enable buyback?
-            </label> */}
             <label className="text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
-              <span className="bg-gradient-to-b rounded from-[#51525c] to-[#28282a] p-0.5 w-fit h-fit">
+              <div
+                className={`relative flex ${
+                  !isMaxContributionChecked &&
+                  "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
+                } rounded-lg`}
+              >
                 <input
                   type="checkbox"
-                  name="enable-buyback"
-                  id="enable-buyback"
-                  className="appearance-none h-6 w-6 bg-[#26272B] checked:bg-[#A4D0F2]"
+                  name="setting-max-contribution"
+                  id="setting-max-contribution"
+                  className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
                   checked={isBuyBackChecked}
                   onChange={(event: any) => {
                     setIsBuyBackChecked(event.target.checked);
                   }}
                 />
-              </span>
+                <i
+                  className={`ri-check-line text-xl absolute left-0.5 top-0 ${
+                    isBuyBackChecked ? "text-black" : "hidden"
+                  }`}
+                ></i>
+              </div>
               <span className="text-[#F4F4F5]">Enable buyback?</span>
             </label>
-            {/* <div className=""></div> */}
+            {isBuyBackChecked && (
+              <div className="">
+                <CustomInput
+                  id="max-contribution"
+                  className="mt-4 flex flex-col gap-[0.62rem]"
+                  inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                  label="Buyback percent (%)"
+                  type="number"
+                  placeholder="0"
+                  value={buybackPercent}
+                  onChange={(e) => {
+                    setBuybackPercent?.(e.target.value);
+                    setError?.("");
+                  }}
+                  isRequired={true}
+                />
+                <div className="bg-[#18181B] border border-[#F4F4F5] px-6 py-[0.875rem] mt-[0.6rem] rounded-[0.6rem]">
+                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] pb-[0.62rem]">
+                    <p className="">Amount Per Buyback</p>
+                    <p>1BNB</p>
+                  </div>
+                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] py-[0.62rem]">
+                    <p className="">Min Buyback Delay</p>
+                    <p>5 mins</p>
+                  </div>
+                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between pt-[0.62rem]">
+                    <p className="">Max Buyback Delay</p>
+                    <p>2 days</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </form>
       </div>
