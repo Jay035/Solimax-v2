@@ -116,7 +116,7 @@ export default function StepTwo() {
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
               <div
-                className={`rounded-full flex ${
+                className={`rounded-full flex cursor-pointer ${
                   isWhitelistDisabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
                     : "border-2 border-white"
@@ -144,7 +144,7 @@ export default function StepTwo() {
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
               <div
-                className={`rounded-full flex ${
+                className={`rounded-full cursor-pointer flex ${
                   isWhitelistEnabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
                     : "border-2 border-white"
@@ -374,7 +374,7 @@ export default function StepTwo() {
             className="text-white text-[0.875rem] flex items-center gap-[0.62rem]"
           >
             <div
-              className={`relative flex ${
+              className={`relative flex cursor-pointer ${
                 !isVestingContributionChecked &&
                 "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
               } rounded-lg`}
