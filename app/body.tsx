@@ -13,6 +13,7 @@ export default function BodyComponent({
   children: React.ReactNode;
 }) {
   const { isModalShowing } = GlobalContext();
+  console.log(isModalShowing)
   return (
     <LaunchpadContextProvider>
       {isModalShowing === true && <CreateTokenModal />}
