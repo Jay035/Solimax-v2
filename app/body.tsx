@@ -1,5 +1,4 @@
 "use client";
-import LatestPools from "@/components/LatestPools";
 import Navbar from "@/components/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
 import Wallet from "@/components/Wallet";
@@ -13,7 +12,7 @@ export default function BodyComponent({
   children: React.ReactNode;
 }) {
   const { isModalShowing } = GlobalContext();
-  console.log(isModalShowing)
+  console.log(isModalShowing);
   return (
     <main className="font-questrial grid xl:grid-cols-[20rem_auto]">
       {isModalShowing === true && <CreateTokenModal />}
@@ -21,10 +20,7 @@ export default function BodyComponent({
       <Navbar />
       <section>
         <Wallet />
-        <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
-          <LatestPools />
-          {children}
-        </div>
+        {children}
       </section>
     </main>
   );

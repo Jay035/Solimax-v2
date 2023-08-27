@@ -4,11 +4,13 @@ import navLogo from "/public/icons/logo-icon.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { GlobalContext } from "@/context/Context";
 
 type Props = {};
 
 export default function Navbar({}: Props) {
   const pathname = usePathname();
+  const { setIsModalShowing } = GlobalContext();
   const [menuOpen, setMenuOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const showOptions = () => {
@@ -62,7 +64,9 @@ export default function Navbar({}: Props) {
       </section>
       <div
         className={`${
-          menuOpen ? "left-0 top-0 px-10 pt-8 xl:px-0 xl:pt-0" : "-left-full xl:left-0"
+          menuOpen
+            ? "left-0 top-0 px-10 pt-8 xl:px-0 xl:pt-0"
+            : "-left-full xl:left-0"
         } absolute w-full h-full bg-[#1D1C20] xl:bg-transparent xl:relative xl:left-0 xl:h-fit`}
       >
         {/* GENERAL SECTION */}
@@ -103,16 +107,38 @@ export default function Navbar({}: Props) {
               {/* launchpads options */}
               {optionsOpen && (
                 <ul className="transition-all duration-100 ease-in-out pl-7 flex flex-col gap-[0.75rem] mt-[0.75rem] text-[0.875rem] text-[#A0A0AB]">
-                  <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]">
+                  <li
+                    onClick={() => setMenuOpen((prevState) => !prevState)}
+                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+                  >
                     <Link href="/launchpad/presale">Create launchpad</Link>
                   </li>
-                  <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]">
-                    <Link href="/launchpad/fair-launch">Create fair launch</Link>
+                  <li
+                    onClick={() => setMenuOpen((prevState) => !prevState)}
+                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+                  >
+                    <Link href="/launchpad/fair-launch">
+                      Create fair launch
+                    </Link>
                   </li>
-                  <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]">
-                    <Link href="">Create token</Link>
+                  <li
+                    onClick={(e: any) => {
+                      e.preventDefault();
+                      window.scrollTo(0, 0);
+                      setIsModalShowing?.(true);
+                      setMenuOpen((prevState) => !prevState)
+                      if (typeof window != "undefined" && window.document) {
+                        document.body.style.overflow = "hidden";
+                      }
+                    }}
+                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+                  >
+                    Create token
                   </li>
-                  <li onClick={() => setMenuOpen(prevState => !prevState)} className="tracking-[-0.00875rem]">
+                  <li
+                    onClick={() => setMenuOpen((prevState) => !prevState)}
+                    className="tracking-[-0.00875rem]"
+                  >
                     <Link href="/launchpad/launchpadList">Launchpad list</Link>
                   </li>
                 </ul>
