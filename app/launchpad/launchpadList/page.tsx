@@ -11,12 +11,9 @@ export default function LaunchpadList({}: Props) {
       <Navigation />
       <Filter />
       <div className="mb-[6.25rem] grid lg:grid-cols-2 2xl:grid-cols-3 gap-x-[1.59rem] gap-y-8">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {cardDetails?.map((item: any, index: number) => (
+          <Card key={index} item={item} />
+        ))}
       </div>
       <div className="py-12 px-16 bg-[#1d1d21] text-white text-center rounded-2xl">
         <h1 className="text-[#fcfcfd] tracking-[-0.045rem] text-2xl md:text-4xl">
@@ -28,13 +25,18 @@ export default function LaunchpadList({}: Props) {
         </p>
         <form className="flex gap-4 items-center">
           <input
-            type="text"
+            type="email"
             placeholder="Enter your email"
-            className="w-full px-[0.87rem] py-3 rounded-lg bg-[#26272b] shadow-[0px_1px_2px_0px] shadow-[#101828]/[0.05] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            className="w-full px-[0.87rem] py-3 rounded-lg bg-[#26272B] border border-[#A0A0AB] shadow-[0px_1px_2px_0px] shadow-[#101828]/[0.05] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             name=""
             id=""
           />
-          <button className="rounded-lg border border-[#454fda] bg-[#454fda] px-5 py-3">
+          <button
+            className="rounded-lg border border-[#454fda] bg-[#454fda] px-5 py-3"
+            onClick={(e: any) => {
+              e.preventDefault();
+            }}
+          >
             Subscribe
           </button>
         </form>
@@ -45,3 +47,84 @@ export default function LaunchpadList({}: Props) {
     </section>
   );
 }
+
+export const cardDetails = [
+  {
+    title: "Zeela",
+    status: "Upcoming",
+    type: "Fair launch",
+    isFavorite: false,
+    maxBuy: "0.02 BNB",
+    softCap: 250,
+    hardCap: 1000,
+    progress: 0,
+    liquidity: 51,
+    lockTime: 365,
+    saleStartDate: "00: 24: 16",
+  },
+  {
+    title: "Zeela",
+    status: "Upcoming",
+    type: "Fair launch",
+    isFavorite: true,
+    maxBuy: "0.02 BNB",
+    softCap: 250,
+    hardCap: 1000,
+    progress: 0,
+    liquidity: 51,
+    lockTime: 365,
+    saleStartDate: "00: 24: 16",
+  },
+  {
+    title: "Zeela",
+    status: "Upcoming",
+    type: "Fair launch",
+    isFavorite: false,
+    maxBuy: "0.02 BNB",
+    softCap: 250,
+    hardCap: 1000,
+    progress: 0,
+    liquidity: 51,
+    lockTime: 365,
+    saleStartDate: "00: 24: 16",
+  },
+  {
+    title: "Zeela",
+    status: "Ended",
+    type: "Fair launch",
+    isFavorite: true,
+    maxBuy: "0.02 BNB",
+    softCap: 250,
+    hardCap: 1000,
+    progress: 50,
+    liquidity: 51,
+    lockTime: 365,
+    saleStartDate: "00: 24: 16",
+  },
+  {
+    title: "Zeela",
+    status: "Upcoming",
+    type: "Fair launch",
+    isFavorite: false,
+    maxBuy: "0.02 BNB",
+    softCap: 250,
+    hardCap: 1000,
+    progress: 0,
+    liquidity: 51,
+    lockTime: 365,
+    saleStartDate: "00: 24: 16",
+  },
+  {
+    title: "Zeela",
+    status: "Upcoming",
+    type: "Fair launch",
+    isFavorite: true,
+    maxBuy: "0.02 BNB",
+    softCap: 250,
+    hardCap: 1000,
+    progress: 0,
+    liquidity: 51,
+    lockTime: 365,
+    saleStartDate: "00: 24: 16",
+  },
+];
