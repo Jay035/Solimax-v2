@@ -1,10 +1,12 @@
 import HotAirdrops from "@/components/HotAirdrops";
+import LatestPools from "@/components/LatestPools";
 import NewTokens from "@/components/NewTokens";
 import TrendingPools from "@/components/TrendingPools";
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
+    <LatestPools />
       <div className="mt-8 text-white w-fit">
         <h1 className="text-4xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
           The{" "}
@@ -78,6 +80,6 @@ export default function Home() {
         <HotAirdrops />
         <NewTokens />
       </div>
-    </>
+    </div>
   );
 }

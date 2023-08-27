@@ -53,7 +53,6 @@ export default function StepOne() {
             header={selectedCurrency}
             setHeader={setSelectedCurrency}
           />
-          {/* create pool fee */}
           <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
             Users will pay with {selectedCurrency} for your token
           </p>

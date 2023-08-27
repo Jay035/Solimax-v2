@@ -1,5 +1,11 @@
 "use client";
-import { ReactNode, useState, useContext, createContext, useEffect } from "react";
+import {
+  ReactNode,
+  useState,
+  useContext,
+  createContext,
+  useEffect,
+} from "react";
 
 export const LaunchpadContext = createContext<FormProps>({
   currentStep: 1,
@@ -11,7 +17,7 @@ type Props = {
 
 export function LaunchpadContextProvider({ children }: Props) {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isModalShowing, setIsModalShowing] = useState(true);
+  const [isModalShowing, setIsModalShowing] = useState(false);
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [tokenAddress, setTokenAddress] = useState("");
@@ -75,8 +81,8 @@ export function LaunchpadContextProvider({ children }: Props) {
   };
 
   useEffect(() => {
-    console.log(isModalShowing)
-  })
+    console.log(isModalShowing);
+  });
 
   const value = {
     tabs,
