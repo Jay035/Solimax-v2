@@ -9,8 +9,8 @@ import { GlobalContext } from "@/context/Context";
 type Props = {};
 
 export default function Navbar({}: Props) {
-  const pathname = usePathname();
   const { setIsModalShowing } = GlobalContext();
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const showOptions = () => {

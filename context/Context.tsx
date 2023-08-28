@@ -80,10 +80,6 @@ export function LaunchpadContextProvider({ children }: Props) {
     if (currentStep > 1) setCurrentStep?.(currentStep - 1);
   };
 
-  useEffect(() => {
-    console.log(isModalShowing);
-  });
-
   const value = {
     tabs,
     currencyOptions,
