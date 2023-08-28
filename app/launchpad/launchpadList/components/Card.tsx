@@ -14,12 +14,7 @@ export default function Card({ item }: any) {
   const router = useRouter();
   const [isAddedToFavorites, setIsAddedToFavorites] = useState<boolean>(false);
   return (
-    <article
-      className="bg-[#1d1c20] border border-[#70707a] w-full rounded-[0.72294rem] p-[1.74rem] pb-[0.86rem] pr-[1.53rem] cursor-pointer"
-      onClick={() => {
-        router.push(`/launchpad/launchpadList/${item?.title}`);
-      }}
-    >
+    <article className="bg-[#1d1c20] border border-[#70707a] w-full rounded-[0.72294rem] p-[1.74rem] pb-[0.86rem] pr-[1.53rem] cursor-pointer">
       <header className="mb-[1.45rem] flex items-center gap-12 justify-between">
         <Image className="w-12 2xl:w-[4.04rem]" src={img1} alt="icon" />
         <div className="flex items-center gap-2 text-white">
@@ -43,7 +38,14 @@ export default function Card({ item }: any) {
       </header>
       <section className="text-white mb-[1.13rem]">
         {/* name */}
-        <h1 className="text-[1.74rem] tracking-[-0.0174rem]">{item?.title}</h1>
+        <h1
+          className="text-[1.74rem] tracking-[-0.0174rem]"
+          onClick={() => {
+            router.push(`/launchpad/launchpadList/${item?.title}`);
+          }}
+        >
+          {item?.title}
+        </h1>
         <div className="my-[1.15rem] flex items-center gap-[2.99rem]">
           {/* Type */}
           <div className="">
