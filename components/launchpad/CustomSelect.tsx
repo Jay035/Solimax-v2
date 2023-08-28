@@ -1,9 +1,16 @@
-"use client"
+"use client";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
-export default function CustomSelect({ options, header, setHeader, currency }: any) {
+export default function CustomSelect({
+  options,
+  header,
+  setHeader,
+  currency,
+}: any) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleOptionClick = (value: any) => {
@@ -29,13 +36,22 @@ export default function CustomSelect({ options, header, setHeader, currency }: a
   return (
     <div className="custom-dropdown" ref={dropdownRef}>
       <div
-        className={`dropdown-header flex items-center gap-[0.6rem] ${header === "Select router exchange" && 'text-[#A0A0AB]'}`}
+        className={`dropdown-header flex items-center gap-[0.6rem] ${
+          header === "Select router exchange" && "text-[#A0A0AB]"
+        }`}
         id="currency"
         onClick={() => {
           setDropdownOpen((prevState) => !prevState);
         }}
       >
-        <Image width={24} height={24} src="/icons/check.svg" alt="check icon" />
+        {pathname !== "/launchpad/launchpadList" && (
+          <Image
+            width={24}
+            height={24}
+            src="/icons/check.svg"
+            alt="check icon"
+          />
+        )}
         {header}
       </div>
       {dropdownOpen && (

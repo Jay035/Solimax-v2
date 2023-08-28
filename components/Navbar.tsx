@@ -11,6 +11,7 @@ type Props = {};
 export default function Navbar({}: Props) {
   const { setIsModalShowing } = GlobalContext();
   const pathname = usePathname();
+  const { setIsModalShowing } = GlobalContext();
   const [menuOpen, setMenuOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const showOptions = () => {
@@ -126,13 +127,14 @@ export default function Navbar({}: Props) {
                       e.preventDefault();
                       window.scrollTo(0, 0);
                       setIsModalShowing?.(true);
+                      setMenuOpen((prevState) => !prevState)
                       if (typeof window != "undefined" && window.document) {
                         document.body.style.overflow = "hidden";
                       }
                     }}
                     className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
                   >
-                    <Link href="">Create token</Link>
+                    Create token
                   </li>
                   <li
                     onClick={() => setMenuOpen((prevState) => !prevState)}

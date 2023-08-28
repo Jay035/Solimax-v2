@@ -24,9 +24,9 @@ export default function NewTokens({}: Props) {
               <span className="text-[#A0A0AB] text-[0.75rem]">CFX</span>
             </div>
           </div>
-          <button className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             Binance Smart Chain
-          </button>
+          </p>
         </li>
         <li className="flex items-center justify-between py-4 px-4 gap-4 border-b border-[#51525C]">
           <div className="flex items-center gap-2">
@@ -38,9 +38,9 @@ export default function NewTokens({}: Props) {
               <span className="text-[#A0A0AB] text-[0.75rem]">CFX</span>
             </div>
           </div>
-          <button className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             Optimism
-          </button>
+          </p>
         </li>
         <li className="flex items-center justify-between py-4 px-4 gap-4 border-b border-[#51525C]">
           <div className="flex items-center gap-2">
@@ -52,9 +52,9 @@ export default function NewTokens({}: Props) {
               <span className="text-[#A0A0AB] text-[0.75rem]">CFX</span>
             </div>
           </div>
-          <button className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             Fantom
-          </button>
+          </p>
         </li>
         <li className="flex items-center justify-between py-4 px-4 gap-4">
           <div className="flex items-center gap-2">
@@ -66,9 +66,9 @@ export default function NewTokens({}: Props) {
               <span className="text-[#A0A0AB] text-[0.75rem]">CFX</span>
             </div>
           </div>
-          <button className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             Fantom
-          </button>
+          </p>
         </li>
       </ul>
     </section>
