@@ -83,3 +83,10 @@ type stepTitleProps = {
   description: string;
   completed: boolean;
 };
+
+type ButtonProps = {
+  id: string;
+  style: string;
+  route: string;
+  text: string;
+};
