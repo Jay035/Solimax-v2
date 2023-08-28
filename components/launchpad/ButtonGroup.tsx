@@ -2,13 +2,6 @@ import { GlobalContext } from "@/context/Context";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";
 
-type Props = {
-  id: string;
-  style: string;
-  route: string;
-  text: string;
-};
-
 export default function ButtonGroup() {
   const {
     tabs,
@@ -33,7 +26,7 @@ export default function ButtonGroup() {
     <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 md:pr-11">
       {/* presale_ fair Launch group */}
       <div className="flex items-center ">
-        {tabs?.map((tab: Props) => (
+        {tabs?.map((tab: ButtonProps) => (
           <button
             key={tab.id}
             className={`${
@@ -61,9 +54,9 @@ export default function ButtonGroup() {
           e.preventDefault();
           window.scrollTo(0, 0);
           setIsModalShowing?.(true);
-          if (typeof window != 'undefined' && window.document) {
-            document.body.style.overflow = 'hidden';
-        }
+          if (typeof window != "undefined" && window.document) {
+            document.body.style.overflow = "hidden";
+          }
         }}
       >
         Create token

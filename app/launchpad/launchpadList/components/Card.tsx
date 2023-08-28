@@ -6,13 +6,15 @@ import img5 from "../../../../public/icons/delivery-drone 1.svg";
 import img6 from "../../../../public/icons/icon-3.svg";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
-export default function Card({}: Props) {
+export default function Card({ item }: any) {
+  const router = useRouter();
   const [isAddedToFavorites, setIsAddedToFavorites] = useState<boolean>(false);
   return (
-    <article className="bg-[#1d1c20] w-full rounded-[0.72294rem] p-[1.74rem] pb-[0.86rem] pr-[1.53rem]">
+    <article className="bg-[#1d1c20] border border-[#70707a] w-full rounded-[0.72294rem] p-[1.74rem] pb-[0.86rem] pr-[1.53rem] cursor-pointer">
       <header className="mb-[1.45rem] flex items-center gap-12 justify-between">
         <Image className="w-12 2xl:w-[4.04rem]" src={img1} alt="icon" />
         <div className="flex items-center gap-2 text-white">
@@ -30,13 +32,20 @@ export default function Card({}: Props) {
           />
           {/* status */}
           <p className="p-[0.72294rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
-            Upcoming
+            {item?.status}
           </p>
         </div>
       </header>
       <section className="text-white mb-[1.13rem]">
         {/* name */}
-        <h1 className="text-[1.74rem] tracking-[-0.0174rem]">Zeela</h1>
+        <h1
+          className="text-[1.74rem] tracking-[-0.0174rem]"
+          onClick={() => {
+            router.push(`/launchpad/launchpadList/${item?.title}`);
+          }}
+        >
+          {item?.title}
+        </h1>
         <div className="my-[1.15rem] flex items-center gap-[2.99rem]">
           {/* Type */}
           <div className="">
@@ -44,7 +53,7 @@ export default function Card({}: Props) {
               Type
             </p>
             <h3 className="text-[1.16rem] tracking-[-0.012rem] text-[#f4f4f5]">
-              Fair launch
+              {item?.type}
             </h3>
           </div>
           {/* max buy */}
@@ -53,7 +62,7 @@ export default function Card({}: Props) {
               Max buy
             </p>
             <h3 className="text-[1.16rem] tracking-[-0.012rem] text-[#f4f4f5]">
-              0.02 BNB
+              {item?.maxBuy}
             </h3>
           </div>
         </div>
@@ -63,14 +72,14 @@ export default function Card({}: Props) {
             Soft/Hard cap
           </p>
           <h1 className="tracking-[-0.013rem] bg-clip-text text-transparent bg-gradient-to-r from-[#81C8F2] via-[#ACD44D] to-[#d9d9d9] text-[1.3rem]">
-            250/1000 BNB
+            {item?.softCap}/{item?.hardCap} BNB
           </h1>
         </div>
         {/* progress */}
         <div className="mt-[1.13rem]">
           <div className="flex justify-between items-center text-[#e4e4e7] text-[0.72rem]">
             <p className="tracking-[-0.0073rem]">Progress</p>
-            <p className="tracking-[-0.0073rem]">0%</p>
+            <p className="tracking-[-0.0073rem]">{item?.progress}%</p>
           </div>
           {/* progress bar */}
           <div className="bg-[#70707b] w-full h-[0.434rem] rounded-[0.58rem] my-[0.29rem]"></div>
@@ -87,7 +96,7 @@ export default function Card({}: Props) {
             Liquidity(%)
           </p>
           <h2 className="text-[#f4f4f5] text-[1.01rem] tracking-[-0.010rem]">
-            51%
+            {item?.liquidity}%
           </h2>
         </div>
         <div className="">
@@ -95,7 +104,7 @@ export default function Card({}: Props) {
             Lock time
           </p>
           <h2 className="text-[#f4f4f5] text-[1.01rem] tracking-[-0.010rem]">
-            365 days
+            {item?.lockTime} days
           </h2>
         </div>
       </section>
