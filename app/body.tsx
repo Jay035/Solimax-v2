@@ -13,13 +13,17 @@ export default function BodyComponent({
 }) {
   const { isModalShowing } = GlobalContext();
   console.log(isModalShowing);
+
   return (
     <main className="font-questrial grid xl:grid-cols-[20rem_auto]">
       {isModalShowing === true && <CreateTokenModal />}
       <ScrollToTop />
       <Navbar />
       <section>
+        <div className="hidden lg:flex justify-end">
+
         <Wallet />
+        </div>
         {children}
       </section>
     </main>

@@ -19,7 +19,7 @@ export default function HotAirdrops({}: Props) {
             <Image
               width={32}
               height={32}
-              src="/icons/fi_3940417.svg"
+              src="/icons/icon-2.svg"
               alt="icon"
             />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
@@ -33,7 +33,7 @@ export default function HotAirdrops({}: Props) {
             <Image
               width={32}
               height={32}
-              src="/icons/fi_3940417.svg"
+              src="/icons/delivery-drone 1.svg"
               alt="icon"
             />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
@@ -47,7 +47,7 @@ export default function HotAirdrops({}: Props) {
             <Image
               width={32}
               height={32}
-              src="/icons/fi_3940417.svg"
+              src="/icons/icon-2.svg"
               alt="icon"
             />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
@@ -61,7 +61,7 @@ export default function HotAirdrops({}: Props) {
             <Image
               width={32}
               height={32}
-              src="/icons/fi_3940417.svg"
+              src="/icons/delivery-drone 1.svg"
               alt="icon"
             />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
@@ -75,7 +75,7 @@ export default function HotAirdrops({}: Props) {
             <Image
               width={32}
               height={32}
-              src="/icons/fi_3940417.svg"
+              src="/icons/icon-2.svg"
               alt="icon"
             />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>

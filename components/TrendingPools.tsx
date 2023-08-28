@@ -5,7 +5,7 @@ type Props = {};
 
 export default function TrendingPools({}: Props) {
   return (
-    <section className="text-white">
+    <section className="text-white mr-[1.06rem]">
       <div className="mb-[1.88rem] flex justify-between items-center">
         <div className="flex items-center gap-1">
           <Image
