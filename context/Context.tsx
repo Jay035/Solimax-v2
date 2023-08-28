@@ -11,7 +11,7 @@ type Props = {
 
 export function LaunchpadContextProvider({ children }: Props) {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isModalShowing, setIsModalShowing] = useState(true);
+  const [isModalShowing, setIsModalShowing] = useState(false);
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [tokenAddress, setTokenAddress] = useState("");
@@ -73,10 +73,6 @@ export function LaunchpadContextProvider({ children }: Props) {
   const handlePreviousStep = () => {
     if (currentStep > 1) setCurrentStep?.(currentStep - 1);
   };
-
-  useEffect(() => {
-    console.log(isModalShowing)
-  })
 
   const value = {
     tabs,
