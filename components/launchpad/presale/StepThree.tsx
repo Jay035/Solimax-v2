@@ -5,30 +5,18 @@ import { useRef, useState } from "react";
 import { GlobalContext } from "@/context/Context";
 
 export default function StepThree() {
-  const {
-    error,
-    websiteURL,
-    telegramURL,
-    twitterURL,
-    discordURL,
-    instagramURL,
-    githubURL,
-    facebookURL,
-    youtubeURL,
-    description,
-    setError,
-    handlePreviousStep,
-    handleNextStep,
-    setDescription,
-    setYoutubeURL,
-    setFacebookURL,
-    setGithubURL,
-    setInstagramURL,
-    setTwitterURL,
-    setDiscordURL,
-    setTelegramURL,
-    setWebsiteURL,
-  } = GlobalContext();
+  const { handlePreviousStep, handleNextStep } = GlobalContext();
+  const [error, setError] = useState("");
+  const [websiteURL, setWebsiteURL] = useState("");
+  const [telegramURL, setTelegramURL] = useState("");
+  const [twitterURL, setTwitterURL] = useState("");
+  const [discordURL, setDiscordURL] = useState("");
+  const [instagramURL, setInstagramURL] = useState("");
+  const [githubURL, setGithubURL] = useState("");
+  const [facebookURL, setFacebookURL] = useState("");
+  const [youtubeURL, setYoutubeURL] = useState("");
+  const [description, setDescription] = useState("");
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const inputRef = useRef<any>(null);
 

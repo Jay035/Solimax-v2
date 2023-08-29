@@ -5,44 +5,24 @@ import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
 export default function StepTwo() {
-  const {
-    softcap,
-    presaleRate,
-    minBuy,
-    maxBuy,
-    hardcap,
-    error,
-    refundType,
-    router,
-    liquidity,
-    listingRate,
-    startDate,
-    endDate,
-    liquidityLockup,
-    firstRelease,
-    presaleToken,
-    vestingPeriod,
-    totalSellingAmount,
-    setTotalSellingAmount,
-    setVestingPeriod,
-    setPresaleToken,
-    setFirstRelease,
-    handleNextStep,
-    handlePreviousStep,
-    setStartDate,
-    setEndDate,
-    setLiquidityLockup,
-    setListingRate,
-    setLiquidity,
-    setRouter,
-    setRefundType,
-    setHardcap,
-    setMinBuy,
-    setMaxBuy,
-    setSoftcap,
-    setPresaleRate,
-    setError,
-  } = GlobalContext();
+  const { handleNextStep, handlePreviousStep } = GlobalContext();
+  const [softcap, setSoftcap] = useState(0);
+  const [hardcap, setHardcap] = useState(0);
+  const [minBuy, setMinBuy] = useState(0);
+  const [maxBuy, setMaxBuy] = useState(0);
+  const [router, setRouter] = useState("Select router exchange");
+  const [refundType, setRefundType] = useState("Burn");
+  const [liquidity, setLiquidity] = useState(0);
+  const [listingRate, setListingRate] = useState(0);
+  const [presaleRate, setPresaleRate] = useState(0);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [liquidityLockup, setLiquidityLockup] = useState("");
+  const [firstRelease, setFirstRelease] = useState("");
+  const [vestingPeriod, setVestingPeriod] = useState("");
+  const [presaleToken, setPresaleToken] = useState("");
+  const [error, setError] = useState("");
+  const [totalSellingAmount, setTotalSellingAmount] = useState("");
 
   const routerOptions = [
     {

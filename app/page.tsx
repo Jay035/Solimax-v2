@@ -5,8 +5,7 @@ import TrendingPools from "@/components/TrendingPools";
 
 export default function Home() {
   return (
-    <div className="pt-[2.69rem] mt-5 mb-20 pl-[1.06rem] sm:px-8 w-fit overflow-x-hidden">
-      {/* border-t border-[#424242] */}
+    <div className="pt-[2.69rem] mt-5 mb-20 pl-[1.06rem] sm:px-8 w-fit overflow-x-hidden xl:border-t xl:border-[#424242]">
       <LatestPools />
 
       <div className="mt-10 text-white text-center xl:text-left pr-[1.06rem] lg:px-8 xl:px-0 xl:pr-16">

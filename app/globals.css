@@ -7,9 +7,34 @@
   border: 2px solid red;
 } */
 
-#modal ::-webkit-scrollbar-thumb {
+/* #modal ::-webkit-scrollbar-thumb {
   background-color: #171719;
+} */
+
+/* ------------------------------------ */
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #585656;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1D1C20;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #26272B;
+}
+
+
+/* ------------------------------------ */
 
 body {
   background-color: #171719;
@@ -22,6 +47,77 @@ body {
 thead {
   padding-left: 3.75rem;
 }
+
+/* -------------------------------------------- */
+/* PRELOADER  */
+
+#preloader {
+  position: absolute;
+  top: 0;
+  z-index: 99999999;
+  width: 100%;
+  height: 100vh;
+  background: var(--body-bg);
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#preloader svg circle {
+  animation: animation1 2s ease 0s infinite reverse none;
+}
+
+#preloader svg #one {
+  animation: animation1 2s ease 0s infinite normal none;
+}
+
+#preloader svg #two {
+  animation: animation1 2s ease 0s infinite reverse none;
+}
+
+#preloader svg #three {
+  animation: animation1 2s ease 0s infinite normal none;
+}
+
+#preloader svg #four {
+  animation: animation1 2s ease 0s infinite reverse none;
+}
+
+#preloader svg #five {
+  animation: animation1 2s ease 0s infinite normal none;
+}
+
+#preloader svg #six {
+  animation: animation1 2s ease 0s infinite reverse none;
+}
+
+#preloader svg #seven {
+  animation: animation1 2s ease 0s infinite normal none;
+}
+
+#preloader svg #eight {
+  animation: animation1 2s ease 0s infinite reverse none;
+}
+
+@keyframes animation1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------- */
 
 /* ----------------------------- */
 /* CUSTOM SELECT BOX */
