@@ -12,7 +12,6 @@ export default function BodyComponent({
   children: React.ReactNode;
 }) {
   const { isModalShowing } = GlobalContext();
-  console.log(isModalShowing);
 
   return (
     <main className="font-questrial grid xl:grid-cols-[20rem_auto]">
@@ -20,9 +19,8 @@ export default function BodyComponent({
       <ScrollToTop />
       <Navbar />
       <section>
-        <div className="hidden lg:flex justify-end">
-
-        <Wallet />
+        <div className="hidden xl:flex justify-end">
+          <Wallet />
         </div>
         {children}
       </section>
