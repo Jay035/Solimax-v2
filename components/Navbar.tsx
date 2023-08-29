@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { GlobalContext } from "@/context/Context";
+import Wallet from "./Wallet";
 
 type Props = {};
 
@@ -16,13 +17,12 @@ export default function Navbar({}: Props) {
   const showOptions = () => {
     setOptionsOpen((prevstate) => !prevstate);
   };
-  console.log(pathname);
 
   // const isActive = pathname.startsWith(link.href)
 
   return (
     <nav
-      className={`py-[2.69rem] font-questrial px-10 w-full border-r border-[#424242]`}
+      className={`pt-6 xl:pt-[2.69rem] flex justify-between items-center xl:block font-questrial px-[1.06rem] sm:px-7 xl:px-10 w-full border-r border-[#424242]`}
     >
       {/* hamburger and logo group */}
       <section className="flex gap-3 items-center">
@@ -34,34 +34,59 @@ export default function Navbar({}: Props) {
             setMenuOpen((prevState) => !prevState);
           }}
         >
+          {/* <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M3 7H21"
+              stroke="#D1D1D6"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M3 12H21"
+              stroke="#D1D1D6"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M3 17H21"
+              stroke="#D1D1D6"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </svg> */}
           <span
-            className={`w-7 h-[3px] bg-white block rounded-lg transition-all duration-150 delay-75 ${
+            className={`w-[1.6rem] h-[3px] bg-[#D1D1D6] block rounded-lg transition-all duration-150 delay-75 ${
               menuOpen ? `rotate-[45deg] ` : ``
             }`}
           ></span>
           <span
-            className={`w-7 h-[3px] bg-white block rounded-lg transition-all duration-150 ${
+            className={`w-[1.6rem] h-[3px] bg-[#D1D1D6] block rounded-lg transition-all duration-150 ${
               menuOpen ? `hidden` : ``
             }`}
           ></span>
           <span
-            className={`w-7 h-[3px] bg-white block rounded-lg transition-all duration-150 delay-75 ${
+            className={`w-[1.6rem] h-[3px] bg-[#D1D1D6] block rounded-lg transition-all duration-150 delay-75 ${
               menuOpen ? `rotate-[495deg] -translate-y-1.5 ` : ``
             }`}
           ></span>
         </div>
         {/* logo */}
-        <div className="flex gap-[0.67rem] items-center">
-          <Image
-            src={navLogo}
-            className="w-[1.42rem] hidden xl:block"
-            alt="logo"
-          />
+        <div className="gap-[0.67rem] items-center hidden xl:flex">
+          <Image src={navLogo} className="w-[1.42rem]" alt="logo" />
           <span className="text-white text-[1.3rem] leading-[-0.04rem]">
             SoliMax Launchpad
           </span>
         </div>
       </section>
+      <div className="xl:hidden">
+        <Wallet />
+      </div>
       <div
         className={`${
           menuOpen
@@ -126,7 +151,7 @@ export default function Navbar({}: Props) {
                       e.preventDefault();
                       window.scrollTo(0, 0);
                       setIsModalShowing?.(true);
-                      setMenuOpen((prevState) => !prevState)
+                      setMenuOpen((prevState) => !prevState);
                       if (typeof window != "undefined" && window.document) {
                         document.body.style.overflow = "hidden";
                       }

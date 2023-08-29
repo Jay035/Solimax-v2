@@ -1,21 +1,20 @@
 import Image from "next/image";
+import logoIcon from "/public/icons/bsc-icon.svg";
 
 type Props = {};
 
 export default function Wallet({}: Props) {
   return (
-    <section className="flex items-center gap-[0.62rem] justify-end px-10 md:px-20 pt-8 pb-[1.31rem] border-b border-[#424242]">
-      <button className="bg-[#28282B] p-[0.625rem] border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]">
-        <Image
-          width={36}
-          height={36}
-          src="/icons/bsc-icon.svg"
-          alt="bsc icon"
-        />
-        <span className="text-white text-[0.875rem]">BSC Mainnet</span>
+    <section className="flex items-center gap-[0.62rem] justify-end xl:px-20 xl:pt-8 xl:pb-[1.31rem]">
+      <button className="bg-[#28282B] xl:p-[0.625rem] border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]">
+        <Image src={logoIcon} className="xl:w-9 xl:h-9" alt="bsc icon" />
+        <span className="text-white text-[0.875rem] hidden xl:inline-block">
+          BSC Mainnet
+        </span>
         <Image
           width={16}
           height={16}
+          className="hidden xl:inline-block"
           src="/icons/chevron-down.svg"
           alt="bsc icon"
         />

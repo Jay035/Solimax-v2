@@ -5,9 +5,11 @@ import TrendingPools from "@/components/TrendingPools";
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
-    <LatestPools />
-      <div className="mt-8 text-white w-fit">
+    <div className="pt-[2.69rem] mt-5 mb-20 pl-[1.06rem] sm:px-8 w-fit overflow-x-hidden">
+      {/* border-t border-[#424242] */}
+      <LatestPools />
+
+      <div className="mt-10 text-white text-center xl:text-left pr-[1.06rem] lg:px-8 xl:px-0 xl:pr-16">
         <h1 className="text-4xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
           The{" "}
           <span className="bg-gradient-linear bg-clip-text text-transparent">
@@ -17,11 +19,12 @@ export default function Home() {
         </h1>
         <p className="text-[#D1D1D6] mb-8 tracking-[-0.01125rem] md:text-[1.125rem]">
           Our easy to use platform makes creation of your own tokens and token
-          sales seamless. Tokens created on SoliMax will be verified and
+          sales seamless. Tokens created on{" "}
+          <span className="text-[#C38CC3]">SoliMax</span> will be verified and
           published on explorer websites
         </p>
-        <div className="">
-          <button className="mr-8 text-[0.875rem] rounded-[0.625rem] py-5 px-8 md:py-[1.3125rem] md:px-[2.4375rem] bg-[#454FDA] text-white">
+        <div className="flex justify-center items-center xl:justify-start">
+          <button className="mr-8 text-[0.875rem] rounded-[0.625rem] py-5 md:py-[1.3125rem] px-[2.4375rem] bg-[#454FDA] text-white">
             Create new
           </button>
           <button className="text-[0.875rem]">Learn more</button>
@@ -29,9 +32,9 @@ export default function Home() {
       </div>
       {/* ------------------------------ */}
       {/* CARDS */}
-      <div className="mt-[3.69rem] mb-[5.19rem] w-fit flex flex-wrap gap-[0.88rem]">
+      <div className="mt-[3.69rem] mb-[5.19rem] mr-[1.06rem] md:mr-0 md:w-full md:justify-center xl:justify-start w-fit flex flex-wrap gap-[0.88rem]">
         {/* TOTAL LIQUIDITY RAISED */}
-        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+        <section className="w-full text-center xl:text-left md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL LIQUIDITY RAISED
@@ -42,7 +45,7 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL PROJECTS LAUNCHED */}
-        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+        <section className="w-full text-center xl:text-left md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PROJECTS LAUNCHED
@@ -53,7 +56,7 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL PARTICIPANTS */}
-        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+        <section className="w-full text-center xl:text-left md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL PARTICIPANTS
@@ -64,7 +67,7 @@ export default function Home() {
           </div>
         </section>
         {/* TOTAL VALUE LOCKED */}
-        <section className="w-full md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
+        <section className="w-full text-center xl:text-left md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
             <h3 className="border-b border-[#51525C] px-5 py-[0.69rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
               TOTAL VALUE LOCKED
@@ -76,7 +79,7 @@ export default function Home() {
         </section>
       </div>
       <TrendingPools />
-      <div className="mt-[3.12rem] grid md:grid-cols-2 gap-12 sm:gap-8">
+      <div className="mt-[3.12rem] grid md:grid-cols-2 gap-12 sm:gap-8 pr-[1.06rem] sm:px-8 md:px-0 xl:pr-0">
         <HotAirdrops />
         <NewTokens />
       </div>

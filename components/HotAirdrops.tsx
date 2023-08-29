@@ -16,15 +16,10 @@ export default function HotAirdrops({}: Props) {
       <ul className="bg-[#1D1C20] border border-[#51525C] rounded-[0.625rem]">
         <li className="flex items-center justify-between pt-3 pb-[0.8rem] px-4 gap-4 border-b border-[#51525C]">
           <div className="flex items-center gap-2">
-            <Image
-              width={32}
-              height={32}
-              src="/icons/fi_3940417.svg"
-              alt="icon"
-            />
+            <Image width={32} height={32} src="/icons/icon-2.svg" alt="icon" />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
           </div>
-          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] text-center tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             View airdrop
           </p>
         </li>
@@ -33,12 +28,21 @@ export default function HotAirdrops({}: Props) {
             <Image
               width={32}
               height={32}
-              src="/icons/fi_3940417.svg"
+              src="/icons/delivery-drone 1.svg"
               alt="icon"
             />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
           </div>
-          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] text-center tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+            View airdrop
+          </p>
+        </li>
+        <li className="flex items-center justify-between pt-3 pb-[0.8rem] px-4 gap-4 border-b border-[#51525C]">
+          <div className="flex items-center gap-2">
+            <Image width={32} height={32} src="/icons/icon-2.svg" alt="icon" />
+            <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
+          </div>
+          <p className="text-[#D0D5DD] text-center tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             View airdrop
           </p>
         </li>
@@ -47,40 +51,21 @@ export default function HotAirdrops({}: Props) {
             <Image
               width={32}
               height={32}
-              src="/icons/fi_3940417.svg"
+              src="/icons/delivery-drone 1.svg"
               alt="icon"
             />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
           </div>
-          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
-            View airdrop
-          </p>
-        </li>
-        <li className="flex items-center justify-between pt-3 pb-[0.8rem] px-4 gap-4 border-b border-[#51525C]">
-          <div className="flex items-center gap-2">
-            <Image
-              width={32}
-              height={32}
-              src="/icons/fi_3940417.svg"
-              alt="icon"
-            />
-            <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
-          </div>
-          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] text-center tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             View airdrop
           </p>
         </li>
         <li className="flex items-center justify-between pt-3 pb-[0.8rem] px-4 gap-4">
           <div className="flex items-center gap-2">
-            <Image
-              width={32}
-              height={32}
-              src="/icons/fi_3940417.svg"
-              alt="icon"
-            />
+            <Image width={32} height={32} src="/icons/icon-2.svg" alt="icon" />
             <span className="text-[#D1D1D6]">New 4D Twin Maps Airdrop</span>
           </div>
-          <p className="text-[#D0D5DD] tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
+          <p className="text-[#D0D5DD] text-center tracking-[-0.00875rem] text-[0.875rem] rounded-[3.125rem] py-1 px-[0.63rem] bg-[#28282B]">
             View airdrop
           </p>
         </li>

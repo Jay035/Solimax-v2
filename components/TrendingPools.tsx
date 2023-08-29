@@ -5,7 +5,7 @@ type Props = {};
 
 export default function TrendingPools({}: Props) {
   return (
-    <section className="text-white">
+    <section className="text-white pr-[1.06rem] sm:px-8 md:px-0">
       <div className="mb-[1.88rem] flex justify-between items-center">
         <div className="flex items-center gap-1">
           <Image
@@ -28,7 +28,7 @@ export default function TrendingPools({}: Props) {
         </div>
       </div>
       {/* table */}
-      <section className="hidden overflow-x-scroll pr-[2.31rem] rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20] w-fit">
+      <section className="hidden overflow-x-scroll pr-[2.31rem] rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20] w-fit md:w-full md:pr-0">
         <div className="whitespace-nowrap py-[0.8rem] border-b border-[#51525C] pl-[3.75rem] pr-[2.31rem] grid grid-cols-7 items-center gap-[6.94rem] w-full">
           <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
             PROJECT
@@ -105,7 +105,7 @@ export default function TrendingPools({}: Props) {
           </div>
         </div>
       </section>
-      <div className="w-fit grid grid-cols-1 overflow-x-auto rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20]">
+      <div className="w-fit md:w-full grid grid-cols-1 overflow-x-auto rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20]">
         <table
           className="w-full border-collapse table pr-[2.31rem]"
           cellPadding={16}
