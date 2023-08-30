@@ -1,21 +1,21 @@
+import ButtonGroup from "@/components/ButtonGroup";
 import { GlobalContext } from "@/context/Context";
-import ButtonGroup from "../ButtonGroup";
 import { useState } from "react";
 
 export default function StepFour() {
-  const { handlePreviousStep} = GlobalContext();
+  const { handlePreviousStep, setIsModalShowing } = GlobalContext();
   const [error, setError] = useState("");
 
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
-      <div className="">
+      <div className="mt-4">
         <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
           <span className="text-[#F04438]">(*) </span>is required field
         </p>
-        {error && (
-          <p className="text-[#F04438] mt-4 text-sm sm:text-base">{error}</p>
-        )}
+        <p className="text-[#F04438] mt-2 text-sm sm:text-base">
+          {error && error}
+        </p>
       </div>
       <form className="flex flex-col gap-6">
         {/* error */}
@@ -175,6 +175,11 @@ export default function StepFour() {
             <button
               onClick={(e: any) => {
                 e.preventDefault();
+                window.scrollTo(0, 0);
+                setIsModalShowing?.(true);
+                if (typeof window != "undefined" && window.document) {
+                  document.body.style.overflow = "hidden";
+                }
               }}
               className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
             >

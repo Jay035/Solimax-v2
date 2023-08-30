@@ -1,28 +1,16 @@
-import { Metadata } from "next";
 import Image from "next/image";
 import img2 from "../../../../public/icons/icon-2.svg";
 import banner from "../../../../public/images/detail banner.png";
-import Details from "./components/Details";
+import Details from "@/app/launchpad/launchpadList/[...title]/components/Details";
 import Link from "next/link";
-
-// export async function generateMetadata({
-//     params: { id },
-//   }: any): Promise<Metadata> {
-//     // const hospitalData = getHospital(id);
-//     // const hospital = await hospitalData;
-
-//     return {
-//     //   title: hospital?.name,
-//       description: ``,
-//     };
-//   }
+type Props = {};
 
 export default function page({ params }: { params: { title: string } }) {
   return (
     <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
       <div className="flex justify-between items-center mb-9">
         {/* chevron left */}
-        <Link href="/launchpad/launchpadList">
+        <Link href="/privateSale/list">
           <svg
             className="cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"

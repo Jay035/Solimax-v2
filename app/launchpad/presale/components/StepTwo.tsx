@@ -1,6 +1,6 @@
 import CustomInput from "@/components/CustomInput";
-import ButtonGroup from "../ButtonGroup";
-import CustomSelect from "../CustomSelect";
+import ButtonGroup from "@/components/ButtonGroup";
+import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
@@ -22,7 +22,21 @@ export default function StepTwo() {
   const [vestingPeriod, setVestingPeriod] = useState("");
   const [presaleToken, setPresaleToken] = useState("");
   const [error, setError] = useState("");
-  const [totalSellingAmount, setTotalSellingAmount] = useState("");
+  const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
+  const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
+  const [isVestingContributionChecked, setIsVestingContributionChecked] =
+    useState<boolean>(false);
+
+  const refundTypeOptions = [
+    {
+      id: 1,
+      value: "Refund",
+    },
+    {
+      id: 2,
+      value: "Burn",
+    },
+  ];
 
   const routerOptions = [
     {
@@ -38,29 +52,12 @@ export default function StepTwo() {
       id: 3,
     },
   ];
-
-  const [buybackPercent, setBuybackPercent] = useState<string>("");
-  const [maxContribution, setMaxContribution] = useState<string>("");
-  const [isMaxContributionChecked, setIsMaxContributionChecked] =
-    useState<boolean>(false);
-  const [isBuyBackChecked, setIsBuyBackChecked] = useState<boolean>(false);
-  const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
-  const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
-
-  const handleCheckboxChange = (event: any) => {
-    // setIsChecked(event.target.checked);
-    if (event.target.checked) {
-      // Run your function when checkbox is checked
-      console.log("Checkbox is checked!");
-      // You can replace the console.log with your desired function call
-    }
-  };
   return (
-    <section className="flex flex-col gap-6">
-      {/* IST CARD  */}
+    <section className="flex flex-col gap-6 ">
       <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
+        {/* IST CARD  */}
         <ButtonGroup />
-        <div className="mt-4">
+        <div className="my-4">
           <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
             <span className="text-[#F04438]">(*) </span>is required field
           </p>
@@ -68,18 +65,18 @@ export default function StepTwo() {
             <p className="text-[#F04438] mt-4 text-sm sm:text-base">{error}</p>
           )}
         </div>
-        <form className="flex flex-col gap-6 mt-4">
+        <form className="flex flex-col gap-6">
           {/* Presale rate */}
           <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
             <CustomInput
-              id="totalSellingAmount"
+              id="presale-rate"
               className="flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Total selling amount"
+              label="Presale rate"
               type="number"
               placeholder="0"
-              value={totalSellingAmount}
-              onChange={(e) => setTotalSellingAmount?.(e.target.value)}
+              value={presaleRate}
+              onChange={(e) => setPresaleRate?.(e.target.value)}
               isRequired={true}
             />
             {/* create pool fee */}
@@ -87,7 +84,7 @@ export default function StepTwo() {
               If I spend 1 BNB how many tokens will I receive?
             </span>
           </div>
-          {/* WHITELIST */}
+
           <div className="flex flex-col gap-4" role="fee-options">
             <h3 className="text-base text-[#E4E4E7] tracking-[-0.01rem]">
               Whitelist
@@ -97,7 +94,7 @@ export default function StepTwo() {
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
               <div
-                className={`rounded-full flex ${
+                className={`rounded-full flex cursor-pointer ${
                   isWhitelistDisabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
                     : "border-2 border-white"
@@ -106,7 +103,7 @@ export default function StepTwo() {
                 <input
                   className={`appearance-none bg-[#26272B] rounded-full ${
                     isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
-                  } checked:bg-[#A4D0F2] cursor-pointer`}
+                  } checked:bg-[#A4D0F2]`}
                   type="radio"
                   defaultChecked
                   checked={isWhitelistDisabled}
@@ -125,7 +122,7 @@ export default function StepTwo() {
               className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
             >
               <div
-                className={`rounded-full flex ${
+                className={`rounded-full cursor-pointer flex ${
                   isWhitelistEnabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
                     : "border-2 border-white"
@@ -134,7 +131,7 @@ export default function StepTwo() {
                 <input
                   className={`appearance-none bg-[#26272B] rounded-full ${
                     isWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
-                  } checked:bg-[#A4D0F2] cursor-pointer`}
+                  } checked:bg-[#A4D0F2]`}
                   type="radio"
                   // defaultChecked
                   checked={isWhitelistEnabled}
@@ -152,154 +149,140 @@ export default function StepTwo() {
               You can enable/disable whitelist anytime.
             </span>
           </div>
-          {/* SOFT CAP */}
-          <div className="">
-            <CustomInput
-              id="soft-cap"
-              className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Softcap (BNB)"
-              type="number"
-              placeholder="0"
-              value={softcap}
-              onChange={(e) => {
-                setSoftcap?.(e.target.value);
-                setError?.("");
-              }}
-              isRequired={true}
-            />
-
-            <label
-              htmlFor="setting-max-contribution"
-              className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
-            >
-              <div
-                className={`relative flex ${
-                  !isMaxContributionChecked &&
-                  "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-                } rounded-lg cursor-pointer`}
-              >
-                <input
-                  type="checkbox"
-                  name="setting-max-contribution"
-                  id="setting-max-contribution"
-                  className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-                  checked={isMaxContributionChecked}
-                  onChange={(event: any) => {
-                    setIsMaxContributionChecked(event.target.checked);
-                  }}
-                />
-                <i
-                  className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                    isMaxContributionChecked ? "text-black" : "hidden"
-                  }`}
-                ></i>
-              </div>
-              <span className="text-[#F4F4F5]">Setting max contribution?</span>
-            </label>
-            {isMaxContributionChecked && (
+          <section className="grid md:grid-cols-2 gap-6">
+            <div className="">
+              {/* SOFT CAP */}
               <CustomInput
-                id="max-contribution"
-                className="mt-4 flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] cursor-pointer border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Max Contribution (BNB)"
+                id="soft-cap"
+                className="flex flex-col gap-[0.62rem]"
+                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                label="Softcap (BNB)"
                 type="number"
                 placeholder="0"
-                value={maxContribution}
+                value={softcap}
                 onChange={(e) => {
-                  setMaxContribution?.(e.target.value);
+                  setSoftcap?.(e.target.value);
                   setError?.("");
                 }}
                 isRequired={true}
               />
-            )}
-          </div>
-
-          {/* ROUTER */}
-          <div className=" flex flex-col gap-[0.62rem]">
-            <h3>
-              Router<span className="text-[#F04438]">*</span>
-            </h3>
-            <CustomSelect
-              options={routerOptions}
-              header={router}
-              setHeader={setRouter}
-            />
-          </div>
-          {/* LIQUIDITY */}
-          <div className="">
+              <span className="mt-[0.62rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6] ">
+                Softcap must be {">"}= 25% of Hardcap!
+              </span>
+            </div>
+            {/* HARD CAP */}
             <CustomInput
-              id="liquidity"
+              id="hard-cap"
               className="flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Liquidity (%)"
+              label="Hardcap (BNB)"
               type="number"
               placeholder="0"
-              value={liquidity}
+              value={hardcap}
               onChange={(e) => {
-                setLiquidity?.(e.target.value);
+                setHardcap?.(e.target.value);
                 setError?.("");
               }}
               isRequired={true}
             />
-            <label className="text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
-              <div
-                className={`relative flex ${
-                  !isMaxContributionChecked &&
-                  "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-                } rounded-lg`}
-              >
-                <input
-                  type="checkbox"
-                  name="setting-max-contribution"
-                  id="setting-max-contribution"
-                  className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-                  checked={isBuyBackChecked}
-                  onChange={(event: any) => {
-                    setIsBuyBackChecked(event.target.checked);
-                  }}
-                />
-                <i
-                  className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                    isBuyBackChecked ? "text-black" : "hidden"
-                  }`}
-                ></i>
-              </div>
-              <span className="text-[#F4F4F5]">Enable buyback?</span>
-            </label>
-            {isBuyBackChecked && (
-              <div className="">
-                <CustomInput
-                  id="max-contribution"
-                  className="mt-4 flex flex-col gap-[0.62rem]"
-                  inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                  label="Buyback percent (%)"
-                  type="number"
-                  placeholder="0"
-                  value={buybackPercent}
-                  onChange={(e) => {
-                    setBuybackPercent?.(e.target.value);
-                    setError?.("");
-                  }}
-                  isRequired={true}
-                />
-                <div className="bg-[#18181B] border border-[#F4F4F5] px-6 py-[0.875rem] mt-[0.6rem] rounded-[0.6rem]">
-                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] pb-[0.62rem]">
-                    <p className="">Amount Per Buyback</p>
-                    <p>1BNB</p>
-                  </div>
-                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] py-[0.62rem]">
-                    <p className="">Min Buyback Delay</p>
-                    <p>5 mins</p>
-                  </div>
-                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between pt-[0.62rem]">
-                    <p className="">Max Buyback Delay</p>
-                    <p>2 days</p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          </section>
+          <section className="grid md:grid-cols-2 gap-6">
+            {/* MINIMIUM BUY */}
+            <div className="">
+              <CustomInput
+                id="min-buy"
+                className="flex flex-col gap-[0.62rem]"
+                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                label="Minimium buy"
+                type="number"
+                placeholder="0"
+                value={minBuy}
+                onChange={(e) => {
+                  setMinBuy?.(e.target.value);
+                  setError?.("");
+                }}
+                isRequired={true}
+              />
+            </div>
+            {/* MAXIMUM BUY */}
+            <CustomInput
+              id="max-buy"
+              className="flex flex-col gap-[0.62rem]"
+              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              label="Maximum buy"
+              type="number"
+              placeholder="0"
+              value={maxBuy}
+              onChange={(e) => {
+                setMaxBuy?.(e.target.value);
+                setError?.("");
+              }}
+              isRequired={true}
+            />
+          </section>
+          <section className="grid md:grid-cols-2 gap-6">
+            {/* REFUND TYPE */}
+            <div className="flex flex-col gap-[0.62rem]">
+              <h3>
+                Refund type<span className="text-[#F04438]">*</span>
+              </h3>
+              <CustomSelect
+                options={refundTypeOptions}
+                header={refundType}
+                setHeader={setRefundType}
+              />
+            </div>
+            {/* ROUTER */}
+            <div className=" flex flex-col gap-[0.62rem]">
+              <h3>
+                Router<span className="text-[#F04438]">*</span>
+              </h3>
+              <CustomSelect
+                options={routerOptions}
+                header={router}
+                setHeader={setRouter}
+              />
+            </div>
+          </section>
+          <section className="grid md:grid-cols-2 gap-6">
+            {/* LIQUIDITY */}
+            <div className="">
+              <CustomInput
+                id="liquidity"
+                className="flex flex-col gap-[0.62rem]"
+                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                label="Liquidity (%)"
+                type="number"
+                placeholder="0"
+                value={liquidity}
+                onChange={(e) => {
+                  setLiquidity?.(e.target.value);
+                  setError?.("");
+                }}
+                isRequired={true}
+              />
+            </div>
+            {/* LISTING RATE */}
+            <div className="">
+              <CustomInput
+                id="listingRate"
+                className="flex flex-col gap-[0.62rem]"
+                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                label="Listing rate"
+                type="number"
+                placeholder="0"
+                value={listingRate}
+                onChange={(e) => {
+                  setListingRate?.(e.target.value);
+                  setError?.("");
+                }}
+                isRequired={true}
+              />
+              <span className="mt-[0.62rem] text-xs tracking-[-0.0075rem] text-[#D1D1D6] ">
+                1BNB = 300SLM
+              </span>
+            </div>
+          </section>
         </form>
       </div>
       <ul className="list-disc text-[#A4D0F2] text-xs tracking-[-0.0075rem] ml-3 mt-6">
@@ -348,10 +331,6 @@ export default function StepTwo() {
               isRequired={true}
             />
           </section>
-          <p className="text-[#E4E4E7] text-xs tracking-[-0.0075rem]">
-            The duration between start time and end time must be less than 7
-            days
-          </p>
           {/* Liquidity lockup */}
           <CustomInput
             id="liquidity-Lockup"
@@ -367,6 +346,86 @@ export default function StepTwo() {
             }}
             isRequired={true}
           />
+
+          <label
+            htmlFor="disable"
+            className="text-white text-[0.875rem] flex items-center gap-[0.62rem]"
+          >
+            <div
+              className={`relative flex cursor-pointer ${
+                !isVestingContributionChecked &&
+                "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
+              } rounded-lg`}
+            >
+              <input
+                type="checkbox"
+                name="vesting-contribution"
+                id="vesting-contribution"
+                className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
+                checked={isVestingContributionChecked}
+                onChange={(event: any) => {
+                  setIsVestingContributionChecked(event.target.checked);
+                }}
+              />
+              <i
+                className={`ri-check-line text-xl absolute left-0.5 top-0 ${
+                  isVestingContributionChecked ? "text-black" : "hidden"
+                }`}
+              ></i>
+            </div>
+            Using vesting contributor?
+          </label>
+          <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
+            Vesting Contributor does not support rebase tokens.
+          </p>
+          {/* Liquidity lockup */}
+          <CustomInput
+            id="first-release-for-presale"
+            className="flex flex-col gap-[0.62rem]"
+            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            label="First release for presale (%)"
+            type="text"
+            placeholder="40%"
+            value={firstRelease}
+            onChange={(e) => {
+              setFirstRelease?.(e.target.value);
+              setError?.("");
+            }}
+            isRequired={true}
+          />
+
+          <section className="grid md:grid-cols-2 items-center gap-6">
+            {/* Vesting period each cycle */}
+            <CustomInput
+              id="Vesting-period"
+              className="flex flex-col gap-[0.62rem]"
+              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              label="Vesting period each cycle (days)"
+              type="number"
+              placeholder="21"
+              value={vestingPeriod}
+              onChange={(e) => {
+                setVestingPeriod?.(e.target.value);
+                setError?.("");
+              }}
+              isRequired={true}
+            />
+            {/* Presale token release each cycle (%) */}
+            <CustomInput
+              id="Presale-token"
+              className="flex flex-col gap-[0.62rem]"
+              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              label="Presale token release each cycle (%)"
+              type="text"
+              placeholder="20%"
+              value={presaleToken}
+              onChange={(e) => {
+                setPresaleToken?.(e.target.value);
+                setError?.("");
+              }}
+              isRequired={true}
+            />
+          </section>
 
           <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 mt-[1.163rem]">
             <p className="text-[#E4E4E7] text-base tracking-[-0.01rem]">
