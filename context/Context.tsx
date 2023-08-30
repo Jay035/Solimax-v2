@@ -53,13 +53,13 @@ export function LaunchpadContextProvider({ children }: Props) {
     {
       id: "presale",
       text: "Presale",
-      route: "/launchpad/presale",
+      route: "/launchpad/presale/create",
       style: "rounded-tl-[0.625rem] rounded-bl-[0.625rem]",
     },
     {
       id: "fairLaunch",
       text: "Fair launch",
-      route: "/launchpad/fair-launch",
+      route: "/launchpad/fair-launch/create",
       style: "rounded-tr-[0.625rem] rounded-br-[0.625rem]",
     },
   ];

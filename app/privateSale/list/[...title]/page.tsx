@@ -1,8 +1,8 @@
 import Image from "next/image";
 import img2 from "../../../../public/icons/icon-2.svg";
 import banner from "../../../../public/images/detail banner.png";
-import Details from "@/app/launchpad/launchpadList/[...title]/components/Details";
 import Link from "next/link";
+import Details from "@/app/launchpad/list/[...title]/components/Details";
 type Props = {};
 
 export default function page({ params }: { params: { title: string } }) {
