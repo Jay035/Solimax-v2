@@ -111,7 +111,7 @@ export default function TrendingPools({}: Props) {
           cellPadding={16}
         >
           <thead className="">
-            <tr className="whitespace-nowrap border-b border-[#51525C]">
+            <tr className="whitespace-nowrap text-left border-b border-[#51525C]">
               <th
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="project-name"

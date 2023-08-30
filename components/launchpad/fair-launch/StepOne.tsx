@@ -2,18 +2,17 @@ import CustomInput from "@/components/CustomInput";
 import CustomSelect from "../CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "../ButtonGroup";
+import { useState } from "react";
 
 export default function StepOne() {
-  const {
-    tokenAddress,
-    currencyOptions,
-    selectedCurrency,
-    error,
-    setSelectedCurrency,
-    setTokenAddress,
-    setError,
-    handleNextStep,
-  } = GlobalContext();
+  const { currencyOptions, handleNextStep } = GlobalContext();
+  const [selectedCurrency, setSelectedCurrency] = useState("BNB");
+  const [tokenAddress, setTokenAddress] = useState("");
+  const [error, setError] = useState("");
+  const [isFeeOptionOneChecked, setIsFeeOptionOneChecked] =
+    useState<boolean>(true);
+  const [isFeeOptionTwoChecked, setIsFeeOptionTwoChecked] =
+    useState<boolean>(false);
 
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
@@ -68,12 +67,28 @@ export default function StepOne() {
             htmlFor="fee-option-(%-BNB-raised)"
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="radio"
-              name="fee-options"
-              id="fee-option-(%-BNB-raised)"
-            />
+            <div
+              className={`rounded-full flex cursor-pointer ${
+                isFeeOptionOneChecked
+                  ? "border-2 p-0.5 border-[#A4D0F2]"
+                  : "border-2 border-white"
+              }`}
+            >
+              <input
+                className={`appearance-none bg-[#26272B] rounded-full ${
+                  isFeeOptionOneChecked ? "w-5 h-5" : "w-6 h-6"
+                } checked:bg-[#A4D0F2]`}
+                type="radio"
+                // defaultChecked
+                checked={isFeeOptionOneChecked}
+                onChange={(event: any) => {
+                  setIsFeeOptionOneChecked(event.target.checked);
+                  setIsFeeOptionTwoChecked(false);
+                }}
+                name="fee-option"
+                id="fee-option-(%-BNB-raised)"
+              />
+            </div>
             % BNB raised only{" "}
             <span className="text-[#F3CE92]"> (Recommended)</span>
           </label>
@@ -81,12 +96,28 @@ export default function StepOne() {
             htmlFor="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="radio"
-              name="fee-options"
-              id="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
-            />
+            <div
+              className={`rounded-full cursor-pointer flex ${
+                isFeeOptionTwoChecked
+                  ? "border-2 p-0.5 border-[#A4D0F2]"
+                  : "border-2 border-white"
+              }`}
+            >
+              <input
+                className={`appearance-none bg-[#26272B] rounded-full ${
+                  isFeeOptionTwoChecked ? "w-5 h-5" : "w-6 h-6"
+                } checked:bg-[#A4D0F2]`}
+                type="radio"
+                // defaultChecked
+                checked={isFeeOptionTwoChecked}
+                onChange={(event: any) => {
+                  setIsFeeOptionOneChecked(false);
+                  setIsFeeOptionTwoChecked(event.target.checked);
+                }}
+                name="fee-option"
+                id="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
+              />
+            </div>
             1.5% BNB raised + 1.5% token raised
           </label>
         </div>

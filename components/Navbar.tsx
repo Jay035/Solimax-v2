@@ -22,7 +22,7 @@ export default function Navbar({}: Props) {
 
   return (
     <nav
-      className={`pt-6 xl:pt-[2.69rem] flex justify-between items-center xl:block font-questrial px-[1.06rem] sm:px-7 xl:px-10 w-full border-r border-[#424242]`}
+      className={`pt-6 xl:pt-[2.69rem] flex justify-between items-center overflow-auto xl:block font-questrial px-[1.06rem] sm:px-7 xl:px-10 w-full border-r border-[#424242]`}
     >
       {/* hamburger and logo group */}
       <section className="flex gap-3 items-center">
@@ -77,12 +77,15 @@ export default function Navbar({}: Props) {
           ></span>
         </div>
         {/* logo */}
-        <div className="gap-[0.67rem] items-center hidden xl:flex">
+        <Link
+          href="/"
+          className="gap-[0.67rem] items-center cursor-pointer hidden xl:flex"
+        >
           <Image src={navLogo} className="w-[1.42rem]" alt="logo" />
           <span className="text-white text-[1.3rem] leading-[-0.04rem]">
             SoliMax Launchpad
           </span>
-        </div>
+        </Link>
       </section>
       <div className="xl:hidden">
         <Wallet />

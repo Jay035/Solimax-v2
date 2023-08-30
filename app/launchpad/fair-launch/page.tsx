@@ -36,7 +36,7 @@ export default function CreateFairLaunch() {
   ];
 
   return (
-    <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16">
+    <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16 xl:border-t xl:border-[#424242]">
       <LatestPools />
       <main className="mt-[2.5rem] text-white flex flex-col lg:flex-row lg:items-start gap-8">
         {/* LEFT COLUMN */}

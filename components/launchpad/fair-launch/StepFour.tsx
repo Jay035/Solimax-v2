@@ -1,9 +1,11 @@
 import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "../ButtonGroup";
+import { useState } from "react";
 
 export default function StepFour() {
-  const { error, handlePreviousStep, isModalShowing, setIsModalShowing } =
-    GlobalContext();
+  const { handlePreviousStep, setIsModalShowing } = GlobalContext();
+  const [error, setError] = useState("");
+
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
