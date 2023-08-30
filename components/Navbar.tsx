@@ -114,13 +114,13 @@ export default function Navbar({}: Props) {
                     onClick={() => setMenuOpen((prevState) => !prevState)}
                     className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
                   >
-                    <Link href="/launchpad/presale">Create launchpad</Link>
+                    <Link href="/launchpad/presale/create">Create launchpad</Link>
                   </li>
                   <li
                     onClick={() => setMenuOpen((prevState) => !prevState)}
                     className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
                   >
-                    <Link href="/launchpad/fair-launch">
+                    <Link href="/launchpad/fair-launch/create">
                       Create fair launch
                     </Link>
                   </li>
@@ -142,7 +142,7 @@ export default function Navbar({}: Props) {
                     onClick={() => setMenuOpen((prevState) => !prevState)}
                     className="tracking-[-0.00875rem]"
                   >
-                    <Link href="/launchpad/launchpadList">Launchpad list</Link>
+                    <Link href="/launchpad/list">Launchpad list</Link>
                   </li>
                 </ul>
               )}
