@@ -9,7 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { LaunchpadContextProvider } from "@/context/Context";
 import BodyComponent from "./body";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 const questrial = Questrial({
   weight: "400",
   subsets: ["latin"],
