@@ -1,9 +1,11 @@
 "use client";
 import LatestPools from "@/components/LatestPools";
+import PrivateSaleForm from "../components/privateSaleForm";
 import CreationSteps from "@/components/CreationSteps";
-import PresaleForm from "./components/PresaleForm";
 
-export default function CreateLaunchpad() {
+type Props = {};
+
+export default function CreatePrivateSale({}: Props) {
   const stepTitles = [
     {
       id: "verify-your-token",
@@ -15,7 +17,7 @@ export default function CreateLaunchpad() {
     {
       id: "deFi-launchpad",
       tag: 2,
-      title: "DeFi Launchpad",
+      title: "DeFi fair launch",
       description: "Enter the launchpad information",
       completed: false,
     },
@@ -34,7 +36,6 @@ export default function CreateLaunchpad() {
       completed: false,
     },
   ];
-
   return (
     <div className="overflow-x-hidden mt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16 xl:border-t xl:border-[#424242]">
       <LatestPools />
@@ -44,7 +45,7 @@ export default function CreateLaunchpad() {
 
         {/* RIGHT COLUMN */}
         <section>
-          <PresaleForm />
+          <PrivateSaleForm />
           <p className="mt-8 text-[0.875rem] text-[#D1D1D6]">
             Disclaimer: Solimax Presale will never endorse or encourage that you
             invest in any of the projects listed and therefore, accept no

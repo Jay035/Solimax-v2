@@ -1,7 +1,7 @@
 import CustomInput from "@/components/CustomInput";
-import CustomSelect from "../CustomSelect";
+import ButtonGroup from "@/components/ButtonGroup";
+import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
-import ButtonGroup from "../ButtonGroup";
 import { useState } from "react";
 
 export default function StepOne() {
@@ -9,11 +9,11 @@ export default function StepOne() {
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [tokenAddress, setTokenAddress] = useState("");
   const [error, setError] = useState("");
-
   const [isFeeOptionOneChecked, setIsFeeOptionOneChecked] =
     useState<boolean>(true);
   const [isFeeOptionTwoChecked, setIsFeeOptionTwoChecked] =
     useState<boolean>(false);
+
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
@@ -22,7 +22,7 @@ export default function StepOne() {
           <span className="text-[#F04438]">(*) </span>is required field
         </p>
         {error && (
-          <p className="text-[#F04438] mt-4 text-sm sm:text-base">{error}</p>
+          <p className="text-[#F04438] text-sm sm:text-base">{error}</p>
         )}
       </div>
       <form className="flex flex-col gap-6">
@@ -53,6 +53,7 @@ export default function StepOne() {
             header={selectedCurrency}
             setHeader={setSelectedCurrency}
           />
+          {/* create pool fee */}
           <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
             Users will pay with {selectedCurrency} for your token
           </p>
@@ -63,7 +64,7 @@ export default function StepOne() {
           </h3>
 
           <label
-            htmlFor="disable"
+            htmlFor="fee-option-(%-BNB-raised)"
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
             <div
@@ -78,21 +79,21 @@ export default function StepOne() {
                   isFeeOptionOneChecked ? "w-5 h-5" : "w-6 h-6"
                 } checked:bg-[#A4D0F2]`}
                 type="radio"
-                defaultChecked
+                // defaultChecked
                 checked={isFeeOptionOneChecked}
                 onChange={(event: any) => {
                   setIsFeeOptionOneChecked(event.target.checked);
                   setIsFeeOptionTwoChecked(false);
                 }}
-                name="whitelist"
-                id="disable"
+                name="fee-option"
+                id="fee-option-(%-BNB-raised)"
               />
             </div>
             % BNB raised only{" "}
             <span className="text-[#F3CE92]"> (Recommended)</span>
           </label>
           <label
-            htmlFor="enable"
+            htmlFor="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
             <div
@@ -113,37 +114,12 @@ export default function StepOne() {
                   setIsFeeOptionOneChecked(false);
                   setIsFeeOptionTwoChecked(event.target.checked);
                 }}
-                name="whitelist"
-                id="disable"
+                name="fee-option"
+                id="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
               />
             </div>
             1.5% BNB raised + 1.5% token raised
           </label>
-          {/* <label
-            htmlFor="fee-option-(%-BNB-raised)"
-            className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
-          >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="radio"
-              name="fee-options"
-              id="fee-option-(%-BNB-raised)"
-            />
-            % BNB raised only{" "}
-            <span className="text-[#F3CE92]"> (Recommended)</span>
-          </label>
-          <label
-            htmlFor="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
-            className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
-          >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="radio"
-              name="fee-options"
-              id="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
-            />
-            1.5% BNB raised + 1.5% token raised
-          </label> */}
         </div>
         <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
           Make sure the token has &apos;Exclude transfer fee&apos; function if

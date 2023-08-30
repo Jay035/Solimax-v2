@@ -1,7 +1,7 @@
 "use client";
 import LatestPools from "@/components/LatestPools";
-import CreationSteps from "@/components/launchpad/CreationSteps";
-import FairLaunchForm from "@/components/launchpad/fair-launch/FairLaunchForm";
+import FairLaunchForm from "./components/FairLaunchForm";
+import CreationSteps from "@/components/CreationSteps";
 
 export default function CreateFairLaunch() {
   const stepTitles = [

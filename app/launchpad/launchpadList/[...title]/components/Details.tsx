@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 type Props = {};
 
@@ -7,7 +6,7 @@ export default function Details({}: Props) {
   return (
     <div className="bg-[#1D1C20] pt-[1.94rem] border border-[#3F3F46] rounded-[0.65rem] px-5 py-4 text-sm">
       {/* PRESALE ADDRESS */}
-      <section className="pb-2 mb-2 text-[#E4E4E7] border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 text-[#E4E4E7] border-b border-[#3F3F46] flex justify-between gap-4 items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Presale Address
         </p>
@@ -29,7 +28,7 @@ export default function Details({}: Props) {
         </div>
       </section>
       {/* TOKEN ADDRESS */}
-      <section className="pb-2 mb-2 flex justify-between items-center">
+      <section className="pb-2 mb-2 flex justify-between gap-4 items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Token Address
         </p>
@@ -51,49 +50,49 @@ export default function Details({}: Props) {
         </div>
       </section>
       {/* TOKEN TYPE */}
-      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Token type
         </p>
         <p className="tracking-[-0.00875rem] text-[#F3CE92]">Fair launch</p>
       </section>
       {/* TOKEN NAME */}
-      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Token name
         </p>
         <p className="tracking-[-0.00875rem]">ASTRAVA</p>
       </section>
       {/* TOKEN SYMBOL */}
-      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Token symbol
         </p>
         <p className="tracking-[-0.00875rem]">AST</p>
       </section>
       {/* TOKEN DECIMAL */}
-      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Token decimal
         </p>
         <p className="tracking-[-0.00875rem]">AST</p>
       </section>
       {/* TOTAL SUPPLY */}
-      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Total supply
         </p>
         <p className="tracking-[-0.00875rem]">10,000,000,000</p>
       </section>
       {/* TOTAL FOR PRESALE */}
-      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Tokens for presale
         </p>
         <p className="tracking-[-0.00875rem]">2,000,000,000</p>
       </section>
       {/* TOTAL FOR LIQUIDITY */}
-      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex justify-between items-center">
+      <section className="pb-2 mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
           Tokens for liquidity
         </p>

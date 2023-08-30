@@ -34,32 +34,6 @@ export default function Navbar({}: Props) {
             setMenuOpen((prevState) => !prevState);
           }}
         >
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M3 7H21"
-              stroke="#D1D1D6"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M3 12H21"
-              stroke="#D1D1D6"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M3 17H21"
-              stroke="#D1D1D6"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg> */}
           <span
             className={`w-[1.6rem] h-[3px] bg-[#D1D1D6] block rounded-lg transition-all duration-150 delay-75 ${
               menuOpen ? `rotate-[45deg] ` : ``
@@ -114,8 +88,8 @@ export default function Navbar({}: Props) {
               <Link href="/">Home</Link>
             </li>
             {/* launchpads */}
-            <li className="cursor-pointer" onClick={showOptions}>
-              <div className="flex justify-between">
+            <li className="cursor-pointer transition-all ease-in">
+              <div className="flex justify-between" onClick={showOptions}>
                 <span className="flex tracking-[-0.01rem] items-center gap-[0.75rem]">
                   <Image
                     src="/icons/triangle.svg"
@@ -126,6 +100,7 @@ export default function Navbar({}: Props) {
                   Launchpads
                 </span>
                 <Image
+                  className={`${optionsOpen && "rotate-180"}`}
                   width={16}
                   height={16}
                   src="/icons/chevron-down.svg"
@@ -173,22 +148,41 @@ export default function Navbar({}: Props) {
               )}
             </li>
             {/* Private sale */}
-            <li className="cursor-pointer flex items-center justify-between gap-[0.75rem]">
-              <span className="flex tracking-[-0.01rem] items-center gap-[0.75rem]">
+            <li className="cursor-pointer transition-all ease-in">
+              <div className="flex justify-between" onClick={showOptions}>
+                <span className="flex tracking-[-0.01rem] items-center gap-[0.75rem]">
+                  <Image
+                    src="/icons/shield.svg"
+                    width={18}
+                    height={18}
+                    alt="shield icon"
+                  />
+                  Private sale
+                </span>
                 <Image
-                  src="/icons/shield.svg"
-                  width={18}
-                  height={18}
-                  alt="shield icon"
+                  width={16}
+                  height={16}
+                  src="/icons/chevron-down.svg"
+                  alt="chevron-down icon"
                 />
-                Private sale
-              </span>
-              <Image
-                width={16}
-                height={16}
-                src="/icons/chevron-down.svg"
-                alt="chevron-down icon"
-              />
+              </div>
+              {/* launchpads options */}
+              {optionsOpen && (
+                <ul className="transition-all duration-100 ease-in-out pl-7 flex flex-col gap-[0.75rem] mt-[0.75rem] text-[0.875rem] text-[#A0A0AB]">
+                  <li
+                    onClick={() => setMenuOpen((prevState) => !prevState)}
+                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+                  >
+                    <Link href="/privateSale/create">Create private sale</Link>
+                  </li>
+                  <li
+                    onClick={() => setMenuOpen((prevState) => !prevState)}
+                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+                  >
+                    <Link href="/privateSale/list">Private sale list</Link>
+                  </li>
+                </ul>
+              )}
             </li>
             {/* solilock */}
             <li className="cursor-pointer flex items-center justify-between gap-[0.75rem]">

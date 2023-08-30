@@ -4,60 +4,61 @@ export default function CreationSteps({ stepTitles }: any) {
   const {
     currentStep,
     error,
-    tokenAddress,
-    softcap,
-    hardcap,
-    minBuy,
-    maxBuy,
-    router,
-    refundType,
-    liquidity,
-    listingRate,
-    presaleRate,
-    startDate,
-    endDate,
-    liquidityLockup,
-    firstRelease,
-    vestingPeriod,
-    presaleToken,
+    // tokenAddress,
+    // softcap,
+    // hardcap,
+    // minBuy,
+    // maxBuy,
+    // router,
+    // refundType,
+    // liquidity,
+    // listingRate,
+    // presaleRate,
+    // startDate,
+    // endDate,
+    // liquidityLockup,
+    // firstRelease,
+    // vestingPeriod,
+    // presaleToken,
     setCurrentStep,
     setError,
   } = GlobalContext();
 
   const toggleStep = (tag: number) => {
-    if (tokenAddress === "") {
-      setCurrentStep?.(1);
+    // if (tokenAddress === "") {
+    //   setCurrentStep?.(1);
       if (currentStep === 1) {
         setError?.("Token address must be entered");
         console.log(error);
       } else {
         setError?.("");
       }
-    } else if (
-      currentStep === 2 &&
-      !presaleRate &&
-      !softcap &&
-      !hardcap &&
-      !minBuy &&
-      !maxBuy &&
-      !refundType &&
-      !router &&
-      !liquidity &&
-      !listingRate &&
-      !startDate &&
-      !endDate &&
-      !liquidityLockup &&
-      !firstRelease &&
-      !vestingPeriod &&
-      !presaleToken
-    ) {
-      console.log(currentStep);
-      setError?.("Fill all the required fields");
-      setCurrentStep?.(2);
-    } else {
+    // }
+    // else if (
+    //   currentStep === 2 &&
+    //   !presaleRate &&
+    //   !softcap &&
+    //   !hardcap &&
+    //   !minBuy &&
+    //   !maxBuy &&
+    //   !refundType &&
+    //   !router &&
+    //   !liquidity &&
+    //   !listingRate &&
+    //   !startDate &&
+    //   !endDate &&
+    //   !liquidityLockup &&
+    //   !firstRelease &&
+    //   !vestingPeriod &&
+    //   !presaleToken
+    // ) {
+    //   console.log(currentStep);
+    //   setError?.("Fill all the required fields");
+    //   setCurrentStep?.(2);
+    // } else {
       setCurrentStep?.(tag);
       console.log(tag);
-    }
+    // }
   };
 
   return (
