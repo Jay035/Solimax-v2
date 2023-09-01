@@ -3,20 +3,53 @@ import Link from "next/link";
 import navLogo from "/public/icons/logo-icon.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { GlobalContext } from "@/context/Context";
 import Wallet from "./Wallet";
+import { Accordion } from "./Accordion";
+import triangle from "../public/icons/triangle.svg";
+import shieldIcon from "../public/icons/shield.svg";
+import unlockIcon from "../public/icons/unlock.svg";
+import airdropIcon from "../public/icons/airdrop 1.svg";
 
 type Props = {};
 
 export default function Navbar({}: Props) {
   const { setIsModalShowing } = GlobalContext();
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const showOptions = () => {
     setOptionsOpen((prevstate) => !prevstate);
   };
+
+  // const changeRoute = (route: string) => {
+  //   router?.push(`${route}`);
+  // };
+
+  // const launchpadNavDropdownOptions = [
+  //   {
+  //     title: "Create launchpad",
+  //     route: "/launchpad/presale/create",
+  //     // routeRedirect: changeRoute("/launchpad/presale/create"),
+  //   },
+  //   {
+  //     title: "Create fair launch",
+  //     route: "/launchpad/fair-launch/create",
+  //     // routeRedirect: changeRoute("/launchpad/fairLaunch/create"),
+  //   },
+  //   {
+  //     title: "Create token",
+  //     route: "/launchpad/fair-launch/create",
+  //     // routeRedirect: changeRoute("/launchpad/fairLaunch/create"),
+  //   },
+  //   {
+  //     title: "Launchpad list",
+  //     route: "/launchpad/list",
+  //     // routeRedirect: changeRoute("/launchpad/fairLaunch/create"),
+  //   },
+  // ];
 
   // const isActive = pathname.startsWith(link.href)
 
@@ -64,12 +97,13 @@ export default function Navbar({}: Props) {
       <div className="xl:hidden">
         <Wallet />
       </div>
+      {/* menu */}
       <div
         className={`${
           menuOpen
             ? "left-0 top-0 px-10 pt-8 xl:px-0 xl:pt-0"
             : "-left-full xl:left-0"
-        } absolute w-full h-full bg-[#1D1C20] xl:bg-transparent xl:relative xl:left-0 xl:h-fit`}
+        } absolute z-40 w-full h-full bg-[#1D1C20] xl:bg-transparent xl:relative xl:left-0 xl:h-fit`}
       >
         {/* GENERAL SECTION */}
         <section className="mt-[3.56rem]">
@@ -88,138 +122,85 @@ export default function Navbar({}: Props) {
               <Link href="/">Home</Link>
             </li>
             {/* launchpads */}
-            <li className="cursor-pointer transition-all ease-in">
-              <div className="flex justify-between" onClick={showOptions}>
-                <span className="flex tracking-[-0.01rem] items-center gap-[0.75rem]">
-                  <Image
-                    src="/icons/triangle.svg"
-                    width={18}
-                    height={18}
-                    alt="launchpads icon"
-                  />
-                  Launchpads
-                </span>
-                <Image
-                  className={`${optionsOpen && "rotate-180"}`}
-                  width={16}
-                  height={16}
-                  src="/icons/chevron-down.svg"
-                  alt="chevron-down icon"
-                />
-              </div>
+            <Accordion title="Launchpads" titleImg={triangle}>
               {/* launchpads options */}
-              {optionsOpen && (
-                <ul className="transition-all duration-100 ease-in-out pl-7 flex flex-col gap-[0.75rem] mt-[0.75rem] text-[0.875rem] text-[#A0A0AB]">
-                  <li
-                    onClick={() => setMenuOpen((prevState) => !prevState)}
-                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-                  >
-                    <Link href="/launchpad/presale/create">Create launchpad</Link>
-                  </li>
-                  <li
-                    onClick={() => setMenuOpen((prevState) => !prevState)}
-                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-                  >
-                    <Link href="/launchpad/fair-launch/create">
-                      Create fair launch
-                    </Link>
-                  </li>
-                  <li
-                    onClick={(e: any) => {
-                      e.preventDefault();
-                      window.scrollTo(0, 0);
-                      setIsModalShowing?.(true);
-                      setMenuOpen((prevState) => !prevState);
-                      if (typeof window != "undefined" && window.document) {
-                        document.body.style.overflow = "hidden";
-                      }
-                    }}
-                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-                  >
-                    Create token
-                  </li>
-                  <li
-                    onClick={() => setMenuOpen((prevState) => !prevState)}
-                    className="tracking-[-0.00875rem]"
-                  >
-                    <Link href="/launchpad/list">Launchpad list</Link>
-                  </li>
-                </ul>
-              )}
-            </li>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+              >
+                <Link href="/launchpad/presale/create">Create launchpad</Link>
+              </li>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+              >
+                <Link href="/launchpad/fair-launch/create">
+                  Create fair launch
+                </Link>
+              </li>
+              <li
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  window.scrollTo(0, 0);
+                  setIsModalShowing?.(true);
+                  setMenuOpen((prevState) => !prevState);
+                  if (typeof window != "undefined" && window.document) {
+                    document.body.style.overflow = "hidden";
+                  }
+                }}
+                className="tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]"
+              >
+                Create token
+              </li>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem]"
+              >
+                <Link href="/launchpad/list">Launchpad list</Link>
+              </li>
+            </Accordion>
             {/* Private sale */}
-            <li className="cursor-pointer transition-all ease-in">
-              <div className="flex justify-between" onClick={showOptions}>
-                <span className="flex tracking-[-0.01rem] items-center gap-[0.75rem]">
-                  <Image
-                    src="/icons/shield.svg"
-                    width={18}
-                    height={18}
-                    alt="shield icon"
-                  />
-                  Private sale
-                </span>
-                <Image
-                  width={16}
-                  height={16}
-                  src="/icons/chevron-down.svg"
-                  alt="chevron-down icon"
-                />
-              </div>
-              {/* launchpads options */}
-              {optionsOpen && (
-                <ul className="transition-all duration-100 ease-in-out pl-7 flex flex-col gap-[0.75rem] mt-[0.75rem] text-[0.875rem] text-[#A0A0AB]">
-                  <li
-                    onClick={() => setMenuOpen((prevState) => !prevState)}
-                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-                  >
-                    <Link href="/privateSale/create">Create private sale</Link>
-                  </li>
-                  <li
-                    onClick={() => setMenuOpen((prevState) => !prevState)}
-                    className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-                  >
-                    <Link href="/privateSale/list">Private sale list</Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-            {/* solilock */}
-            <li className="cursor-pointer flex items-center justify-between gap-[0.75rem]">
-              <span className="flex tracking-[-0.01rem] items-center gap-[0.75rem]">
-                <Image
-                  src="/icons/unlock.svg"
-                  width={18}
-                  height={18}
-                  alt="lock icon"
-                />
-                Solilock
-              </span>
-              <Image
-                width={16}
-                height={16}
-                src="/icons/chevron-down.svg"
-                alt="chevron-down icon"
-              />
-            </li>
+            <Accordion title="Private sale" titleImg={shieldIcon}>
+              {/* private sale options */}
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+              >
+                <Link href="/privateSale/create">Create private sale</Link>
+              </li>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem] "
+              >
+                <Link href="/privateSale/list">Private sale list</Link>
+              </li>
+            </Accordion>
+            {/* Solilock */}
+            <Accordion title="Solilock" titleImg={unlockIcon}>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+              >
+                <Link href="/solilock/create">Create lock</Link>
+              </li>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
+              >
+                <Link href="/solilock/token">Token</Link>
+              </li>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem]"
+              >
+                <Link href="/solilock/liquidityLock">Liquidity lock</Link>
+              </li>
+            </Accordion>
             {/* airdrop */}
-            <li className="cursor-pointer flex items-center justify-between gap-[0.75rem]">
-              <span className="flex tracking-[-0.01rem] items-center gap-[0.75rem]">
-                <Image
-                  src="/icons/airdrop 1.svg"
-                  width={18}
-                  height={18}
-                  alt="airdrop icon"
-                />
-                Airdrop
-              </span>
-              <Image
-                width={16}
-                height={16}
-                src="/icons/chevron-down.svg"
-                alt="chevron-down icon"
-              />
-            </li>
+            <Accordion title="Airdrop" titleImg={airdropIcon}>
+              <p>Content of Airdrop goes here.</p>
+            </Accordion>
+
             {/* Leaderboard */}
             <li className="flex items-center gap-[0.75rem]">
               <Image
