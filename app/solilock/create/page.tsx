@@ -6,36 +6,7 @@ import SolilockForm from "../components/solilockForm";
 type Props = {};
 
 export default function CreateSolilock({}: Props) {
-  const stepTitles = [
-    {
-      id: "verify-your-token",
-      tag: 1,
-      title: "Verify your token",
-      description: "Enter the token address and verify",
-      completed: true,
-    },
-    {
-      id: "deFi-launchpad",
-      tag: 2,
-      title: "DeFi fair launch",
-      description: "Enter the launchpad information",
-      completed: false,
-    },
-    {
-      id: "additional-info",
-      tag: 3,
-      title: "Add Additional Info",
-      description: "Let people know who you are",
-      completed: false,
-    },
-    {
-      id: "finish",
-      tag: 4,
-      title: "Finish",
-      description: "Review your information and submit your presale",
-      completed: false,
-    },
-  ];
+
   return (
     <div className="overflow-x-hidden pt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16 xl:border-t xl:border-[#424242]">
       <LatestPools />
