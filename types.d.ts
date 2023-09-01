@@ -4,6 +4,12 @@ type SelectProps = {
   onSelect: (e: string) => void;
 };
 
+interface AccordionProps {
+  title: string;
+  titleImg: string;
+  children: any;
+}
+
 interface FormProps {
   currencyOptions?: any;
   currentStep: number;

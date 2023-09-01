@@ -1,11 +1,11 @@
 "use client";
 import LatestPools from "@/components/LatestPools";
-import PrivateSaleForm from "../components/privateSaleForm";
 import CreationSteps from "@/components/CreationSteps";
+import SolilockForm from "../components/solilockForm";
 
 type Props = {};
 
-export default function CreatePrivateSale({}: Props) {
+export default function CreateSolilock({}: Props) {
   const stepTitles = [
     {
       id: "verify-your-token",
@@ -17,8 +17,8 @@ export default function CreatePrivateSale({}: Props) {
     {
       id: "deFi-launchpad",
       tag: 2,
-      title: "Private Sale",
-      description: "Enter the private sale information",
+      title: "DeFi fair launch",
+      description: "Enter the launchpad information",
       completed: false,
     },
     {
@@ -39,14 +39,10 @@ export default function CreatePrivateSale({}: Props) {
   return (
     <div className="overflow-x-hidden pt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16 xl:border-t xl:border-[#424242]">
       <LatestPools />
-      <main className="mt-[2.5rem] text-white grid lg:grid-cols-[17rem_auto] lg:items-start gap-8">
-        {/* LEFT COLUMN */}
-        <CreationSteps stepTitles={stepTitles} />
-
-        {/* RIGHT COLUMN */}
+      <main className="mt-[2.5rem] text-white">
         <section>
-          <PrivateSaleForm />
-          <p className="mt-8 text-[0.875rem] text-[#D1D1D6]">
+          <SolilockForm />
+          <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">
             Disclaimer: Solimax Presale will never endorse or encourage that you
             invest in any of the projects listed and therefore, accept no
             liability for any loss occasioned. It is the user(s) responsibility
