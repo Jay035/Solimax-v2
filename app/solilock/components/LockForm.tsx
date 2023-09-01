@@ -10,6 +10,7 @@ export default function LockForm() {
   const [cycleDays, setCycleDays] = useState<string>("");
   const [cycleReleasePercent, setCycleReleasePercent] = useState<string>("");
   const [amount, setAmount] = useState<number>();
+  const [lockDuration, setLockDuration] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [owner, setOwner] = useState<string>("");
   const [anotherUserUsed, setAnotherUserUsed] = useState<boolean>(false);
@@ -17,6 +18,7 @@ export default function LockForm() {
 
   return (
     <form className="flex flex-col gap-6">
+      {/* Token or LP Token address */}
       <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
         <CustomInput
           id="token-address"
@@ -82,16 +84,15 @@ export default function LockForm() {
             </p>
           </div>
         )}
-        {/* </div> */}
       </div>
       {/* AMOUNT */}
       <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
         <CustomInput
           id="amount"
-          className="flex flex-col gap-[0.62rem]"
-          inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          className="flex flex-col gap-[0.62rem] "
+          inputClassName="bg-[#26272B] outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
           label="Amount"
-          type="text"
+          type="number"
           placeholder=""
           value={amount}
           onChange={(e) => {
@@ -197,7 +198,33 @@ export default function LockForm() {
           </div>
         )}
       </div>
+      {/* Lock until (UTC time) */}
+      <CustomInput
+        id="lock-duration"
+        className="flex flex-col gap-[0.62rem]"
+        inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+        label="Lock until (UTC time)"
+        type="date"
+        placeholder="Select date"
+        value={lockDuration}
+        onChange={(e) => {
+          setLockDuration?.(e.target.value);
+          setError?.("");
+        }}
+        isRequired={true}
+      />
+      <div className="mt-2 bg-gradient-to-r from-[#77CDEB] via-[#953DDD] to-[#A56EF4] p-0.5 rounded-[0.62rem]">
+        <p className="text-sm text-[#F4F4F5] rounded-[0.625rem] py-[0.88rem] px-[1.19rem] bg-[#1C1C20]">
+          Please exclude{" "}
+          <span className="text-[#A4D0F2]">
+            Solimax Launchpad address 0x56b153049AE32C6537afEa4B1F075889485c5609
+          </span>{" "}
+          from fees, rewards, max tx amount to start locking tokens. We do not
+          support <span className="text-[#A4D0F2]">rebase tokens</span>
+        </p>
+      </div>
       <button
+        type="submit"
         // onClick={(e: any) => {
         //   e.preventDefault();
         //   if (tokenAddress === "") {
