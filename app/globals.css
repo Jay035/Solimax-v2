@@ -7,10 +7,6 @@
   border: 2px solid red;
 } */
 
-/* #modal ::-webkit-scrollbar-thumb {
-  background-color: #171719;
-} */
-
 /* ------------------------------------ */
 /* SCROLLBAR */
 /* width */
@@ -168,3 +164,10 @@ thead {
 }
 
 /* ---------------------------------------- */
+
+
+/* PAGINATION */
+
+.paginationBtns{
+  @apply flex justify-between items-center mt-8
+}

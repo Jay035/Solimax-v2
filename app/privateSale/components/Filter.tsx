@@ -4,6 +4,7 @@ import { useState } from "react";
 type Props = {};
 
 export default function Filter({}: Props) {
+  const [searchInput, setSearchInput] = useState("");
   const [statusSelected, setStatusSelected] = useState("Select");
   const [poolTypeSelected, setPoolTypeSelected] = useState("Select");
   const [sortOptionSelected, setSortOptionSelected] = useState("Select");
@@ -107,6 +108,8 @@ export default function Filter({}: Props) {
         <input
           type="text"
           placeholder="Search here"
+          value={searchInput}
+          onChange={(e: any) => setSearchInput(e.target.value)}
           className="w-full min-w-[10rem] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
           name=""
           id=""

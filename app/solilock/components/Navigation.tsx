@@ -4,22 +4,17 @@ import { useState } from "react";
 type Props = {};
 
 export default function Navigation({}: Props) {
-  const [tabSelected, setTabSelected] = useState("all-launchpads");
+  const [tabSelected, setTabSelected] = useState("all");
   const links = [
     {
-      id: "all-launchpads",
-      label: "All launchpads",
-      route: "/launchpad/launchpadList",
+      id: "all",
+      label: "All",
+      route: "/solilock/token",
     },
     {
-      id: "my-contributions",
-      label: "My contributions",
-      route: "/launchpad/launchpadList",
-    },
-    {
-      id: "favorites",
-      label: "Favorites",
-      route: "/launchpad/launchpadList",
+      id: "my-locks",
+      label: "My Locks",
+      route: "/solilock/token",
     },
   ];
   return (
