@@ -6,9 +6,9 @@ type Props = {};
 export function LockInformation({}: Props) {
   return (
     <div className="bg-[#1D1C20] pt-[1.94rem] border border-[#3F3F46] rounded-[0.65rem] pb-[0.62rem] px-[0.63rem] text-sm">
-      <section className="pb-[1.12rem] mb-2 text-[#E4E4E7] border-b border-[#3F3F46] flex gap-4 items-center">
+      <section className="pb-[1.12rem] mb-2 border-b border-[#3F3F46] flex gap-4 items-center">
         <Image className="w-10 lg:w-16" src={icon1} alt="icon" />
-        <h1 className="text-xl lg:text-2xl">Lock Information</h1>
+        <h1 className="text-xl lg:text-2xl text-white">Lock Information</h1>
       </section>
       {/* Current Locked Amount*/}
       <section className="pt-[1.94rem] pb-4 px-[1.19rem] mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
