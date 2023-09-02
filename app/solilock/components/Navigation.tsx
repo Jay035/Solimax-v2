@@ -1,22 +1,24 @@
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-type Props = {};
+type Props = {
+  links: any[];
+  tabSelected: string;
+  setTabSelected: (e: string) => void;
+};
 
-export default function Navigation({}: Props) {
-  const [tabSelected, setTabSelected] = useState("all");
-  const links = [
-    {
-      id: "all",
-      label: "All",
-      route: "/solilock/token",
-    },
-    {
-      id: "my-locks",
-      label: "My Locks",
-      route: "/solilock/token",
-    },
-  ];
+export default function Navigation({
+  links,
+  tabSelected,
+  setTabSelected,
+}: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setTabSelected?.(pathname);
+  },[]);
   return (
     <nav className="mt-[0.81rem] text-white flex items-start gap-4 tracking-[-0.01rem]">
       {links?.map((link) => (
@@ -25,7 +27,7 @@ export default function Navigation({}: Props) {
           href={link?.route}
           onClick={() => setTabSelected(link?.id)}
           className={`${
-            link.id === tabSelected && "border-[#F3CE92] border-b-2 pb-1"
+            link.route === pathname && "border-[#F3CE92] border-b-2 pb-1"
           }`}
         >
           {link?.label}

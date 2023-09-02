@@ -187,7 +187,7 @@ export default function Navbar({}: Props) {
                 onClick={() => setMenuOpen((prevState) => !prevState)}
                 className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
               >
-                <Link href="/solilock/token">Token</Link>
+                <Link href="/solilock/token/all">Token</Link>
               </li>
               <li
                 onClick={() => setMenuOpen((prevState) => !prevState)}

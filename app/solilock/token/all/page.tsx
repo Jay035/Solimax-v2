@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
 import LatestPools from "@/components/LatestPools";
-import Navigation from "../components/Navigation";
-import TokenTable from "../components/TokenTable";
+import Navigation from "../../components/Navigation";
+import TokenTable from "../../components/TokenTable";
 import ReactPaginate from "react-paginate";
-import cornfluxLogo from "../../../public/icons/cornflux.svg";
-import fuelNetworkLogo from "../../../public/icons/icon-1.svg";
+import cornfluxLogo from "../../../../public/icons/cornflux.svg";
+import fuelNetworkLogo from "../../../../public/icons/icon-1.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {};
 
@@ -24,10 +25,10 @@ const tokens = [
     logo: cornfluxLogo,
   },
   {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "Fuel Network",
+    symbol: "FUEL",
+    amount: "200,000,000 FUEL",
+    logo: fuelNetworkLogo,
   },
   {
     name: "Cornflux",
@@ -127,12 +128,25 @@ const tokens = [
   },
 ];
 
-export default function Token({}: Props) {
+export default function AllTokens({}: Props) {
   const [searchInput, setSearchInput] = useState("");
+  const [tabSelected, setTabSelected] = useState("all");
   const [pageNumber, setPageNumber] = useState(0);
   const itemPerPage = 6;
   const pagesVisited = pageNumber * itemPerPage;
   const pageCount = Math.ceil(tokens.length / itemPerPage);
+  const links = [
+    {
+      id: "all",
+      label: "All",
+      route: "/solilock/token/all",
+    },
+    {
+      id: "my-locks",
+      label: "My Locks",
+      route: "/solilock/token/my-locks",
+    },
+  ];
 
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
@@ -141,7 +155,11 @@ export default function Token({}: Props) {
     <div className="pt-5 pl-8 pr-10 sm:pr-16 pb-32 xl:border-t xl:border-[#424242]">
       <LatestPools />
       <main className="mt-[2.5rem] text-white">
-        <Navigation />
+        <Navigation
+          links={links}
+          tabSelected={tabSelected}
+          setTabSelected={setTabSelected}
+        />
         <div className="bg-[#26272B] mt-[2.12rem] mb-8 w-full flex items-center gap-[0.62rem] border border-[#F4F4F5] rounded-[0.625rem] py-[0.88rem] px-[1.19rem]">
           <i className="ri-search-line text-[#E4E4E7]"></i>
           <input
@@ -156,10 +174,10 @@ export default function Token({}: Props) {
         </div>
         {/* <TokenTable /> */}
         <section className="w-full pt-[1.56rem] pb-[0.88rem] grid grid-cols-1 overflow-x-auto rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20]">
-          <div className="flex justify-between px-10 lg:px-[4.12rem] tracking-[-0.01rem] pb-[1.63rem]">
+          <div className="grid grid-cols-3 gap-4 px-10 lg:px-[4.12rem] tracking-[-0.01rem] pb-[1.63rem]">
             <h1>Token</h1>
             <h1>Amount</h1>
-            <h1>&nbsp;</h1>
+            <h1>&nbsp;&nbsp;</h1>
           </div>
           <ul role="token">
             {tokens
@@ -167,7 +185,7 @@ export default function Token({}: Props) {
               ?.map((token: any, index: number) => (
                 <li
                   key={index}
-                  className="flex items-center justify-between px-10 lg:px-[4.12rem] pt-8 pb-5 gap-4 border-t border-[#51525C]"
+                  className="grid grid-cols-3 px-10 lg:px-[4.12rem] pt-8 pb-5 gap-4 border-t border-[#51525C]"
                 >
                   <div className="flex items-center gap-2">
                     <Image
@@ -182,10 +200,13 @@ export default function Token({}: Props) {
                       <span className="text-[#A0A0AB]">{token?.symbol}</span>
                     </div>
                   </div>
-                  <p>200,000,000 CFX</p>
-                  <p className="text-[#A4D0F2] text-center tracking-[-0.00875rem] text-sm">
+                  <p>{token?.amount}</p>
+                  <Link
+                    href={`/solilock/token/all/${index}`}
+                    className="text-[#A4D0F2] text-center tracking-[-0.00875rem] text-sm"
+                  >
                     View
-                  </p>
+                  </Link>
                 </li>
               ))}
           </ul>
@@ -195,7 +216,7 @@ export default function Token({}: Props) {
           // previousLabel={"Previous"}
           pageCount={pageCount}
           onPageChange={changePage}
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={3}
           previousLabel="< Previous"
           nextLabel={"Next >"}
           renderOnZeroPageCount={null}
