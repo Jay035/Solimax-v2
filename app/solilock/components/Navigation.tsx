@@ -28,7 +28,7 @@ export default function Navigation({
           onClick={() => setTabSelected(link?.id)}
           className={`${
             link.route === pathname && "border-[#F3CE92] border-b-2 pb-1"
-          }`}
+          } px-1`}
         >
           {link?.label}
         </Link>

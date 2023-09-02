@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import icon1 from "../../../../../public/icons/icon-2.svg";
 import { LockInformation } from "./components/LockInformation";
+import { LockRecords } from "./components/LockRecords";
 
 type Props = {};
 
@@ -27,6 +28,7 @@ export default function page({ params }: { params: { id: number } }) {
         </svg>
       </Link>
       <LockInformation />
+      <LockRecords />
     </section>
   );
 }
