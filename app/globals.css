@@ -7,10 +7,6 @@
   border: 2px solid red;
 } */
 
-/* #modal ::-webkit-scrollbar-thumb {
-  background-color: #171719;
-} */
-
 /* ------------------------------------ */
 /* SCROLLBAR */
 /* width */
@@ -25,14 +21,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #1D1C20;
+  background: #1d1c20;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #26272B;
+  background: #26272b;
 }
-
 
 /* ------------------------------------ */
 
@@ -168,3 +163,26 @@ thead {
 }
 
 /* ---------------------------------------- */
+
+/* PAGINATION */
+
+.paginationBtns {
+    @apply flex justify-between items-center text-sm text-[#A0A0AB] mt-8 bg-[#1D1C20] rounded-[0.625rem] px-6 pt-3 pb-4;
+}
+
+.paginationDisabled {
+  @apply bg-[#28282B]/60;
+}
+
+.previousBtn,
+.nextBtn {
+  @apply bg-[#28282B] border border-[#51525C] rounded-lg shadow-sm shadow-[#101828]/[0.05] py-2 px-[0.87rem];
+}
+
+.nextBtn {
+  @apply border border-[#8f8f8f];
+}
+
+.paginationActive {
+  @apply text-white bg-[#454FDA] flex items-center justify-center w-6 h-6 hover:bg-[#454FDA]/80 rounded-[1.25rem];
+}

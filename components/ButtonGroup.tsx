@@ -21,7 +21,7 @@ export default function ButtonGroup() {
 
   useEffect(() => {
     setSelectedTab?.(pathname);
-  });
+  }, []);
   return (
     <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 lg:pr-11">
       {/* presale_ fair Launch group */}
