@@ -193,7 +193,7 @@ export default function Navbar({}: Props) {
                 onClick={() => setMenuOpen((prevState) => !prevState)}
                 className="tracking-[-0.00875rem]"
               >
-                <Link href="/solilock/liquidityLock">Liquidity lock</Link>
+                <Link href="/solilock/liquidityLock/all">Liquidity lock</Link>
               </li>
             </Accordion>
             {/* airdrop */}
