@@ -162,13 +162,13 @@ export default function StepFour() {
               <span className="text-[#F3CE92]">145,342 SLM</span>
             </p>
           </label>
-          <div className="flex gap-2 md:items-center">
+          <div className="flex gap-2 justify-end md:items-center">
             <button
               onClick={(e: any) => {
                 e.preventDefault();
                 handlePreviousStep?.(e);
               }}
-              className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
+              className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
             >
               Back
             </button>
@@ -176,7 +176,7 @@ export default function StepFour() {
               onClick={(e: any) => {
                 e.preventDefault();
               }}
-              className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+              className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
             >
               Next
             </button>

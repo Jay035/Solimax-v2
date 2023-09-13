@@ -10,18 +10,18 @@ import { useRouter } from "next/navigation";
 
 type Props = {};
 
-export default function Card({ item }: any) {
+export function Card({ item }: any) {
   const router = useRouter();
   const [isAddedToFavorites, setIsAddedToFavorites] = useState<boolean>(false);
   return (
-    <article className="bg-[#1d1c20] border border-[#70707a] w-full rounded-[0.72294rem] p-[1.74rem] pb-[0.86rem] pr-[1.53rem] cursor-pointer">
+    <article className="bg-[#1d1c20] border border-[#70707a] w-full rounded-[0.72294rem] p-[1.74rem] pb-[0.86rem] pr-[1.53rem]">
       <header className="mb-[1.45rem] flex items-center gap-12 justify-between">
         <Image className="w-12 2xl:w-[4.04rem]" src={img1} alt="icon" />
         <div className="flex items-center gap-2 text-white">
           <Image
             width={44}
             height={44}
-            className="cursor-pointer"
+            className="cursor-pointer outline-none"
             onClick={() => setIsAddedToFavorites((prevState) => !prevState)}
             src={`${
               isAddedToFavorites
@@ -41,7 +41,7 @@ export default function Card({ item }: any) {
         <h1
           className="text-[1.74rem] tracking-[-0.0174rem]"
           onClick={() => {
-            router.push(`/launchpad/launchpadList/${item?.title}`);
+            router.push(`/launchpad/list/${item?.title}`);
           }}
         >
           {item?.title}

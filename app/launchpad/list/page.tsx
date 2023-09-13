@@ -1,7 +1,7 @@
 "use client";
 import Navigation from "./components/Navigation";
 import Filter from "./components/Filter";
-import Card from "./components/Card";
+import { Card } from "./components/Card";
 import { cardDetails } from "@/components/data";
 
 type Props = {};

@@ -374,7 +374,7 @@ export default function StepTwo() {
               launchpad.
             </p>
             {/* back and next buttons */}
-            <div className="flex gap-2 md:items-center">
+            <div className="flex gap-2 justify-end md:items-center">
               <button
                 onClick={(e: any) => {
                   e.preventDefault();
@@ -411,7 +411,7 @@ export default function StepTwo() {
                   //   handleNextStep();
                   // }
                 }}
-                className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+                className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
               >
                 Next
               </button>

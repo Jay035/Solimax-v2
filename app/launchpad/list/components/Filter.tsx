@@ -101,7 +101,7 @@ export default function Filter({}: Props) {
     },
   ];
   return (
-    <section className="mt-4 mb-[3.31rem] flex items-end gap-4 w-full">
+    <section id="filter" className="mt-4 mb-[3.31rem] flex items-end gap-4 w-full">
       <div className="bg-[#26272B] w-full flex items-center gap-[0.62rem] border border-[#F4F4F5] rounded-[0.625rem] py-[0.88rem] px-[1.19rem]">
         <i className="ri-search-line text-[#E4E4E7]"></i>
         <input

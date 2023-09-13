@@ -9,17 +9,17 @@ export default function Navigation({}: Props) {
     {
       id: "all-launchpads",
       label: "All launchpads",
-      route: "/launchpad/launchpadList",
+      route: "/launchpad/list",
     },
     {
       id: "my-contributions",
       label: "My contributions",
-      route: "/launchpad/launchpadList",
+      route: "/launchpad/list",
     },
     {
       id: "favorites",
       label: "Favorites",
-      route: "/launchpad/launchpadList",
+      route: "/launchpad/list",
     },
   ];
   return (
