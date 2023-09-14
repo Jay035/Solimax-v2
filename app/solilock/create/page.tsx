@@ -1,6 +1,5 @@
 "use client";
 import LatestPools from "@/components/LatestPools";
-import CreationSteps from "@/components/CreationSteps";
 import SolilockForm from "../components/solilockForm";
 
 type Props = {};
@@ -11,7 +10,7 @@ export default function CreateSolilock({}: Props) {
     <div className="overflow-x-hidden pt-5 mb-20 pl-[1.69rem] pr-10 sm:pr-16 xl:border-t xl:border-[#424242]">
       <LatestPools />
       <main className="mt-[2.5rem] text-white">
-        <section>
+        {/* <section> */}
           <SolilockForm />
           <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">
             Disclaimer: Solimax Presale will never endorse or encourage that you
@@ -21,7 +20,7 @@ export default function CreateSolilock({}: Props) {
             professional. More information about (DYOR) can be found via{" "}
             <span className="underline">Binance Academy</span>.
           </p>
-        </section>
+        {/* </section> */}
       </main>
     </div>
   );

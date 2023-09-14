@@ -23,6 +23,7 @@ export default function Navbar({}: Props) {
   const showOptions = () => {
     setOptionsOpen((prevstate) => !prevstate);
   };
+  // const isActive = pathname === link.href
 
   // const changeRoute = (route: string) => {
   //   router?.push(`${route}`);
@@ -156,7 +157,7 @@ export default function Navbar({}: Props) {
                 onClick={() => setMenuOpen((prevState) => !prevState)}
                 className="tracking-[-0.00875rem]"
               >
-                <Link href="/launchpad/list">Launchpad list</Link>
+                <Link href="/launchpad/list/all">Launchpad list</Link>
               </li>
             </Accordion>
             {/* Private sale */}
@@ -193,12 +194,23 @@ export default function Navbar({}: Props) {
                 onClick={() => setMenuOpen((prevState) => !prevState)}
                 className="tracking-[-0.00875rem]"
               >
-                <Link href="/solilock/liquidityLock">Liquidity lock</Link>
+                <Link href="/solilock/liquidityLock/all">Liquidity lock</Link>
               </li>
             </Accordion>
             {/* airdrop */}
             <Accordion title="Airdrop" titleImg={airdropIcon}>
-              <p>Content of Airdrop goes here.</p>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem]"
+              >
+                <Link href="/airdrop/create">Create airdrop</Link>
+              </li>
+              <li
+                onClick={() => setMenuOpen((prevState) => !prevState)}
+                className="tracking-[-0.00875rem]"
+              >
+                <Link href="/airdrop/list/all">Airdrop list</Link>
+              </li>
             </Accordion>
 
             {/* Leaderboard */}

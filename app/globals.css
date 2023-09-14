@@ -33,6 +33,7 @@
 
 body {
   background-color: #171719;
+  overflow-x: hidden;
 }
 
 .active {
@@ -129,14 +130,19 @@ thead {
   cursor: pointer;
 }
 
+#filter .custom-dropdown{
+  padding-inline: 0.5rem;
+}
+
 /* Custom arrow icon */
 .custom-dropdown::after {
   content: url("../public/icons/chevron-down.svg");
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 10px;
   transform: translateY(-50%);
-  font-size: 12px;
+  /* font-size: 12px; */
+  /* width: 12px; */
 }
 
 .dropdown-options {

@@ -2,134 +2,85 @@
 import { useState } from "react";
 import LatestPools from "@/components/LatestPools";
 import Navigation from "../../components/Navigation";
-import TokenTable from "../../components/TokenTable";
 import ReactPaginate from "react-paginate";
+import groupIcon from "../../../../public/icons/Group-icon.svg";
 import cornfluxLogo from "../../../../public/icons/cornflux.svg";
 import fuelNetworkLogo from "../../../../public/icons/icon-1.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 type Props = {};
 
 const tokens = [
   {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "Fuel/Wrapped Ether",
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
     name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
-    name: "Fuel Network",
-    symbol: "FUEL",
-    amount: "200,000,000 FUEL",
-    logo: fuelNetworkLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "Fuel/Wrapped Ether",
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
     name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
+  },
+  {
+    name: "Fuel/Wrapped Ether",
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
     name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "Fuel/Wrapped Ether",
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "Fuel/Wrapped Ether",
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "CornFlux/Wrapped Ether",
+    symbol: "CFX/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "Fuel/Wrapped Ether",
+    symbol: "FUEL/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
   {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
-  },
-  {
-    name: "Cornflux",
-    symbol: "CFX",
-    amount: "200,000,000 CFX",
-    logo: cornfluxLogo,
+    name: "CornFlux/Wrapped Ether",
+    symbol: "CFX/WETH",
+    amount: "200,000,000",
+    logo: groupIcon,
   },
 ];
 
-export default function AllTokens({}: Props) {
+export default function AllLiquidityLocks({}: Props) {
   const [searchInput, setSearchInput] = useState("");
   const [tabSelected, setTabSelected] = useState("all");
   const [pageNumber, setPageNumber] = useState(0);
@@ -140,15 +91,14 @@ export default function AllTokens({}: Props) {
     {
       id: "all",
       label: "All",
-      route: "/solilock/token/all",
+      route: "/solilock/liquidityLock/all",
     },
     {
       id: "my-locks",
       label: "My Locks",
-      route: "/solilock/token/my-locks",
+      route: "/solilock/liquidityLock/my-locks",
     },
   ];
-  const router = useRouter();
 
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
@@ -168,7 +118,7 @@ export default function AllTokens({}: Props) {
             type="text"
             value={searchInput}
             onChange={(e: any) => setSearchInput(e.target.value)}
-            placeholder="Search by token address"
+            placeholder="Search by LP token address or token address"
             className="w-full min-w-[10rem] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             name="search"
             id="search"
@@ -176,10 +126,9 @@ export default function AllTokens({}: Props) {
         </div>
         {/* <TokenTable /> */}
         <section className="w-full pt-[1.56rem] pb-[0.88rem] grid grid-cols-1 overflow-x-auto rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20]">
-          <div className="grid grid-cols-3 gap-4 px-10 lg:px-[4.12rem] tracking-[-0.01rem] pb-[1.63rem]">
+          <div className="grid grid-cols-2 gap-4 px-10 lg:px-[4.12rem] tracking-[-0.01rem] pb-[1.63rem]">
             <h1>Token</h1>
             <h1>Amount</h1>
-            <h1>&nbsp;&nbsp;</h1>
           </div>
           <ul role="token">
             {tokens
@@ -187,13 +136,13 @@ export default function AllTokens({}: Props) {
               ?.map((token: any, index: number) => (
                 <li
                   key={index}
-                  className="grid grid-cols-3 px-10 lg:px-[4.12rem] pt-8 pb-5 gap-4 border-t border-[#51525C]"
+                  className="grid grid-cols-2 px-10 lg:px-[4.12rem] pt-8 pb-5 gap-4 border-t border-[#51525C]"
                 >
                   <div className="flex items-center gap-2">
                     <Image
                       className="bg-white rounded-full"
-                      width={32}
-                      height={32}
+                      width={56}
+                      height={56}
                       src={token?.logo}
                       alt="token logo"
                     />
@@ -202,13 +151,15 @@ export default function AllTokens({}: Props) {
                       <span className="text-[#A0A0AB]">{token?.symbol}</span>
                     </div>
                   </div>
-                  <p>{token?.amount}</p>
-                  <Link
-                    href={`/solilock/token/all/${index}`}
-                    className="text-[#A4D0F2] text-center tracking-[-0.00875rem] text-sm"
-                  >
-                    View
-                  </Link>
+                  <div className="flex justify-between items-center">
+                    <p>{token?.amount}</p>
+                    <Link
+                      href={`/solilock/liquidityLock/all/${index}`}
+                      className="text-[#A4D0F2] pr-16 text-center tracking-[-0.00875rem] text-sm"
+                    >
+                      View
+                    </Link>
+                  </div>
                 </li>
               ))}
           </ul>

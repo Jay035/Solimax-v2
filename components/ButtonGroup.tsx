@@ -23,7 +23,7 @@ export default function ButtonGroup() {
     setSelectedTab?.(pathname);
   }, []);
   return (
-    <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 lg:pr-11">
+    <div className="flex flex-col-reverse md:flex-row justify-between md:items-center gap-4 lg:pr-11">
       {/* presale_ fair Launch group */}
       <div className="flex items-center ">
         {tabs?.map((tab: ButtonProps) => (
@@ -50,6 +50,7 @@ export default function ButtonGroup() {
       </div>
       {/* Create token button */}
       <button
+      className="w-fit ml-auto"
         onClick={(e: any) => {
           e.preventDefault();
           window.scrollTo(0, 0);
