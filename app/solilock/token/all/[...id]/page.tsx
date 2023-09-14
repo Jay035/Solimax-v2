@@ -1,15 +1,21 @@
-import Link from "next/link";
+"use client";
 import { LockInformation } from "./components/LockInformation";
 import { LockRecords } from "./components/LockRecords";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
-export default function page({ params }: { params: { id: number } }) {
+export default function TokenPage({ params }: { params: { id: number } }) {
+  const router = useRouter();
+
   return (
     <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
-      <Link href="/solilock/token/all">
+      <button
+        onClick={() => router.push("/solilock/token/all")}
+        className="w-fit cursor-pointer mb-[3.19rem]"
+      >
         <svg
-          className="cursor-pointer mb-[3.19rem]"
+          className=""
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -24,9 +30,10 @@ export default function page({ params }: { params: { id: number } }) {
             strokeLinejoin="round"
           />
         </svg>
-      </Link>
+      </button>
+
       <LockInformation />
-      <LockRecords />
+      <LockRecords id={params?.id} />
       <p className="text-[0.875rem] mt-8 text-[#D1D1D6]">
         Disclaimer: Solimax Presale will never endorse or encourage that you
         invest in any of the projects listed and therefore, accept no liability

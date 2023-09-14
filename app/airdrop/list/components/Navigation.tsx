@@ -4,22 +4,22 @@ import { useState } from "react";
 type Props = {};
 
 export default function Navigation({}: Props) {
-  const [tabSelected, setTabSelected] = useState("all-launchpads");
+  const [tabSelected, setTabSelected] = useState("all-airdrops");
   const links = [
     {
-      id: "all-launchpads",
-      label: "All launchpads",
-      route: "/launchpad/list/all",
+      id: "all-airdrops",
+      label: "All Airdrops",
+      route: "/airdrop/list/all",
     },
     {
-      id: "my-contributions",
-      label: "My contributions",
-      route: "/launchpad/list/all",
+      id: "my-airdrops",
+      label: "My Airdrops",
+      route: "/airdrop/list/all",
     },
     {
-      id: "favorites",
-      label: "Favorites",
-      route: "/launchpad/list/all",
+      id: "created-by-me",
+      label: "Created by me",
+      route: "/airdrop/list/all",
     },
   ];
   return (

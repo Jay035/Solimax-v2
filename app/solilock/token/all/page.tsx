@@ -8,6 +8,7 @@ import cornfluxLogo from "../../../../public/icons/cornflux.svg";
 import fuelNetworkLogo from "../../../../public/icons/icon-1.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
@@ -147,6 +148,7 @@ export default function AllTokens({}: Props) {
       route: "/solilock/token/my-locks",
     },
   ];
+  const router = useRouter();
 
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
