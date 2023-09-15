@@ -22,7 +22,7 @@ export default function page({ params }: { params: { title: string } }) {
     <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
       <div className="flex justify-between items-center mb-9">
         {/* chevron left */}
-        <Link href="/launchpad/list">
+        <Link href="/launchpad/list/all">
           <svg
             className="cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
