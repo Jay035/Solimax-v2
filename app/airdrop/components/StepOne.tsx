@@ -16,7 +16,7 @@ export default function StepOne({
   setCurrentStep,
 }: Props) {
   return (
-    <section>
+    <form>
       <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
         <CustomInput
           id="token-address"
@@ -39,6 +39,7 @@ export default function StepOne({
       </div>
       <div className="flex mt-8">
         <button
+        type="submit"
           onClick={(e: any) => {
             e.preventDefault();
             setCurrentStep(currentStep + 1);
@@ -48,6 +49,6 @@ export default function StepOne({
           Next
         </button>
       </div>
-    </section>
+    </form>
   );
 }

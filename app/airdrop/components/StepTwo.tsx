@@ -2,10 +2,12 @@ import CustomInput from "@/components/CustomInput";
 import { useState } from "react";
 
 type Props = {
+  currentStep: number;
   setError: (error: string) => void;
+  setCurrentStep: (step: number) => void;
 };
 
-export default function StepTwo({}: Props) {
+export default function StepTwo({currentStep, setError, setCurrentStep}: Props) {
   const [title, setTitle] = useState<string>("");
   const [TGEDate, setTGEDate] = useState<string>("");
   const [TGEPercent, setTGEPercent] = useState<number>();
@@ -14,7 +16,6 @@ export default function StepTwo({}: Props) {
   const [cycleReleasePercent, setCycleReleasePercent] = useState<string>("");
   const [amount, setAmount] = useState<number>();
   const [lockDuration, setLockDuration] = useState<string>("");
-  const [error, setError] = useState<string>("");
   const [owner, setOwner] = useState<string>("");
   const [anotherUserUsed, setAnotherUserUsed] = useState<boolean>(false);
   const [vestingUsed, setVestingUsed] = useState<boolean>(false);
@@ -96,9 +97,9 @@ export default function StepTwo({}: Props) {
         label="Title"
         type="text"
         placeholder="Enter title"
-        value={amount}
+        value={title}
         onChange={(e) => {
-          setAmount?.(e.target.value);
+          setTitle?.(e.target.value);
           setError?.("");
         }}
         isRequired={false}
@@ -243,14 +244,10 @@ export default function StepTwo({}: Props) {
       </div>
       <button
         type="submit"
-        // onClick={(e: any) => {
-        //   e.preventDefault();
-        //   if (tokenAddress === "") {
-        //     setError?.("Name must be entered");
-        //   } else {
-        //     handleNextStep?.(e);
-        //   }
-        // }}
+        onClick={(e: any) => {
+          e.preventDefault();
+          setCurrentStep?.(currentStep + 1);
+        }}
         className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
       >
         Lock
