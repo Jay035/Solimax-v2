@@ -4,6 +4,7 @@ import LatestPools from "@/components/LatestPools";
 import CustomInput from "@/components/CustomInput";
 import StepOne from "../components/StepOne";
 import StepTwo from "../components/StepTwo";
+import StepThree from "../components/StepThree";
 
 type Props = {};
 
@@ -43,7 +44,8 @@ export default function CreateAirdrop({}: Props) {
               setTokenAddress={setTokenAddress}
             />
           )}
-          {currentStep === 2 && <StepTwo setError={setError} />}
+          {currentStep === 2 && <StepTwo currentStep={currentStep} setError={setError} setCurrentStep={setCurrentStep} />}
+          {currentStep === 3 && <StepThree currentStep={currentStep} setError={setError} setCurrentStep={setCurrentStep} />}
         </section>
         <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">
           Disclaimer: Solimax Presale will never endorse or encourage that you
