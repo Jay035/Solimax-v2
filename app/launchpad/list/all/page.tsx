@@ -25,26 +25,28 @@ export default function LaunchpadList({}: Props) {
             Sign up our mailing list to receive our new presales, features, tips
             and reviews for next 100X projects.
           </p>
-          <form className="flex gap-4 items-center">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full px-[0.87rem] py-3 rounded-lg bg-[#26272B] border border-[#A0A0AB] shadow-[0px_1px_2px_0px] shadow-[#101828]/[0.05] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              name=""
-              id=""
-            />
-            <button
-              className="rounded-lg border border-[#454fda] bg-[#454fda] px-5 py-3"
-              onClick={(e: any) => {
-                e.preventDefault();
-              }}
-            >
-              Subscribe
-            </button>
-          </form>
-          <p className="mt-[0.38rem] text-left text-[#d1d1d6]">
-            We care about your data in our privacy policy.
-          </p>
+          <div className="max-w-[30.6rem] mx-auto">
+            <form className="flex gap-4 items-center">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-[0.87rem] py-3 rounded-lg bg-[#26272B] border border-[#A0A0AB] shadow-[0px_1px_2px_0px] shadow-[#101828]/[0.05] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                name=""
+                id=""
+              />
+              <button
+                className="rounded-lg border border-[#454fda] bg-[#454fda] px-5 py-3"
+                onClick={(e: any) => {
+                  e.preventDefault();
+                }}
+              >
+                Subscribe
+              </button>
+            </form>
+            <p className="mt-[0.38rem] text-left text-[#d1d1d6]">
+              We care about your data in our privacy policy.
+            </p>
+          </div>
         </div>
       </div>
     </section>

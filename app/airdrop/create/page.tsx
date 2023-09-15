@@ -2,10 +2,13 @@
 import { useState } from "react";
 import LatestPools from "@/components/LatestPools";
 import CustomInput from "@/components/CustomInput";
+import StepOne from "../components/StepOne";
+import StepTwo from "../components/StepTwo";
 
 type Props = {};
 
 export default function CreateAirdrop({}: Props) {
+  const [currentStep, setCurrentStep] = useState<number>(1);
   const [error, setError] = useState<string>("");
   const [tokenAddress, setTokenAddress] = useState<string>("");
 
@@ -22,6 +25,7 @@ export default function CreateAirdrop({}: Props) {
               Create airdop fee <span className=" text-[#F3CE92]">1 BNB</span>
             </p>
           </div>
+          {/* error */}
           <div className="mb-6">
             <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
               <span className="text-[#F04438]">(*) </span>is required field
@@ -30,42 +34,16 @@ export default function CreateAirdrop({}: Props) {
               <p className="text-[#F04438] text-sm sm:text-base">{error}</p>
             )}
           </div>
-          <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-            <CustomInput
-              id="token-address"
-              className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Token address"
-              type="text"
-              placeholder="Enter sale title"
-              value={tokenAddress}
-              onChange={(e) => {
-                setTokenAddress?.(e.target.value);
-                setError?.("");
-              }}
-              isRequired={true}
+          {currentStep === 1 && (
+            <StepOne
+            currentStep={currentStep}
+              tokenAddress={tokenAddress}
+              setError={setError}
+              setCurrentStep={setCurrentStep}
+              setTokenAddress={setTokenAddress}
             />
-            {/* create pool fee */}
-            <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
-              Create sale fee <span className="text-[#F3CE92]">1BNB</span>
-            </p>
-          </div>
-          <div className="flex mt-8">
-            <button
-              onClick={(e: any) => {
-                e.preventDefault();
-                // if (name === "") {
-                //   setError?.("Name must be entered");
-                // } else {
-                //   handleNextStep?.(e);
-                // }
-                //   handleNextStep?.(e);
-              }}
-              className="bg-[#C38CC3] text-center disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
-            >
-              Next
-            </button>
-          </div>
+          )}
+          {currentStep === 2 && <StepTwo setError={setError} />}
         </section>
         <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">
           Disclaimer: Solimax Presale will never endorse or encourage that you

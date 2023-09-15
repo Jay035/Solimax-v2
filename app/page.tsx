@@ -9,24 +9,24 @@ export default function Home() {
       <LatestPools />
 
       <div className="mt-10 text-white text-center xl:text-left pr-[1.06rem] lg:px-8 xl:px-0 xl:pr-16">
-        <h1 className="text-4xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
+        <h1 className="text-5xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
           The{" "}
           <span className="bg-gradient-linear bg-clip-text text-transparent">
             launchpad protocol
           </span>{" "}
           for everyone
         </h1>
-        <p className="text-[#D1D1D6] mb-8 tracking-[-0.01125rem] md:text-[1.125rem]">
+        <p className="text-[#D1D1D6] mb-8 tracking-[-0.01125rem] text-lg md:text-xl">
           Our easy to use platform makes creation of your own tokens and token
           sales seamless. Tokens created on{" "}
           <span className="text-[#C38CC3]">SoliMax</span> will be verified and
           published on explorer websites
         </p>
         <div className="flex justify-center items-center xl:justify-start">
-          <button className="mr-8 text-[0.875rem] rounded-[0.625rem] py-5 md:py-[1.3125rem] px-[2.4375rem] bg-[#454FDA] text-white">
+          <button className="mr-8 text-base rounded-[0.625rem] py-5 md:py-[1.3125rem] px-[2.4375rem] bg-[#454FDA] text-white">
             Create new
           </button>
-          <button className="text-[0.875rem]">Learn more</button>
+          <button className="text-base">Learn more</button>
         </div>
       </div>
       {/* ------------------------------ */}
