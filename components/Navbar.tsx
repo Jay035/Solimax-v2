@@ -201,7 +201,7 @@ export default function Navbar({}: Props) {
             <Accordion title="Airdrop" titleImg={airdropIcon}>
               <li
                 onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem]"
+                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
               >
                 <Link href="/airdrop/create">Create airdrop</Link>
               </li>
