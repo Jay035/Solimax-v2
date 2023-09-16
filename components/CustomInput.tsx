@@ -8,6 +8,7 @@ type FormProps = {
   defaultChecked?: boolean;
   isRequired: boolean;
   placeholder?: string;
+  pattern?: string;
   onChange?: (e: any) => void;
 };
 
@@ -22,6 +23,7 @@ export default function CustomInput({
   value,
   defaultChecked,
   onChange,
+  pattern,
 }: FormProps) {
   return (
     <div className={className}>

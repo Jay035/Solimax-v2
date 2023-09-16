@@ -7,7 +7,11 @@ type Props = {
   setCurrentStep: (step: number) => void;
 };
 
-export default function StepTwo({currentStep, setError, setCurrentStep}: Props) {
+export default function StepTwo({
+  currentStep,
+  setError,
+  setCurrentStep,
+}: Props) {
   const [title, setTitle] = useState<string>("");
   const [TGEDate, setTGEDate] = useState<string>("");
   const [TGEPercent, setTGEPercent] = useState<number>();
@@ -15,7 +19,6 @@ export default function StepTwo({currentStep, setError, setCurrentStep}: Props) 
   const [cycleDays, setCycleDays] = useState<string>("");
   const [cycleReleasePercent, setCycleReleasePercent] = useState<string>("");
   const [amount, setAmount] = useState<number>();
-  const [lockDuration, setLockDuration] = useState<string>("");
   const [owner, setOwner] = useState<string>("");
   const [anotherUserUsed, setAnotherUserUsed] = useState<boolean>(false);
   const [vestingUsed, setVestingUsed] = useState<boolean>(false);
@@ -40,7 +43,7 @@ export default function StepTwo({currentStep, setError, setCurrentStep}: Props) 
         />
         <label
           htmlFor="another-user-used"
-          className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
+          className="text-[0.875rem] tracking-[-0.00875rem] w-fit mt-3 cursor-pointer flex items-center gap-2"
         >
           <div
             className={`relative flex ${
@@ -108,7 +111,7 @@ export default function StepTwo({currentStep, setError, setCurrentStep}: Props) 
       <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
         <CustomInput
           id="amount"
-          className="flex flex-col gap-[0.62rem] "
+          className="flex flex-col gap-[0.62rem]"
           inputClassName="bg-[#26272B] outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
           label="Amount"
           type="number"
@@ -122,7 +125,7 @@ export default function StepTwo({currentStep, setError, setCurrentStep}: Props) 
         />
         <label
           htmlFor="vesting-used"
-          className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
+          className="text-[0.875rem] tracking-[-0.00875rem] mt-3 w-fit cursor-pointer flex items-center gap-2"
         >
           <div
             className={`relative flex ${
@@ -217,21 +220,6 @@ export default function StepTwo({currentStep, setError, setCurrentStep}: Props) 
           </div>
         )}
       </div>
-      {/* Lock until (UTC time) */}
-      {/* <CustomInput
-        id="lock-duration"
-        className="flex flex-col gap-[0.62rem]"
-        inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-        label="Lock until (UTC time)"
-        type="date"
-        placeholder="Select date"
-        value={lockDuration}
-        onChange={(e) => {
-          setLockDuration?.(e.target.value);
-          setError?.("");
-        }}
-        isRequired={true}
-      /> */}
       <div className="mt-2 bg-gradient-to-r from-[#77CDEB] via-[#953DDD] to-[#A56EF4] p-0.5 rounded-[0.62rem]">
         <p className="text-sm text-[#F4F4F5] rounded-[0.625rem] py-[0.88rem] px-[1.19rem] bg-[#1C1C20]">
           Please exclude{" "}
@@ -243,12 +231,26 @@ export default function StepTwo({currentStep, setError, setCurrentStep}: Props) 
         </p>
       </div>
       <button
+        disabled={tokenAddress === "" || !amount}
         type="submit"
         onClick={(e: any) => {
           e.preventDefault();
-          setCurrentStep?.(currentStep + 1);
+          if (vestingUsed) {
+            if (
+              TGEDate === "" ||
+              cycleDays === "" ||
+              cycleReleasePercent === "" ||
+              !TGEPercent
+            ) {
+              alert("Please fill all required fields");
+            } 
+          }
+          else {
+            setCurrentStep?.(currentStep + 1);
+            window.scroll(0, 0);
+          }
         }}
-        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
       >
         Lock
       </button>

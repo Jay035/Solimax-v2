@@ -41,7 +41,7 @@ export function Card({ item }: any) {
       <section className="text-white">
         {/* name */}
         <h1
-          className="text-[1.74rem] tracking-[-0.0174rem]"
+          className="text-[1.74rem] tracking-[-0.0174rem] cursor-pointer"
           onClick={() => {
             router.push(`/airdrop/list/${item?.title}`);
           }}

@@ -37,15 +37,27 @@ export default function CreateAirdrop({}: Props) {
           </div>
           {currentStep === 1 && (
             <StepOne
-            currentStep={currentStep}
+              currentStep={currentStep}
               tokenAddress={tokenAddress}
               setError={setError}
               setCurrentStep={setCurrentStep}
               setTokenAddress={setTokenAddress}
             />
           )}
-          {currentStep === 2 && <StepTwo currentStep={currentStep} setError={setError} setCurrentStep={setCurrentStep} />}
-          {currentStep === 3 && <StepThree currentStep={currentStep} setError={setError} setCurrentStep={setCurrentStep} />}
+          {currentStep === 2 && (
+            <StepTwo
+              currentStep={currentStep}
+              setError={setError}
+              setCurrentStep={setCurrentStep}
+            />
+          )}
+          {currentStep === 3 && (
+            <StepThree
+              currentStep={currentStep}
+              setError={setError}
+              setCurrentStep={setCurrentStep}
+            />
+          )}
         </section>
         <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">
           Disclaimer: Solimax Presale will never endorse or encourage that you

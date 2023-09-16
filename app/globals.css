@@ -192,3 +192,21 @@ thead {
 .paginationActive {
   @apply text-white bg-[#454FDA] flex items-center justify-center w-6 h-6 hover:bg-[#454FDA]/80 rounded-[1.25rem];
 }
+
+#latest-pools{
+  animation: flowIn 10s ease-in infinite ;
+}
+
+
+@keyframes flowIn {
+  0% {
+  -moz-transform: translateX(5%);
+  -webkit-transform: translateX(5%);
+  transform: translateX(5%);
+  }
+  100% {
+  -moz-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  }
+ }

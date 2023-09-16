@@ -83,7 +83,8 @@ export default function StepThree({
           className="flex flex-col gap-[0.62rem]"
           inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
           label="Website URL"
-          type="website"
+          type="url"
+          // pattern="https://.*\..*"
           placeholder="www."
           value={websiteURL}
           onChange={(e) => {
@@ -236,11 +237,12 @@ export default function StepThree({
           Back
         </button>
         <button
+          disabled={!selectedFile || websiteURL === ""}
           onClick={(e: any) => {
             e.preventDefault();
             // setCurrentStep?.(currentStep + 1);
           }}
-          className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[12.6rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+          className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[12.6rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
         >
           Create New Airdrop
         </button>
