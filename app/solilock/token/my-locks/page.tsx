@@ -151,7 +151,7 @@ export default function AllTokens({}: Props) {
     setPageNumber(selected);
   };
   return (
-    <div className="pt-5 pl-8 pr-10 sm:pr-16 pb-32 xl:border-t xl:border-[#424242]">
+    <div className="pt-5 ml-8 mr-10 sm:mr-16 pb-32 xl:border-t xl:border-[#424242]">
       <LatestPools />
       <main className="mt-[2.5rem] text-white">
         <Navigation

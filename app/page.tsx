@@ -5,9 +5,10 @@ import TrendingPools from "@/components/TrendingPools";
 
 export default function Home() {
   return (
-    <div className="pt-[2.69rem] mt-5 mb-20 pl-[1.06rem] sm:px-8 w-fit overflow-x-hidden xl:border-t xl:border-[#424242]">
+    <div className="pt-5 mt-5 mb-20 w-fit ml-[1.06rem] sm:mx-8 overflow-x-hidden">
       <LatestPools />
 
+      {/* HERO CONTENT */}
       <div className="mt-10 text-white text-center xl:text-left pr-[1.06rem] lg:px-8 xl:px-0 xl:pr-16">
         <h1 className="text-5xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]">
           The{" "}

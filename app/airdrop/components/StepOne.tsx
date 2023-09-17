@@ -24,7 +24,7 @@ export default function StepOne({
           inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
           label="Token address"
           type="text"
-          placeholder="Enter sale title"
+          placeholder="Enter token or LP address"
           value={tokenAddress}
           onChange={(e) => {
             setTokenAddress?.(e.target.value);
@@ -39,12 +39,13 @@ export default function StepOne({
       </div>
       <div className="flex mt-8">
         <button
-        type="submit"
+          disabled={tokenAddress === ""}
+          type="submit"
           onClick={(e: any) => {
             e.preventDefault();
             setCurrentStep(currentStep + 1);
           }}
-          className="bg-[#C38CC3] text-center disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+          className="bg-[#C38CC3] text-center disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
         >
           Next
         </button>
