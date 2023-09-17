@@ -6,15 +6,15 @@ import { useState } from "react";
 
 export default function StepTwo() {
   const { handleNextStep, handlePreviousStep } = GlobalContext();
-  const [softcap, setSoftcap] = useState(0);
-  const [hardcap, setHardcap] = useState(0);
-  const [minBuy, setMinBuy] = useState(0);
-  const [maxBuy, setMaxBuy] = useState(0);
+  const [softcap, setSoftcap] = useState();
+  const [hardcap, setHardcap] = useState();
+  const [minBuy, setMinBuy] = useState();
+  const [maxBuy, setMaxBuy] = useState();
   const [router, setRouter] = useState("Select router exchange");
   const [refundType, setRefundType] = useState("Burn");
-  const [liquidity, setLiquidity] = useState(0);
-  const [listingRate, setListingRate] = useState(0);
-  const [presaleRate, setPresaleRate] = useState(0);
+  const [liquidity, setLiquidity] = useState();
+  const [listingRate, setListingRate] = useState();
+  const [presaleRate, setPresaleRate] = useState();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [liquidityLockup, setLiquidityLockup] = useState("");
@@ -386,21 +386,22 @@ export default function StepTwo() {
               </button>
               <button
                 disabled={
-                  !presaleRate &&
-                  !softcap &&
-                  !hardcap &&
-                  !minBuy &&
-                  !maxBuy &&
-                  !refundType &&
-                  !router &&
-                  !liquidity &&
-                  !listingRate &&
-                  !startDate &&
-                  !endDate &&
-                  !liquidityLockup &&
-                  !firstRelease &&
-                  !vestingPeriod &&
-                  !presaleToken
+                  totalSellingAmount === "" ||
+                  presaleRate === null ||
+                  softcap ||
+                  hardcap ||
+                  minBuy === null ||
+                  maxBuy &&
+                  refundType &&
+                  router &&
+                  liquidity &&
+                  listingRate &&
+                  startDate &&
+                  endDate &&
+                  liquidityLockup &&
+                  firstRelease &&
+                  vestingPeriod &&
+                  presaleToken
                 }
                 onClick={(e: any) => {
                   e.preventDefault();

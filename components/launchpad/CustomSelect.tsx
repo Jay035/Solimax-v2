@@ -34,15 +34,18 @@ export default function CustomSelect({
   }, []);
 
   return (
-    <div className="custom-dropdown" ref={dropdownRef}>
+    <div
+      className="custom-dropdown"
+      onClick={() => {
+        setDropdownOpen((prevState) => !prevState);
+      }}
+      ref={dropdownRef}
+    >
       <div
         className={`dropdown-header flex items-center gap-[0.6rem] ${
           header === "Select router exchange" && "text-[#A0A0AB]"
         }`}
         id="currency"
-        onClick={() => {
-          setDropdownOpen((prevState) => !prevState);
-        }}
       >
         {pathname !== "/launchpad/launchpadList" && (
           <Image

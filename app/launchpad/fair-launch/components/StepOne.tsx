@@ -15,17 +15,18 @@ export default function StepOne() {
     useState<boolean>(false);
 
   return (
-    <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
+    <section className="flex flex-col gap-4 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
-      <div className="">
-        <p className="text-[0.8125rem] tracking-[-0.00813rem] text-[#D1D1D6]">
+      {/* <div className=""> */}
+        <p className="text-[0.8125rem] mt-2 tracking-[-0.00813rem] text-[#D1D1D6]">
           <span className="text-[#F04438]">(*) </span>is required field
         </p>
+        {/* ERROR */}
         {error && (
-          <p className="text-[#F04438] text-sm sm:text-base">{error}</p>
+          <p className="text-[#F04438] text-sm">{error}</p>
         )}
-      </div>
-      <form className="flex flex-col gap-6">
+      {/* </div> */}
+      <form className="flex flex-col mt-2 gap-6">
         <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <CustomInput
             id="token-address"

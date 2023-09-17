@@ -5,7 +5,7 @@ type Props = {};
 
 export default function Wallet({}: Props) {
   return (
-    <section className="flex items-center gap-[0.62rem] justify-end xl:px-20 xl:pt-8 xl:pb-[1.31rem]">
+    <section className="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]">
       <button className="bg-[#28282B] xl:p-[0.625rem] border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]">
         <Image src={logoIcon} className="w-auto h-auto xl:w-9 xl:h-9" alt="bsc icon" />
         <span className="text-white text-[0.875rem] hidden xl:inline-block">
