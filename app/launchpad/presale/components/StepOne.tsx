@@ -63,7 +63,7 @@ export default function StepOne() {
           </h3>
 
           <label
-            htmlFor="disable"
+            htmlFor="option-1"
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
             <div
@@ -78,21 +78,20 @@ export default function StepOne() {
                   isFeeOptionOneChecked ? "w-5 h-5" : "w-6 h-6"
                 } checked:bg-[#A4D0F2]`}
                 type="radio"
-                defaultChecked
                 checked={isFeeOptionOneChecked}
                 onChange={(event: any) => {
                   setIsFeeOptionOneChecked(event.target.checked);
                   setIsFeeOptionTwoChecked(false);
                 }}
-                name="whitelist"
-                id="disable"
+                name="fee-option"
+                id="option-1"
               />
             </div>
             % BNB raised only{" "}
             <span className="text-[#F3CE92]"> (Recommended)</span>
           </label>
           <label
-            htmlFor="enable"
+            htmlFor="option-2"
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
             <div
@@ -107,14 +106,13 @@ export default function StepOne() {
                   isFeeOptionTwoChecked ? "w-5 h-5" : "w-6 h-6"
                 } checked:bg-[#A4D0F2]`}
                 type="radio"
-                // defaultChecked
                 checked={isFeeOptionTwoChecked}
                 onChange={(event: any) => {
                   setIsFeeOptionOneChecked(false);
                   setIsFeeOptionTwoChecked(event.target.checked);
                 }}
-                name="whitelist"
-                id="disable"
+                name="fee-option"
+                id="option-2"
               />
             </div>
             1.5% BNB raised + 1.5% token raised
@@ -133,7 +131,7 @@ export default function StepOne() {
                 top: 400,
                 left: 100,
                 behavior: "smooth",
-              })
+              });
             } else {
               handleNextStep?.(e);
             }

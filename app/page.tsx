@@ -24,7 +24,7 @@ export default function Home() {
           published on explorer websites
         </p>
         <div className="flex justify-center items-center xl:justify-start">
-          <button className="mr-8 text-base rounded-[0.625rem] py-5 md:py-[1.3125rem] px-[2.4375rem] bg-[#454FDA] text-white">
+          <button className="mr-8 text-base rounded-[0.625rem] py-5 md:py-[1.3rem] px-[2.44rem] bg-[#454FDA] text-white">
             Create new
           </button>
           <button className="text-base">Learn more</button>

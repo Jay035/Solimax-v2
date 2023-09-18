@@ -6,22 +6,22 @@ import { useState } from "react";
 
 export default function StepTwo() {
   const { handleNextStep, handlePreviousStep } = GlobalContext();
-  const [softcap, setSoftcap] = useState(0);
-  const [hardcap, setHardcap] = useState(0);
-  const [minBuy, setMinBuy] = useState(0);
-  const [maxBuy, setMaxBuy] = useState(0);
-  const [router, setRouter] = useState("Select router exchange");
-  const [refundType, setRefundType] = useState("Burn");
-  const [liquidity, setLiquidity] = useState(0);
-  const [listingRate, setListingRate] = useState(0);
-  const [presaleRate, setPresaleRate] = useState(0);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [liquidityLockup, setLiquidityLockup] = useState("");
-  const [firstRelease, setFirstRelease] = useState("");
-  const [vestingPeriod, setVestingPeriod] = useState("");
-  const [presaleToken, setPresaleToken] = useState("");
-  const [error, setError] = useState("");
+  const [softcap, setSoftcap] = useState();
+  const [hardcap, setHardcap] = useState();
+  const [minBuy, setMinBuy] = useState();
+  const [maxBuy, setMaxBuy] = useState();
+  const [router, setRouter] = useState<string>("Select router exchange");
+  const [refundType, setRefundType] = useState<string>("Burn");
+  const [liquidity, setLiquidity] = useState();
+  const [listingRate, setListingRate] = useState();
+  const [presaleRate, setPresaleRate] = useState();
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
+  const [liquidityLockup, setLiquidityLockup] = useState<string>("");
+  const [firstRelease, setFirstRelease] = useState<string>("");
+  const [vestingPeriod, setVestingPeriod] = useState<string>("");
+  const [presaleToken, setPresaleToken] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
   const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
   const [isVestingContributionChecked, setIsVestingContributionChecked] =
@@ -105,7 +105,6 @@ export default function StepTwo() {
                     isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
                   } checked:bg-[#A4D0F2]`}
                   type="radio"
-                  defaultChecked
                   checked={isWhitelistDisabled}
                   onChange={(event: any) => {
                     setIsWhitelistDisabled(event.target.checked);
@@ -140,7 +139,7 @@ export default function StepTwo() {
                     setIsWhitelistEnabled(event.target.checked);
                   }}
                   name="whitelist"
-                  id="disable"
+                  id="enable"
                 />
               </div>
               Enable
@@ -348,14 +347,14 @@ export default function StepTwo() {
           />
 
           <label
-            htmlFor="disable"
+            htmlFor="vesting-contribution"
             className="text-white text-[0.875rem] flex items-center gap-[0.62rem]"
           >
             <div
-              className={`relative flex cursor-pointer ${
+              className={`relative flex ${
                 !isVestingContributionChecked &&
                 "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-              } rounded-lg`}
+              } rounded-lg cursor-pointer`}
             >
               <input
                 type="checkbox"
@@ -373,11 +372,13 @@ export default function StepTwo() {
                 }`}
               ></i>
             </div>
-            Using vesting contributor?
+            <span>Using vesting contributor?</span>
           </label>
-          <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
-            Vesting Contributor does not support rebase tokens.
-          </p>
+          {isVestingContributionChecked && (
+            <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
+              Vesting Contributor does not support rebase tokens.
+            </p>
+          )}
           {/* Liquidity lockup */}
           <CustomInput
             id="first-release-for-presale"
@@ -444,23 +445,24 @@ export default function StepTwo() {
                 Back
               </button>
               <button
-                // disabled={
-                //   !presaleRate &&
-                //   !softcap &&
-                //   !hardcap &&
-                //   !minBuy &&
-                //   !maxBuy &&
-                //   !refundType &&
-                //   !router &&
-                //   !liquidity &&
-                //   !listingRate &&
-                //   !startDate &&
-                //   !endDate &&
-                //   !liquidityLockup &&
-                //   !firstRelease &&
-                //   !vestingPeriod &&
-                //   !presaleToken
-                // }
+                type="submit"
+                disabled={
+                  presaleRate === null ||
+                  softcap === null ||
+                  hardcap === null ||
+                  minBuy === null ||
+                  maxBuy === null ||
+                  refundType === "" ||
+                  router === "Select router exchange" ||
+                  liquidity === null ||
+                  listingRate === null ||
+                  startDate === "" ||
+                  endDate === "" ||
+                  liquidityLockup === "" ||
+                  firstRelease === "" ||
+                  vestingPeriod === "" ||
+                  presaleToken === ""
+                }
                 onClick={(e: any) => {
                   e.preventDefault();
                   handleNextStep?.(e);
