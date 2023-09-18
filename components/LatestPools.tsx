@@ -4,14 +4,14 @@ type Props = {};
 
 export default function LatestPools({}: Props) {
   return (
-    <section className="w-full text-white flex gap-2 items-center mr-8 md:mr-0 xl:mx-0">
+    <section className="w-full text-white flex gap-2 items-center ">
       <div className="flex items-center gap-2 z-40 whitespace-nowrap w-[150px] bg-[#353644] py-1 px-2 rounded-[0.625rem]">
         <Image width={24} height={24} src="/icons/new.svg" alt="new icon" />
         <span className="text-[0.75rem] tracking-[-0.0075rem] ">
           LATEST POOLS
         </span>
       </div>
-      <div className="overflow-hidden w-[45vw]">
+      <div className="overflow-hidden w-[45vw] lg:w-full">
         <ul
           id="scroll-text-group"
           className=" whitespace-nowrap flex gap-2 items-center"

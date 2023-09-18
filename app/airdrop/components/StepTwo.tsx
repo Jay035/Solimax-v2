@@ -59,6 +59,7 @@ export default function StepTwo({
               checked={anotherUserUsed}
               onChange={(event: any) => {
                 setAnotherUserUsed(event.target.checked);
+                console.log(anotherUserUsed)
               }}
             />
             <i
@@ -72,7 +73,7 @@ export default function StepTwo({
         {anotherUserUsed && (
           <div className="">
             <CustomInput
-              id="max-contribution"
+              id="owner-address"
               className="mt-4 flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] cursor-pointer border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Owner"

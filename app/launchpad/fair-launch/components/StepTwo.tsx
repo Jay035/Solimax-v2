@@ -7,20 +7,11 @@ import { useState } from "react";
 export default function StepTwo() {
   const { handleNextStep, handlePreviousStep } = GlobalContext();
   const [softcap, setSoftcap] = useState();
-  const [hardcap, setHardcap] = useState();
-  const [minBuy, setMinBuy] = useState();
-  const [maxBuy, setMaxBuy] = useState();
   const [router, setRouter] = useState("Select router exchange");
-  const [refundType, setRefundType] = useState("Burn");
   const [liquidity, setLiquidity] = useState();
-  const [listingRate, setListingRate] = useState();
-  const [presaleRate, setPresaleRate] = useState();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [liquidityLockup, setLiquidityLockup] = useState("");
-  const [firstRelease, setFirstRelease] = useState("");
-  const [vestingPeriod, setVestingPeriod] = useState("");
-  const [presaleToken, setPresaleToken] = useState("");
   const [error, setError] = useState("");
   const [totalSellingAmount, setTotalSellingAmount] = useState("");
 
@@ -387,32 +378,18 @@ export default function StepTwo() {
               <button
                 disabled={
                   totalSellingAmount === "" ||
-                  presaleRate === null ||
-                  softcap ||
-                  hardcap ||
-                  minBuy === null ||
-                  maxBuy &&
-                  refundType &&
-                  router &&
-                  liquidity &&
-                  listingRate &&
-                  startDate &&
-                  endDate &&
-                  liquidityLockup &&
-                  firstRelease &&
-                  vestingPeriod &&
-                  presaleToken
+                  softcap === null ||
+                  router === "" ||
+                  liquidity === null ||
+                  startDate === "" ||
+                  endDate === "" ||
+                  liquidityLockup === ""
                 }
                 onClick={(e: any) => {
                   e.preventDefault();
                   handleNextStep?.(e);
-                  // if (tokenAddress === "") {
-                  //   setError("Token address must be entered");
-                  // } else {
-                  //   handleNextStep();
-                  // }
                 }}
-                className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+                className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
               >
                 Next
               </button>

@@ -27,38 +27,14 @@ export default function CreationSteps({ stepTitles }: any) {
   const toggleStep = (tag: number) => {
     // if (tokenAddress === "") {
     //   setCurrentStep?.(1);
-      if (currentStep === 1) {
-        setError?.("Token address must be entered");
-        console.log(error);
-      } else {
-        setError?.("");
-      }
-    // }
-    // else if (
-    //   currentStep === 2 &&
-    //   !presaleRate &&
-    //   !softcap &&
-    //   !hardcap &&
-    //   !minBuy &&
-    //   !maxBuy &&
-    //   !refundType &&
-    //   !router &&
-    //   !liquidity &&
-    //   !listingRate &&
-    //   !startDate &&
-    //   !endDate &&
-    //   !liquidityLockup &&
-    //   !firstRelease &&
-    //   !vestingPeriod &&
-    //   !presaleToken
-    // ) {
-    //   console.log(currentStep);
-    //   setError?.("Fill all the required fields");
-    //   setCurrentStep?.(2);
-    // } else {
+    if (currentStep === 1) {
+      setError?.("Token address must be entered");
+      console.log(error);
+    } else {
+      setError?.("");
       setCurrentStep?.(tag);
-      console.log(tag);
-    // }
+    }
+    console.log(tag);
   };
 
   return (
@@ -72,8 +48,11 @@ export default function CreationSteps({ stepTitles }: any) {
               : ""
           } ${index === 0 ? "rounded-t-[0.625rem]" : ""} ${
             index === 3 ? "rounded-b-[0.625rem]" : ""
-          } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-pointer`}
-          onClick={() => toggleStep(item?.tag)}
+          } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-default`}
+          onClick={(e: any) => {
+            e.preventDefault();
+            // toggleStep(item?.tag)
+          }}
         >
           <div
             className={`w-8 h-8 flex items-center justify-center p-[0.625rem] rounded-[3.125rem] ${
