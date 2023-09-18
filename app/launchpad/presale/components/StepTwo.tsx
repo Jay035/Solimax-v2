@@ -444,23 +444,23 @@ export default function StepTwo() {
                 Back
               </button>
               <button
-                disabled={
-                  !presaleRate &&
-                  !softcap &&
-                  !hardcap &&
-                  !minBuy &&
-                  !maxBuy &&
-                  !refundType &&
-                  !router &&
-                  !liquidity &&
-                  !listingRate &&
-                  !startDate &&
-                  !endDate &&
-                  !liquidityLockup &&
-                  !firstRelease &&
-                  !vestingPeriod &&
-                  !presaleToken
-                }
+                // disabled={
+                //   !presaleRate &&
+                //   !softcap &&
+                //   !hardcap &&
+                //   !minBuy &&
+                //   !maxBuy &&
+                //   !refundType &&
+                //   !router &&
+                //   !liquidity &&
+                //   !listingRate &&
+                //   !startDate &&
+                //   !endDate &&
+                //   !liquidityLockup &&
+                //   !firstRelease &&
+                //   !vestingPeriod &&
+                //   !presaleToken
+                // }
                 onClick={(e: any) => {
                   e.preventDefault();
                   handleNextStep?.(e);

@@ -50,7 +50,7 @@ export default function ButtonGroup() {
       </div>
       {/* Create token button */}
       <button
-      className="w-fit ml-auto"
+      className="w-fit ml-auto pr-4"
         onClick={(e: any) => {
           e.preventDefault();
           window.scrollTo(0, 0);

@@ -11,53 +11,53 @@ export default function LatestPools({}: Props) {
           LATEST POOLS
         </span>
       </div>
-      {/* <div className="w-fit  "> */}
-        <div
-          id="latest-pools"
-          className="w-full max-w-[12rem] whitespace-nowrap overflow-x-auto flex gap-2 items-center"
+      <div className="overflow-hidden w-[45vw]">
+        <ul
+          id="scroll-text-group"
+          className=" whitespace-nowrap flex gap-2 items-center"
         >
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#1 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#2 </span>
             <span className="underline text-[#A4D0F2]">YourPlace</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#3 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#4 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#5 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#6 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#7 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#8 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#9 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-          <div className="text-[0.75rem] tracking-[-0.0075rem]">
+          </li>
+          <li className="text-[0.75rem] tracking-[-0.0075rem]">
             <span>#10 </span>
             <span className="underline text-[#A4D0F2]">xAIBOT</span>
-          </div>
-        </div>
-      {/* </div> */}
+          </li>
+        </ul>
+      </div>
     </section>
   );
 }

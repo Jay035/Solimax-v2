@@ -32,7 +32,7 @@ export default function Home() {
       </div>
       {/* ------------------------------ */}
       {/* CARDS */}
-      <div className="mt-[3.69rem] mb-[5.19rem] mr-[1.06rem] md:mr-0 md:w-full md:justify-center xl:justify-start w-fit flex flex-wrap gap-[0.88rem]">
+      <div className="mt-[3.69rem] mb-[5.19rem] pr-[1.06rem] md:w-full xl:justify-start w-fit mx-auto flex flex-wrap gap-[0.88rem]">
         {/* TOTAL LIQUIDITY RAISED */}
         <section className="w-full text-center xl:text-left md:w-fit md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
