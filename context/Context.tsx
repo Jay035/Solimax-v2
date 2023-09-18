@@ -74,6 +74,10 @@ export function LaunchpadContextProvider({ children }: Props) {
 
   const handleNextStep = () => {
     setCurrentStep?.(currentStep + 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   };
 
   const handlePreviousStep = () => {

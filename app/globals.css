@@ -130,7 +130,7 @@ thead {
   cursor: pointer;
 }
 
-#filter .custom-dropdown{
+#filter .custom-dropdown {
   padding-inline: 0.5rem;
 }
 
@@ -173,7 +173,7 @@ thead {
 /* PAGINATION */
 
 .paginationBtns {
-    @apply flex justify-between items-center text-sm text-[#A0A0AB] mt-8 bg-[#1D1C20] rounded-[0.625rem] px-6 pt-3 pb-4;
+  @apply flex justify-between items-center text-sm text-[#A0A0AB] mt-8 bg-[#1D1C20] rounded-[0.625rem] px-6 pt-3 pb-4;
 }
 
 .paginationDisabled {
@@ -193,20 +193,62 @@ thead {
   @apply text-white bg-[#454FDA] flex items-center justify-center w-6 h-6 hover:bg-[#454FDA]/80 rounded-[1.25rem];
 }
 
-#latest-pools{
-  animation: flowIn 10s ease-in infinite ;
+#scroll-text-group {
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 15s linear infinite;
 }
 
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+#latest-pools {
+  animation: flowIn 10s ease-in infinite;
+}
 
 @keyframes flowIn {
   0% {
-  -moz-transform: translateX(2%);
-  -webkit-transform: translateX(2%);
-  transform: translateX(2%);
+    -moz-transform: translateX(2%);
+    -webkit-transform: translateX(2%);
+    transform: translateX(2%);
   }
   100% {
-  -moz-transform: translateX(-100%);
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
   }
- }
+}

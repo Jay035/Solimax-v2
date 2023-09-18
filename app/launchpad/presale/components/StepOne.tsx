@@ -119,31 +119,6 @@ export default function StepOne() {
             </div>
             1.5% BNB raised + 1.5% token raised
           </label>
-          {/* <label
-            htmlFor="fee-option-(%-BNB-raised)"
-            className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
-          >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="radio"
-              name="fee-options"
-              id="fee-option-(%-BNB-raised)"
-            />
-            % BNB raised only{" "}
-            <span className="text-[#F3CE92]"> (Recommended)</span>
-          </label>
-          <label
-            htmlFor="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
-            className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
-          >
-            <input
-              className="w-6 h-6 accent-[#A4D0F2]"
-              type="radio"
-              name="fee-options"
-              id="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
-            />
-            1.5% BNB raised + 1.5% token raised
-          </label> */}
         </div>
         <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
           Make sure the token has &apos;Exclude transfer fee&apos; function if
@@ -154,6 +129,11 @@ export default function StepOne() {
             e.preventDefault();
             if (tokenAddress === "") {
               setError?.("Token address must be entered");
+              window.scrollTo({
+                top: 400,
+                left: 100,
+                behavior: "smooth",
+              })
             } else {
               handleNextStep?.(e);
             }
