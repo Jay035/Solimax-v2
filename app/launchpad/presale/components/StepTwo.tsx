@@ -20,7 +20,7 @@ export default function StepTwo() {
   const [liquidityLockup, setLiquidityLockup] = useState<string>("");
   const [firstRelease, setFirstRelease] = useState<string>("");
   const [vestingPeriod, setVestingPeriod] = useState<string>("");
-  const [presaleToken, setPresaleToken] = useState<string>("");
+  const [presaleToken, setPresaleToken] = useState<number>();
   const [error, setError] = useState<string>("");
   const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
   const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
@@ -52,6 +52,13 @@ export default function StepTwo() {
       id: 3,
     },
   ];
+
+  const handleInputChange = (value: any, setVariable: (e: any) => void) => {
+    // const inputValue = event.target.value;
+    // Append '%' to the input value and update the state
+    setVariable(value + "%");
+  };
+
   return (
     <section className="flex flex-col gap-6 ">
       <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
@@ -390,6 +397,7 @@ export default function StepTwo() {
             value={firstRelease}
             onChange={(e) => {
               setFirstRelease?.(e.target.value);
+              // handleInputChange(e.target.value, setFirstRelease);
               setError?.("");
             }}
             isRequired={true}
@@ -422,6 +430,7 @@ export default function StepTwo() {
               value={presaleToken}
               onChange={(e) => {
                 setPresaleToken?.(e.target.value);
+                // handleInputChange(e.target.value, setPresaleToken);
                 setError?.("");
               }}
               isRequired={true}
@@ -461,18 +470,13 @@ export default function StepTwo() {
                   liquidityLockup === "" ||
                   firstRelease === "" ||
                   vestingPeriod === "" ||
-                  presaleToken === ""
+                  presaleToken === null
                 }
                 onClick={(e: any) => {
                   e.preventDefault();
                   handleNextStep?.(e);
-                  // if (tokenAddress === "") {
-                  //   setError("Token address must be entered");
-                  // } else {
-                  //   handleNextStep();
-                  // }
                 }}
-                className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+                className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
               >
                 Next
               </button>

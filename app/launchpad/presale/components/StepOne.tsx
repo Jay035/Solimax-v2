@@ -123,18 +123,19 @@ export default function StepOne() {
           it has transfer fees.
         </p>
         <button
+          disabled={tokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
-            if (tokenAddress === "") {
-              setError?.("Token address must be entered");
-              window.scrollTo({
-                top: 400,
-                left: 100,
-                behavior: "smooth",
-              });
-            } else {
-              handleNextStep?.(e);
-            }
+            // if (tokenAddress === "") {
+            //   setError?.("Token address must be entered");
+            //   window.scrollTo({
+            //     top: 400,
+            //     left: 100,
+            //     behavior: "smooth",
+            //   });
+            // } else {
+            // }
+            handleNextStep?.(e);
           }}
           className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
         >
