@@ -3,6 +3,7 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
+import Checkbox from "@/utils/Checkbox";
 
 export default function StepTwo() {
   const { handleNextStep, handlePreviousStep } = GlobalContext();
@@ -353,7 +354,7 @@ export default function StepTwo() {
             isRequired={true}
           />
 
-          <label
+          {/* <label
             htmlFor="vesting-contribution"
             className="text-white text-[0.875rem] flex items-center gap-[0.62rem]"
           >
@@ -380,9 +381,14 @@ export default function StepTwo() {
               ></i>
             </div>
             <span>Using vesting contributor?</span>
-          </label>
+          </label> */}
+          <Checkbox
+            text="Using vesting contributor?"
+            valueChecked={isVestingContributionChecked}
+            setValueChecked={setIsVestingContributionChecked}
+          />
           {isVestingContributionChecked && (
-            <p className="mb-8 text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
+            <p className="text-[0.875rem] tracking-[-0.00875rem] p-[0.625rem] bg-[#a4d0f2]/[0.05] rounded-[0.625rem]">
               Vesting Contributor does not support rebase tokens.
             </p>
           )}

@@ -3,6 +3,7 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
+import Checkbox from "@/utils/Checkbox";
 
 export default function StepTwo() {
   const { handleNextStep, handlePreviousStep } = GlobalContext();
@@ -160,7 +161,7 @@ export default function StepTwo() {
               isRequired={true}
             />
 
-            <label
+            {/* <label
               htmlFor="setting-max-contribution"
               className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
             >
@@ -187,7 +188,13 @@ export default function StepTwo() {
                 ></i>
               </div>
               <span className="text-[#F4F4F5]">Setting max contribution?</span>
-            </label>
+            </label> */}
+            <Checkbox
+              text="Setting max contribution?"
+              valueChecked={isMaxContributionChecked}
+              setValueChecked={setIsMaxContributionChecked}
+            />
+
             {isMaxContributionChecked && (
               <CustomInput
                 id="max-contribution"
@@ -233,10 +240,10 @@ export default function StepTwo() {
               }}
               isRequired={true}
             />
-            <label className="text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
+            {/* <label className="text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
               <div
                 className={`relative flex ${
-                  !isMaxContributionChecked &&
+                  !isBuyBackChecked &&
                   "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
                 } rounded-lg`}
               >
@@ -251,13 +258,18 @@ export default function StepTwo() {
                   }}
                 />
                 <i
-                  className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                    isBuyBackChecked ? "text-black" : "hidden"
+                  className={`ri-check-line text-xl absolute left-0.5 translate-x-0.5 top-0 ${
+                    isBuyBackChecked ? "text-[#454FDA] font-bold" : "hidden"
                   }`}
                 ></i>
               </div>
               <span className="text-[#F4F4F5]">Enable buyback?</span>
-            </label>
+            </label> */}
+            <Checkbox
+              text="Enable buyback?"
+              valueChecked={isBuyBackChecked}
+              setValueChecked={setIsBuyBackChecked}
+            />
             {isBuyBackChecked && (
               <div className="">
                 <CustomInput
@@ -379,7 +391,7 @@ export default function StepTwo() {
                 disabled={
                   totalSellingAmount === "" ||
                   softcap === null ||
-                  router === "" ||
+                  router === "Select router exchange" ||
                   liquidity === null ||
                   startDate === "" ||
                   endDate === "" ||
@@ -387,7 +399,15 @@ export default function StepTwo() {
                 }
                 onClick={(e: any) => {
                   e.preventDefault();
-                  handleNextStep?.(e);
+                  if (isMaxContributionChecked || isBuyBackChecked) {
+                    if (maxContribution === "" || buybackPercent === "") {
+                      return;
+                    } else {
+                      handleNextStep?.(e);
+                    }
+                  } else {
+                    handleNextStep?.(e);
+                  }
                 }}
                 className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
               >

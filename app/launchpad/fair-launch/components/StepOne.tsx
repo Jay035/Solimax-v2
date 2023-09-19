@@ -18,13 +18,11 @@ export default function StepOne() {
     <section className="flex flex-col gap-4 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
       {/* <div className=""> */}
-        <p className="text-[0.8125rem] mt-2 tracking-[-0.00813rem] text-[#D1D1D6]">
-          <span className="text-[#F04438]">(*) </span>is required field
-        </p>
-        {/* ERROR */}
-        {error && (
-          <p className="text-[#F04438] text-sm">{error}</p>
-        )}
+      <p className="text-[0.8125rem] mt-2 tracking-[-0.00813rem] text-[#D1D1D6]">
+        <span className="text-[#F04438]">(*) </span>is required field
+      </p>
+      {/* ERROR */}
+      {error && <p className="text-[#F04438] text-sm">{error}</p>}
       {/* </div> */}
       <form className="flex flex-col mt-2 gap-6">
         <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
@@ -127,13 +125,14 @@ export default function StepOne() {
           it has transfer fees.
         </p>
         <button
+          disabled={tokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
-            if (tokenAddress === "") {
-              setError?.("Token address must be entered");
-            } else {
-              handleNextStep?.(e);
-            }
+            // if (tokenAddress === "") {
+            //   setError?.("Token address must be entered");
+            // } else {
+            // }
+            handleNextStep?.(e);
           }}
           className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
         >
