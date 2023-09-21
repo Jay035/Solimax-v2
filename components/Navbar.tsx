@@ -23,6 +23,7 @@ export default function Navbar({}: Props) {
   const showOptions = () => {
     setOptionsOpen((prevstate) => !prevstate);
   };
+
   // const isActive = pathname === link.href
 
   // const changeRoute = (route: string) => {

@@ -116,3 +116,58 @@ export const airdropListDetails = [
     saleStartTime: "00: 24: 16",
   },
 ];
+
+
+
+export const TrendingPoolsData = [
+  {
+    id: 1,
+    projectName: "Cardashian",
+    saleType: "Public",
+    price: 10,
+    minBuy: 100,
+    maxBuy: 1000,
+    totalSupply: 1000000,
+    dateOfCompletion: "17th April, 10:00am UTC +1"
+  },
+  {
+    id: 2,
+    projectName: "Cardashian",
+    saleType: "Public",
+    price: 10,
+    minBuy: 100,
+    maxBuy: 1000,
+    totalSupply: 1000000,
+    dateOfCompletion: "17th April, 10:00am UTC +1"
+  },
+  {
+    id: 3,
+    projectName: "Cardashian",
+    saleType: "Public",
+    price: 10,
+    minBuy: 100,
+    maxBuy: 1000,
+    totalSupply: 1000000,
+    dateOfCompletion: "17th April, 10:00am UTC +1"
+  },
+  {
+    id: 4,
+    projectName: "Cardashian",
+    saleType: "Public",
+    price: 10,
+    minBuy: 100,
+    maxBuy: 1000,
+    totalSupply: 1000000,
+    dateOfCompletion: "17th April, 10:00am UTC +1"
+  },
+  {
+    id: 5,
+    projectName: "Cardashian",
+    saleType: "Public",
+    price: 10,
+    minBuy: 100,
+    maxBuy: 1000,
+    totalSupply: 1000000,
+    dateOfCompletion: "17th April, 10:00am UTC +1"
+  },
+]

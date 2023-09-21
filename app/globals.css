@@ -252,3 +252,9 @@ thead {
     transform: translateX(-100%);
   }
 }
+
+/* ----------------------------- */
+/* CONNECT BUTTON */
+#connect-btn button {
+  @apply rounded-[3.125rem] text-center font-normal font-questrial p-[0.62rem] border-[0.5px] w-[7.38rem] h-12 bg-[#454FDA] text-white border-[#424242];
+}

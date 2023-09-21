@@ -96,3 +96,14 @@ type ButtonProps = {
   route: string;
   text: string;
 };
+
+type PoolsDataProps = {
+  id: number;
+  projectName: string;
+  saleType: string;
+  price: number;
+  minBuy: number;
+  maxBuy: number;
+  totalSupply: number;
+  dateOfCompletion: string;
+}
