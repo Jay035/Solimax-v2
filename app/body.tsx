@@ -4,7 +4,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Wallet from "@/components/Wallet";
 import CreateTokenModal from "@/components/launchpad/CreateTokenModal";
 import { GlobalContext } from "@/context/Context";
-import React from "react";
 
 export default function BodyComponent({
   children,

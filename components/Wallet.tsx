@@ -1,9 +1,13 @@
 import Image from "next/image";
 import logoIcon from "/public/icons/bsc-icon.svg";
+import { useIsMounted } from "@/hooks/useIsMounted";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 type Props = {};
 
 export default function Wallet({}: Props) {
+  const mounted = useIsMounted();
+
   return (
     <section className="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]">
       <button className="bg-[#28282B] xl:p-[0.625rem] border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]">
@@ -19,9 +23,14 @@ export default function Wallet({}: Props) {
           alt="bsc icon"
         />
       </button>
-      <button className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-[7.38rem] h-12 bg-[#454FDA] text-white border-[#424242]">
+      {/* <button className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-[7.38rem] h-12 bg-[#454FDA] text-white border-[#424242]">
         Connect
-      </button>
+      </button> */}
+      {/* <ConnectButton showBalance={false} /> */}
+      <div id="connect-btn">
+
+      <ConnectButton label="Connect" showBalance={false} />
+      </div>
     </section>
   );
 }

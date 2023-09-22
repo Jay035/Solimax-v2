@@ -1,13 +1,11 @@
-import Navbar from "@/components/Navbar";
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Inter, Questrial } from "next/font/google";
-import Wallet from "@/components/Wallet";
-import LatestPools from "@/components/LatestPools";
-import ScrollToTop from "@/components/ScrollToTop";
+import { Questrial } from "next/font/google";
 import { LaunchpadContextProvider } from "@/context/Context";
 import BodyComponent from "./body";
+import { Providers } from "./providers";
+import "@rainbow-me/rainbowkit/styles.css";
 
 // const inter = Inter({ subsets: ["latin"] });
 const questrial = Questrial({
@@ -53,9 +51,11 @@ export default function RootLayout({
       <body
         className={`${questrial.variable} ${NeueHaasDisplay.variable} relative`}
       >
-        <LaunchpadContextProvider>
-          <BodyComponent>{children}</BodyComponent>
-        </LaunchpadContextProvider>
+        <Providers>
+          <LaunchpadContextProvider>
+            <BodyComponent>{children}</BodyComponent>
+          </LaunchpadContextProvider>
+        </Providers>
       </body>
     </html>
   );

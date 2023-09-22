@@ -1,11 +1,12 @@
 import Image from "next/image";
 import chevronDown from "../public/icons/chevron-down.svg";
+import { TrendingPoolsData } from "./data";
 
 type Props = {};
 
 export default function TrendingPools({}: Props) {
   return (
-    <section className="text-white pr-[1.06rem] sm:px-8 md:px-0">
+    <section className="text-white pr-[1.06rem] sm:pr-8">
       <div className="mb-[1.88rem] flex justify-between items-center">
         <div className="flex items-center gap-1">
           <Image
@@ -28,87 +29,11 @@ export default function TrendingPools({}: Props) {
         </div>
       </div>
       {/* table */}
-      <section className="hidden overflow-x-scroll pr-[2.31rem] rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20] w-fit md:w-full md:pr-0">
-        <div className="whitespace-nowrap py-[0.8rem] border-b border-[#51525C] pl-[3.75rem] pr-[2.31rem] grid grid-cols-7 items-center gap-[6.94rem] w-full">
-          <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
-            PROJECT
-          </h3>
-          <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
-            SALE TYPE
-          </h3>
-          <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
-            PRICE
-          </h3>
-          <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
-            MIN BUY
-          </h3>
-          <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
-            MAX BUY
-          </h3>
-          <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
-            TOTAL SUPPLY
-          </h3>
-          <h3 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]">
-            DATE OF SUPPLY
-          </h3>
-        </div>
-        <div className="flex flex-col gap-4 my-[1.19rem]">
-          {/* first row */}
-          <div className="grid grid-cols-7 whitespace-nowrap pl-[3.75rem] text-[0.875rem] tracking-[-0.00875rem] text-[#EAECF0] items-center gap-[6.94rem] w-full">
-            <p className="">Catdashian</p>
-            <p>Public</p>
-            <p>$0.001</p>
-            <p>$100</p>
-            <p>$1000</p>
-            <p>100,000,000</p>
-            <p>17th April, 10:00am UTC +1</p>
-          </div>
-          {/* second row */}
-          <div className="grid grid-cols-7 whitespace-nowrap pl-[3.75rem]  text-[0.875rem] tracking-[-0.00875rem] text-[#EAECF0] items-center gap-[6.94rem] w-full">
-            <p>Catdashian</p>
-            <p>Public</p>
-            <p>$0.001</p>
-            <p>$100</p>
-            <p>$1000</p>
-            <p>100,000,000</p>
-            <p>17th April, 10:00am UTC +1</p>
-          </div>
-          {/* third row */}
-          <div className="grid grid-cols-7 whitespace-nowrap pl-[3.75rem] text-[0.875rem] tracking-[-0.00875rem] text-[#EAECF0] items-center gap-[6.94rem] w-full">
-            <p>Catdashian</p>
-            <p>Public</p>
-            <p>$0.001</p>
-            <p>$100</p>
-            <p>$1000</p>
-            <p>100,000,000</p>
-            <p>17th April, 10:00am UTC +1</p>
-          </div>
-          {/* fourth row */}
-          <div className="grid grid-cols-7 whitespace-nowrap pl-[3.75rem] text-[0.875rem] tracking-[-0.00875rem] text-[#EAECF0] items-center gap-[6.94rem] w-full">
-            <p>Catdashian</p>
-            <p>Public</p>
-            <p>$0.001</p>
-            <p>$100</p>
-            <p>$1000</p>
-            <p>100,000,000</p>
-            <p>17th April, 10:00am UTC +1</p>
-          </div>
-          {/* fifth row */}
-          <div className="grid grid-cols-7 whitespace-nowrap pl-[3.75rem] text-[0.875rem] tracking-[-0.00875rem] text-[#EAECF0] items-center gap-[6.94rem] w-full">
-            <p>Catdashian</p>
-            <p>Public</p>
-            <p>$0.001</p>
-            <p>$100</p>
-            <p>$1000</p>
-            <p>100,000,000</p>
-            <p>17th April, 10:00am UTC +1</p>
-          </div>
-        </div>
-      </section>
+
       <div className="w-fit md:w-full grid grid-cols-1 overflow-x-auto rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20]">
         <table
           className="w-full border-collapse table pr-[2.31rem]"
-          cellPadding={16}
+          cellPadding={10}
         >
           <thead className="">
             <tr className="whitespace-nowrap text-left border-b border-[#51525C]">
@@ -162,67 +87,26 @@ export default function TrendingPools({}: Props) {
               </th>
             </tr>
           </thead>
-          <tbody className="mt-[1.19rem] ">
-            <tr>
-              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
-                1.
-              </th>
-              <td headers="project one">Cardashian</td>
-              <td headers="sale-type one">Public</td>
-              <td headers="price one">$10</td>
-              <td headers="min-buy one">$100</td>
-              <td headers="max-buy one">$1000</td>
-              <td headers="total-supply one">$1000000</td>
-              <td headers="date one">17th April, 10:00am UTC +1</td>
-            </tr>
-            <tr>
-              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
-                1.
-              </th>
-              <td headers="project one">Cardashian</td>
-              <td headers="sale-type one">Public</td>
-              <td headers="price one">$10</td>
-              <td headers="min-buy one">$100</td>
-              <td headers="max-buy one">$1000</td>
-              <td headers="total-supply one">$1000000</td>
-              <td headers="date one">17th April, 10:00am UTC +1</td>
-            </tr>
-            <tr>
-              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
-                1.
-              </th>
-              <td headers="project one">Cardashian</td>
-              <td headers="sale-type one">Public</td>
-              <td headers="price one">$10</td>
-              <td headers="min-buy one">$100</td>
-              <td headers="max-buy one">$1000</td>
-              <td headers="total-supply one">$1000000</td>
-              <td headers="date one">17th April, 10:00am UTC +1</td>
-            </tr>
-            <tr>
-              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
-                1.
-              </th>
-              <td headers="project one">Cardashian</td>
-              <td headers="sale-type one">Public</td>
-              <td headers="price one">$10</td>
-              <td headers="min-buy one">$100</td>
-              <td headers="max-buy one">$1000</td>
-              <td headers="total-supply one">$1000000</td>
-              <td headers="date one">17th April, 10:00am UTC +1</td>
-            </tr>
-            <tr>
-              <th id="one" className="bg-[#26272B] border-r border-[#51525C]">
-                1.
-              </th>
-              <td headers="project one">Cardashian</td>
-              <td headers="sale-type one">Public</td>
-              <td headers="price one">$10</td>
-              <td headers="min-buy one">$100</td>
-              <td headers="max-buy one">$1000</td>
-              <td headers="total-supply one">$1000000</td>
-              <td headers="date one">17th April, 10:00am UTC +1</td>
-            </tr>
+          <tbody className="mt-[1.19rem] text-sm">
+            {TrendingPoolsData?.map((data: PoolsDataProps) => (
+              <tr key={data?.id}>
+                <th
+                  // id={data?.id}
+                  className="bg-[#26272B] border-r border-[#51525C]"
+                >
+                  {data?.id}.
+                </th>
+                <td headers={`project ${data?.id}`}>{data?.projectName}</td>
+                <td headers={`sale-type ${data?.id}`}>{data?.saleType}</td>
+                <td headers={`price ${data?.id}`}>{data?.price}</td>
+                <td headers={`min-buy ${data?.id}`}>{data?.minBuy}</td>
+                <td headers={`max-buy ${data?.id}`}>{data?.maxBuy}</td>
+                <td headers={`total-supply ${data?.id}`}>
+                  {data?.totalSupply}
+                </td>
+                <td headers={`date ${data?.id}`}>{data?.dateOfCompletion}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
