@@ -9,6 +9,7 @@ import {
 
 export const LaunchpadContext = createContext<FormProps>({
   currentStep: 1,
+  presaleCurrentStep: 1,
 });
 
 type Props = {
@@ -16,6 +17,7 @@ type Props = {
 };
 
 export function LaunchpadContextProvider({ children }: Props) {
+  const [isModalShowing, setIsModalShowing] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
 
   // PRESALE TAB
@@ -24,16 +26,19 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [presaleSelectedCurrency, setPresaleSelectedCurrency] = useState("BNB");
   const [isPresaleFeeOptionOneChecked, setIsPresaleFeeOptionOneChecked] =
     useState<boolean>(true);
+  const [isPresaleFeeOptionTwoChecked, setIsPresaleFeeOptionTwoChecked] =
+    useState<boolean>(false);
 
   // FAIRSALE TAB
-  const [fairsaleCurrentStep, setFairsaleCurrentStep] = useState(1);
-  const [fairsaleTokenAddress, setFairsaleTokenAddress] = useState("");
-  const [fairsaleSelectedCurrency, setFairsaleSelectedCurrency] =
+  const [fairlaunchCurrentStep, setFairlaunchCurrentStep] = useState(1);
+  const [fairlaunchTokenAddress, setFairlaunchTokenAddress] = useState("");
+  const [fairlaunchSelectedCurrency, setFairlaunchSelectedCurrency] =
     useState("BNB");
-  const [isFairsaleFeeOptionOneChecked, setIsFairsaleFeeOptionOneChecked] =
+  const [isFairlaunchFeeOptionOneChecked, setIsFairlaunchFeeOptionOneChecked] =
     useState<boolean>(true);
+  const [isFairlaunchFeeOptionTwoChecked, setFairlaunchIsFeeOptionTwoChecked] =
+    useState<boolean>(false);
 
-  const [isModalShowing, setIsModalShowing] = useState(false);
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [softcap, setSoftcap] = useState(0);
@@ -89,6 +94,7 @@ export function LaunchpadContextProvider({ children }: Props) {
 
   const handleNextStep = () => {
     setCurrentStep?.(currentStep + 1);
+    setPresaleCurrentStep?.(presaleCurrentStep + 1);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -131,8 +137,6 @@ export function LaunchpadContextProvider({ children }: Props) {
     youtubeURL,
     description,
     selectedCurrency,
-    presaleTokenAddress,
-    presaleSelectedCurrency,
     softcap,
     hardcap,
     minBuy,
@@ -151,6 +155,14 @@ export function LaunchpadContextProvider({ children }: Props) {
     totalSellingAmount,
     isModalShowing,
     nameOfToken,
+    presaleTokenAddress,
+    presaleSelectedCurrency,
+    presaleCurrentStep,
+    isPresaleFeeOptionOneChecked,
+    isPresaleFeeOptionTwoChecked,
+    setIsPresaleFeeOptionTwoChecked,
+    setIsPresaleFeeOptionOneChecked,
+    setPresaleCurrentStep,
     setPresaleTokenAddress,
     setPresaleSelectedCurrency,
     setNameOfToken,

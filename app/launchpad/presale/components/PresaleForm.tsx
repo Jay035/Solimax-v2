@@ -6,25 +6,25 @@ import StepFour from "./StepFour";
 import { GlobalContext } from "@/context/Context";
 
 export default function PresaleForm() {
-  const { currentStep } = GlobalContext();
+  const { presaleCurrentStep } = GlobalContext();
 
   return (
     <section>
       {/* ------------------------------------- */}
       {/* STEP 1 */}
-      {currentStep === 1 && <StepOne />}
+      {presaleCurrentStep === 1 && <StepOne />}
 
       {/* ------------------------------------- */}
       {/* STEP 2 */}
-      {currentStep === 2 && <StepTwo />}
+      {presaleCurrentStep === 2 && <StepTwo />}
 
       {/* ------------------------------------- */}
       {/* STEP 3 */}
-      {currentStep === 3 && <StepThree />}
+      {presaleCurrentStep === 3 && <StepThree />}
 
       {/* ------------------------------------- */}
       {/* STEP 4 */}
-      {currentStep === 4 && <StepFour />}
+      {presaleCurrentStep === 4 && <StepFour />}
     </section>
   );
 }

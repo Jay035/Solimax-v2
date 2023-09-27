@@ -10,9 +10,14 @@ interface AccordionProps {
   children: any;
 }
 
+// interface PresaleFormProps {
+
+// }
+
 interface FormProps {
   currencyOptions?: any;
   currentStep: number;
+  presaleCurrentStep: number;
   tokenAddress?: string;
   presaleRate?: number;
   softcap?: number;
@@ -48,6 +53,8 @@ interface FormProps {
   nameOfToken?: string;
   presaleTokenAddress?: string;
   presaleSelectedCurrency?: string;
+  isPresaleFeeOptionOneChecked?: boolean;
+  isPresaleFeeOptionTwoChecked?: boolean;
   setPresaleTokenAddress?: (x: string) => void;
   setNameOfToken?: (x: string) => void;
   setIsModalShowing?: (x: any) => void;
@@ -82,8 +89,11 @@ interface FormProps {
   setTokenAddress?: (address: string) => void;
   setPresaleRate?: (rate: number) => void;
   setSelectedCurrency?: (currency: string) => void;
+  setIsPresaleFeeOptionTwoChecked?: (x: boolean) => void;
+  setIsPresaleFeeOptionOneChecked?: (x: boolean) => void;
   setPresaleSelectedCurrency?: (currency: string) => void;
   setCurrentStep?: (step: number) => void;
+  setPresaleCurrentStep?: (step: number) => void;
 }
 
 type stepTitleProps = {
@@ -110,4 +120,4 @@ type PoolsDataProps = {
   maxBuy: number;
   totalSupply: number;
   dateOfCompletion: string;
-}
+};

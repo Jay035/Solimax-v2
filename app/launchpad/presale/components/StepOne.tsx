@@ -5,21 +5,18 @@ import { GlobalContext } from "@/context/Context";
 import { useState, useEffect } from "react";
 
 export default function StepOne() {
-  // const [selectedCurrency, setSelectedCurrency] = useState("BNB");
-  // const [tokenAddress, setTokenAddress] = useState("");
   const [error, setError] = useState("");
-
-  const [isFeeOptionOneChecked, setIsFeeOptionOneChecked] =
-    useState<boolean>(true);
-  const [isFeeOptionTwoChecked, setIsFeeOptionTwoChecked] =
-    useState<boolean>(false);
   const {
     currencyOptions,
-    handleNextStep,
     presaleTokenAddress,
-    setPresaleTokenAddress,
     presaleSelectedCurrency,
+    isPresaleFeeOptionOneChecked,
+    isPresaleFeeOptionTwoChecked,
+    handleNextStep,
+    setPresaleTokenAddress,
     setPresaleSelectedCurrency,
+    setIsPresaleFeeOptionTwoChecked,
+    setIsPresaleFeeOptionOneChecked,
   } = GlobalContext();
 
   useEffect(() => {
@@ -79,20 +76,20 @@ export default function StepOne() {
           >
             <div
               className={`rounded-full flex cursor-pointer ${
-                isFeeOptionOneChecked
+                isPresaleFeeOptionOneChecked
                   ? "border-2 p-0.5 border-[#A4D0F2]"
                   : "border-2 border-white"
               }`}
             >
               <input
                 className={`appearance-none bg-[#26272B] rounded-full ${
-                  isFeeOptionOneChecked ? "w-5 h-5" : "w-6 h-6"
+                  isPresaleFeeOptionOneChecked ? "w-5 h-5" : "w-6 h-6"
                 } checked:bg-[#A4D0F2]`}
                 type="radio"
-                checked={isFeeOptionOneChecked}
+                checked={isPresaleFeeOptionOneChecked}
                 onChange={(event: any) => {
-                  setIsFeeOptionOneChecked(event.target.checked);
-                  setIsFeeOptionTwoChecked(false);
+                  setIsPresaleFeeOptionOneChecked?.(event.target.checked);
+                  setIsPresaleFeeOptionTwoChecked?.(false);
                 }}
                 name="fee-option"
                 id="option-1"
@@ -107,20 +104,20 @@ export default function StepOne() {
           >
             <div
               className={`rounded-full cursor-pointer flex ${
-                isFeeOptionTwoChecked
+                isPresaleFeeOptionTwoChecked
                   ? "border-2 p-0.5 border-[#A4D0F2]"
                   : "border-2 border-white"
               }`}
             >
               <input
                 className={`appearance-none bg-[#26272B] rounded-full ${
-                  isFeeOptionTwoChecked ? "w-5 h-5" : "w-6 h-6"
+                  isPresaleFeeOptionTwoChecked ? "w-5 h-5" : "w-6 h-6"
                 } checked:bg-[#A4D0F2]`}
                 type="radio"
-                checked={isFeeOptionTwoChecked}
+                checked={isPresaleFeeOptionTwoChecked}
                 onChange={(event: any) => {
-                  setIsFeeOptionOneChecked(false);
-                  setIsFeeOptionTwoChecked(event.target.checked);
+                  setIsPresaleFeeOptionOneChecked?.(false);
+                  setIsPresaleFeeOptionTwoChecked?.(event.target.checked);
                 }}
                 name="fee-option"
                 id="option-2"
