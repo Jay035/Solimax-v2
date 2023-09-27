@@ -24,15 +24,15 @@ export default function Home() {
           published on explorer websites
         </p>
         <div className="flex justify-center items-center xl:justify-start">
-          <button className="mr-8 text-base rounded-[0.625rem] py-5 md:py-[1.3rem] px-[2.44rem] bg-[#454FDA] text-white">
+          <button className="mr-8 text-base outline-none rounded-[0.625rem] py-5 md:py-[1.3rem] px-[2.44rem] bg-[#454FDA] text-white">
             Create new
           </button>
-          <button className="text-base">Learn more</button>
+          <button className="text-base outline-none">Learn more</button>
         </div>
       </div>
       {/* ------------------------------ */}
       {/* CARDS */}
-      <div className="mt-[3.69rem] mb-[5.19rem] pr-[1.06rem] sm:pr-8 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[0.88rem]">
+      <div className="mt-[3.69rem] mb-[5.19rem] whitespace-nowrap pr-[1.06rem] sm:pr-8 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[0.88rem]">
         {/* TOTAL LIQUIDITY RAISED */}
         <section className="w-full text-center xl:text-left md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]">
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">

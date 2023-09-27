@@ -96,7 +96,7 @@ export default function Navbar({}: Props) {
           </span>
         </Link>
       </section>
-      <div className="xl:hidden">
+      <div className="xl:hidden overflow-hidden">
         <Wallet />
       </div>
       {/* menu */}
@@ -114,7 +114,10 @@ export default function Navbar({}: Props) {
           </h2>
           <ul className="text-white flex flex-col gap-5">
             {/* home */}
-            <li className="flex items-center gap-[0.75rem] tracking-[-0.01rem]">
+            <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/home-icon.svg"
                 width={18}
@@ -215,7 +218,10 @@ export default function Navbar({}: Props) {
             </Accordion>
 
             {/* Leaderboard */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/keyboard-open.svg"
                 width={18}
@@ -227,7 +233,10 @@ export default function Navbar({}: Props) {
               </Link>
             </li>
             {/* Pools alert */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/keyboard-open.svg"
                 width={18}
@@ -239,7 +248,10 @@ export default function Navbar({}: Props) {
               </Link>
             </li>
             {/* KYC & audit */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/android.svg"
                 width={18}
@@ -251,7 +263,10 @@ export default function Navbar({}: Props) {
               </Link>
             </li>
             {/* Docs */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/document.svg"
                 width={18}
@@ -271,7 +286,10 @@ export default function Navbar({}: Props) {
           </h2>
           <ul className="text-white flex flex-col gap-5">
             {/* twitter */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/twitter.svg"
                 width={18}
@@ -281,7 +299,10 @@ export default function Navbar({}: Props) {
               <Link href="/">Twitter</Link>
             </li>
             {/* telegram */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/telegram.svg"
                 width={18}
@@ -291,7 +312,10 @@ export default function Navbar({}: Props) {
               <Link href="/">Telegram</Link>
             </li>
             {/* discord */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem]"
+              onClick={() => setMenuOpen((prevState) => !prevState)}
+            >
               <Image
                 src="/icons/discord.svg"
                 width={18}

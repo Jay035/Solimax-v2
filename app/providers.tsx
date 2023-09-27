@@ -1,7 +1,5 @@
 "use client";
-
 import { useIsMounted } from "@/hooks/useIsMounted";
-// import * as React from 'react';
 import {
   RainbowKitProvider,
   getDefaultWallets,
@@ -13,7 +11,6 @@ import {
   trustWallet,
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { useEffect, useState } from "react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
   mainnet,
@@ -39,16 +36,16 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [publicProvider()]
 );
 
-const projectId = "YOUR_PROJECT_ID";
+const projectId = process?.env?.NEXT_PUBLIC_PROJECT_ID!;
 
 const { wallets } = getDefaultWallets({
-  appName: "RainbowKit demo",
+  appName: "Solimax launchpad",
   projectId,
   chains,
 });
 
 const demoAppInfo = {
-  appName: "Rainbowkit Demo",
+  appName: "Solimax launchpad",
 };
 
 const connectors = connectorsForWallets([

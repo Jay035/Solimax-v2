@@ -7,7 +7,6 @@ import BodyComponent from "./body";
 import { Providers } from "./providers";
 import "@rainbow-me/rainbowkit/styles.css";
 
-// const inter = Inter({ subsets: ["latin"] });
 const questrial = Questrial({
   weight: "400",
   subsets: ["latin"],

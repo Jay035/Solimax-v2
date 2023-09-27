@@ -62,7 +62,10 @@ export default function CustomSelect({
           {options?.map((option: SelectProps, index: number) => (
             <div
               key={index}
-              onClick={() => handleOptionClick(option.value)}
+              onClick={() => {
+                handleOptionClick(option.value);
+                setDropdownOpen((prevState) => !prevState);
+              }}
               className="custom-option last:border-b-0 bg-[#3F3F46] py-2 tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             >
               {option.value}

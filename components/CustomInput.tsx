@@ -32,7 +32,7 @@ export default function CustomInput({
         {isRequired && <span className="text-[#F04438]">*</span>}
       </label>
       <div
-        className={`w-full ${
+        className={`w-full flex items-center gap-2 ${
           id === "amount" &&
           "relative border border-[#F4F4F5] bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.19rem]"
         }`}
@@ -40,7 +40,9 @@ export default function CustomInput({
         <input
           id={id}
           name={id}
-          className={`${inputClassName} ${id === "amount" ? 'w-[90%]' : 'w-full'}`}
+          className={`${inputClassName} ${
+            id === "amount" ? "w-[90%]" : "w-full"
+          }`}
           type={type}
           autoComplete="off"
           defaultChecked={defaultChecked}
@@ -54,6 +56,7 @@ export default function CustomInput({
             MAX
           </p>
         )}
+        <span className="validity"></span>
       </div>
     </div>
   );
