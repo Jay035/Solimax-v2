@@ -17,10 +17,25 @@ type Props = {
 
 export function LaunchpadContextProvider({ children }: Props) {
   const [currentStep, setCurrentStep] = useState(1);
+
+  // PRESALE TAB
+  const [presaleCurrentStep, setPresaleCurrentStep] = useState(1);
+  const [presaleTokenAddress, setPresaleTokenAddress] = useState("");
+  const [presaleSelectedCurrency, setPresaleSelectedCurrency] = useState("BNB");
+  const [isPresaleFeeOptionOneChecked, setIsPresaleFeeOptionOneChecked] =
+    useState<boolean>(true);
+
+  // FAIRSALE TAB
+  const [fairsaleCurrentStep, setFairsaleCurrentStep] = useState(1);
+  const [fairsaleTokenAddress, setFairsaleTokenAddress] = useState("");
+  const [fairsaleSelectedCurrency, setFairsaleSelectedCurrency] =
+    useState("BNB");
+  const [isFairsaleFeeOptionOneChecked, setIsFairsaleFeeOptionOneChecked] =
+    useState<boolean>(true);
+
   const [isModalShowing, setIsModalShowing] = useState(false);
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
-  const [tokenAddress, setTokenAddress] = useState("");
   const [softcap, setSoftcap] = useState(0);
   const [hardcap, setHardcap] = useState(0);
   const [minBuy, setMinBuy] = useState(0);
@@ -76,13 +91,29 @@ export function LaunchpadContextProvider({ children }: Props) {
     setCurrentStep?.(currentStep + 1);
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
-    })
+      behavior: "smooth",
+    });
   };
 
   const handlePreviousStep = () => {
     if (currentStep > 1) setCurrentStep?.(currentStep - 1);
   };
+
+  useEffect(() => {
+    const storedPresaleTokenAddress = localStorage.getItem(
+      "presaleTokenAddress"
+    );
+    setPresaleTokenAddress(storedPresaleTokenAddress!);
+
+    console.log(storedPresaleTokenAddress);
+  }, []);
+
+  // Save user data to local storage whenever it changes
+  useEffect(() => {
+    if (presaleTokenAddress) {
+      localStorage.setItem("presaleTokenAddress", presaleTokenAddress);
+    }
+  }, [presaleTokenAddress]);
 
   const value = {
     tabs,
@@ -100,7 +131,8 @@ export function LaunchpadContextProvider({ children }: Props) {
     youtubeURL,
     description,
     selectedCurrency,
-    tokenAddress,
+    presaleTokenAddress,
+    presaleSelectedCurrency,
     softcap,
     hardcap,
     minBuy,
@@ -119,12 +151,13 @@ export function LaunchpadContextProvider({ children }: Props) {
     totalSellingAmount,
     isModalShowing,
     nameOfToken,
+    setPresaleTokenAddress,
+    setPresaleSelectedCurrency,
     setNameOfToken,
     setIsModalShowing,
     setTotalSellingAmount,
     handleNextStep,
     handlePreviousStep,
-    setTokenAddress,
     setSoftcap,
     setHardcap,
     setMinBuy,

@@ -1,9 +1,13 @@
+"use client";
+
 import HotAirdrops from "@/components/HotAirdrops";
 import LatestPools from "@/components/LatestPools";
 import NewTokens from "@/components/NewTokens";
 import TrendingPools from "@/components/TrendingPools";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="pt-5 mt-5 mb-20 w-fit pl-[1.06rem] sm:pl-8 overflow-x-hidden">
       <LatestPools />
@@ -24,7 +28,10 @@ export default function Home() {
           published on explorer websites
         </p>
         <div className="flex justify-center items-center xl:justify-start">
-          <button className="mr-8 text-base outline-none rounded-[0.625rem] py-5 md:py-[1.3rem] px-[2.44rem] bg-[#454FDA] text-white">
+          <button
+            onClick={() => router.push("/launchpad/presale/create")}
+            className="mr-8 text-base outline-none rounded-[0.625rem] py-5 md:py-[1.3rem] px-[2.44rem] bg-[#454FDA] text-white"
+          >
             Create new
           </button>
           <button className="text-base outline-none">Learn more</button>

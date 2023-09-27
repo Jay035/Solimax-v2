@@ -46,6 +46,9 @@ interface FormProps {
   totalSellingAmount?: string;
   isModalShowing?: boolean;
   nameOfToken?: string;
+  presaleTokenAddress?: string;
+  presaleSelectedCurrency?: string;
+  setPresaleTokenAddress?: (x: string) => void;
   setNameOfToken?: (x: string) => void;
   setIsModalShowing?: (x: any) => void;
   setTotalSellingAmount?: (x: string) => void;
@@ -78,7 +81,8 @@ interface FormProps {
   setError?: (err: string) => void;
   setTokenAddress?: (address: string) => void;
   setPresaleRate?: (rate: number) => void;
-  setSelectedCurrency?: (address: string) => void;
+  setSelectedCurrency?: (currency: string) => void;
+  setPresaleSelectedCurrency?: (currency: string) => void;
   setCurrentStep?: (step: number) => void;
 }
 

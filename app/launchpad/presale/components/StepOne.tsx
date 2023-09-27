@@ -2,18 +2,29 @@ import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function StepOne() {
-  const { currencyOptions, handleNextStep } = GlobalContext();
-  const [selectedCurrency, setSelectedCurrency] = useState("BNB");
-  const [tokenAddress, setTokenAddress] = useState("");
+  // const [selectedCurrency, setSelectedCurrency] = useState("BNB");
+  // const [tokenAddress, setTokenAddress] = useState("");
   const [error, setError] = useState("");
 
   const [isFeeOptionOneChecked, setIsFeeOptionOneChecked] =
     useState<boolean>(true);
   const [isFeeOptionTwoChecked, setIsFeeOptionTwoChecked] =
     useState<boolean>(false);
+  const {
+    currencyOptions,
+    handleNextStep,
+    presaleTokenAddress,
+    setPresaleTokenAddress,
+    presaleSelectedCurrency,
+    setPresaleSelectedCurrency,
+  } = GlobalContext();
+
+  useEffect(() => {
+    console.log(presaleTokenAddress);
+  }, []);
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
@@ -34,9 +45,9 @@ export default function StepOne() {
             label="Token Address"
             type="text"
             placeholder="0x..."
-            value={tokenAddress}
+            value={presaleTokenAddress}
             onChange={(e) => {
-              setTokenAddress?.(e.target.value);
+              setPresaleTokenAddress?.(e.target.value);
               setError?.("");
             }}
             isRequired={true}
@@ -50,11 +61,11 @@ export default function StepOne() {
           <p>Select Currency</p>
           <CustomSelect
             options={currencyOptions}
-            header={selectedCurrency}
-            setHeader={setSelectedCurrency}
+            header={presaleSelectedCurrency}
+            setHeader={setPresaleSelectedCurrency}
           />
           <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
-            Users will pay with {selectedCurrency} for your token
+            Users will pay with {presaleSelectedCurrency} for your token
           </p>
         </div>
         <div className="flex flex-col gap-4" role="fee-options">
@@ -123,7 +134,7 @@ export default function StepOne() {
           it has transfer fees.
         </p>
         <button
-          disabled={tokenAddress === ""}
+          disabled={presaleTokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
             // if (tokenAddress === "") {
