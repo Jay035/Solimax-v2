@@ -6,7 +6,7 @@ import { useState } from "react";
 import Checkbox from "@/utils/Checkbox";
 
 export default function StepTwo() {
-  const { handleNextStep, handlePreviousStep } = GlobalContext();
+  const { handleFairlaunchNextStep, handleFairlaunchPreviousStep } = GlobalContext();
   const [softcap, setSoftcap] = useState();
   const [router, setRouter] = useState("Select router exchange");
   const [liquidity, setLiquidity] = useState();
@@ -100,7 +100,6 @@ export default function StepTwo() {
                     isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
                   } checked:bg-[#A4D0F2] cursor-pointer`}
                   type="radio"
-                  defaultChecked
                   checked={isWhitelistDisabled}
                   onChange={(event: any) => {
                     setIsWhitelistDisabled(event.target.checked);
@@ -161,34 +160,6 @@ export default function StepTwo() {
               isRequired={true}
             />
 
-            {/* <label
-              htmlFor="setting-max-contribution"
-              className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
-            >
-              <div
-                className={`relative flex ${
-                  !isMaxContributionChecked &&
-                  "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-                } rounded-lg cursor-pointer`}
-              >
-                <input
-                  type="checkbox"
-                  name="setting-max-contribution"
-                  id="setting-max-contribution"
-                  className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-                  checked={isMaxContributionChecked}
-                  onChange={(event: any) => {
-                    setIsMaxContributionChecked(event.target.checked);
-                  }}
-                />
-                <i
-                  className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                    isMaxContributionChecked ? "text-black" : "hidden"
-                  }`}
-                ></i>
-              </div>
-              <span className="text-[#F4F4F5]">Setting max contribution?</span>
-            </label> */}
             <Checkbox
               text="Setting max contribution?"
               valueChecked={isMaxContributionChecked}
@@ -240,31 +211,6 @@ export default function StepTwo() {
               }}
               isRequired={true}
             />
-            {/* <label className="text-[0.875rem] tracking-[-0.00875rem] mt-3 flex items-center gap-2 cursor-pointer">
-              <div
-                className={`relative flex ${
-                  !isBuyBackChecked &&
-                  "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-                } rounded-lg`}
-              >
-                <input
-                  type="checkbox"
-                  name="setting-max-contribution"
-                  id="setting-max-contribution"
-                  className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-                  checked={isBuyBackChecked}
-                  onChange={(event: any) => {
-                    setIsBuyBackChecked(event.target.checked);
-                  }}
-                />
-                <i
-                  className={`ri-check-line text-xl absolute left-0.5 translate-x-0.5 top-0 ${
-                    isBuyBackChecked ? "text-[#454FDA] font-bold" : "hidden"
-                  }`}
-                ></i>
-              </div>
-              <span className="text-[#F4F4F5]">Enable buyback?</span>
-            </label> */}
             <Checkbox
               text="Enable buyback?"
               valueChecked={isBuyBackChecked}
@@ -381,7 +327,7 @@ export default function StepTwo() {
               <button
                 onClick={(e: any) => {
                   e.preventDefault();
-                  handlePreviousStep?.(e);
+                  handleFairlaunchPreviousStep?.(e);
                 }}
                 className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
               >
@@ -403,10 +349,10 @@ export default function StepTwo() {
                     if (maxContribution === "" || buybackPercent === "") {
                       return;
                     } else {
-                      handleNextStep?.(e);
+                      handleFairlaunchNextStep?.(e);
                     }
                   } else {
-                    handleNextStep?.(e);
+                    handleFairlaunchNextStep?.(e);
                   }
                 }}
                 className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"

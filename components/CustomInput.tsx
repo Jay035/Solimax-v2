@@ -10,6 +10,7 @@ type FormProps = {
   placeholder?: string;
   pattern?: string;
   onChange?: (e: any) => void;
+  onMouseLeave?: (e: any) => void;
 };
 
 export default function CustomInput({
@@ -23,6 +24,7 @@ export default function CustomInput({
   value,
   defaultChecked,
   onChange,
+  onMouseLeave,
   pattern,
 }: FormProps) {
   return (
@@ -49,6 +51,7 @@ export default function CustomInput({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onMouseLeave={onMouseLeave}
           required={isRequired}
         />
         {id === "amount" && (

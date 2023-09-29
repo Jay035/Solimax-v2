@@ -6,6 +6,8 @@ import { LaunchpadContextProvider } from "@/context/Context";
 import BodyComponent from "./body";
 import { Providers } from "./providers";
 import "@rainbow-me/rainbowkit/styles.css";
+import ToastProvider from "@/components/ToastProvider";
+import "react-toastify/dist/ReactToastify.css";
 
 const questrial = Questrial({
   weight: "400",
@@ -51,9 +53,11 @@ export default function RootLayout({
         className={`${questrial.variable} ${NeueHaasDisplay.variable} relative`}
       >
         <Providers>
-          <LaunchpadContextProvider>
-            <BodyComponent>{children}</BodyComponent>
-          </LaunchpadContextProvider>
+          <ToastProvider>
+            <LaunchpadContextProvider>
+              <BodyComponent>{children}</BodyComponent>
+            </LaunchpadContextProvider>
+          </ToastProvider>
         </Providers>
       </body>
     </html>

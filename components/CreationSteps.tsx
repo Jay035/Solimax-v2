@@ -1,28 +1,17 @@
 import { GlobalContext } from "@/context/Context";
 
-export default function CreationSteps({ stepTitles }: any) {
-  const {
-    currentStep,
-    error,
-    // tokenAddress,
-    // softcap,
-    // hardcap,
-    // minBuy,
-    // maxBuy,
-    // router,
-    // refundType,
-    // liquidity,
-    // listingRate,
-    // presaleRate,
-    // startDate,
-    // endDate,
-    // liquidityLockup,
-    // firstRelease,
-    // vestingPeriod,
-    // presaleToken,
-    setCurrentStep,
-    setError,
-  } = GlobalContext();
+type Props = {
+  stepTitles: any[];
+  currentStep: number;
+  setCurrentStep?: (step: number) => void;
+};
+
+export default function CreationSteps({
+  stepTitles,
+  currentStep,
+  setCurrentStep,
+}: Props) {
+  const { error, setError } = GlobalContext();
 
   const toggleStep = (tag: number) => {
     // if (tokenAddress === "") {

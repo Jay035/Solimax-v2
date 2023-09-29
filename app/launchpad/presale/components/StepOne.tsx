@@ -3,25 +3,25 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import VerifyAddress from "@/hooks/VerifyAddress";
 
 export default function StepOne() {
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
+  const [isAddressVerified, setIsAddressVerified] = useState<boolean>(false);
   const {
     currencyOptions,
     presaleTokenAddress,
     presaleSelectedCurrency,
     isPresaleFeeOptionOneChecked,
     isPresaleFeeOptionTwoChecked,
-    handleNextStep,
+    handlePresaleNextStep,
     setPresaleTokenAddress,
     setPresaleSelectedCurrency,
     setIsPresaleFeeOptionTwoChecked,
     setIsPresaleFeeOptionOneChecked,
   } = GlobalContext();
 
-  useEffect(() => {
-    console.log(presaleTokenAddress);
-  }, []);
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
@@ -47,6 +47,7 @@ export default function StepOne() {
               setPresaleTokenAddress?.(e.target.value);
               setError?.("");
             }}
+            onMouseLeave={() => VerifyAddress(presaleTokenAddress!)}
             isRequired={true}
           />
           {/* create pool fee */}
@@ -134,16 +135,13 @@ export default function StepOne() {
           disabled={presaleTokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
-            // if (tokenAddress === "") {
-            //   setError?.("Token address must be entered");
-            //   window.scrollTo({
-            //     top: 400,
-            //     left: 100,
-            //     behavior: "smooth",
-            //   });
-            // } else {
-            // }
-            handleNextStep?.(e);
+            const status = VerifyAddress(presaleTokenAddress!);
+            // setIsAddressVerified(status);
+            if (status === true) {
+              handlePresaleNextStep?.(e);
+            } else {
+              toast.error("Token address is not valid!");
+            }
           }}
           className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
         >

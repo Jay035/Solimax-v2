@@ -4,10 +4,14 @@ import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
 import StepFour from "./StepFour";
 import { GlobalContext } from "@/context/Context";
+import { useEffect } from "react";
 
 export default function PresaleForm() {
   const { presaleCurrentStep } = GlobalContext();
 
+  useEffect(() => {
+    console.log(presaleCurrentStep)
+  }, [presaleCurrentStep])
   return (
     <section>
       {/* ------------------------------------- */}

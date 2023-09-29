@@ -5,7 +5,8 @@ import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "@/components/ButtonGroup";
 
 export default function StepThree() {
-  const { handlePreviousStep, handleNextStep } = GlobalContext();
+  const { handleFairlaunchNextStep, handleFairlaunchPreviousStep } =
+    GlobalContext();
   const [error, setError] = useState("");
   const [websiteURL, setWebsiteURL] = useState("");
   const [telegramURL, setTelegramURL] = useState("");
@@ -213,7 +214,7 @@ export default function StepThree() {
           <button
             onClick={(e: any) => {
               e.preventDefault();
-              handlePreviousStep?.(e);
+              handleFairlaunchPreviousStep?.(e);
             }}
             className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
           >
@@ -223,7 +224,7 @@ export default function StepThree() {
             disabled={selectedFile === null || websiteURL === ""}
             onClick={(e: any) => {
               e.preventDefault();
-              handleNextStep?.(e);
+              handleFairlaunchNextStep?.(e);
             }}
             className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
           >

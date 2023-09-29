@@ -3,16 +3,28 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
+import VerifyAddress from "@/hooks/VerifyAddress";
+import { toast } from "react-toastify";
 
 export default function StepOne() {
-  const { currencyOptions, handleNextStep } = GlobalContext();
-  const [selectedCurrency, setSelectedCurrency] = useState("BNB");
-  const [tokenAddress, setTokenAddress] = useState("");
   const [error, setError] = useState("");
   const [isFeeOptionOneChecked, setIsFeeOptionOneChecked] =
     useState<boolean>(true);
   const [isFeeOptionTwoChecked, setIsFeeOptionTwoChecked] =
     useState<boolean>(false);
+  const [isAddressVerified, setIsAddressVerified] = useState<boolean>(false);
+
+  const {
+    currencyOptions,
+    fairlaunchCurrentStep,
+    fairlaunchSelectedCurrency,
+    fairlaunchTokenAddress,
+    handleFairlaunchNextStep,
+    // fairlaunchCurrentStep,
+    // setFairlaunchCurrentStep,
+    setFairlaunchSelectedCurrency,
+    setFairlaunchTokenAddress,
+  } = GlobalContext();
 
   return (
     <section className="flex flex-col gap-4 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
@@ -33,11 +45,12 @@ export default function StepOne() {
             label="Token Address"
             type="text"
             placeholder="0x..."
-            value={tokenAddress}
+            value={fairlaunchTokenAddress}
             onChange={(e) => {
-              setTokenAddress?.(e.target.value);
+              setFairlaunchTokenAddress?.(e.target.value);
               setError?.("");
             }}
+            onMouseLeave={() => VerifyAddress(fairlaunchTokenAddress!)}
             isRequired={true}
           />
           {/* create pool fee */}
@@ -49,12 +62,12 @@ export default function StepOne() {
           <p>Select Currency</p>
           <CustomSelect
             options={currencyOptions}
-            header={selectedCurrency}
-            setHeader={setSelectedCurrency}
+            header={fairlaunchSelectedCurrency}
+            setHeader={setFairlaunchSelectedCurrency}
           />
           {/* create pool fee */}
           <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
-            Users will pay with {selectedCurrency} for your token
+            Users will pay with {fairlaunchSelectedCurrency} for your token
           </p>
         </div>
         <div className="flex flex-col gap-4" role="fee-options">
@@ -125,14 +138,16 @@ export default function StepOne() {
           it has transfer fees.
         </p>
         <button
-          disabled={tokenAddress === ""}
+          disabled={fairlaunchTokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
-            // if (tokenAddress === "") {
-            //   setError?.("Token address must be entered");
-            // } else {
-            // }
-            handleNextStep?.(e);
+            const status = VerifyAddress(fairlaunchTokenAddress!);
+            // setIsAddressVerified(status);
+            if (status === true) {
+              handleFairlaunchNextStep?.(e);
+            } else {
+              toast.error("Token address is not valid!");
+            }
           }}
           className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
         >
