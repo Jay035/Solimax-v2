@@ -9,6 +9,7 @@ import {
 
 export const LaunchpadContext = createContext<FormProps>({
   // currentStep: 1,
+  airdropCurrentStep: 1,
   presaleCurrentStep: 1,
   fairlaunchCurrentStep: 1,
   privateSaleCurrentStep: 1,
@@ -131,6 +132,10 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [solilockTokenAddress, setSolilockTokenAddress] = useState("");
   const [solilockAmount, setSolilockAmount] = useState("");
   const [solilockLockTime, setSolilockLockTime] = useState("");
+
+  // AIRDROP
+  const [airdropTokenAddress, setAirdropTokenAddress] = useState("");
+  const [airdropCurrentStep, setAirdropCurrentStep] = useState(1);
 
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
@@ -396,6 +401,12 @@ export function LaunchpadContextProvider({ children }: Props) {
     setSolilockAmount,
     setSolilockLockTime,
     setSolilockTokenAddress,
+
+    // AIRDROP
+    airdropCurrentStep,
+    airdropTokenAddress,
+    setAirdropCurrentStep,
+    setAirdropTokenAddress,
   };
   return (
     <LaunchpadContext.Provider value={value}>
