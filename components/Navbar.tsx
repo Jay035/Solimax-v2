@@ -12,7 +12,6 @@ import shieldIcon from "../public/icons/shield.svg";
 import unlockIcon from "../public/icons/unlock.svg";
 import airdropIcon from "../public/icons/airdrop 1.svg";
 
-
 export default function Navbar() {
   const { isModalShowing, setIsModalShowing } = GlobalContext();
   const pathname = usePathname();
@@ -111,7 +110,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`pt-6 xl:pt-[2.69rem] z-50 flex justify-between items-center overflow-auto xl:block font-questrial px-[1.06rem] sm:px-7 xl:px-10 w-full border-r border-[#424242]`}
+      className={`pt-6 xl:pt-[2.69rem] z-50 flex justify-between items-center overflow-auto xl:block font-questrial px-[1.06rem] sm:px-7  w-full border-r border-[#424242]`}
     >
       {/* hamburger and logo group */}
       <section className="flex gap-3 items-center">
@@ -145,7 +144,7 @@ export default function Navbar() {
           className="gap-[0.67rem] items-center cursor-pointer hidden xl:flex"
         >
           <Image src={navLogo} className="w-[1.42rem]" alt="logo" />
-          <span className="text-white text-[1.3rem] leading-[-0.04rem]">
+          <span className="text-white text-[1.3rem] leading-[-0.04rem] whitespace-nowrap">
             SoliMax Launchpad
           </span>
         </Link>
@@ -266,7 +265,7 @@ export default function Navbar() {
             </Accordion>
 
             {/* Leaderboard */}
-            <li
+            {/* <li
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -280,7 +279,7 @@ export default function Navbar() {
                 alt="home icon"
               />
               Leaderboard
-            </li>
+            </li> */}
             {/* Pools alert */}
             <li
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"

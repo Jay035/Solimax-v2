@@ -143,6 +143,8 @@ interface FormProps {
   setPrivateSaleName?: (x: string) => void;
   setPrivateSaleCurrentStep?: (step: any) => void;
   setPrivateSaleSelectedCurrency?: (currency: string) => void;
+  handlePrivateSalePreviousStep?: (x: string | number) => void;
+  handlePrivateSaleNextStep?: (x: string | number) => void;
 
   // SOLILOCK
   solilockTokenAddress?: string;
@@ -151,6 +153,8 @@ interface FormProps {
   setSolilockTokenAddress?: (x: string) => void;
   setSolilockLockTime?: (x: string) => void;
   setSolilockAmount?: (x: any) => void;
+
+  // AIRDROP
 }
 
 type stepTitleProps = {

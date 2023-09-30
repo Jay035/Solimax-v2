@@ -15,7 +15,7 @@ export default function LaunchpadList({}: Props) {
     <section className="pl-8 pr-10 sm:pr-16 pb-32 xl:border-t xl:border-[#424242]">
       <Navigation />
       <Filter />
-      <div className="mb-[6.25rem] grid lg:grid-cols-2 2xl:grid-cols-3 gap-x-[1.59rem] gap-y-8">
+      <div className="mb-[6.25rem] grid lg:grid-cols-2 xl:grid-cols-3 gap-x-[1.59rem] gap-y-8">
         {cardDetails?.map((item: any, index: number) => (
           <Card key={index} item={item} />
         ))}

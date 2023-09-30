@@ -128,7 +128,6 @@ export function LaunchpadContextProvider({ children }: Props) {
   };
 
   // SOLILOCK
-
   const [solilockTokenAddress, setSolilockTokenAddress] = useState("");
   const [solilockAmount, setSolilockAmount] = useState("");
   const [solilockLockTime, setSolilockLockTime] = useState("");
