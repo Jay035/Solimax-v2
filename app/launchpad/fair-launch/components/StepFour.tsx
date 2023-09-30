@@ -3,7 +3,7 @@ import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
 export default function StepFour() {
-  const { handlePreviousStep, setIsModalShowing } = GlobalContext();
+  const { handleFairlaunchPreviousStep, setIsModalShowing } = GlobalContext();
   const [error, setError] = useState("");
 
   return (
@@ -166,7 +166,7 @@ export default function StepFour() {
             <button
               onClick={(e: any) => {
                 e.preventDefault();
-                handlePreviousStep?.(e);
+                handleFairlaunchPreviousStep?.(e);
               }}
               className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
             >

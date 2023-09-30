@@ -99,7 +99,6 @@ export default function StepTwo() {
   ];
 
   const handleInputChange = (value: any, setVariable: (e: any) => void) => {
-    // const inputValue = event.target.value;
     // Append '%' to the input value and update the state
     if (value.contains("%")) return;
     else {
