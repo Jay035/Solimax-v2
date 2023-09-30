@@ -66,7 +66,7 @@ export default function StepThree() {
           <CustomInput
             id="websiteURL"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Website URL"
             type="website"
             placeholder="www."
@@ -83,7 +83,7 @@ export default function StepThree() {
           <CustomInput
             id="telegramURL"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Telegram"
             type="website"
             placeholder="www."
@@ -98,7 +98,7 @@ export default function StepThree() {
           <CustomInput
             id="twitterURL"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Twitter"
             type="website"
             placeholder="www."
@@ -115,7 +115,7 @@ export default function StepThree() {
           <CustomInput
             id="discordURL"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Discord"
             type="website"
             placeholder="www."
@@ -130,7 +130,7 @@ export default function StepThree() {
           <CustomInput
             id="instagramURL"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Instagram"
             type="website"
             placeholder="www."
@@ -147,7 +147,7 @@ export default function StepThree() {
           <CustomInput
             id="githubURL"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Github"
             type="website"
             placeholder="www."
@@ -162,7 +162,7 @@ export default function StepThree() {
           <CustomInput
             id="facebookURL"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Facebook"
             type="website"
             placeholder="www."
@@ -178,7 +178,7 @@ export default function StepThree() {
           <CustomInput
             id="token-address"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Youtube video"
             type="url"
             placeholder="www."
@@ -196,17 +196,19 @@ export default function StepThree() {
         </div>
         <label htmlFor="description" className="flex flex-col gap-[0.62rem]">
           Description
-          <textarea
-            id="description"
-            className="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-            placeholder="Leave a short description about your project"
-            value={description}
-            onChange={(e) => {
-              setDescription?.(e.target.value);
-              setError?.("");
-            }}
-            rows={4}
-          ></textarea>
+          <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
+            <textarea
+              id="description"
+              className="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              placeholder="Leave a short description about your project"
+              value={description}
+              onChange={(e) => {
+                setDescription?.(e.target.value);
+                setError?.("");
+              }}
+              rows={4}
+            ></textarea>
+          </div>
         </label>
 
         {/* back and next buttons */}

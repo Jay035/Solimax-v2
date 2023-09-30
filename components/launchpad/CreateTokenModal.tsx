@@ -5,7 +5,8 @@ import { useState } from "react";
 import CustomInput from "../CustomInput";
 
 export default function CreateTokenModal() {
-  const { error, setError, nameOfToken, setNameOfToken, setIsModalShowing } = GlobalContext();
+  const { error, setError, nameOfToken, setNameOfToken, setIsModalShowing } =
+    GlobalContext();
   const [selectedTokenType, setSelectedTokenType] =
     useState<string>("Standard token");
   const [symbol, setSymbol] = useState<string>("");
@@ -26,9 +27,12 @@ export default function CreateTokenModal() {
     },
   ];
   return (
-    <main id="modal" className="bg-[#3F3F46]/50 w-full absolute flex min-h-screen justify-center items-center z-[9999999999]">
+    <main
+      id="modal"
+      className="bg-[#3F3F46]/50 w-full absolute flex min-h-screen justify-center items-center z-[9999999999]"
+    >
       {/* modal */}
-      <div className="bg-[#1D1C20] rounded-[0.625rem] p-6 pt-10 w-[90%] md:w-full h-fit max-h-[30rem] overflow-y-scroll max-w-[45rem]">
+      <div className="bg-[#1D1C20] rounded-[0.625rem] p-6 xl:p-8 pt-10 w-[90%] md:w-full h-fit max-h-[90vh] overflow-y-auto max-w-[45rem]">
         <section className="text-white pb-[1.5rem] flex justify-between items-center border-b border-[#26272b]">
           <h1 className="tracking-[-0.015rem] text-xl md:text-2xl">
             Create token
@@ -41,8 +45,8 @@ export default function CreateTokenModal() {
             fill="none"
             className="mr-[2.13rem] cursor-pointer"
             onClick={() => {
-              setIsModalShowing?.(false)
-              document.body.style.overflow = 'unset';
+              setIsModalShowing?.(false);
+              document.body.style.overflow = "unset";
             }}
           >
             <path
@@ -83,7 +87,7 @@ export default function CreateTokenModal() {
           <CustomInput
             id="nameOfToken"
             className="flex flex-col gap-[0.62rem] text-[#E4E4E7]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Name of token"
             type="text"
             placeholder="Eg. Optimism"
@@ -98,7 +102,7 @@ export default function CreateTokenModal() {
           <CustomInput
             id="symbol"
             className="flex flex-col gap-[0.62rem] text-[#E4E4E7]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Symbol"
             type="text"
             placeholder="Eg. OP"
@@ -113,7 +117,7 @@ export default function CreateTokenModal() {
           <CustomInput
             id="decimals"
             className="flex flex-col gap-[0.62rem] text-[#E4E4E7]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Decimals"
             type="number"
             placeholder="Eg. 18"
@@ -128,7 +132,7 @@ export default function CreateTokenModal() {
           <CustomInput
             id="tokenSupply"
             className="flex flex-col gap-[0.62rem] text-[#E4E4E7]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Token Supply"
             type="number"
             placeholder="Eg. 1000000000"

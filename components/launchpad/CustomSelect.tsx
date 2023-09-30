@@ -48,7 +48,7 @@ export default function CustomSelect({
           }`}
           id="currency"
         >
-          {header !== "Select" && (
+          {header !== "Select" && header !== "Select router exchange" && (
             <Image
               width={20}
               height={20}

@@ -1,10 +1,8 @@
 "use client";
 import { useState } from "react";
 import LatestPools from "@/components/LatestPools";
-import CustomInput from "@/components/CustomInput";
 import StepOne from "../components/StepOne";
 import StepTwo from "../components/StepTwo";
-import StepThree from "../components/StepThree";
 
 type Props = {};
 
@@ -46,13 +44,6 @@ export default function CreateAirdrop({}: Props) {
           )}
           {currentStep === 2 && (
             <StepTwo
-              currentStep={currentStep}
-              setError={setError}
-              setCurrentStep={setCurrentStep}
-            />
-          )}
-          {currentStep === 3 && (
-            <StepThree
               currentStep={currentStep}
               setError={setError}
               setCurrentStep={setCurrentStep}

@@ -37,7 +37,7 @@ export default function ButtonGroup() {
               tab?.id === "presale"
                 ? "rounded-tl-[0.625rem] rounded-bl-[0.625rem]"
                 : "rounded-tr-[0.625rem] rounded-br-[0.625rem]"
-            } py-[0.81rem] px-4 w-full xl:px-[2.88rem] tracking-[-0.01rem] whitespace-nowrap`}
+            } py-[0.81rem] px-4 w-full md:px-8 tracking-[-0.01rem] whitespace-nowrap`}
             onClick={() => {
               console.log(tab.route);
               toggleTab(tab.id);

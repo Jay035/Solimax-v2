@@ -155,6 +155,10 @@ interface FormProps {
   setSolilockAmount?: (x: any) => void;
 
   // AIRDROP
+  airdropTokenAddress?: string;
+  airdropCurrentStep: number;
+  setAirdropTokenAddress?: (address: string) => void;
+  setAirdropCurrentStep?: (step: number) => void;
 }
 
 type stepTitleProps = {

@@ -29,7 +29,7 @@ export default function LockForm() {
         <CustomInput
           id="token-address"
           className="flex flex-col gap-[0.62rem]"
-          inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
           label="Token or LP Token address"
           type="text"
           placeholder="Enter token or LP address"
@@ -74,7 +74,7 @@ export default function LockForm() {
             <CustomInput
               id="max-contribution"
               className="mt-4 flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] cursor-pointer border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] cursor-pointer rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Owner"
               type="text"
               placeholder="Enter owner address"
@@ -143,7 +143,7 @@ export default function LockForm() {
               <CustomInput
                 id="TGE-date"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="TGE Date (UTC time)"
                 type="date"
                 placeholder="0"
@@ -158,7 +158,7 @@ export default function LockForm() {
               <CustomInput
                 id="TGE percent"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="TGE Percent"
                 type="number"
                 placeholder="0"
@@ -175,7 +175,7 @@ export default function LockForm() {
               <CustomInput
                 id="Cycle (days)"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Cycle (days)"
                 type="text"
                 placeholder="Ex 10"
@@ -190,7 +190,7 @@ export default function LockForm() {
               <CustomInput
                 id="cycle-Release-Percent"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Cycle Release Percent"
                 type="text"
                 placeholder="Ex 10"
@@ -209,7 +209,7 @@ export default function LockForm() {
       <CustomInput
         id="lock-duration"
         className="flex flex-col gap-[0.62rem]"
-        inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+        inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
         label="Lock until (UTC time)"
         type="date"
         placeholder="Select date"

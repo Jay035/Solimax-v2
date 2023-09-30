@@ -189,31 +189,37 @@ export function LaunchpadContextProvider({ children }: Props) {
     const storedPresaleTokenAddress = localStorage.getItem(
       "presaleTokenAddress"
     );
-    setPresaleTokenAddress(storedPresaleTokenAddress!);
+    if (storedPresaleTokenAddress)
+      setPresaleTokenAddress(storedPresaleTokenAddress!);
 
     const storedPresaleCurrentStep = localStorage.getItem("presaleCurrentStep");
-    setPresaleCurrentStep(Number(storedPresaleCurrentStep!));
+    if (storedPresaleCurrentStep)
+      setPresaleCurrentStep(Number(storedPresaleCurrentStep!));
 
     const storedPresaleSelectedCurrency = localStorage.getItem(
       "presaleSelectedCurrency"
     );
-    setPresaleSelectedCurrency(storedPresaleSelectedCurrency!);
+    if (storedPresaleSelectedCurrency)
+      setPresaleSelectedCurrency(storedPresaleSelectedCurrency!);
 
     // FAIR LAUNCH
     const storedFairlaunchTokenAddress = localStorage.getItem(
       "fairlaunchTokenAddress"
     );
-    setFairlaunchTokenAddress(storedFairlaunchTokenAddress!);
+    if (storedFairlaunchTokenAddress)
+      setFairlaunchTokenAddress(storedFairlaunchTokenAddress!);
 
     const storedFairlaunchCurrentStep = localStorage.getItem(
       "fairlaunchCurrentStep"
     );
-    setFairlaunchCurrentStep(Number(storedFairlaunchCurrentStep!));
+    if (storedFairlaunchCurrentStep)
+      setFairlaunchCurrentStep(Number(storedFairlaunchCurrentStep!));
 
     const storedFairlaunchSelectedCurrency = localStorage.getItem(
       "fairlaunchSelectedCurrency"
     );
-    setFairlaunchSelectedCurrency(storedFairlaunchSelectedCurrency!);
+    if (storedFairlaunchSelectedCurrency)
+      setFairlaunchSelectedCurrency(storedFairlaunchSelectedCurrency!);
   }, []);
 
   // Save user data to local storage whenever it changes

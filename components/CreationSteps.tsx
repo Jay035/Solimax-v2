@@ -50,7 +50,7 @@ export default function CreationSteps({
           >
             {item.tag}.
           </div>
-          <div className="flex flex-col whitespace-nowrap">
+          <div className="flex flex-col">
             <h1 className="tracking-[-0.01rem]">{item?.title}</h1>
             <p className="text-[#D1D1D6] tracking-[-0.00813rem] text-[0.8125rem]">
               {item?.description}

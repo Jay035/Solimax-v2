@@ -17,7 +17,7 @@ export default function BodyComponent({
       {isModalShowing === true && <CreateTokenModal />}
       <ScrollToTop />
       <Navbar />
-      <section>
+      <section className="overflow-x-hidden">
         <div className="hidden xl:flex justify-end">
           <Wallet />
         </div>

@@ -18,7 +18,7 @@ export default function CreateFairLaunch() {
     {
       id: "deFi-launchpad",
       tag: 2,
-      title: "DeFi fair launch",
+      title: "DeFi Fair Launch",
       description: "Enter the launchpad information",
       completed: false,
     },
