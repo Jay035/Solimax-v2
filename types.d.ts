@@ -10,7 +10,6 @@ interface AccordionProps {
   children: any;
 }
 
-
 interface FormProps {
   currencyOptions?: any;
   // currentStep: number;
@@ -108,7 +107,7 @@ interface FormProps {
   setIsPresaleFeeOptionTwoChecked?: (x: boolean) => void;
   setIsPresaleFeeOptionOneChecked?: (x: boolean) => void;
   setPresaleSelectedCurrency?: (currency: string) => void;
-  
+
   setLiquidityLockup?: (x: string) => void;
   setEndDate?: (x: string) => void;
   setStartDate?: (x: string) => void;
@@ -136,6 +135,22 @@ interface FormProps {
   setFairlaunchSelectedCurrency?: (currency: string) => void;
   handleFairlaunchPreviousStep?: (x: string | number) => void;
   handleFairlaunchNextStep?: (x: string | number) => void;
+
+  // PRIVATE SALE
+  privateSaleCurrentStep: number;
+  privateSaleName?: string;
+  privateSaleSelectedCurrency?: string;
+  setPrivateSaleName?: (x: string) => void;
+  setPrivateSaleCurrentStep?: (step: any) => void;
+  setPrivateSaleSelectedCurrency?: (currency: string) => void;
+
+  // SOLILOCK
+  solilockTokenAddress?: string;
+  solilockLockTime?: string;
+  solilockAmount?: number | string;
+  setSolilockTokenAddress?: (x: string) => void;
+  setSolilockLockTime?: (x: string) => void;
+  setSolilockAmount?: (x: any) => void;
 }
 
 type stepTitleProps = {

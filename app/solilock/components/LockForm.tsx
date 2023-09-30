@@ -1,16 +1,22 @@
 import CustomInput from "@/components/CustomInput";
 import { GlobalContext } from "@/context/Context";
+import VerifyAddress from "@/hooks/VerifyAddress";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function LockForm() {
-  const { currencyOptions, handleNextStep } = GlobalContext();
+  const {
+    solilockAmount,
+    solilockLockTime,
+    solilockTokenAddress,
+    setSolilockAmount,
+    setSolilockLockTime,
+    setSolilockTokenAddress,
+  } = GlobalContext();
   const [TGEDate, setTGEDate] = useState<string>("");
   const [TGEPercent, setTGEPercent] = useState<number>();
-  const [tokenAddress, setTokenAddress] = useState<string>("");
   const [cycleDays, setCycleDays] = useState<string>("");
   const [cycleReleasePercent, setCycleReleasePercent] = useState<string>("");
-  const [amount, setAmount] = useState<number>();
-  const [lockDuration, setLockDuration] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [owner, setOwner] = useState<string>("");
   const [anotherUserUsed, setAnotherUserUsed] = useState<boolean>(false);
@@ -27,11 +33,12 @@ export default function LockForm() {
           label="Token or LP Token address"
           type="text"
           placeholder="Enter token or LP address"
-          value={tokenAddress}
+          value={solilockTokenAddress}
           onChange={(e) => {
-            setTokenAddress?.(e.target.value);
+            setSolilockTokenAddress?.(e.target.value);
             setError?.("");
           }}
+          onMouseLeave={() => VerifyAddress(solilockTokenAddress!)}
           isRequired={true}
         />
         <label
@@ -94,9 +101,9 @@ export default function LockForm() {
           label="Amount"
           type="number"
           placeholder=""
-          value={amount}
+          value={solilockAmount}
           onChange={(e) => {
-            setAmount?.(e.target.value);
+            setSolilockAmount?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -206,9 +213,9 @@ export default function LockForm() {
         label="Lock until (UTC time)"
         type="date"
         placeholder="Select date"
-        value={lockDuration}
+        value={solilockLockTime}
         onChange={(e) => {
-          setLockDuration?.(e.target.value);
+          setSolilockLockTime?.(e.target.value);
           setError?.("");
         }}
         isRequired={true}
@@ -224,16 +231,34 @@ export default function LockForm() {
         </p>
       </div>
       <button
+        disabled={
+          solilockTokenAddress === "" ||
+          solilockAmount === null ||
+          solilockLockTime === ""
+        }
         type="submit"
-        // onClick={(e: any) => {
-        //   e.preventDefault();
-        //   if (tokenAddress === "") {
-        //     setError?.("Name must be entered");
-        //   } else {
-        //     handleNextStep?.(e);
-        //   }
-        // }}
-        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+        onClick={(e: any) => {
+          e.preventDefault();
+          const status = VerifyAddress(solilockTokenAddress!);
+          // setIsAddressVerified(status);
+          if (status === true) {
+            if (vestingUsed) {
+              if (
+                TGEDate === "" ||
+                TGEPercent === null ||
+                cycleDays === "" ||
+                cycleReleasePercent === ""
+              ) {
+                toast.error("Fill in all required fields");
+              } else {
+                // handlePresaleNextStep?.(e);
+              }
+            }
+          } else {
+            toast.error("Token address is not valid!");
+          }
+        }}
+        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
       >
         Lock
       </button>

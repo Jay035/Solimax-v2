@@ -3,16 +3,18 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function StepOne() {
-  const { currencyOptions, handleNextStep } = GlobalContext();
-  const [selectedCurrency, setSelectedCurrency] = useState("BNB");
-  const [name, setName] = useState("");
+  const {
+    currencyOptions,
+    handlePrivateSaleNextStep,
+    privateSaleName,
+    setPrivateSaleName,
+    privateSaleSelectedCurrency,
+    setPrivateSaleSelectedCurrency,
+  } = GlobalContext();
   const [error, setError] = useState("");
-  const [isFeeOptionOneChecked, setIsFeeOptionOneChecked] =
-    useState<boolean>(true);
-  const [isFeeOptionTwoChecked, setIsFeeOptionTwoChecked] =
-    useState<boolean>(false);
 
   return (
     <form className="flex flex-col gap-6">
@@ -24,9 +26,9 @@ export default function StepOne() {
           label="Name"
           type="text"
           placeholder="Enter sale title"
-          value={name}
+          value={privateSaleName}
           onChange={(e) => {
-            setName?.(e.target.value);
+            setPrivateSaleName?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -40,25 +42,21 @@ export default function StepOne() {
         <p>Select Currency</p>
         <CustomSelect
           options={currencyOptions}
-          header={selectedCurrency}
-          setHeader={setSelectedCurrency}
+          header={privateSaleSelectedCurrency}
+          setHeader={setPrivateSaleSelectedCurrency}
         />
         {/* create pool fee */}
         <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
-          Users will pay with {selectedCurrency} for your token
+          Users will pay with {privateSaleSelectedCurrency} for your token
         </p>
       </div>
       <button
+        disabled={privateSaleName === ""}
         onClick={(e: any) => {
           e.preventDefault();
-          // if (name === "") {
-          //   setError?.("Name must be entered");
-          // } else {
-          //   handleNextStep?.(e);
-          // }
-          handleNextStep?.(e);
+          handlePrivateSaleNextStep?.(e);
         }}
-        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
       >
         Next
       </button>

@@ -2,10 +2,12 @@
 import LatestPools from "@/components/LatestPools";
 import PrivateSaleForm from "../components/privateSaleForm";
 import CreationSteps from "@/components/CreationSteps";
+import { GlobalContext } from "@/context/Context";
 
 type Props = {};
 
 export default function CreatePrivateSale({}: Props) {
+  const {privateSaleCurrentStep, setPrivateSaleCurrentStep} = GlobalContext();
   const stepTitles = [
     {
       id: "verify-your-token",
@@ -41,7 +43,7 @@ export default function CreatePrivateSale({}: Props) {
       <LatestPools />
       <main className="mt-[2.5rem] text-white grid lg:grid-cols-[17rem_auto] lg:items-start gap-8">
         {/* LEFT COLUMN */}
-        <CreationSteps stepTitles={stepTitles} />
+        <CreationSteps stepTitles={stepTitles} currentStep={privateSaleCurrentStep} setCurrentStep={setPrivateSaleCurrentStep} />
 
         {/* RIGHT COLUMN */}
         <section>

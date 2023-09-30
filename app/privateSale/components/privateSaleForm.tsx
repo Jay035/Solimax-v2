@@ -7,12 +7,12 @@ import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
 export default function PrivateSaleForm() {
-  const { currentStep } = GlobalContext();
+  const { privateSaleCurrentStep } = GlobalContext();
   const [error, setError] = useState("");
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       {/* <ButtonGroup /> */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between flex-col gap-4 md:flex-row md:items-center">
         <h1 className="tracking-[-0.015rem] text-2xl text-white">
           Create private sale
         </h1>
@@ -30,19 +30,19 @@ export default function PrivateSaleForm() {
       </div>
       {/* ------------------------------------- */}
       {/* STEP 1 */}
-      {currentStep === 1 && <StepOne />}
+      {privateSaleCurrentStep === 1 && <StepOne />}
 
       {/* ------------------------------------- */}
       {/* STEP 2 */}
-      {currentStep === 2 && <StepTwo />}
+      {privateSaleCurrentStep === 2 && <StepTwo />}
 
       {/* ------------------------------------- */}
       {/* STEP 3 */}
-      {currentStep === 3 && <StepThree />}
+      {privateSaleCurrentStep === 3 && <StepThree />}
 
       {/* ------------------------------------- */}
       {/* STEP 4 */}
-      {currentStep === 4 && <StepFour />}
+      {privateSaleCurrentStep === 4 && <StepFour />}
     </section>
   );
 }

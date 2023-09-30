@@ -3,7 +3,8 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
-import Checkbox from "@/utils/Checkbox";
+import Checkbox from "@/components/Checkbox";
+import AppendPercentToInput from "@/utils/AppendPercentToInput";
 
 export default function StepTwo() {
   const {
@@ -98,13 +99,7 @@ export default function StepTwo() {
     },
   ];
 
-  const handleInputChange = (value: any, setVariable: (e: any) => void) => {
-    // Append '%' to the input value and update the state
-    if (value.contains("%")) return;
-    else {
-      setVariable(value + "%");
-    }
-  };
+
 
   return (
     <section className="flex flex-col gap-6 ">
@@ -452,7 +447,7 @@ export default function StepTwo() {
               setError?.("");
             }}
             onMouseLeave={(e) =>
-              handleInputChange(presaleFirstRelease, setPresaleFirstRelease)
+              AppendPercentToInput(presaleFirstRelease, setPresaleFirstRelease)
             }
             isRequired={true}
           />
@@ -487,7 +482,7 @@ export default function StepTwo() {
                 setError?.("");
               }}
               onMouseLeave={(e) =>
-                handleInputChange(presaleToken, setPresaleToken)
+                AppendPercentToInput(presaleToken, setPresaleToken)
               }
               isRequired={true}
             />

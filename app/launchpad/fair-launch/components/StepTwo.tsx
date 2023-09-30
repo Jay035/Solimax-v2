@@ -3,7 +3,7 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
-import Checkbox from "@/utils/Checkbox";
+import Checkbox from "@/components/Checkbox";
 
 export default function StepTwo() {
   const { handleFairlaunchNextStep, handleFairlaunchPreviousStep } = GlobalContext();

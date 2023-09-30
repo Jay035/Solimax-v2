@@ -11,6 +11,7 @@ export const LaunchpadContext = createContext<FormProps>({
   // currentStep: 1,
   presaleCurrentStep: 1,
   fairlaunchCurrentStep: 1,
+  privateSaleCurrentStep: 1,
 });
 
 type Props = {
@@ -21,7 +22,7 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [isModalShowing, setIsModalShowing] = useState(false);
 
   // ---------------------------------
-  // PRESALE TAB
+  // PRESALE PAGE
   const [presaleCurrentStep, setPresaleCurrentStep] = useState(1);
   // STEP ONE
   const [presaleTokenAddress, setPresaleTokenAddress] = useState<string>("");
@@ -55,6 +56,23 @@ export function LaunchpadContextProvider({ children }: Props) {
   //   setIsPresaleVestingContributionChecked,
   // ] = useState(false);
 
+  const handlePresaleNextStep = () => {
+    setPresaleCurrentStep?.(Number(presaleCurrentStep) + 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handlePresalePreviousStep = () => {
+    if (Number(presaleCurrentStep) > 1)
+      setPresaleCurrentStep?.(Number(presaleCurrentStep) - 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   // FAIRSALE TAB
   const [fairlaunchCurrentStep, setFairlaunchCurrentStep] = useState(1);
   const [fairlaunchTokenAddress, setFairlaunchTokenAddress] = useState("");
@@ -67,6 +85,53 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [fairLaunchRouter, setFairlaunchRouter] = useState(
     "Select router exchange"
   );
+
+  const handleFairlaunchNextStep = () => {
+    setFairlaunchCurrentStep?.(Number(fairlaunchCurrentStep) + 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleFairlaunchPreviousStep = () => {
+    if (Number(fairlaunchCurrentStep) > 1)
+      setFairlaunchCurrentStep?.(Number(fairlaunchCurrentStep) - 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // PRIVATE SALE PAGE
+  const [privateSaleCurrentStep, setPrivateSaleCurrentStep] = useState(1);
+  // STEP ONE
+  const [privateSaleName, setPrivateSaleName] = useState<string>("");
+  const [privateSaleSelectedCurrency, setPrivateSaleSelectedCurrency] =
+    useState("BNB");
+
+  const handlePrivateSaleNextStep = () => {
+    setPrivateSaleCurrentStep?.(Number(privateSaleCurrentStep) + 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handlePrivateSalePreviousStep = () => {
+    if (Number(privateSaleCurrentStep) > 1)
+      setPrivateSaleCurrentStep?.(Number(privateSaleCurrentStep) - 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // SOLILOCK
+
+  const [solilockTokenAddress, setSolilockTokenAddress] = useState("");
+  const [solilockAmount, setSolilockAmount] = useState("");
+  const [solilockLockTime, setSolilockLockTime] = useState("");
 
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
@@ -120,41 +185,6 @@ export function LaunchpadContextProvider({ children }: Props) {
     { value: "USDC", label: "USDC" },
   ];
 
-  //   presale
-  const handlePresaleNextStep = () => {
-    setPresaleCurrentStep?.(Number(presaleCurrentStep) + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-  const handlePresalePreviousStep = () => {
-    if (Number(presaleCurrentStep) > 1)
-      setPresaleCurrentStep?.(Number(presaleCurrentStep) - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  // Fairlaunch
-  const handleFairlaunchNextStep = () => {
-    setFairlaunchCurrentStep?.(Number(fairlaunchCurrentStep) + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleFairlaunchPreviousStep = () => {
-    if (Number(fairlaunchCurrentStep) > 1)
-      setFairlaunchCurrentStep?.(Number(fairlaunchCurrentStep) - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   useEffect(() => {
     // PRESALE
     const storedPresaleTokenAddress = localStorage.getItem(
@@ -200,7 +230,7 @@ export function LaunchpadContextProvider({ children }: Props) {
       localStorage.setItem("presaleSelectedCurrency", presaleSelectedCurrency);
     }
   }, [presaleCurrentStep, presaleSelectedCurrency, presaleTokenAddress]);
-  
+
   useEffect(() => {
     // FAIR LAUNCH
     if (fairlaunchTokenAddress) {
@@ -343,6 +373,24 @@ export function LaunchpadContextProvider({ children }: Props) {
     setFairlaunchCurrentStep,
     setFairlaunchSelectedCurrency,
     setFairlaunchTokenAddress,
+
+    // PRIVATE SALE
+    privateSaleCurrentStep,
+    privateSaleName,
+    privateSaleSelectedCurrency,
+    setPrivateSaleCurrentStep,
+    setPrivateSaleName,
+    setPrivateSaleSelectedCurrency,
+    handlePrivateSaleNextStep,
+    handlePrivateSalePreviousStep,
+
+    // SOLILOCK
+    solilockAmount,
+    solilockLockTime,
+    solilockTokenAddress,
+    setSolilockAmount,
+    setSolilockLockTime,
+    setSolilockTokenAddress,
   };
   return (
     <LaunchpadContext.Provider value={value}>

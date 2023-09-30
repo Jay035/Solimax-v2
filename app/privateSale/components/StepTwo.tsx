@@ -1,20 +1,14 @@
 import CustomInput from "@/components/CustomInput";
-import ButtonGroup from "@/components/ButtonGroup";
-import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
 export default function StepTwo() {
-  const { handleNextStep, handlePreviousStep } = GlobalContext();
-  const [softcap, setSoftcap] = useState(0);
-  const [hardcap, setHardcap] = useState(0);
-  const [minBuy, setMinBuy] = useState(0);
-  const [maxBuy, setMaxBuy] = useState(0);
-  const [router, setRouter] = useState("Select router exchange");
-  const [refundType, setRefundType] = useState("Burn");
-  const [liquidity, setLiquidity] = useState(0);
-  const [listingRate, setListingRate] = useState(0);
-  const [presaleRate, setPresaleRate] = useState(0);
+  const { handlePrivateSaleNextStep, handlePrivateSalePreviousStep } =
+    GlobalContext();
+  const [softcap, setSoftcap] = useState();
+  const [hardcap, setHardcap] = useState();
+  const [minBuy, setMinBuy] = useState();
+  const [maxBuy, setMaxBuy] = useState();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [liquidityLockup, setLiquidityLockup] = useState("");
@@ -123,70 +117,6 @@ export default function StepTwo() {
           You can enable/disable whitelist anytime.
         </span>
       </div>
-      {/* SOFT CAP */}
-      {/* <section>
-        <div className="">
-          <CustomInput
-            id="soft-cap"
-            className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-            label="Softcap (BNB)"
-            type="number"
-            placeholder="0"
-            value={softcap}
-            onChange={(e) => {
-              setSoftcap?.(e.target.value);
-              setError?.("");
-            }}
-            isRequired={true}
-          />
-
-          <label
-            htmlFor="setting-max-contribution"
-            className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
-          >
-            <div
-              className={`relative flex ${
-                !isMaxContributionChecked &&
-                "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-              } rounded-lg cursor-pointer`}
-            >
-              <input
-                type="checkbox"
-                name="setting-max-contribution"
-                id="setting-max-contribution"
-                className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-                checked={isMaxContributionChecked}
-                onChange={(event: any) => {
-                  setIsMaxContributionChecked(event.target.checked);
-                }}
-              />
-              <i
-                className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                  isMaxContributionChecked ? "text-black" : "hidden"
-                }`}
-              ></i>
-            </div>
-            <span className="text-[#F4F4F5]">Setting max contribution?</span>
-          </label>
-          {isMaxContributionChecked && (
-            <CustomInput
-              id="max-contribution"
-              className="mt-4 flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] cursor-pointer border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Max Contribution (BNB)"
-              type="number"
-              placeholder="0"
-              value={maxContribution}
-              onChange={(e) => {
-                setMaxContribution?.(e.target.value);
-                setError?.("");
-              }}
-              isRequired={true}
-            />
-          )}
-        </div>
-      </section> */}
 
       <section className="grid md:grid-cols-2 gap-6">
         <div className="">
@@ -344,7 +274,7 @@ export default function StepTwo() {
         <button
           onClick={(e: any) => {
             e.preventDefault();
-            handlePreviousStep?.(e);
+            handlePrivateSalePreviousStep?.(e);
           }}
           className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
         >
@@ -352,32 +282,21 @@ export default function StepTwo() {
         </button>
         <button
           disabled={
-            !presaleRate &&
-            !softcap &&
-            !hardcap &&
-            !minBuy &&
-            !maxBuy &&
-            !refundType &&
-            !router &&
-            !liquidity &&
-            !listingRate &&
-            !startDate &&
-            !endDate &&
-            !liquidityLockup &&
-            !firstRelease &&
-            !vestingPeriod &&
-            !presaleToken
+            softcap === null ||
+            hardcap === null ||
+            minBuy === null ||
+            maxBuy === null ||
+            startDate === "" ||
+            endDate  === "" ||
+            firstRelease === null ||
+            presaleToken  === "" ||
+            fundVesting === "" 
           }
           onClick={(e: any) => {
             e.preventDefault();
-            handleNextStep?.(e);
-            // if (tokenAddress === "") {
-            //   setError("Token address must be entered");
-            // } else {
-            //   handleNextStep();
-            // }
+            handlePrivateSaleNextStep?.(e);
           }}
-          className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+          className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
         >
           Next
         </button>
