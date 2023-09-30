@@ -1,18 +1,17 @@
-"use client"
-
+"use client";
 import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
-    route: string;
+  route: string;
 };
 
-export default function RedirectButton({route}: Props) {
+export default function RedirectButton({ route }: Props) {
   const router = useRouter();
   return (
     <button
       onClick={() => router.back()}
-      className="w-fit cursor-pointer mb-[3.19rem]"
+      className="w-fit cursor-pointer mb-[2.06rem]"
     >
       <svg
         className=""

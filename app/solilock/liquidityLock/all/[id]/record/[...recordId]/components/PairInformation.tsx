@@ -1,22 +1,23 @@
 import Image from "next/image";
-import icon1 from "../../../../../../../../public/icons/icon-2.svg";
+import icon1 from "../../../../../../../../public/icons/Group-icon.svg";
+
 
 type Props = {
   id: number;
 };
 
-export function TokenInformation() {
+export function PairInformation() {
   return (
     <div className="bg-[#1D1C20] mb-8 pt-[1.94rem] border border-[#3F3F46] rounded-[0.65rem] pb-[0.62rem] px-[0.63rem] text-sm">
       <section className="pb-[1.12rem] mb-2 border-b border-[#3F3F46] flex gap-4 items-center">
         <Image className="w-10 lg:w-16" src={icon1} alt="icon" />
-        <h1 className="text-xl lg:text-2xl text-white">Token Information</h1>
+        <h1 className="text-xl lg:text-2xl text-white">Pair Information</h1>
       </section>
      
-      {/* TOKEN ADDRESS */}
+      {/* PAIR ADDRESS */}
       <section className="pb-2 mb-2 flex justify-between gap-4 pt-4 border-b border-[#3F3F46] px-[1.19rem] items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-          Token Address
+          Pair Address
         </p>
         <div className="flex gap-[0.12rem] items-start text-right">
           <span className="tracking-[-0.0075rem] text-[#A4D0F2] underline text-xs">
@@ -30,26 +31,33 @@ export function TokenInformation() {
           />
         </div>
       </section>
-      {/* Token name */}
+      {/* Pair name */}
       <section className="pt-4 pb-4 px-[1.19rem] mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-          Token Name
+          Pair Name
         </p>
         <p className="tracking-[-0.00875rem]">CORNFLUX</p>
       </section>
-      {/* Token Symbol */}
+      {/* Token */}
       <section className="pt-4 pb-4 px-[1.19rem] mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-          Token Symbol
+          Token 
         </p>
-        <p className="tracking-[-0.00875rem]">CFX</p>
+        <p className="tracking-[-0.00875rem]">FUEL</p>
+      </section>
+      {/* Quote Token */}
+      <section className="pt-4 pb-4 px-[1.19rem] mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
+        <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+          Quote Token 
+        </p>
+        <p className="tracking-[-0.00875rem]">WETH</p>
       </section>
       {/* Token Decimals */}
       <section className="pt-4 pb-4 px-[1.19rem] mb-2 flex gap-4 justify-between items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-          Token Decimals
+          Dex
         </p>
-        <p className="tracking-[-0.00875rem]">18</p>
+        <p className="tracking-[-0.00875rem]">Uniswap</p>
       </section>
     </div>
   );

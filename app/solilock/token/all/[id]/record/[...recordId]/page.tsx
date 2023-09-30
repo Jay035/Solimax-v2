@@ -1,4 +1,4 @@
-import RedirectButton from "@/app/solilock/components/RedirectButton";
+import RedirectButton from "@/components/RedirectButton";
 import { LockInformation } from "./components/LockInformation";
 import { TokenInformation } from "./components/TokenInformation";
 
@@ -16,19 +16,19 @@ export default function SingleLockRecord({
         <div className="bg-[#1D1C20] rounded-[0.625rem] py-[3.2rem] flex flex-col gap-4 justify-center items-center">
           <p className="text-lg tracking-[-0.01125rem]">Unlocks in</p>
           <section className="bg-[#14221E] flex gap-2 rounded-lg border-[0.5px] border-[#81C8F2] py-4 px-6">
-            <p className="tracking-[-0.00875rem] text-sm">
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
               <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
                 01
               </span>{" "}
               Hour
             </p>
-            <p className="tracking-[-0.00875rem] text-sm">
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
               <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
                 25
               </span>{" "}
               Min
             </p>
-            <p className="tracking-[-0.00875rem] text-sm">
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
               <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
                 45
               </span>{" "}

@@ -1,5 +1,5 @@
 "use client";
-import RedirectButton from "@/app/solilock/components/RedirectButton";
+import RedirectButton from "@/components/RedirectButton";
 import { LockInformation } from "./components/LockInformation";
 import { LockRecords } from "./components/LockRecords";
 

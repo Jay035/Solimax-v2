@@ -3,6 +3,7 @@ import img2 from "../../../../public/icons/icon-2.svg";
 import banner from "../../../../public/images/detail banner.png";
 import Link from "next/link";
 import Details from "@/app/launchpad/list/[...title]/components/Details";
+import RedirectButton from "@/components/RedirectButton";
 type Props = {};
 
 export default function page({ params }: { params: { title: string } }) {
@@ -10,24 +11,7 @@ export default function page({ params }: { params: { title: string } }) {
     <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
       <div className="flex justify-between items-center mb-9">
         {/* chevron left */}
-        <Link href="/privateSale/list">
-          <svg
-            className="cursor-pointer"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
+        <RedirectButton route="" />
         <div className="flex items-center gap-2 text-white">
           <Image
             width={44}

@@ -7,13 +7,12 @@ export function LockInformation({}: Props) {
   return (
     <div className="bg-[#1D1C20] pt-[1.94rem] border border-[#3F3F46] rounded-[0.65rem] pb-[0.62rem] px-[0.63rem] text-sm">
       <section className="pb-[1.12rem] mb-2 border-b border-[#3F3F46] flex gap-4 items-center">
-        <Image className="w-10 lg:w-16" src={icon1} alt="icon" />
-        <h1 className="text-xl lg:text-2xl text-white">Lock Information</h1>
-      </section>
-      {/* Title */}
-      <section className="pt-[1.94rem] pb-4 px-[1.19rem] mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">
-        <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">Title</p>
-        <p className="tracking-[-0.00875rem]">Marketing</p>
+        <Image
+          className="bg-white rounded-full w-14 h-14"
+          src={icon1}
+          alt="token logo"
+        />
+        <h1 className="text-xl lg:text-2xl text-white">Pair Information</h1>
       </section>
       {/* Total Amount Locked */}
       <section className="pt-4 pb-4 px-[1.19rem] mb-2 border-b border-[#3F3F46] flex gap-4 justify-between items-center">

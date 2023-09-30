@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LockInformation } from "./components/LockInformation";
 import { LockRecords } from "./components/LockRecords";
-import RedirectButton from "@/app/solilock/components/RedirectButton";
+import RedirectButton from "@/components/RedirectButton";
 
 type Props = {};
 
