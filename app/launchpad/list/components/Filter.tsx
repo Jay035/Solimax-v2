@@ -101,16 +101,21 @@ export default function Filter({}: Props) {
     },
   ];
   return (
-    <section id="filter" className="mt-4 mb-[3.31rem] flex items-end gap-4 w-full">
-      <div className="bg-[#26272B] w-full flex items-center gap-[0.62rem] border border-[#F4F4F5] rounded-[0.625rem] py-[0.88rem] px-[1.19rem]">
-        <i className="ri-search-line text-[#E4E4E7]"></i>
-        <input
-          type="text"
-          placeholder="Search here"
-          className="w-full min-w-[12rem] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-          name=""
-          id=""
-        />
+    <section
+      id="filter"
+      className="mt-4 mb-[3.31rem] flex items-end gap-4 w-full"
+    >
+      <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] rounded-[0.625rem]">
+        <div className="bg-[#26272B] flex items-center gap-[0.62rem] rounded-[0.625rem] py-[0.88rem] px-[1.19rem]">
+          <i className="ri-search-line text-[#E4E4E7]"></i>
+          <input
+            type="text"
+            placeholder="Search here"
+            className="w-full min-w-[12rem] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            name=""
+            id=""
+          />
+        </div>
       </div>
       <div className="flex items-center gap-2 w-full">
         <div className="w-full min-w-[7.3rem] max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">

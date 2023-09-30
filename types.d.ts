@@ -12,9 +12,8 @@ interface AccordionProps {
 
 interface FormProps {
   currencyOptions?: any;
-  currentStep: number;
+  // currentStep: number;
   tokenAddress?: string;
-  presaleRate?: number;
   softcap?: number;
   hardcap?: number;
   minBuy?: number;
@@ -31,7 +30,6 @@ interface FormProps {
   startDate?: string;
   endDate?: string;
   liquidityLockup?: string;
-  presaleToken?: string;
   vestingPeriod?: string;
   firstRelease?: string;
   websiteURL?: string;
@@ -46,6 +44,49 @@ interface FormProps {
   totalSellingAmount?: string;
   isModalShowing?: boolean;
   nameOfToken?: string;
+
+  // PRESALE
+  presaleCurrentStep: number;
+  presaleTokenAddress?: string;
+  presaleSelectedCurrency?: string;
+  isPresaleFeeOptionOneChecked?: boolean;
+  isPresaleFeeOptionTwoChecked?: boolean;
+  presaleRate?: number;
+  presaleToken?: string | number;
+  presaleSoftcap?: number;
+  presaleHardcap?: number;
+  presaleMinBuy?: number;
+  presaleMaxBuy?: number;
+  presaleRouter?: string;
+  presaleRefundType?: string;
+  presaleLiquidity?: number;
+  presaleListingRate?: number;
+  presaleStartDate?: string;
+  presaleEndDate?: string;
+  presaleLiquidityLockup?: string;
+  presaleFirstRelease?: string;
+  presaleVestingPeriod?: string;
+  isPresaleWhitelistDisabled?: boolean;
+  isPresaleWhitelistEnabled?: boolean;
+  isPresaleVestingContributionChecked?: boolean;
+  setIsPresaleVestingContributionChecked?: (x: boolean) => void;
+  setIsPresaleWhitelistEnabled?: (x: boolean) => void;
+  setIsPresaleWhitelistDisabled?: (x: boolean) => void;
+  setPresaleFirstRelease?: (x: string) => void;
+  setPresaleVestingPeriod?: (x: string) => void;
+  setPresaleLiquidityLockup?: (x: string) => void;
+  setPresaleEndDate?: (x: string) => void;
+  setPresaleStartDate?: (x: string) => void;
+  setPresaleListingRate?: (x: any) => void;
+  setPresaleLiquidity?: (x: any) => void;
+  setPresaleRefundType?: (x: string) => void;
+  setPresaleRouter?: (x: string) => void;
+  setPresaleSoftcap?: (x: number) => void;
+  setPresaleHardcap?: (x: number) => void;
+  setPresaleMinBuy?: (x: number) => void;
+  setPresaleMaxBuy?: (x: number) => void;
+  setPresaleTokenAddress?: (x: string) => void;
+  setPresaleToken?: (x: any) => void;
   setNameOfToken?: (x: string) => void;
   setIsModalShowing?: (x: any) => void;
   setTotalSellingAmount?: (x: string) => void;
@@ -60,9 +101,13 @@ interface FormProps {
   setWebsiteURL?: (x: string) => void;
   setFirstRelease?: (x: string) => void;
   setVestingPeriod?: (x: string) => void;
-  setPresaleToken?: (x: string) => void;
-  handlePreviousStep?: (x: string) => void;
-  handleNextStep?: (x: string) => void;
+  handlePresalePreviousStep?: (x: string | number) => void;
+  handlePresaleNextStep?: (x: string | number) => void;
+  setPresaleCurrentStep?: (step: any) => void;
+  setIsPresaleFeeOptionTwoChecked?: (x: boolean) => void;
+  setIsPresaleFeeOptionOneChecked?: (x: boolean) => void;
+  setPresaleSelectedCurrency?: (currency: string) => void;
+
   setLiquidityLockup?: (x: string) => void;
   setEndDate?: (x: string) => void;
   setStartDate?: (x: string) => void;
@@ -74,12 +119,42 @@ interface FormProps {
   setMaxBuy?: (x: number) => void;
   setRefundType?: (x: string) => void;
   setLiquidity?: (x: number) => void;
-  setListingRate?: (x: number) => void;
+  setListingRate?: (x: any) => void;
   setError?: (err: string) => void;
   setTokenAddress?: (address: string) => void;
   setPresaleRate?: (rate: number) => void;
-  setSelectedCurrency?: (address: string) => void;
+  setSelectedCurrency?: (currency: string) => void;
   setCurrentStep?: (step: number) => void;
+
+  // FAIRLAUNCH
+  fairlaunchCurrentStep: number;
+  fairlaunchTokenAddress?: string;
+  fairlaunchSelectedCurrency?: string;
+  setFairlaunchTokenAddress?: (x: string) => void;
+  setFairlaunchCurrentStep?: (step: any) => void;
+  setFairlaunchSelectedCurrency?: (currency: string) => void;
+  handleFairlaunchPreviousStep?: (x: string | number) => void;
+  handleFairlaunchNextStep?: (x: string | number) => void;
+
+  // PRIVATE SALE
+  privateSaleCurrentStep: number;
+  privateSaleName?: string;
+  privateSaleSelectedCurrency?: string;
+  setPrivateSaleName?: (x: string) => void;
+  setPrivateSaleCurrentStep?: (step: any) => void;
+  setPrivateSaleSelectedCurrency?: (currency: string) => void;
+  handlePrivateSalePreviousStep?: (x: string | number) => void;
+  handlePrivateSaleNextStep?: (x: string | number) => void;
+
+  // SOLILOCK
+  solilockTokenAddress?: string;
+  solilockLockTime?: string;
+  solilockAmount?: number | string;
+  setSolilockTokenAddress?: (x: string) => void;
+  setSolilockLockTime?: (x: string) => void;
+  setSolilockAmount?: (x: any) => void;
+
+  // AIRDROP
 }
 
 type stepTitleProps = {
@@ -106,4 +181,4 @@ type PoolsDataProps = {
   maxBuy: number;
   totalSupply: number;
   dateOfCompletion: string;
-}
+};

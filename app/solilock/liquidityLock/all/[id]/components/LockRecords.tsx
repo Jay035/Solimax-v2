@@ -1,8 +1,11 @@
+import Link from "next/link";
 import React from "react";
 
-type Props = {};
+type Props = {
+  id: number;
+};
 
-export function LockRecords({}: Props) {
+export function LockRecords({ id }: Props) {
   return (
     <div className="bg-[#1D1C20] mt-[1.56rem] pt-[1.84rem] border border-[#3F3F46] rounded-[0.65rem] pb-[0.62rem] px-[1.88rem] text-sm">
       <h1 className="text-xl lg:text-2xl text-white pb-[1.12rem] border-b border-[#3F3F46]">
@@ -51,51 +54,57 @@ export function LockRecords({}: Props) {
             </tr>
           </thead>
           <tbody className="mt-[1.19rem] last:border-b-0">
-            <tr className="border-b border-[#26272B]">
-              <td
-                headers="wallet one"
-                className="pl-0 underline text-[#A4D0F2]"
-              >
-                0x6a9d...0b78
-              </td>
-              <td headers="amount one">100,000,000</td>
-              <td headers="cycle one">-</td>
-              <td headers="cycle-release one">-</td>
-              <td headers="tge one">-</td>
-              <td headers="unlock-time one">2023.08.26 04:58</td>
-              <td className="text-[#A4D0F2]">View</td>
-            </tr>
-            <tr className="border-b border-[#26272B]">
-              <td
-                headers="wallet one"
-                className="pl-0 underline text-[#A4D0F2]"
-              >
-                0x6a9d...0b78
-              </td>
-              <td headers="amount one">100,000,000</td>
-              <td headers="cycle one">-</td>
-              <td headers="cycle-release one">-</td>
-              <td headers="tge one">-</td>
-              <td headers="unlock-time one">2023.08.26 04:58</td>
-              <td className="text-[#A4D0F2]">View</td>
-            </tr>
-            <tr className="">
-              <td
-                headers="wallet one"
-                className="pl-0 underline text-[#A4D0F2]"
-              >
-                0x6a9d...0b78
-              </td>
-              <td headers="amount one">100,000,000</td>
-              <td headers="cycle one">-</td>
-              <td headers="cycle-release one">-</td>
-              <td headers="tge one">-</td>
-              <td headers="unlock-time one">2023.08.26 04:58</td>
-              <td className="text-[#A4D0F2]">View</td>
-            </tr>
+          {LockRecordsData?.map((data: any) => (
+              <tr key={data?.recordId} className="border-b border-[#26272B]">
+                <td className="pl-0 underline text-[#A4D0F2]">
+                  {data?.wallet}
+                </td>
+                <td>{data?.amount}</td>
+                <td>{data?.cycle === "" ? "-" : data.cycle}</td>
+                <td>{data?.cycleRelease === "" ? "-" : data.cycleRelease}</td>
+                <td>{data?.tge === "" ? "-" : data.tge}</td>
+                <td>{data?.unlockTime}</td>
+                <td className="text-[#A4D0F2]">
+                  <Link href={`/solilock/liquidityLock/all/${id}/record/${data?.recordId}`}>
+                    View
+                  </Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </div>
   );
 }
+
+
+export const LockRecordsData = [
+  {
+    recordId: 1,
+    wallet: "0x6a9d...0b78",
+    amount: "100,000,000",
+    unlockTime: "2023.08.26 04:58",
+    cycle: "",
+    cycleRelease: "",
+    tge: "",
+  },
+  {
+    recordId: 2,
+    wallet: "0x6a9d...0b78",
+    amount: "100,000,000",
+    unlockTime: "2023.08.26 04:58",
+    cycle: "",
+    cycleRelease: "",
+    tge: "",
+  },
+  {
+    recordId: 3,
+    wallet: "0x6a9d...0b78",
+    amount: "100,000,000",
+    unlockTime: "2023.08.26 04:58",
+    cycle: "",
+    cycleRelease: "",
+    tge: "",
+  },
+];

@@ -114,6 +114,20 @@ thead {
   }
 }
 
+/* span::after {
+  padding-left: 5px;
+} */
+
+/* input[type="date"]:invalid + span::after {
+  content: "✖";
+}
+
+input[type="date"]:valid + span::after {
+  content: "✓";
+} */
+
+
+
 /* --------------------------------------------- */
 
 /* ----------------------------- */
@@ -123,7 +137,7 @@ thead {
 .custom-dropdown {
   position: relative;
   background-color: #26272b;
-  border: 1px solid #f4f4f5;
+  /* border: 1px solid #f4f4f5; */
   border-radius: 0.625rem;
   padding: 0.875rem 1.1875rem;
   width: 100%;

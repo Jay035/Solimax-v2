@@ -8,18 +8,18 @@ export default function Navigation({}: Props) {
   const links = [
     {
       id: "all-launchpads",
-      label: "All launchpads",
-      route: "/launchpad/launchpadList",
+      label: "All private sales",
+      route: "/launchpad/list/all",
     },
     {
       id: "my-contributions",
       label: "My contributions",
-      route: "/launchpad/launchpadList",
+      route: "/launchpad/list/all",
     },
     {
       id: "favorites",
       label: "Favorites",
-      route: "/launchpad/launchpadList",
+      route: "/launchpad/list/all",
     },
   ];
   return (

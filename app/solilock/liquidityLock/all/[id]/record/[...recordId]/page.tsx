@@ -1,6 +1,6 @@
 import RedirectButton from "@/components/RedirectButton";
 import { LockInformation } from "./components/LockInformation";
-import { TokenInformation } from "./components/TokenInformation";
+import { PairInformation } from "./components/PairInformation";
 
 export default function SingleLockRecord({
   params,
@@ -37,7 +37,7 @@ export default function SingleLockRecord({
           </section>
         </div>
       </div>
-      <TokenInformation />
+      <PairInformation />
       <LockInformation />
       <p className="text-[0.875rem] mt-8 text-[#D1D1D6]">
         Disclaimer: Solimax Presale will never endorse or encourage that you

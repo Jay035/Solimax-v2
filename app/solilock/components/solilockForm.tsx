@@ -4,7 +4,7 @@ import { useState } from "react";
 import LockForm from "./LockForm";
 
 export default function SolilockForm() {
-  const { currentStep } = GlobalContext();
+  // const { currentStep } = GlobalContext();
   const [error, setError] = useState("");
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">

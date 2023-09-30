@@ -4,27 +4,31 @@ import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
 import StepFour from "./StepFour";
 import { GlobalContext } from "@/context/Context";
+import { useEffect } from "react";
 
 export default function FairLaunchForm() {
-  const { currentStep } = GlobalContext();
+  const { fairlaunchCurrentStep } = GlobalContext();
 
+  useEffect(() => {
+    console.log(fairlaunchCurrentStep)
+  }, [fairlaunchCurrentStep])
   return (
     <section>
       {/* ------------------------------------- */}
       {/* STEP 1 */}
-      {currentStep === 1 && <StepOne />}
+      {fairlaunchCurrentStep === 1 && <StepOne />}
 
       {/* ------------------------------------- */}
       {/* STEP 2 */}
-      {currentStep === 2 && <StepTwo />}
+      {fairlaunchCurrentStep === 2 && <StepTwo />}
 
       {/* ------------------------------------- */}
       {/* STEP 3 */}
-      {currentStep === 3 && <StepThree />}
+      {fairlaunchCurrentStep === 3 && <StepThree />}
 
       {/* ------------------------------------- */}
       {/* STEP 4 */}
-      {currentStep === 4 && <StepFour />}
+      {fairlaunchCurrentStep === 4 && <StepFour />}
     </section>
   );
 }

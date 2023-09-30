@@ -4,6 +4,8 @@ import img2 from "../../../../public/icons/icon-2.svg";
 import banner from "../../../../public/images/detail banner.png";
 import Details from "./components/Details";
 import Link from "next/link";
+import Newsletter from "@/components/Newsletter";
+import RightCol from "./components/RightCol";
 
 // export async function generateMetadata({
 //     params: { id },
@@ -18,6 +20,7 @@ import Link from "next/link";
 //   }
 
 export default function page({ params }: { params: { title: string } }) {
+  
   return (
     <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
       <div className="flex justify-between items-center mb-9">
@@ -171,109 +174,7 @@ export default function page({ params }: { params: { title: string } }) {
           <Details />
         </section>
         {/* right column */}
-        <section className="flex flex-col gap-6 text-white">
-          <Image className="w-full" src={banner} alt="banner" />
-          <div className="bg-[#1D1C20] pt-[1.13rem] border border-[#3F3F46] rounded-[0.65rem] px-5">
-            {/* PROGRESS */}
-            <div className="">
-              <div className="flex justify-between items-center text-[#e4e4e7] text-[0.72rem]">
-                <p className="tracking-[-0.0073rem]">Progress</p>
-                <p className="tracking-[-0.0073rem]">67%</p>
-              </div>
-              {/* progress bar */}
-              <div className="bg-[#70707b] w-full h-[0.434rem] rounded-[0.58rem] my-[0.29rem]">
-                <div className="bg-[#454FDA] w-[67%] h-full rounded-[0.58rem]"></div>
-              </div>
-              <div className="flex justify-between items-center text-[#e4e4e7] text-[0.72rem]">
-                <p className="tracking-[-0.0073rem]">870 BNB</p>
-                <p className="tracking-[-0.0073rem] text-[#f3ce92]">1000 BNB</p>
-              </div>
-            </div>
-            {/* pool state */}
-            <p className="bg-[#a1f381]/[0.05] text-center text-[0.875rem] tracking-[-0.00875rem] mt-[1.05rem] mb-[2.37rem] p-[0.65rem] rounded-[0.65rem]">
-              This pool is active
-            </p>
-            <div className="border-b border-[#26272B]">
-              {/* Status */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-                  Status
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-[#12B76A] text-sm">
-                  Active
-                </p>
-              </section>
-              {/* Sale type */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-                  Sale type
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-[#86CB3C] text-sm">
-                  Whitelist
-                </p>
-              </section>
-              {/* Max buy */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">Maximum buy</p>
-                <p className="tracking-[-0.00875rem] text-right  text-sm">
-                  0.033 BNB{" "}
-                </p>
-              </section>
-              {/* Min buy */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">Minimum buy</p>
-                <p className="tracking-[-0.00875rem] text-right  text-sm">
-                  3.3 BNB{" "}
-                </p>
-              </section>
-              {/* My contributions */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">
-                  My contributions
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-sm">
-                  0.0 BNB{" "}
-                </p>
-              </section>
-              {/* My contributions */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">
-                  Total contributors
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-sm">69 </p>
-              </section>
-            </div>
-            <div className="py-10 px-6 bg-[#18181B] bordr-[#E4E4E7] mt-7 text-white rounded-2xl">
-              <h1 className="text-[#fcfcfd] tracking-[-0.045rem] text-[1.875rem] md:text-4xl">
-                Stay in the loop about all projects
-              </h1>
-              <p className="mt-5 mb-8 text-[#e4e4e7] text-sm">
-                Sign up our mailing list to receive our new presales, features,
-                tips and reviews for next 100X projects.
-              </p>
-              <form className="flex gap-4 flex-col">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-[0.87rem] py-3 rounded-lg bg-[#26272B] border border-[#A0A0AB] shadow-[0px_1px_2px_0px] shadow-[#101828]/[0.05] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                  name=""
-                  id=""
-                />
-                <p className="mt-[0.38rem] text-left text-[#d1d1d6]">
-                  We care about your data in our privacy policy.
-                </p>
-                <button
-                  className="rounded-lg border border-[#454fda] bg-[#454fda] px-5 py-3"
-                  // onClick={(e: any) => {
-                  //   e.preventDefault();
-                  // }}
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
+        <RightCol />
       </div>
       {/* page {params.title} */}
     </section>

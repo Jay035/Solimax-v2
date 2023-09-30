@@ -10,6 +10,7 @@ type FormProps = {
   placeholder?: string;
   pattern?: string;
   onChange?: (e: any) => void;
+  onMouseLeave?: (e: any) => void;
 };
 
 export default function CustomInput({
@@ -23,6 +24,7 @@ export default function CustomInput({
   value,
   defaultChecked,
   onChange,
+  onMouseLeave,
   pattern,
 }: FormProps) {
   return (
@@ -32,7 +34,7 @@ export default function CustomInput({
         {isRequired && <span className="text-[#F04438]">*</span>}
       </label>
       <div
-        className={`w-full ${
+        className={`w-full flex items-center gap-2 ${
           id === "amount" &&
           "relative border border-[#F4F4F5] bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.19rem]"
         }`}
@@ -40,13 +42,16 @@ export default function CustomInput({
         <input
           id={id}
           name={id}
-          className={`${inputClassName} ${id === "amount" ? 'w-[90%]' : 'w-full'}`}
+          className={`${inputClassName} ${
+            id === "amount" ? "w-[90%]" : "w-full"
+          } outline-none`}
           type={type}
           autoComplete="off"
           defaultChecked={defaultChecked}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onMouseLeave={onMouseLeave}
           required={isRequired}
         />
         {id === "amount" && (
@@ -54,6 +59,7 @@ export default function CustomInput({
             MAX
           </p>
         )}
+        <span className="validity"></span>
       </div>
     </div>
   );

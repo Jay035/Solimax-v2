@@ -2,8 +2,11 @@
 import LatestPools from "@/components/LatestPools";
 import FairLaunchForm from "../components/FairLaunchForm";
 import CreationSteps from "@/components/CreationSteps";
+import { GlobalContext } from "@/context/Context";
 
 export default function CreateFairLaunch() {
+  const {fairlaunchCurrentStep, setFairlaunchCurrentStep} = GlobalContext();
+
   const stepTitles = [
     {
       id: "verify-your-token",
@@ -40,7 +43,7 @@ export default function CreateFairLaunch() {
       <LatestPools />
       <main className="mt-[2.5rem] text-white flex flex-col lg:flex-row lg:items-start gap-8">
         {/* LEFT COLUMN */}
-        <CreationSteps stepTitles={stepTitles} />
+        <CreationSteps stepTitles={stepTitles} currentStep={fairlaunchCurrentStep} setCurrentStep={setFairlaunchCurrentStep} />
         {/* RIGHT COLUMN */}
         <section>
           <FairLaunchForm />

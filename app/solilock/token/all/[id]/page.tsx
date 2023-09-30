@@ -1,36 +1,12 @@
 "use client";
+import RedirectButton from "@/components/RedirectButton";
 import { LockInformation } from "./components/LockInformation";
 import { LockRecords } from "./components/LockRecords";
-import { useRouter } from "next/navigation";
-
-type Props = {};
 
 export default function TokenPage({ params }: { params: { id: number } }) {
-  const router = useRouter();
-
   return (
-    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
-      <button
-        onClick={() => router.push("/solilock/token/all")}
-        className="w-fit cursor-pointer mb-[3.19rem]"
-      >
-        <svg
-          className=""
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M15 18L9 12L15 6"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+    <main className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
+      <RedirectButton route="/solilock/token/all" />
 
       <LockInformation />
       <LockRecords id={params?.id} />
@@ -42,6 +18,6 @@ export default function TokenPage({ params }: { params: { id: number } }) {
         information about (DYOR) can be found via{" "}
         <span className="underline">Binance Academy</span>.
       </p>
-    </section>
+    </main>
   );
 }

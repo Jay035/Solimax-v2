@@ -2,7 +2,7 @@
 import Link from "next/link";
 import navLogo from "/public/icons/logo-icon.svg";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { GlobalContext } from "@/context/Context";
 import Wallet from "./Wallet";
@@ -12,52 +12,105 @@ import shieldIcon from "../public/icons/shield.svg";
 import unlockIcon from "../public/icons/unlock.svg";
 import airdropIcon from "../public/icons/airdrop 1.svg";
 
-type Props = {};
-
-export default function Navbar({}: Props) {
-  const { setIsModalShowing } = GlobalContext();
+export default function Navbar() {
+  const { isModalShowing, setIsModalShowing } = GlobalContext();
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [optionsOpen, setOptionsOpen] = useState(false);
-  const showOptions = () => {
-    setOptionsOpen((prevstate) => !prevstate);
+
+  const changeRoute = (route: string) => {
+    router?.push(route);
   };
 
-  // const isActive = pathname === link.href
+  const showCreateTokenModal = (e: any) => {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+    setIsModalShowing?.(true);
+    setMenuOpen((prevState) => !prevState);
+    if (typeof window != "undefined" && window.document) {
+      document.body.style.overflow = "hidden";
+    }
+  };
 
-  // const changeRoute = (route: string) => {
-  //   router?.push(`${route}`);
-  // };
+  // DROPDOWN OPTIONS FOR LAUNCHPAD TAB
+  const launchpadNavDropdownOptions = [
+    {
+      title: "Create launchpad",
+      route: "/launchpad/presale/create",
+      className:
+        "tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]",
+    },
+    {
+      title: "Create fair launch",
+      route: "/launchpad/fair-launch/create",
+      className:
+        "tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]",
+    },
+    {
+      title: "Create token",
+      className:
+        "tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]",
+    },
+    {
+      title: "Launchpad list",
+      route: "/launchpad/list/all",
+      className: "tracking-[-0.00875rem] cursor-pointer",
+    },
+  ];
 
-  // const launchpadNavDropdownOptions = [
-  //   {
-  //     title: "Create launchpad",
-  //     route: "/launchpad/presale/create",
-  //     // routeRedirect: changeRoute("/launchpad/presale/create"),
-  //   },
-  //   {
-  //     title: "Create fair launch",
-  //     route: "/launchpad/fair-launch/create",
-  //     // routeRedirect: changeRoute("/launchpad/fairLaunch/create"),
-  //   },
-  //   {
-  //     title: "Create token",
-  //     route: "/launchpad/fair-launch/create",
-  //     // routeRedirect: changeRoute("/launchpad/fairLaunch/create"),
-  //   },
-  //   {
-  //     title: "Launchpad list",
-  //     route: "/launchpad/list",
-  //     // routeRedirect: changeRoute("/launchpad/fairLaunch/create"),
-  //   },
-  // ];
+  // DROPDOWN OPTIONS FOR PRIVATE SALE TAB
+  const privateSaleNavDropdownOptions = [
+    {
+      title: "Create private sale",
+      route: "/privateSale/create",
+      className:
+        "tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]",
+    },
+    {
+      title: "Private sale list",
+      route: "/privateSale/list/all",
+      className: "tracking-[-0.00875rem] cursor-pointer",
+    },
+  ];
 
-  // const isActive = pathname.startsWith(link.href)
+  // DROPDOWN OPTIONS FOR SOLILOCK TAB
+  const solilockNavDropdownOptions = [
+    {
+      title: "Create lock",
+      route: "/solilock/create",
+      className:
+        "tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]",
+    },
+    {
+      title: "Token",
+      route: "/solilock/token/all",
+      className:
+        "tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]",
+    },
+    {
+      title: "Liquidity lock",
+      route: "/solilock/liquidityLock/all",
+      className: "tracking-[-0.00875rem] cursor-pointer",
+    },
+  ];
+  // DROPDOWN OPTIONS FOR AIRDROP TAB
+  const airdropNavDropdownOptions = [
+    {
+      title: "Create airdrop",
+      route: "/airdrop/create",
+      className:
+        "tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]",
+    },
+    {
+      title: "Airdrop list",
+      route: "/airdrop/list/all",
+      className: "tracking-[-0.00875rem] cursor-pointer",
+    },
+  ];
 
   return (
     <nav
-      className={`pt-6 xl:pt-[2.69rem] z-50 flex justify-between items-center overflow-auto xl:block font-questrial px-[1.06rem] sm:px-7 xl:px-10 w-full border-r border-[#424242]`}
+      className={`pt-6 xl:pt-[2.69rem] z-50 flex justify-between items-center overflow-auto xl:block font-questrial px-[1.06rem] sm:px-7  w-full border-r border-[#424242]`}
     >
       {/* hamburger and logo group */}
       <section className="flex gap-3 items-center">
@@ -91,12 +144,12 @@ export default function Navbar({}: Props) {
           className="gap-[0.67rem] items-center cursor-pointer hidden xl:flex"
         >
           <Image src={navLogo} className="w-[1.42rem]" alt="logo" />
-          <span className="text-white text-[1.3rem] leading-[-0.04rem]">
+          <span className="text-white text-[1.3rem] leading-[-0.04rem] whitespace-nowrap">
             SoliMax Launchpad
           </span>
         </Link>
       </section>
-      <div className="xl:hidden">
+      <div className="xl:hidden overflow-hidden">
         <Wallet />
       </div>
       {/* menu */}
@@ -114,153 +167,166 @@ export default function Navbar({}: Props) {
           </h2>
           <ul className="text-white flex flex-col gap-5">
             {/* home */}
-            <li className="flex items-center gap-[0.75rem] tracking-[-0.01rem]">
+            <li
+              className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer ${
+                pathname === "/" && "text-[#A4D0F2]"
+              }`}
+              onClick={() => {
+                changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/home-icon.svg"
                 width={18}
                 height={18}
                 alt="home icon"
               />
-              <Link href="/">Home</Link>
+              Home
             </li>
             {/* launchpads */}
             <Accordion title="Launchpads" titleImg={triangle}>
               {/* launchpads options */}
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-              >
-                <Link href="/launchpad/presale/create">Create launchpad</Link>
-              </li>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-              >
-                <Link href="/launchpad/fair-launch/create">
-                  Create fair launch
-                </Link>
-              </li>
-              <li
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  window.scrollTo(0, 0);
-                  setIsModalShowing?.(true);
-                  setMenuOpen((prevState) => !prevState);
-                  if (typeof window != "undefined" && window.document) {
-                    document.body.style.overflow = "hidden";
-                  }
-                }}
-                className="tracking-[-0.00875rem] cursor-pointer border-b-[0.5px] pb-1 border-[#26272B]"
-              >
-                Create token
-              </li>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem]"
-              >
-                <Link href="/launchpad/list/all">Launchpad list</Link>
-              </li>
+              {launchpadNavDropdownOptions?.map((nav: any) => (
+                <li
+                  key={nav?.title}
+                  // style={pathname === nav?.route ? "#A4D0F2" : ""}
+                  onClick={(e) => {
+                    if (nav.title === "Create token") {
+                      console.log("Create token");
+                      showCreateTokenModal(e);
+                    } else {
+                      changeRoute(nav?.route);
+                    }
+                    setMenuOpen((prevState) => !prevState);
+                  }}
+                  className={`${nav.className} ${
+                    pathname === nav?.route ||
+                    (nav?.title === "Create token" && isModalShowing)
+                      ? "text-[#A4D0F2]"
+                      : ""
+                  }`}
+                >
+                  {nav?.title}
+                </li>
+              ))}
             </Accordion>
             {/* Private sale */}
             <Accordion title="Private sale" titleImg={shieldIcon}>
               {/* private sale options */}
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-              >
-                <Link href="/privateSale/create">Create private sale</Link>
-              </li>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem] "
-              >
-                <Link href="/privateSale/list">Private sale list</Link>
-              </li>
+              {privateSaleNavDropdownOptions?.map((nav: any) => (
+                <li
+                  key={nav?.title}
+                  onClick={(e) => {
+                    changeRoute(nav?.route);
+                    setMenuOpen((prevState) => !prevState);
+                  }}
+                  className={`${nav.className} ${
+                    pathname === nav?.route ? "text-[#A4D0F2]" : ""
+                  }`}
+                >
+                  {nav?.title}
+                </li>
+              ))}
             </Accordion>
             {/* Solilock */}
             <Accordion title="Solilock" titleImg={unlockIcon}>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-              >
-                <Link href="/solilock/create">Create lock</Link>
-              </li>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-              >
-                <Link href="/solilock/token/all">Token</Link>
-              </li>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem]"
-              >
-                <Link href="/solilock/liquidityLock/all">Liquidity lock</Link>
-              </li>
+              {solilockNavDropdownOptions?.map((nav: any) => (
+                <li
+                  key={nav?.title}
+                  onClick={(e) => {
+                    changeRoute(nav?.route);
+                    setMenuOpen((prevState) => !prevState);
+                  }}
+                  className={`${nav.className} ${
+                    pathname === nav?.route ? "text-[#A4D0F2]" : ""
+                  }`}
+                >
+                  {nav?.title}
+                </li>
+              ))}
             </Accordion>
             {/* airdrop */}
             <Accordion title="Airdrop" titleImg={airdropIcon}>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem] border-b-[0.5px] pb-1 border-[#26272B]"
-              >
-                <Link href="/airdrop/create">Create airdrop</Link>
-              </li>
-              <li
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="tracking-[-0.00875rem]"
-              >
-                <Link href="/airdrop/list/all">Airdrop list</Link>
-              </li>
+              {airdropNavDropdownOptions?.map((nav: any) => (
+                <li
+                  key={nav?.title}
+                  onClick={(e) => {
+                    changeRoute(nav?.route);
+                    setMenuOpen((prevState) => !prevState);
+                  }}
+                  className={`${nav.className} ${
+                    pathname === nav?.route ? "text-[#A4D0F2]" : ""
+                  }`}
+                >
+                  {nav?.title}
+                </li>
+              ))}
             </Accordion>
 
             {/* Leaderboard */}
-            <li className="flex items-center gap-[0.75rem]">
+            {/* <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
+              onClick={() => {
+                // changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/keyboard-open.svg"
                 width={18}
                 height={18}
                 alt="home icon"
               />
-              <Link href="/" className="tracking-[-0.01rem]">
-                Leaderboard
-              </Link>
-            </li>
+              Leaderboard
+            </li> */}
             {/* Pools alert */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
+              onClick={() => {
+                // changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/keyboard-open.svg"
                 width={18}
                 height={18}
                 alt="keyboard icon"
               />
-              <Link href="/" className="tracking-[-0.01rem]">
-                Pools alert
-              </Link>
+              Pools alert
             </li>
             {/* KYC & audit */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
+              onClick={() => {
+                // changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/android.svg"
                 width={18}
                 height={18}
                 alt="android icon"
               />
-              <Link href="/" className="tracking-[-0.01rem]">
-                KYC & Audit
-              </Link>
+              KYC & Audit
             </li>
             {/* Docs */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
+              onClick={() => {
+                // changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/document.svg"
                 width={18}
                 height={18}
                 alt="document icon"
               />
-              <Link href="/" className="tracking-[-0.01rem]">
-                Docs
-              </Link>
+              Docs
             </li>
           </ul>
         </section>
@@ -271,34 +337,52 @@ export default function Navbar({}: Props) {
           </h2>
           <ul className="text-white flex flex-col gap-5">
             {/* twitter */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
+              onClick={() => {
+                // changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/twitter.svg"
                 width={18}
                 height={18}
                 alt="home icon"
               />
-              <Link href="/">Twitter</Link>
+              Twitter
             </li>
             {/* telegram */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
+              onClick={() => {
+                // changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/telegram.svg"
                 width={18}
                 height={18}
                 alt="home icon"
               />
-              <Link href="/">Telegram</Link>
+              Telegram
             </li>
             {/* discord */}
-            <li className="flex items-center gap-[0.75rem]">
+            <li
+              className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
+              onClick={() => {
+                // changeRoute("/");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
               <Image
                 src="/icons/discord.svg"
                 width={18}
                 height={18}
                 alt="home icon"
               />
-              <Link href="/">Discord</Link>
+              Discord
             </li>
           </ul>
         </section>

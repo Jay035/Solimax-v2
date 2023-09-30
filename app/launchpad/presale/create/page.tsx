@@ -2,8 +2,10 @@
 import LatestPools from "@/components/LatestPools";
 import CreationSteps from "@/components/CreationSteps";
 import PresaleForm from "../components/PresaleForm";
+import { GlobalContext } from "@/context/Context";
 
 export default function CreateLaunchpad() {
+  const {presaleCurrentStep, setPresaleCurrentStep} = GlobalContext();
   const stepTitles = [
     {
       id: "verify-your-token",
@@ -40,7 +42,7 @@ export default function CreateLaunchpad() {
       <LatestPools />
       <main className="mt-[2.5rem] text-white grid lg:grid-cols-[17rem_auto] lg:items-start gap-8">
         {/* LEFT COLUMN */}
-        <CreationSteps stepTitles={stepTitles} />
+        <CreationSteps stepTitles={stepTitles} currentStep={presaleCurrentStep} setCurrentStep={setPresaleCurrentStep} />
 
         {/* RIGHT COLUMN */}
         <section>

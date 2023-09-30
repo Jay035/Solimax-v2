@@ -34,42 +34,47 @@ export default function CustomSelect({
   }, []);
 
   return (
-    <div
-      className="custom-dropdown"
-      onClick={() => {
-        setDropdownOpen((prevState) => !prevState);
-      }}
-      ref={dropdownRef}
-    >
+    <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] rounded-[0.625rem]">
       <div
-        className={`dropdown-header flex items-center gap-[0.6rem] ${
-          header === "Select router exchange" && "text-[#A0A0AB]"
-        }`}
-        id="currency"
+        className="custom-dropdown"
+        onClick={() => {
+          setDropdownOpen((prevState) => !prevState);
+        }}
+        ref={dropdownRef}
       >
-        {pathname !== "/launchpad/launchpadList" && (
-          <Image
-            width={24}
-            height={24}
-            src="/icons/check.svg"
-            alt="check icon"
-          />
-        )}
-        {header}
-      </div>
-      {dropdownOpen && (
-        <div className="dropdown-options flex flex-col gap-2">
-          {options?.map((option: SelectProps, index: number) => (
-            <div
-              key={index}
-              onClick={() => handleOptionClick(option.value)}
-              className="custom-option last:border-b-0 bg-[#3F3F46] py-2 tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-            >
-              {option.value}
-            </div>
-          ))}
+        <div
+          className={`dropdown-header flex items-center gap-1 ${
+            header === "Select router exchange" && "text-[#A0A0AB]"
+          }`}
+          id="currency"
+        >
+          {header !== "Select" && (
+            <Image
+              width={20}
+              height={20}
+              src="/icons/check.svg"
+              alt="check icon"
+            />
+          )}
+          <p className="truncate">{header}</p>
         </div>
-      )}
+        {dropdownOpen && (
+          <div className="dropdown-options flex flex-col gap-2">
+            {options?.map((option: SelectProps, index: number) => (
+              <div
+                key={index}
+                onClick={() => {
+                  handleOptionClick(option.value);
+                  setDropdownOpen((prevState) => !prevState);
+                }}
+                className="custom-option last:border-b-0 bg-[#3F3F46] py-2 tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              >
+                {option.value}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,28 +1,17 @@
 import { GlobalContext } from "@/context/Context";
 
-export default function CreationSteps({ stepTitles }: any) {
-  const {
-    currentStep,
-    error,
-    // tokenAddress,
-    // softcap,
-    // hardcap,
-    // minBuy,
-    // maxBuy,
-    // router,
-    // refundType,
-    // liquidity,
-    // listingRate,
-    // presaleRate,
-    // startDate,
-    // endDate,
-    // liquidityLockup,
-    // firstRelease,
-    // vestingPeriod,
-    // presaleToken,
-    setCurrentStep,
-    setError,
-  } = GlobalContext();
+type Props = {
+  stepTitles: any[];
+  currentStep: number;
+  setCurrentStep?: (step: number) => void;
+};
+
+export default function CreationSteps({
+  stepTitles,
+  currentStep,
+  setCurrentStep,
+}: Props) {
+  const { error, setError } = GlobalContext();
 
   const toggleStep = (tag: number) => {
     // if (tokenAddress === "") {
@@ -61,7 +50,7 @@ export default function CreationSteps({ stepTitles }: any) {
           >
             {item.tag}.
           </div>
-          <div className="flex flex-col ">
+          <div className="flex flex-col whitespace-nowrap">
             <h1 className="tracking-[-0.01rem]">{item?.title}</h1>
             <p className="text-[#D1D1D6] tracking-[-0.00813rem] text-[0.8125rem]">
               {item?.description}
