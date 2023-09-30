@@ -89,7 +89,7 @@ export default function TrendingPools({}: Props) {
           </thead>
           <tbody className="mt-[1.19rem] text-sm">
             {TrendingPoolsData?.map((data: PoolsDataProps) => (
-              <tr key={data?.id}>
+              <tr key={data?.id} className="whitespace-nowrap">
                 <th
                   // id={data?.id}
                   className="bg-[#26272B] border-r border-[#51525C]"

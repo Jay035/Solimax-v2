@@ -9,6 +9,7 @@ import {
 
 export const LaunchpadContext = createContext<FormProps>({
   // currentStep: 1,
+  airdropCurrentStep: 1,
   presaleCurrentStep: 1,
   fairlaunchCurrentStep: 1,
   privateSaleCurrentStep: 1,
@@ -132,6 +133,10 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [solilockAmount, setSolilockAmount] = useState("");
   const [solilockLockTime, setSolilockLockTime] = useState("");
 
+  // AIRDROP
+  const [airdropTokenAddress, setAirdropTokenAddress] = useState("");
+  const [airdropCurrentStep, setAirdropCurrentStep] = useState(1);
+
   const [selectedTab, setSelectedTab] = useState("presale");
   const [selectedCurrency, setSelectedCurrency] = useState("BNB");
   const [softcap, setSoftcap] = useState(0);
@@ -189,31 +194,37 @@ export function LaunchpadContextProvider({ children }: Props) {
     const storedPresaleTokenAddress = localStorage.getItem(
       "presaleTokenAddress"
     );
-    setPresaleTokenAddress(storedPresaleTokenAddress!);
+    if (storedPresaleTokenAddress)
+      setPresaleTokenAddress(storedPresaleTokenAddress!);
 
     const storedPresaleCurrentStep = localStorage.getItem("presaleCurrentStep");
-    setPresaleCurrentStep(Number(storedPresaleCurrentStep!));
+    if (storedPresaleCurrentStep)
+      setPresaleCurrentStep(Number(storedPresaleCurrentStep!));
 
     const storedPresaleSelectedCurrency = localStorage.getItem(
       "presaleSelectedCurrency"
     );
-    setPresaleSelectedCurrency(storedPresaleSelectedCurrency!);
+    if (storedPresaleSelectedCurrency)
+      setPresaleSelectedCurrency(storedPresaleSelectedCurrency!);
 
     // FAIR LAUNCH
     const storedFairlaunchTokenAddress = localStorage.getItem(
       "fairlaunchTokenAddress"
     );
-    setFairlaunchTokenAddress(storedFairlaunchTokenAddress!);
+    if (storedFairlaunchTokenAddress)
+      setFairlaunchTokenAddress(storedFairlaunchTokenAddress!);
 
     const storedFairlaunchCurrentStep = localStorage.getItem(
       "fairlaunchCurrentStep"
     );
-    setFairlaunchCurrentStep(Number(storedFairlaunchCurrentStep!));
+    if (storedFairlaunchCurrentStep)
+      setFairlaunchCurrentStep(Number(storedFairlaunchCurrentStep!));
 
     const storedFairlaunchSelectedCurrency = localStorage.getItem(
       "fairlaunchSelectedCurrency"
     );
-    setFairlaunchSelectedCurrency(storedFairlaunchSelectedCurrency!);
+    if (storedFairlaunchSelectedCurrency)
+      setFairlaunchSelectedCurrency(storedFairlaunchSelectedCurrency!);
   }, []);
 
   // Save user data to local storage whenever it changes
@@ -390,6 +401,12 @@ export function LaunchpadContextProvider({ children }: Props) {
     setSolilockAmount,
     setSolilockLockTime,
     setSolilockTokenAddress,
+
+    // AIRDROP
+    airdropCurrentStep,
+    airdropTokenAddress,
+    setAirdropCurrentStep,
+    setAirdropTokenAddress,
   };
   return (
     <LaunchpadContext.Provider value={value}>

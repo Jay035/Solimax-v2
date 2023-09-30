@@ -26,6 +26,8 @@ export default function StepOne() {
     setFairlaunchTokenAddress,
   } = GlobalContext();
 
+  const status = VerifyAddress(fairlaunchTokenAddress!);
+
   return (
     <section className="flex flex-col gap-4 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
@@ -41,7 +43,7 @@ export default function StepOne() {
           <CustomInput
             id="token-address"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Token Address"
             type="text"
             placeholder="0x..."
@@ -57,6 +59,40 @@ export default function StepOne() {
           <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
             Create pool fee <span className="text-[#F3CE92]">15BNB</span>
           </p>
+
+          {status && (
+            <div className="p-[0.07rem] w-full group bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
+              <div className="bg-[#26272B] rounded-[0.625rem] py-[0.89rem] px-[1.19rem] flex flex-col gap-[0.62rem]">
+                {/* Token name */}
+                <section className="flex justify-between items-center">
+                  <p className="text-sm tracking-[-0.00875rem] text-[#D1D1D6]">
+                    Token name
+                  </p>
+                  <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+                    SoliMax launchpad
+                  </p>
+                </section>
+                {/* Token symbol */}
+                <section className="flex justify-between items-center">
+                  <p className="text-sm tracking-[-0.00875rem] text-[#D1D1D6]">
+                    Token symbol
+                  </p>
+                  <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+                    SLM
+                  </p>
+                </section>
+                {/* Token decimals */}
+                <section className="flex justify-between items-center">
+                  <p className="text-sm tracking-[-0.00875rem] text-[#D1D1D6]">
+                    Token decimals
+                  </p>
+                  <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+                    SLM
+                  </p>
+                </section>
+              </div>
+            </div>
+          )}
         </div>
         <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <p>Select Currency</p>
@@ -141,8 +177,7 @@ export default function StepOne() {
           disabled={fairlaunchTokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
-            const status = VerifyAddress(fairlaunchTokenAddress!);
-            // setIsAddressVerified(status);
+           // setIsAddressVerified(status);
             if (status === true) {
               handleFairlaunchNextStep?.(e);
             } else {

@@ -66,7 +66,7 @@ export default function StepTwo() {
             <CustomInput
               id="totalSellingAmount"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Total selling amount"
               type="number"
               placeholder="0"
@@ -148,7 +148,7 @@ export default function StepTwo() {
             <CustomInput
               id="soft-cap"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Softcap (BNB)"
               type="number"
               placeholder="0"
@@ -170,7 +170,7 @@ export default function StepTwo() {
               <CustomInput
                 id="max-contribution"
                 className="mt-4 flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] cursor-pointer border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] cursor-pointer rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Max Contribution (BNB)"
                 type="number"
                 placeholder="0"
@@ -200,7 +200,7 @@ export default function StepTwo() {
             <CustomInput
               id="liquidity"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Liquidity (%)"
               type="number"
               placeholder="0"
@@ -221,7 +221,7 @@ export default function StepTwo() {
                 <CustomInput
                   id="max-contribution"
                   className="mt-4 flex flex-col gap-[0.62rem]"
-                  inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                  inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                   label="Buyback percent (%)"
                   type="number"
                   placeholder="0"
@@ -270,7 +270,7 @@ export default function StepTwo() {
             <CustomInput
               id="start-date"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Start date (UTC)"
               type="date"
               placeholder="0"
@@ -285,7 +285,7 @@ export default function StepTwo() {
             <CustomInput
               id="end-date"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="End date (UTC)"
               type="date"
               placeholder="0"
@@ -305,7 +305,7 @@ export default function StepTwo() {
           <CustomInput
             id="liquidity-Lockup"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Liquidity lockup (days)"
             type="number"
             placeholder="0"

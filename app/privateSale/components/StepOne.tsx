@@ -1,5 +1,4 @@
 import CustomInput from "@/components/CustomInput";
-import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
@@ -22,7 +21,7 @@ export default function StepOne() {
         <CustomInput
           id="name"
           className="flex flex-col gap-[0.62rem]"
-          inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
           label="Name"
           type="text"
           placeholder="Enter sale title"

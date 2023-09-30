@@ -1,5 +1,6 @@
+import CustomFileDropbox from "@/components/CustomFileDropbox";
 import CustomInput from "@/components/CustomInput";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type Props = {
   currentStep: number;
@@ -7,254 +8,247 @@ type Props = {
   setCurrentStep: (step: number) => void;
 };
 
-export default function StepTwo({
+export default function StepThree({
   currentStep,
   setError,
   setCurrentStep,
 }: Props) {
-  const [title, setTitle] = useState<string>("");
-  const [TGEDate, setTGEDate] = useState<string>("");
-  const [TGEPercent, setTGEPercent] = useState<number>();
-  const [tokenAddress, setTokenAddress] = useState<string>("");
-  const [cycleDays, setCycleDays] = useState<string>("");
-  const [cycleReleasePercent, setCycleReleasePercent] = useState<string>("");
-  const [amount, setAmount] = useState<number>();
-  const [owner, setOwner] = useState<string>("");
-  const [anotherUserUsed, setAnotherUserUsed] = useState<boolean>(false);
-  const [vestingUsed, setVestingUsed] = useState<boolean>(false);
+  const [airdropTitle, setAirdropTitle] = useState("");
+  const [websiteURL, setWebsiteURL] = useState("");
+  const [telegramURL, setTelegramURL] = useState("");
+  const [twitterURL, setTwitterURL] = useState("");
+  const [discordURL, setDiscordURL] = useState("");
+  const [instagramURL, setInstagramURL] = useState("");
+  const [githubURL, setGithubURL] = useState("");
+  const [facebookURL, setFacebookURL] = useState("");
+  const [youtubeURL, setYoutubeURL] = useState("");
+  const [description, setDescription] = useState("");
 
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const inputRef = useRef<any>(null);
+
+  const handleFileSelected = (file: File | null) => {
+    setSelectedFile(file);
+  };
+
+  const onButtonClick = () => {
+    inputRef?.current?.click();
+  };
+
+  const handlePreviousStep = () => {
+    if (currentStep > 1) setCurrentStep?.(currentStep - 1);
+  };
   return (
     <form className="flex flex-col gap-6">
-      {/* Token or LP Token address */}
-      <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
-        <CustomInput
-          id="token-address"
-          className="flex flex-col gap-[0.62rem]"
-          inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-          label="Token or LP Token address"
-          type="text"
-          placeholder="Enter token or LP address"
-          value={tokenAddress}
-          onChange={(e) => {
-            setTokenAddress?.(e.target.value);
-            setError?.("");
-          }}
-          isRequired={true}
-        />
-        <label
-          htmlFor="another-user-used"
-          className="text-[0.875rem] tracking-[-0.00875rem] w-fit mt-3 cursor-pointer flex items-center gap-2"
-        >
-          <div
-            className={`relative flex ${
-              !anotherUserUsed &&
-              "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-            } rounded-lg cursor-pointer`}
-          >
-            <input
-              type="checkbox"
-              name="another-user-used"
-              id="another-user-used"
-              className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-              checked={anotherUserUsed}
-              onChange={(event: any) => {
-                setAnotherUserUsed(event.target.checked);
-                console.log(anotherUserUsed)
-              }}
-            />
-            <i
-              className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                anotherUserUsed ? "text-black" : "hidden"
-              }`}
-            ></i>
-          </div>
-          <span className="text-[#F4F4F5]">Use another owner?</span>
-        </label>
-        {anotherUserUsed && (
-          <div className="">
-            <CustomInput
-              id="owner-address"
-              className="mt-4 flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] cursor-pointer border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-              label="Owner"
-              type="text"
-              placeholder="Enter owner address"
-              value={owner}
-              onChange={(e) => {
-                setOwner?.(e.target.value);
-                setError?.("");
-              }}
-              isRequired={false}
-            />
-            <p className="mt-[0.62rem] text-xs tracking-[-0.0075rem]">
-              The address you input here will receive the tokens once they are
-              unlocked
-            </p>
-          </div>
-        )}
-      </div>
-      {/* TITLE */}
+      {/* AIRDROP TITLE */}
       <CustomInput
-        id="title"
-        className="flex flex-col gap-[0.62rem] "
-        inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-        label="Title"
+        id="airdropTitle"
+        className="flex flex-col gap-[0.62rem]"
+        inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+        label="Airdrop title"
         type="text"
         placeholder="Enter title"
-        value={title}
+        value={airdropTitle}
         onChange={(e) => {
-          setTitle?.(e.target.value);
+          setAirdropTitle?.(e.target.value);
           setError?.("");
         }}
         isRequired={false}
       />
-      {/* AMOUNT */}
-      <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
+      <section className="grid md:grid-cols-2 items-start gap-6">
+        {/* LOGO */}
+        <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
+          <p>
+            Logo (attach document)<span className="text-[#F04438]">*</span>
+          </p>
+          <CustomFileDropbox
+            inputRef={inputRef}
+            selectedFile={selectedFile}
+            onFileSelected={handleFileSelected}
+            onButtonClick={onButtonClick}
+          />
+          {selectedFile && (
+            <span className="text-[#A4D0F2]" onClick={onButtonClick}>
+              Change file
+            </span>
+          )}
+          {/* create pool fee */}
+          <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
+            SVG, PNG, JPG or GIF (max. 400x400px)
+          </p>
+        </div>
+        {/* WEBSITE URL */}
         <CustomInput
-          id="amount"
+          id="websiteURL"
           className="flex flex-col gap-[0.62rem]"
-          inputClassName="bg-[#26272B] outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-          label="Amount"
-          type="number"
-          placeholder=""
-          value={amount}
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Website URL"
+          type="url"
+          // pattern="https://.*\..*"
+          placeholder="www."
+          value={websiteURL}
           onChange={(e) => {
-            setAmount?.(e.target.value);
+            setWebsiteURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
         />
-        <label
-          htmlFor="vesting-used"
-          className="text-[0.875rem] tracking-[-0.00875rem] mt-3 w-fit cursor-pointer flex items-center gap-2"
-        >
-          <div
-            className={`relative flex ${
-              !vestingUsed &&
-              "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-            } rounded-lg cursor-pointer`}
-          >
-            <input
-              type="checkbox"
-              name="vesting-used"
-              id="vesting-used"
-              className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-              checked={vestingUsed}
-              onChange={(event: any) => {
-                setVestingUsed(event.target.checked);
-              }}
-            />
-            <i
-              className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                vestingUsed ? "text-black" : "hidden"
-              }`}
-            ></i>
-          </div>
-          <span className="text-[#F4F4F5]">Use vesting?</span>
-        </label>
-        {vestingUsed && (
-          <div className="mt-[0.94rem] flex flex-col gap-6">
-            <section className="grid md:grid-cols-2 gap-6">
-              {/* TGE Date (UTC time)) */}
-              <CustomInput
-                id="TGE-date"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="TGE Date (UTC time)"
-                type="date"
-                placeholder="0"
-                value={TGEDate}
-                onChange={(e) => {
-                  setTGEDate?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
-              />
-              {/* TGE Percent */}
-              <CustomInput
-                id="TGE percent"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="TGE Percent"
-                type="number"
-                placeholder="0"
-                value={TGEPercent}
-                onChange={(e) => {
-                  setTGEPercent?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
-              />
-            </section>
-            <section className="grid md:grid-cols-2 gap-6">
-              {/* Cycle (days) */}
-              <CustomInput
-                id="Cycle (days)"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Cycle (days)"
-                type="text"
-                placeholder="Ex 10"
-                value={cycleDays}
-                onChange={(e) => {
-                  setCycleDays?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
-              />
-              {/* Cycle Release Percent */}
-              <CustomInput
-                id="cycle-Release-Percent"
-                className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                label="Cycle Release Percent"
-                type="text"
-                placeholder="Ex 10"
-                value={cycleReleasePercent}
-                onChange={(e) => {
-                  setCycleReleasePercent?.(e.target.value);
-                  setError?.("");
-                }}
-                isRequired={true}
-              />
-            </section>
-          </div>
-        )}
-      </div>
-      <div className="mt-2 bg-gradient-to-r from-[#77CDEB] via-[#953DDD] to-[#A56EF4] p-0.5 rounded-[0.62rem]">
-        <p className="text-sm text-[#F4F4F5] rounded-[0.625rem] py-[0.88rem] px-[1.19rem] bg-[#1C1C20]">
-          Please exclude{" "}
-          <span className="text-[#A4D0F2]">
-            Solimax Launchpad address 0x56b153049AE32C6537afEa4B1F075889485c5609
-          </span>{" "}
-          from fees, rewards, max tx amount to start locking tokens. We do not
-          support <span className="text-[#A4D0F2]">rebase tokens</span>
+      </section>
+      <section className="grid md:grid-cols-2 items-start gap-6">
+        {/* TELEGRAM URL */}
+        <CustomInput
+          id="telegramURL"
+          className="flex flex-col gap-[0.62rem]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Telegram"
+          type="website"
+          placeholder="www."
+          value={telegramURL}
+          onChange={(e) => {
+            setTelegramURL?.(e.target.value);
+            setError?.("");
+          }}
+          isRequired={false}
+        />
+        {/* TWITTER URL */}
+        <CustomInput
+          id="twitterURL"
+          className="flex flex-col gap-[0.62rem]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Twitter"
+          type="website"
+          placeholder="www."
+          value={twitterURL}
+          onChange={(e) => {
+            setTwitterURL?.(e.target.value);
+            setError?.("");
+          }}
+          isRequired={false}
+        />
+      </section>
+      <section className="grid md:grid-cols-2 items-start gap-6">
+        {/* DISCORD URL */}
+        <CustomInput
+          id="discordURL"
+          className="flex flex-col gap-[0.62rem]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Discord"
+          type="website"
+          placeholder="www."
+          value={discordURL}
+          onChange={(e) => {
+            setDiscordURL?.(e.target.value);
+            setError?.("");
+          }}
+          isRequired={false}
+        />
+        {/* INSTAGRAM URL */}
+        <CustomInput
+          id="instagramURL"
+          className="flex flex-col gap-[0.62rem]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Instagram"
+          type="website"
+          placeholder="www."
+          value={instagramURL}
+          onChange={(e) => {
+            setInstagramURL?.(e.target.value);
+            setError?.("");
+          }}
+          isRequired={false}
+        />
+      </section>
+      <section className="grid md:grid-cols-2 items-start gap-6">
+        {/* GITHUB URL */}
+        <CustomInput
+          id="githubURL"
+          className="flex flex-col gap-[0.62rem]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Github"
+          type="website"
+          placeholder="www."
+          value={githubURL}
+          onChange={(e) => {
+            setGithubURL?.(e.target.value);
+            setError?.("");
+          }}
+          isRequired={false}
+        />
+        {/* FACEBOOK URL */}
+        <CustomInput
+          id="facebookURL"
+          className="flex flex-col gap-[0.62rem]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Facebook"
+          type="website"
+          placeholder="www."
+          value={facebookURL}
+          onChange={(e) => {
+            setFacebookURL?.(e.target.value);
+            setError?.("");
+          }}
+          isRequired={false}
+        />
+      </section>
+      <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
+        <CustomInput
+          id="token-address"
+          className="flex flex-col gap-[0.62rem]"
+          inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+          label="Youtube video"
+          type="url"
+          placeholder="www."
+          value={youtubeURL}
+          onChange={(e) => {
+            setYoutubeURL?.(e.target.value);
+            setError?.("");
+          }}
+          isRequired={false}
+        />
+        {/* create pool fee */}
+        <p className="text-xs tracking-[-0.0075rem] text-[#D1D1D6]">
+          Input your youtube URL or video ID
         </p>
       </div>
-      <button
-        disabled={tokenAddress === "" || !amount}
-        type="submit"
-        onClick={(e: any) => {
-          e.preventDefault();
-          if (vestingUsed) {
-            if (
-              TGEDate === "" ||
-              cycleDays === "" ||
-              cycleReleasePercent === "" ||
-              !TGEPercent
-            ) {
-              alert("Please fill all required fields");
-            } 
-          }
-          else {
-            setCurrentStep?.(currentStep + 1);
-            window.scroll(0, 0);
-          }
-        }}
-        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
-      >
-        Lock
-      </button>
+      <label htmlFor="description" className="flex flex-col gap-[0.62rem]">
+        Description
+        <div className="p-[0.07rem] pb-0 w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
+          <textarea
+            id="description"
+            className="bg-[#26272B] w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            placeholder="Leave a short description about your project"
+            value={description}
+            onChange={(e) => {
+              setDescription?.(e.target.value);
+              setError?.("");
+            }}
+            rows={4}
+          ></textarea>
+        </div>
+      </label>
+
+      {/* back and next buttons */}
+      <div className="flex gap-2 md:items-center justify-end">
+        <button
+          onClick={(e: any) => {
+            e.preventDefault();
+            setCurrentStep?.(currentStep - 1);
+          }}
+          className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
+        >
+          Back
+        </button>
+        <button
+          disabled={!selectedFile || websiteURL === ""}
+          onClick={(e: any) => {
+            e.preventDefault();
+            // setCurrentStep?.(currentStep + 1);
+          }}
+          className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[12.6rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+        >
+          Create New Airdrop
+        </button>
+      </div>
     </form>
   );
 }

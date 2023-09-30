@@ -38,7 +38,7 @@ export default function CreateLaunchpad() {
   ];
 
   return (
-    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] mr-10 sm:mr-16">
+    <div className="overflow-x-hidden pt-5 mb-20 mx-[1.69rem] xl:mr-16">
       <LatestPools />
       <main className="mt-[2.5rem] text-white grid lg:grid-cols-[17rem_auto] lg:items-start gap-8">
         {/* LEFT COLUMN */}

@@ -21,13 +21,6 @@ export const Accordion: React.FC<AccordionProps> = ({
           <Image src={titleImg} width={18} height={18} alt="launchpads icon" />
           {title}
         </span>
-        {/* <span
-          className={`transform text-white ${
-            isOpen ? "rotate-180" : "rotate-0"
-          } transition-transform`}
-        >
-          ▼
-        </span> */}
         <Image
           className={`${isOpen && "rotate-180"} transform transition-transform`}
           width={16}

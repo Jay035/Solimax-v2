@@ -109,9 +109,9 @@ export function Card({ item }: any) {
             </h2>
           </div>
         </section>
-        <p className="text-white mt-[0.56rem]">
+        <p className="text-white mt-[0.56rem] text-[0.87rem]">
           Sale starts in{" "}
-          <span className="text-[#c38cc3] text-[0.87rem] tracking-[-0.0087rem]">
+          <span className="text-[#c38cc3] tracking-[-0.0087rem]">
             00: 24: 16
           </span>
         </p>

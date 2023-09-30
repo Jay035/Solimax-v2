@@ -120,7 +120,7 @@ export default function StepTwo() {
             <CustomInput
               id="presale-rate"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Presale rate"
               type="number"
               placeholder="0"
@@ -203,7 +203,7 @@ export default function StepTwo() {
               <CustomInput
                 id="soft-cap"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Softcap (BNB)"
                 type="number"
                 placeholder="0"
@@ -222,7 +222,7 @@ export default function StepTwo() {
             <CustomInput
               id="hard-cap"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Hardcap (BNB)"
               type="number"
               placeholder="0"
@@ -240,7 +240,7 @@ export default function StepTwo() {
               <CustomInput
                 id="min-buy"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Minimium buy"
                 type="number"
                 placeholder="0"
@@ -256,7 +256,7 @@ export default function StepTwo() {
             <CustomInput
               id="max-buy"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Maximum buy"
               type="number"
               placeholder="0"
@@ -298,7 +298,7 @@ export default function StepTwo() {
               <CustomInput
                 id="liquidity"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Liquidity (%)"
                 type="number"
                 placeholder="0"
@@ -315,7 +315,7 @@ export default function StepTwo() {
               <CustomInput
                 id="listingRate"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="Listing rate"
                 type="number"
                 placeholder="0"
@@ -352,7 +352,7 @@ export default function StepTwo() {
             <CustomInput
               id="start-date"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Start date (UTC)"
               type="date"
               placeholder="0"
@@ -367,7 +367,7 @@ export default function StepTwo() {
             <CustomInput
               id="end-date"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="End date (UTC)"
               type="date"
               placeholder="0"
@@ -383,7 +383,7 @@ export default function StepTwo() {
           <CustomInput
             id="liquidity-Lockup"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Liquidity lockup (days)"
             type="number"
             placeholder="0"
@@ -395,34 +395,6 @@ export default function StepTwo() {
             isRequired={true}
           />
 
-          {/* <label
-            htmlFor="vesting-contribution"
-            className="text-white text-[0.875rem] flex items-center gap-[0.62rem]"
-          >
-            <div
-              className={`relative flex ${
-                !isVestingContributionChecked &&
-                "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-              } rounded-lg cursor-pointer`}
-            >
-              <input
-                type="checkbox"
-                name="vesting-contribution"
-                id="vesting-contribution"
-                className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-                checked={isVestingContributionChecked}
-                onChange={(event: any) => {
-                  setIsVestingContributionChecked(event.target.checked);
-                }}
-              />
-              <i
-                className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                  isVestingContributionChecked ? "text-black" : "hidden"
-                }`}
-              ></i>
-            </div>
-            <span>Using vesting contributor?</span>
-          </label> */}
           <Checkbox
             text="Using vesting contributor?"
             valueChecked={isPresaleVestingContributionChecked!}
@@ -437,7 +409,7 @@ export default function StepTwo() {
           <CustomInput
             id="first-release-for-presale"
             className="flex flex-col gap-[0.62rem]"
-            inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="First release for presale (%)"
             type="text"
             placeholder="40%"
@@ -457,7 +429,7 @@ export default function StepTwo() {
             <CustomInput
               id="Vesting-period"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Vesting period each cycle (days)"
               type="number"
               placeholder="21"
@@ -472,7 +444,7 @@ export default function StepTwo() {
             <CustomInput
               id="Presale-token"
               className="flex flex-col gap-[0.62rem]"
-              inputClassName="bg-[#26272B] border border-[#F4F4F5] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Presale token release each cycle (%)"
               type="text"
               placeholder="20%"
