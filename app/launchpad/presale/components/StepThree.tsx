@@ -5,23 +5,38 @@ import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "@/components/ButtonGroup";
 
 export default function StepThree() {
-  const { handlePresalePreviousStep, handlePresaleNextStep } = GlobalContext();
-  const [error, setError] = useState("");
-  const [websiteURL, setWebsiteURL] = useState("");
-  const [telegramURL, setTelegramURL] = useState("");
-  const [twitterURL, setTwitterURL] = useState("");
-  const [discordURL, setDiscordURL] = useState("");
-  const [instagramURL, setInstagramURL] = useState("");
-  const [githubURL, setGithubURL] = useState("");
-  const [facebookURL, setFacebookURL] = useState("");
-  const [youtubeURL, setYoutubeURL] = useState("");
-  const [description, setDescription] = useState("");
+  const {
+    presaleWebsiteURL,
+    presaleTelegramURL,
+    presaleGithubURL,
+    presaleTwitterURL,
+    presaleDiscordURL,
+    presaleInstagramURL,
+    presaleFacebookURL,
+    presaleYoutubeURL,
+    presaleDescription,
+    presaleLogo,
+    setPresaleLogo,
+    setPresaleDescription,
+    setPresaleYoutubeURL,
+    setPresaleFacebookURL,
+    setPresaleGithubURL,
+    setPresaleDiscordURL,
+    setPresaleInstagramURL,
+    setPresaleTwitterURL,
+    setPresaleTelegramURL,
+    setPresaleWebsiteURL,
+    handlePresalePreviousStep,
+    handlePresaleNextStep,
+  } = GlobalContext();
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [error, setError] = useState("");
   const inputRef = useRef<any>(null);
 
   const handleFileSelected = (file: File | null) => {
-    setSelectedFile(file);
+    setPresaleLogo?.(file);
+    
+    // console.log(file?.clientWidth)
   };
 
   const onButtonClick = () => {
@@ -48,13 +63,13 @@ export default function StepThree() {
             </p>
             <CustomFileDropbox
               inputRef={inputRef}
-              selectedFile={selectedFile}
+              selectedFile={presaleLogo!}
               onFileSelected={handleFileSelected}
               onButtonClick={onButtonClick}
             />
-            {selectedFile && (
+            {presaleLogo && (
               <button
-                className="text-[#A4D0F2] cursor-pointer"
+                className="text-[#A4D0F2] cursor-pointer w-fit "
                 onClick={onButtonClick}
               >
                 Change file
@@ -65,17 +80,17 @@ export default function StepThree() {
               SVG, PNG, JPG or GIF (max. 400x400px)
             </p>
           </div>
-          {/* WEBSITE URL */}
+          {/* url URL */}
           <CustomInput
-            id="websiteURL"
+            id="WebsiteURL"
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Website URL"
-            type="website"
+            type="url"
             placeholder="www."
-            value={websiteURL}
+            value={presaleWebsiteURL}
             onChange={(e) => {
-              setWebsiteURL?.(e.target.value);
+              setPresaleWebsiteURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={true}
@@ -88,11 +103,11 @@ export default function StepThree() {
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Telegram"
-            type="website"
+            type="url"
             placeholder="www."
-            value={telegramURL}
+            value={presaleTelegramURL}
             onChange={(e) => {
-              setTelegramURL?.(e.target.value);
+              setPresaleTelegramURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -103,11 +118,11 @@ export default function StepThree() {
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Twitter"
-            type="website"
+            type="url"
             placeholder="www."
-            value={twitterURL}
+            value={presaleTwitterURL}
             onChange={(e) => {
-              setTwitterURL?.(e.target.value);
+              setPresaleTwitterURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -120,11 +135,11 @@ export default function StepThree() {
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Discord"
-            type="website"
+            type="url"
             placeholder="www."
-            value={discordURL}
+            value={presaleDiscordURL}
             onChange={(e) => {
-              setDiscordURL?.(e.target.value);
+              setPresaleDiscordURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -135,11 +150,11 @@ export default function StepThree() {
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Instagram"
-            type="website"
+            type="url"
             placeholder="www."
-            value={instagramURL}
+            value={presaleInstagramURL}
             onChange={(e) => {
-              setInstagramURL?.(e.target.value);
+              setPresaleInstagramURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -152,11 +167,11 @@ export default function StepThree() {
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Github"
-            type="website"
+            type="url"
             placeholder="www."
-            value={githubURL}
+            value={presaleGithubURL}
             onChange={(e) => {
-              setGithubURL?.(e.target.value);
+              setPresaleGithubURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -167,11 +182,11 @@ export default function StepThree() {
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Facebook"
-            type="website"
+            type="url"
             placeholder="www."
-            value={facebookURL}
+            value={presaleFacebookURL}
             onChange={(e) => {
-              setFacebookURL?.(e.target.value);
+              setPresaleFacebookURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -179,15 +194,15 @@ export default function StepThree() {
         </section>
         <div className="text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <CustomInput
-            id="token-address"
+            id="youtube-url"
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="Youtube video"
             type="url"
             placeholder="www."
-            value={youtubeURL}
+            value={presaleYoutubeURL}
             onChange={(e) => {
-              setYoutubeURL?.(e.target.value);
+              setPresaleYoutubeURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -202,11 +217,11 @@ export default function StepThree() {
           <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
             <textarea
               id="description"
-              className="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              className="bg-[#26272B] w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               placeholder="Leave a short description about your project"
-              value={description}
+              value={presaleDescription}
               onChange={(e) => {
-                setDescription?.(e.target.value);
+                setPresaleDescription?.(e.target.value);
                 setError?.("");
               }}
               rows={4}
@@ -226,7 +241,7 @@ export default function StepThree() {
             Back
           </button>
           <button
-            disabled={selectedFile === null || websiteURL === ""}
+            disabled={presaleLogo === null || presaleWebsiteURL === ""}
             onClick={(e: any) => {
               e.preventDefault();
               handlePresaleNextStep?.(e);

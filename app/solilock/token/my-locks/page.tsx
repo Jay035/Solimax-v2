@@ -151,9 +151,9 @@ export default function AllTokens({}: Props) {
     setPageNumber(selected);
   };
   return (
-    <div className="pt-5 ml-8 mr-10 sm:mr-16 pb-32 xl:border-t xl:border-[#424242]">
+    <div className="pt-5 pl-[1.68rem] pb-32 xl:border-t xl:border-[#424242]">
       <LatestPools />
-      <main className="mt-[2.5rem] text-white">
+      <main className="mt-[2.5rem] text-white pr-[1.68rem] xl:pr-10">
         <Navigation
           links={links}
           tabSelected={tabSelected}

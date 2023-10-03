@@ -5,7 +5,7 @@ import CreationSteps from "@/components/CreationSteps";
 import { GlobalContext } from "@/context/Context";
 
 export default function CreateFairLaunch() {
-  const {fairlaunchCurrentStep, setFairlaunchCurrentStep} = GlobalContext();
+  const { fairlaunchCurrentStep, setFairlaunchCurrentStep } = GlobalContext();
 
   const stepTitles = [
     {
@@ -39,11 +39,15 @@ export default function CreateFairLaunch() {
   ];
 
   return (
-    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] mr-10 sm:mr-16">
+    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem]">
       <LatestPools />
-      <main className="mt-[2.5rem] text-white flex flex-col lg:flex-row lg:items-start gap-8">
+      <main className="mt-[2.5rem] text-white flex flex-col mr-[1.69rem] xl:mr-10 lg:flex-row lg:items-start gap-8">
         {/* LEFT COLUMN */}
-        <CreationSteps stepTitles={stepTitles} currentStep={fairlaunchCurrentStep} setCurrentStep={setFairlaunchCurrentStep} />
+        <CreationSteps
+          stepTitles={stepTitles}
+          currentStep={fairlaunchCurrentStep}
+          setCurrentStep={setFairlaunchCurrentStep}
+        />
         {/* RIGHT COLUMN */}
         <section>
           <FairLaunchForm />

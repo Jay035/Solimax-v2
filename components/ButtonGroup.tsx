@@ -6,7 +6,6 @@ export default function ButtonGroup() {
   const {
     tabs,
     selectedTab,
-    isModalShowing,
     setSelectedTab,
     setIsModalShowing,
   } = GlobalContext();

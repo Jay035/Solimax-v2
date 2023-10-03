@@ -10,68 +10,45 @@ export default function StepTwo() {
   const {
     handlePresaleNextStep,
     handlePresalePreviousStep,
-    // presaleHardcap,
-    // presaleMaxBuy,
-    // presaleSoftcap,
-    // presaleMinBuy,
-    // presaleToken,
-    // presaleRate,
-    // presaleRouter,
-    // presaleRefundType,
-    // presaleLiquidity,
-    // presaleListingRate,
-    // presaleEndDate,
-    // presaleStartDate,
-    // presaleLiquidityLockup,
-    // presaleFirstRelease,
-    // presaleVestingPeriod,
-    // isPresaleVestingContributionChecked,
-    // isPresaleWhitelistDisabled,
-    // isPresaleWhitelistEnabled,
-    // setPresaleToken,
-    // setPresaleRate,
-    // setPresaleRefundType,
-    // setPresaleListingRate,
-    // setPresaleStartDate,
-    // setPresaleLiquidityLockup,
-    // setPresaleVestingPeriod,
-    // setIsPresaleWhitelistDisabled,
-    // setIsPresaleWhitelistEnabled,
-    // setIsPresaleVestingContributionChecked,
-    // setPresaleRouter,
-    // setPresaleEndDate,
-    // setPresaleFirstRelease,
-    // setPresaleLiquidity,
-    // setPresaleHardcap,
-    // setPresaleMaxBuy,
-    // setPresaleMinBuy,
-    // setPresaleSoftcap,
+    presaleHardcap,
+    presaleMaxBuy,
+    presaleSoftcap,
+    presaleMinBuy,
+    presaleToken,
+    presaleRate,
+    presaleRouter,
+    presaleRefundType,
+    presaleLiquidity,
+    presaleListingRate,
+    presaleEndDate,
+    presaleStartDate,
+    presaleLiquidityLockup,
+    presaleFirstRelease,
+    presaleVestingPeriod,
+    isPresaleVestingContributionChecked,
+    isPresaleWhitelistDisabled,
+    isPresaleWhitelistEnabled,
+    setPresaleToken,
+    setPresaleRate,
+    setPresaleRefundType,
+    setPresaleListingRate,
+    setPresaleStartDate,
+    setPresaleLiquidityLockup,
+    setPresaleVestingPeriod,
+    setIsPresaleWhitelistDisabled,
+    setIsPresaleWhitelistEnabled,
+    setIsPresaleVestingContributionChecked,
+    setPresaleRouter,
+    setPresaleEndDate,
+    setPresaleFirstRelease,
+    setPresaleLiquidity,
+    setPresaleHardcap,
+    setPresaleMaxBuy,
+    setPresaleMinBuy,
+    setPresaleSoftcap,
   } = GlobalContext();
 
   const [error, setError] = useState<string>("");
-  const [presaleRate, setPresaleRate] = useState(0);
-  const [presaleSoftcap, setPresaleSoftcap] = useState(0);
-  const [presaleHardcap, setPresaleHardcap] = useState(0);
-  const [presaleMinBuy, setPresaleMinBuy] = useState(0);
-  const [presaleMaxBuy, setPresaleMaxBuy] = useState(0);
-  const [presaleRouter, setPresaleRouter] = useState("Select router exchange");
-  const [presaleRefundType, setPresaleRefundType] = useState("Burn");
-  const [presaleLiquidity, setPresaleLiquidity] = useState();
-  const [presaleListingRate, setPresaleListingRate] = useState();
-  const [presaleStartDate, setPresaleStartDate] = useState("");
-  const [presaleEndDate, setPresaleEndDate] = useState("");
-  const [presaleLiquidityLockup, setPresaleLiquidityLockup] = useState("");
-  const [presaleFirstRelease, setPresaleFirstRelease] = useState("");
-  const [presaleVestingPeriod, setPresaleVestingPeriod] = useState("");
-  const [presaleToken, setPresaleToken] = useState();
-  const [isPresaleWhitelistDisabled, setIsPresaleWhitelistDisabled] =
-    useState(true);
-  const [isPresaleWhitelistEnabled, setIsPresaleWhitelistEnabled] =
-    useState(false);
-  const [
-    isPresaleVestingContributionChecked,
-    setIsPresaleVestingContributionChecked,
-  ] = useState(false);
 
   const refundTypeOptions = [
     {
@@ -419,7 +396,7 @@ export default function StepTwo() {
               setError?.("");
             }}
             onMouseLeave={(e) =>
-              AppendPercentToInput(presaleFirstRelease, setPresaleFirstRelease)
+              AppendPercentToInput(presaleFirstRelease, setPresaleFirstRelease!)
             }
             isRequired={true}
           />
@@ -454,7 +431,7 @@ export default function StepTwo() {
                 setError?.("");
               }}
               onMouseLeave={(e) =>
-                AppendPercentToInput(presaleToken, setPresaleToken)
+                AppendPercentToInput(presaleToken, setPresaleToken!)
               }
               isRequired={true}
             />
@@ -479,21 +456,21 @@ export default function StepTwo() {
               <button
                 type="submit"
                 disabled={
-                  presaleRate === null ||
-                  presaleSoftcap === null ||
-                  presaleHardcap === null ||
-                  presaleMinBuy === null ||
-                  presaleMaxBuy === null ||
+                  presaleRate === 0 ||
+                  presaleSoftcap === 0 ||
+                  presaleHardcap === 0 ||
+                  presaleMinBuy === 0 ||
+                  presaleMaxBuy === 0 ||
                   presaleRefundType === "" ||
                   presaleRouter === "Select router exchange" ||
-                  presaleLiquidity === null ||
-                  presaleListingRate === null ||
+                  presaleLiquidity === 0 ||
+                  presaleListingRate === 0 ||
                   presaleStartDate === "" ||
                   presaleEndDate === "" ||
                   presaleLiquidityLockup === "" ||
                   presaleFirstRelease === "" ||
                   presaleVestingPeriod === "" ||
-                  presaleToken === null
+                  presaleToken === 0
                 }
                 onClick={(e: any) => {
                   e.preventDefault();

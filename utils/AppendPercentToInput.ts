@@ -3,7 +3,7 @@ export default function AppendPercentToInput(
   setValue: (e: any) => void
 ) {
   // Append '%' to the input value and update the state
-  if (value.contains("%")) return;
+  if (value.includes("%")) return;
   else {
     setValue(value + "%");
   }

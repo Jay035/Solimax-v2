@@ -5,24 +5,36 @@ import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "@/components/ButtonGroup";
 
 export default function StepThree() {
-  const { handleFairlaunchNextStep, handleFairlaunchPreviousStep } =
-    GlobalContext();
+  const {
+    handleFairlaunchNextStep,
+    handleFairlaunchPreviousStep,
+    fairlaunchLogo,
+    fairlaunchWebsiteURL,
+    fairlaunchTelegramURL,
+    fairlaunchTwitterURL,
+    fairlaunchDiscordURL,
+    fairlaunchInstagramURL,
+    fairlaunchGithubURL,
+    fairlaunchFacebookURL,
+    fairlaunchYoutubeURL,
+    fairlaunchDescription,
+    setFairlaunchDescription,
+    setFairlaunchYoutubeURL,
+    setFairlaunchFacebookURL,
+    setFairlaunchGithubURL,
+    setFairlaunchInstagramURL,
+    setFairlaunchDiscordURL,
+    setFairlaunchTwitterURL,
+    setFairlaunchTelegramURL,
+    setFairlaunchWebsiteURL,
+    setFairlaunchLogo,
+  } = GlobalContext();
   const [error, setError] = useState("");
-  const [websiteURL, setWebsiteURL] = useState("");
-  const [telegramURL, setTelegramURL] = useState("");
-  const [twitterURL, setTwitterURL] = useState("");
-  const [discordURL, setDiscordURL] = useState("");
-  const [instagramURL, setInstagramURL] = useState("");
-  const [githubURL, setGithubURL] = useState("");
-  const [facebookURL, setFacebookURL] = useState("");
-  const [youtubeURL, setYoutubeURL] = useState("");
-  const [description, setDescription] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const inputRef = useRef<any>(null);
 
   const handleFileSelected = (file: File | null) => {
-    setSelectedFile(file);
+    setFairlaunchLogo?.(file);
   };
 
   const onButtonClick = () => {
@@ -48,11 +60,11 @@ export default function StepThree() {
             </p>
             <CustomFileDropbox
               inputRef={inputRef}
-              selectedFile={selectedFile}
+              selectedFile={fairlaunchLogo!}
               onFileSelected={handleFileSelected}
               onButtonClick={onButtonClick}
             />
-            {selectedFile && (
+            {fairlaunchLogo && (
               <span className="text-[#A4D0F2]" onClick={onButtonClick}>
                 Change file
               </span>
@@ -70,9 +82,9 @@ export default function StepThree() {
             label="Website URL"
             type="website"
             placeholder="www."
-            value={websiteURL}
+            value={fairlaunchWebsiteURL}
             onChange={(e) => {
-              setWebsiteURL?.(e.target.value);
+              setFairlaunchWebsiteURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={true}
@@ -87,9 +99,9 @@ export default function StepThree() {
             label="Telegram"
             type="website"
             placeholder="www."
-            value={telegramURL}
+            value={fairlaunchTelegramURL}
             onChange={(e) => {
-              setTelegramURL?.(e.target.value);
+              setFairlaunchTelegramURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -102,9 +114,9 @@ export default function StepThree() {
             label="Twitter"
             type="website"
             placeholder="www."
-            value={twitterURL}
+            value={fairlaunchTwitterURL}
             onChange={(e) => {
-              setTwitterURL?.(e.target.value);
+              setFairlaunchTwitterURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -119,9 +131,9 @@ export default function StepThree() {
             label="Discord"
             type="website"
             placeholder="www."
-            value={discordURL}
+            value={fairlaunchDiscordURL}
             onChange={(e) => {
-              setDiscordURL?.(e.target.value);
+              setFairlaunchDiscordURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -134,9 +146,9 @@ export default function StepThree() {
             label="Instagram"
             type="website"
             placeholder="www."
-            value={instagramURL}
+            value={fairlaunchInstagramURL}
             onChange={(e) => {
-              setInstagramURL?.(e.target.value);
+              setFairlaunchInstagramURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -151,9 +163,9 @@ export default function StepThree() {
             label="Github"
             type="website"
             placeholder="www."
-            value={githubURL}
+            value={fairlaunchGithubURL}
             onChange={(e) => {
-              setGithubURL?.(e.target.value);
+              setFairlaunchGithubURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -166,9 +178,9 @@ export default function StepThree() {
             label="Facebook"
             type="website"
             placeholder="www."
-            value={facebookURL}
+            value={fairlaunchFacebookURL}
             onChange={(e) => {
-              setFacebookURL?.(e.target.value);
+              setFairlaunchFacebookURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -182,9 +194,9 @@ export default function StepThree() {
             label="Youtube video"
             type="url"
             placeholder="www."
-            value={youtubeURL}
+            value={fairlaunchYoutubeURL}
             onChange={(e) => {
-              setYoutubeURL?.(e.target.value);
+              setFairlaunchYoutubeURL?.(e.target.value);
               setError?.("");
             }}
             isRequired={false}
@@ -196,14 +208,14 @@ export default function StepThree() {
         </div>
         <label htmlFor="description" className="flex flex-col gap-[0.62rem]">
           Description
-          <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
+          <div className="p-[0.07rem] pb-0 w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
             <textarea
               id="description"
-              className="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              className="bg-[#26272B] w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               placeholder="Leave a short description about your project"
-              value={description}
+              value={fairlaunchDescription}
               onChange={(e) => {
-                setDescription?.(e.target.value);
+                setFairlaunchDescription?.(e.target.value);
                 setError?.("");
               }}
               rows={4}
@@ -223,7 +235,7 @@ export default function StepThree() {
             Back
           </button>
           <button
-            disabled={selectedFile === null || websiteURL === ""}
+            disabled={fairlaunchLogo === null || fairlaunchWebsiteURL === ""}
             onClick={(e: any) => {
               e.preventDefault();
               handleFairlaunchNextStep?.(e);

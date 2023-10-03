@@ -37,7 +37,7 @@ export default function CreationSteps({
               : ""
           } ${index === 0 ? "rounded-t-[0.625rem]" : ""} ${
             index === 3 ? "rounded-b-[0.625rem]" : ""
-          } flex items-center gap-2 p-6 border-b border-[#26272B] cursor-default`}
+          } flex items-center w-full gap-2 p-6 border-b border-[#26272B] cursor-default`}
           onClick={(e: any) => {
             e.preventDefault();
             // toggleStep(item?.tag)
@@ -50,7 +50,7 @@ export default function CreationSteps({
           >
             {item.tag}.
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full">
             <h1 className="tracking-[-0.01rem]">{item?.title}</h1>
             <p className="text-[#D1D1D6] tracking-[-0.00813rem] text-[0.8125rem]">
               {item?.description}

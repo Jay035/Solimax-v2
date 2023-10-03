@@ -1,12 +1,25 @@
 "use client";
 import { GlobalContext } from "@/context/Context";
-import CustomSelect from "./CustomSelect";
-import { useState } from "react";
-import CustomInput from "../CustomInput";
+import CustomSelect from "./launchpad/CustomSelect";
+import { ReactNode, useState } from "react";
+import CustomInput from "./CustomInput";
 
-export default function CreateTokenModal() {
-  const { error, setError, nameOfToken, setNameOfToken, setIsModalShowing } =
-    GlobalContext();
+type Props = {
+  children: ReactNode;
+};
+
+
+export default function CreateTokenModal(
+  // {children} : Props
+  ) {
+  const {
+    error,
+    setError,
+    nameOfToken,
+    setNameOfToken,
+    isModalShowing,
+    setIsModalShowing,
+  } = GlobalContext();
   const [selectedTokenType, setSelectedTokenType] =
     useState<string>("Standard token");
   const [symbol, setSymbol] = useState<string>("");
@@ -26,6 +39,9 @@ export default function CreateTokenModal() {
       value: "Standard token",
     },
   ];
+
+  if (!isModalShowing) return null;
+
   return (
     <main
       id="modal"
