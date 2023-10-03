@@ -3,19 +3,41 @@ import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import Checkbox from "@/components/Checkbox";
 
 export default function StepTwo() {
-  const { handleFairlaunchNextStep, handleFairlaunchPreviousStep } = GlobalContext();
-  const [softcap, setSoftcap] = useState();
-  const [router, setRouter] = useState("Select router exchange");
-  const [liquidity, setLiquidity] = useState();
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [liquidityLockup, setLiquidityLockup] = useState("");
+  const {
+    handleFairlaunchNextStep,
+    handleFairlaunchPreviousStep,
+    fairlaunchTotalSellingAmount,
+    fairlaunchSoftcap,
+    fairlaunchRouter,
+    fairlaunchLiquidity,
+    fairlaunchLiquidityLockup,
+    fairlaunchStartDate,
+    fairlaunchEndDate,
+    fairlaunchMaxContribution,
+    isFairlaunchWhitelistDisabled,
+    isFairlaunchWhitelistEnabled,
+    fairlaunchBuyBackPercent,
+    isFairlaunchMaxContributionChecked,
+    isFairlaunchBuyBackChecked,
+    setIsFairlaunchBuyBackChecked,
+    setIsFairlaunchMaxContributionChecked,
+    setFairlaunchBuyBackPercent,
+    setIsFairlaunchWhitelistEnabled,
+    setIsFairlaunchWhitelistDisabled,
+    setFairlaunchMaxContribution,
+    setFairlaunchEndDate,
+    setFairlaunchStartDate,
+    setFairlaunchLiquidityLockup,
+    setFairlaunchLiquidity,
+    setFairlaunchSoftcap,
+    setFairlaunchRouter,
+    setFairlaunchTotalSellingAmount,
+  } = GlobalContext();
   const [error, setError] = useState("");
-  const [totalSellingAmount, setTotalSellingAmount] = useState("");
-
   const routerOptions = [
     {
       value: "Pancakeswap",
@@ -31,20 +53,9 @@ export default function StepTwo() {
     },
   ];
 
-  const [buybackPercent, setBuybackPercent] = useState<string>("");
-  const [maxContribution, setMaxContribution] = useState<string>("");
-  const [isMaxContributionChecked, setIsMaxContributionChecked] =
-    useState<boolean>(false);
-  const [isBuyBackChecked, setIsBuyBackChecked] = useState<boolean>(false);
-  const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
-  const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
-
   const handleCheckboxChange = (event: any) => {
-    // setIsChecked(event.target.checked);
     if (event.target.checked) {
-      // Run your function when checkbox is checked
       console.log("Checkbox is checked!");
-      // You can replace the console.log with your desired function call
     }
   };
   return (
@@ -70,8 +81,10 @@ export default function StepTwo() {
               label="Total selling amount"
               type="number"
               placeholder="0"
-              value={totalSellingAmount}
-              onChange={(e) => setTotalSellingAmount?.(e.target.value)}
+              value={fairlaunchTotalSellingAmount}
+              onChange={(e) =>
+                setFairlaunchTotalSellingAmount?.(e.target.value)
+              }
               isRequired={true}
             />
             {/* create pool fee */}
@@ -90,20 +103,20 @@ export default function StepTwo() {
             >
               <div
                 className={`rounded-full flex ${
-                  isWhitelistDisabled
+                  isFairlaunchWhitelistDisabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
                     : "border-2 border-white"
                 }`}
               >
                 <input
                   className={`appearance-none bg-[#26272B] rounded-full ${
-                    isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
+                    isFairlaunchWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
                   } checked:bg-[#A4D0F2] cursor-pointer`}
                   type="radio"
-                  checked={isWhitelistDisabled}
+                  checked={isFairlaunchWhitelistDisabled}
                   onChange={(event: any) => {
-                    setIsWhitelistDisabled(event.target.checked);
-                    setIsWhitelistEnabled(false);
+                    setIsFairlaunchWhitelistDisabled?.(event.target.checked);
+                    setIsFairlaunchWhitelistEnabled?.(false);
                   }}
                   name="whitelist"
                   id="disable"
@@ -117,21 +130,21 @@ export default function StepTwo() {
             >
               <div
                 className={`rounded-full flex ${
-                  isWhitelistEnabled
+                  isFairlaunchWhitelistEnabled
                     ? "border-2 p-0.5 border-[#A4D0F2]"
                     : "border-2 border-white"
                 }`}
               >
                 <input
                   className={`appearance-none bg-[#26272B] rounded-full ${
-                    isWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
+                    isFairlaunchWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
                   } checked:bg-[#A4D0F2] cursor-pointer`}
                   type="radio"
                   // defaultChecked
-                  checked={isWhitelistEnabled}
+                  checked={isFairlaunchWhitelistEnabled}
                   onChange={(event: any) => {
-                    setIsWhitelistDisabled(false);
-                    setIsWhitelistEnabled(event.target.checked);
+                    setIsFairlaunchWhitelistDisabled?.(false);
+                    setIsFairlaunchWhitelistEnabled?.(event.target.checked);
                   }}
                   name="whitelist"
                   id="disable"
@@ -152,9 +165,9 @@ export default function StepTwo() {
               label="Softcap (BNB)"
               type="number"
               placeholder="0"
-              value={softcap}
+              value={fairlaunchSoftcap}
               onChange={(e) => {
-                setSoftcap?.(e.target.value);
+                setFairlaunchSoftcap?.(e.target.value);
                 setError?.("");
               }}
               isRequired={true}
@@ -162,11 +175,11 @@ export default function StepTwo() {
 
             <Checkbox
               text="Setting max contribution?"
-              valueChecked={isMaxContributionChecked}
-              setValueChecked={setIsMaxContributionChecked}
+              valueChecked={isFairlaunchMaxContributionChecked!}
+              setValueChecked={setIsFairlaunchMaxContributionChecked!}
             />
 
-            {isMaxContributionChecked && (
+            {isFairlaunchMaxContributionChecked && (
               <CustomInput
                 id="max-contribution"
                 className="mt-4 flex flex-col gap-[0.62rem]"
@@ -174,9 +187,9 @@ export default function StepTwo() {
                 label="Max Contribution (BNB)"
                 type="number"
                 placeholder="0"
-                value={maxContribution}
+                value={fairlaunchMaxContribution}
                 onChange={(e) => {
-                  setMaxContribution?.(e.target.value);
+                  setFairlaunchMaxContribution?.(e.target.value);
                   setError?.("");
                 }}
                 isRequired={true}
@@ -191,8 +204,8 @@ export default function StepTwo() {
             </h3>
             <CustomSelect
               options={routerOptions}
-              header={router}
-              setHeader={setRouter}
+              header={fairlaunchRouter}
+              setHeader={setFairlaunchRouter}
             />
           </div>
           {/* LIQUIDITY */}
@@ -204,19 +217,19 @@ export default function StepTwo() {
               label="Liquidity (%)"
               type="number"
               placeholder="0"
-              value={liquidity}
+              value={fairlaunchLiquidity}
               onChange={(e) => {
-                setLiquidity?.(e.target.value);
+                setFairlaunchLiquidity?.(e.target.value);
                 setError?.("");
               }}
               isRequired={true}
             />
             <Checkbox
               text="Enable buyback?"
-              valueChecked={isBuyBackChecked}
-              setValueChecked={setIsBuyBackChecked}
+              valueChecked={isFairlaunchBuyBackChecked!}
+              setValueChecked={setIsFairlaunchBuyBackChecked!}
             />
-            {isBuyBackChecked && (
+            {isFairlaunchBuyBackChecked && (
               <div className="">
                 <CustomInput
                   id="max-contribution"
@@ -225,9 +238,9 @@ export default function StepTwo() {
                   label="Buyback percent (%)"
                   type="number"
                   placeholder="0"
-                  value={buybackPercent}
+                  value={fairlaunchBuyBackPercent}
                   onChange={(e) => {
-                    setBuybackPercent?.(e.target.value);
+                    setFairlaunchBuyBackPercent?.(e.target.value);
                     setError?.("");
                   }}
                   isRequired={true}
@@ -274,9 +287,9 @@ export default function StepTwo() {
               label="Start date (UTC)"
               type="date"
               placeholder="0"
-              value={startDate}
+              value={fairlaunchStartDate}
               onChange={(e) => {
-                setStartDate?.(e.target.value);
+                setFairlaunchStartDate?.(e.target.value);
                 setError?.("");
               }}
               isRequired={true}
@@ -289,9 +302,9 @@ export default function StepTwo() {
               label="End date (UTC)"
               type="date"
               placeholder="0"
-              value={endDate}
+              value={fairlaunchEndDate}
               onChange={(e) => {
-                setEndDate?.(e.target.value);
+                setFairlaunchEndDate?.(e.target.value);
                 setError?.("");
               }}
               isRequired={true}
@@ -309,9 +322,9 @@ export default function StepTwo() {
             label="Liquidity lockup (days)"
             type="number"
             placeholder="0"
-            value={liquidityLockup}
+            value={fairlaunchLiquidityLockup}
             onChange={(e) => {
-              setLiquidityLockup?.(e.target.value);
+              setFairlaunchLiquidityLockup?.(e.target.value);
               setError?.("");
             }}
             isRequired={true}
@@ -335,19 +348,25 @@ export default function StepTwo() {
               </button>
               <button
                 disabled={
-                  totalSellingAmount === "" ||
-                  softcap === null ||
-                  router === "Select router exchange" ||
-                  liquidity === null ||
-                  startDate === "" ||
-                  endDate === "" ||
-                  liquidityLockup === ""
+                  fairlaunchTotalSellingAmount === 0 ||
+                  fairlaunchSoftcap === 0 ||
+                  fairlaunchRouter === "Select router exchange" ||
+                  fairlaunchLiquidity === 0 ||
+                  fairlaunchStartDate === "" ||
+                  fairlaunchEndDate === "" ||
+                  fairlaunchLiquidityLockup === 0
                 }
                 onClick={(e: any) => {
                   e.preventDefault();
-                  if (isMaxContributionChecked || isBuyBackChecked) {
-                    if (maxContribution === "" || buybackPercent === "") {
-                      return;
+                  if (
+                    isFairlaunchMaxContributionChecked ||
+                    isFairlaunchBuyBackChecked
+                  ) {
+                    if (
+                      fairlaunchMaxContribution === 0 ||
+                      fairlaunchBuyBackPercent === 0
+                    ) {
+                      toast.error("Fill all required fields!");
                     } else {
                       handleFairlaunchNextStep?.(e);
                     }

@@ -46,6 +46,8 @@ interface FormProps {
   nameOfToken?: string;
 
   // PRESALE
+  // --------------------------
+  // Step One
   presaleCurrentStep: number;
   presaleTokenAddress?: string;
   presaleSelectedCurrency?: string;
@@ -69,6 +71,27 @@ interface FormProps {
   isPresaleWhitelistDisabled?: boolean;
   isPresaleWhitelistEnabled?: boolean;
   isPresaleVestingContributionChecked?: boolean;
+  isPresaleSpendingApproved?: boolean;
+  presaleLogo?: File | null;
+  presaleWebsiteURL?: string;
+  presaleYoutubeURL?: string;
+  presaleTelegramURL?: string;
+  presaleTwitterURL?: string;
+  presaleDescription?: string;
+  presaleGithubURL?: string;
+  presaleDiscordURL?: string;
+  presaleFacebookURL?: string;
+  presaleInstagramURL?: string;
+
+  setPresaleInstagramURL?: (x: string) => void;
+  setPresaleDiscordURL?: (x: string) => void;
+  setPresaleGithubURL?: (x: string) => void;
+  setPresaleFacebookURL?: (x: string) => void;
+  setPresaleDescription?: (x: string) => void;
+  setPresaleTwitterURL?: (x: string) => void;
+  setPresaleTelegramURL?: (x: string) => void;
+  setPresaleYoutubeURL?: (x: string) => void;
+  setPresaleWebsiteURL?: (x: string) => void;
   setIsPresaleVestingContributionChecked?: (x: boolean) => void;
   setIsPresaleWhitelistEnabled?: (x: boolean) => void;
   setIsPresaleWhitelistDisabled?: (x: boolean) => void;
@@ -81,12 +104,16 @@ interface FormProps {
   setPresaleLiquidity?: (x: any) => void;
   setPresaleRefundType?: (x: string) => void;
   setPresaleRouter?: (x: string) => void;
-  setPresaleSoftcap?: (x: number) => void;
-  setPresaleHardcap?: (x: number) => void;
+  setPresaleSoftcap?: (x: any) => void;
+  setPresaleHardcap?: (x: any) => void;
   setPresaleMinBuy?: (x: number) => void;
   setPresaleMaxBuy?: (x: number) => void;
   setPresaleTokenAddress?: (x: string) => void;
   setPresaleToken?: (x: any) => void;
+  setPresaleRate?: (rate: number) => void;
+  setPresaleLogo?: (logo: File | null) => void;
+  setIsPresaleSpendingApproved?: (x: boolean) => void;
+
   setNameOfToken?: (x: string) => void;
   setIsModalShowing?: (x: any) => void;
   setTotalSellingAmount?: (x: string) => void;
@@ -122,17 +149,76 @@ interface FormProps {
   setListingRate?: (x: any) => void;
   setError?: (err: string) => void;
   setTokenAddress?: (address: string) => void;
-  setPresaleRate?: (rate: number) => void;
   setSelectedCurrency?: (currency: string) => void;
   setCurrentStep?: (step: number) => void;
 
+  // -------------------------------------------
   // FAIRLAUNCH
   fairlaunchCurrentStep: number;
   fairlaunchTokenAddress?: string;
   fairlaunchSelectedCurrency?: string;
+  isFairlaunchFeeOptionOneChecked?: boolean;
+  isFairlaunchFeeOptionTwoChecked?: boolean;
   setFairlaunchTokenAddress?: (x: string) => void;
   setFairlaunchCurrentStep?: (step: any) => void;
   setFairlaunchSelectedCurrency?: (currency: string) => void;
+  setIsFairlaunchFeeOptionOneChecked?: (x: boolean) => void;
+  setIsFairlaunchFeeOptionTwoChecked?: (x: boolean) => void;
+
+  // Step Two
+  fairlaunchTotalSellingAmount?: number;
+  fairlaunchSoftcap?: number;
+  fairlaunchRouter?: string;
+  fairlaunchStartDate?: string;
+  fairlaunchEndDate?: string;
+  fairlaunchBuyBackPercent?: number;
+  fairlaunchLiquidity?: number;
+  fairlaunchLiquidityLockup?: number;
+  fairlaunchMaxContribution?: number;
+  isFairlaunchWhitelistDisabled?: boolean;
+  isFairlaunchWhitelistEnabled?: boolean;
+  isFairlaunchMaxContributionChecked?: boolean;
+  isFairlaunchBuyBackChecked?: boolean;
+  setIsFairlaunchBuyBackChecked?: (x: boolean) => void;
+  setIsFairlaunchMaxContributionChecked?: (x: boolean) => void;
+  setFairlaunchMaxContribution?: (x: number) => void;
+  setFairlaunchBuyBackPercent?: (x: number) => void;
+  setFairlaunchTotalSellingAmount?: (x: number) => void;
+  setFairlaunchSoftcap?: (x: number) => void;
+  setFairlaunchBuyBackPercent?: (x: string) => void;
+  setFairlaunchBuyBackPercent?: (x: string) => void;
+  setFairlaunchRouter?: (x: string) => void;
+  setFairlaunchStartDate?: (x: string) => void;
+  setFairlaunchEndDate?: (x: string) => void;
+  setFairlaunchLiquidity?: (x: number) => void;
+  setFairlaunchLiquidityLockup?: (x: number) => void;
+  setIsFairlaunchWhitelistDisabled?: (x: boolean) => void;
+  setIsFairlaunchWhitelistEnabled?: (x: boolean) => void;
+
+  // Step Three
+  isFairlaunchSpendingApproved?: boolean;
+  fairlaunchLogo?: File | null;
+  fairlaunchWebsiteURL?: string;
+  fairlaunchYoutubeURL?: string;
+  fairlaunchTelegramURL?: string;
+  fairlaunchTwitterURL?: string;
+  fairlaunchDescription?: string;
+  fairlaunchGithubURL?: string;
+  fairlaunchDiscordURL?: string;
+  fairlaunchFacebookURL?: string;
+  fairlaunchInstagramURL?: string;
+  setFairlaunchInstagramURL?: (x: string) => void;
+  setFairlaunchDiscordURL?: (x: string) => void;
+  setFairlaunchGithubURL?: (x: string) => void;
+  setFairlaunchFacebookURL?: (x: string) => void;
+  setFairlaunchDescription?: (x: string) => void;
+  setFairlaunchTwitterURL?: (x: string) => void;
+  setFairlaunchTelegramURL?: (x: string) => void;
+  setFairlaunchYoutubeURL?: (x: string) => void;
+  setFairlaunchWebsiteURL?: (x: string) => void;
+  setFairlaunchLogo?: (x: File | null) => void;
+  setIsFairlaunchSpendingApproved?: (x: boolean) => void;
+
   handleFairlaunchPreviousStep?: (x: string | number) => void;
   handleFairlaunchNextStep?: (x: string | number) => void;
 

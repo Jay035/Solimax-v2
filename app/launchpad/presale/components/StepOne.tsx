@@ -2,13 +2,12 @@ import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { toast } from "react-toastify";
 import VerifyAddress from "@/hooks/VerifyAddress";
 
 export default function StepOne() {
   const [error, setError] = useState<string>("");
-  const [isAddressVerified, setIsAddressVerified] = useState<boolean>(false);
   const {
     currencyOptions,
     presaleTokenAddress,

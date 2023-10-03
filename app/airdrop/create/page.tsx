@@ -12,9 +12,9 @@ export default function CreateAirdrop({}: Props) {
   const [tokenAddress, setTokenAddress] = useState<string>("");
 
   return (
-    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] mr-10 sm:mr-16 xl:border-t xl:border-[#424242]">
+    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] xl:border-t xl:border-[#424242]">
       <LatestPools />
-      <main className="mt-[2.5rem] text-white ">
+      <main className="mt-[2.5rem] text-white mr-[1.69rem] xl:mr-10">
         <section className="bg-[#1D1C20] w-full pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8">
           <div className="flex justify-between items-center mb-10">
             <h1 className="tracking-[-0.015rem] text-2xl text-white">

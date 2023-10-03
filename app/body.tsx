@@ -2,7 +2,7 @@
 import Navbar from "@/components/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
 import Wallet from "@/components/Wallet";
-import CreateTokenModal from "@/components/launchpad/CreateTokenModal";
+import Modal from "@/components/Modal";
 import { GlobalContext } from "@/context/Context";
 
 export default function BodyComponent({
@@ -14,7 +14,7 @@ export default function BodyComponent({
 
   return (
     <main className="font-questrial grid xl:grid-cols-[16.5rem_auto]">
-      {isModalShowing === true && <CreateTokenModal />}
+      {isModalShowing === true && <Modal />}
       <ScrollToTop />
       <Navbar />
       <section className="overflow-x-hidden">

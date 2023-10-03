@@ -7,9 +7,9 @@ type Props = {};
 export default function CreateSolilock({}: Props) {
 
   return (
-    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] mr-10 sm:mr-16 xl:border-t xl:border-[#424242]">
+    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] xl:border-t xl:border-[#424242]">
       <LatestPools />
-      <main className="mt-[2.5rem] text-white">
+      <main className="mt-[2.5rem] text-white mr-[1.68rem] xl:mr-10">
         {/* <section> */}
           <SolilockForm />
           <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">

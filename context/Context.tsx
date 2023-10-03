@@ -8,7 +8,6 @@ import {
 } from "react";
 
 export const LaunchpadContext = createContext<FormProps>({
-  // currentStep: 1,
   airdropCurrentStep: 1,
   presaleCurrentStep: 1,
   fairlaunchCurrentStep: 1,
@@ -33,29 +32,43 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [isPresaleFeeOptionTwoChecked, setIsPresaleFeeOptionTwoChecked] =
     useState<boolean>(false);
   // STEP TWO
-  // const [presaleRate, setPresaleRate] = useState(0);
-  // const [presaleSoftcap, setPresaleSoftcap] = useState(0);
-  // const [presaleHardcap, setPresaleHardcap] = useState(0);
-  // const [presaleMinBuy, setPresaleMinBuy] = useState(0);
-  // const [presaleMaxBuy, setPresaleMaxBuy] = useState(0);
-  // const [presaleRouter, setPresaleRouter] = useState("Select router exchange");
-  // const [presaleRefundType, setPresaleRefundType] = useState("Burn");
-  // const [presaleLiquidity, setPresaleLiquidity] = useState();
-  // const [presaleListingRate, setPresaleListingRate] = useState();
-  // const [presaleStartDate, setPresaleStartDate] = useState("");
-  // const [presaleEndDate, setPresaleEndDate] = useState("");
-  // const [presaleLiquidityLockup, setPresaleLiquidityLockup] = useState("");
-  // const [presaleFirstRelease, setPresaleFirstRelease] = useState("");
-  // const [presaleVestingPeriod, setPresaleVestingPeriod] = useState("");
-  // const [presaleToken, setPresaleToken] = useState();
-  // const [isPresaleWhitelistDisabled, setIsPresaleWhitelistDisabled] =
-  //   useState(true);
-  // const [isPresaleWhitelistEnabled, setIsPresaleWhitelistEnabled] =
-  //   useState(false);
-  // const [
-  //   isPresaleVestingContributionChecked,
-  //   setIsPresaleVestingContributionChecked,
-  // ] = useState(false);
+  const [presaleRate, setPresaleRate] = useState(0);
+  const [presaleSoftcap, setPresaleSoftcap] = useState(0);
+  const [presaleHardcap, setPresaleHardcap] = useState(0);
+  const [presaleMinBuy, setPresaleMinBuy] = useState(0);
+  const [presaleMaxBuy, setPresaleMaxBuy] = useState(0);
+  const [presaleRouter, setPresaleRouter] = useState("Select router exchange");
+  const [presaleRefundType, setPresaleRefundType] = useState("Burn");
+  const [presaleLiquidity, setPresaleLiquidity] = useState(0);
+  const [presaleListingRate, setPresaleListingRate] = useState(0);
+  const [presaleStartDate, setPresaleStartDate] = useState("");
+  const [presaleEndDate, setPresaleEndDate] = useState("");
+  const [presaleLiquidityLockup, setPresaleLiquidityLockup] = useState("");
+  const [presaleFirstRelease, setPresaleFirstRelease] = useState("");
+  const [presaleVestingPeriod, setPresaleVestingPeriod] = useState("");
+  const [presaleToken, setPresaleToken] = useState("");
+  const [isPresaleWhitelistDisabled, setIsPresaleWhitelistDisabled] =
+    useState(true);
+  const [isPresaleWhitelistEnabled, setIsPresaleWhitelistEnabled] =
+    useState(false);
+  const [
+    isPresaleVestingContributionChecked,
+    setIsPresaleVestingContributionChecked,
+  ] = useState(false);
+  // STEP THREE
+  const [presaleLogo, setPresaleLogo] = useState<File | null>();
+  const [presaleWebsiteURL, setPresaleWebsiteURL] = useState("");
+  const [presaleTelegramURL, setPresaleTelegramURL] = useState("");
+  const [presaleTwitterURL, setPresaleTwitterURL] = useState("");
+  const [presaleDiscordURL, setPresaleDiscordURL] = useState("");
+  const [presaleInstagramURL, setPresaleInstagramURL] = useState("");
+  const [presaleGithubURL, setPresaleGithubURL] = useState("");
+  const [presaleFacebookURL, setPresaleFacebookURL] = useState("");
+  const [presaleYoutubeURL, setPresaleYoutubeURL] = useState("");
+  const [presaleDescription, setPresaleDescription] = useState("");
+  // STEP FOUR
+  const [isPresaleSpendingApproved, setIsPresaleSpendingApproved] =
+    useState(false);
 
   const handlePresaleNextStep = () => {
     setPresaleCurrentStep?.(Number(presaleCurrentStep) + 1);
@@ -81,11 +94,46 @@ export function LaunchpadContextProvider({ children }: Props) {
     useState("BNB");
   const [isFairlaunchFeeOptionOneChecked, setIsFairlaunchFeeOptionOneChecked] =
     useState<boolean>(true);
-  const [isFairlaunchFeeOptionTwoChecked, setFairlaunchIsFeeOptionTwoChecked] =
+  const [isFairlaunchFeeOptionTwoChecked, setIsFairlaunchFeeOptionTwoChecked] =
     useState<boolean>(false);
-  const [fairLaunchRouter, setFairlaunchRouter] = useState(
+  // STEP TWO
+  const [fairlaunchTotalSellingAmount, setFairlaunchTotalSellingAmount] =
+    useState(0);
+  const [fairlaunchSoftcap, setFairlaunchSoftcap] = useState(0);
+  const [fairlaunchRouter, setFairlaunchRouter] = useState(
     "Select router exchange"
   );
+  const [fairlaunchLiquidity, setFairlaunchLiquidity] = useState(0);
+  const [fairlaunchStartDate, setFairlaunchStartDate] = useState("");
+  const [fairlaunchEndDate, setFairlaunchEndDate] = useState("");
+  const [fairlaunchMaxContribution, setFairlaunchMaxContribution] = useState(0);
+  const [fairlaunchLiquidityLockup, setFairlaunchLiquidityLockup] = useState(0);
+  const [isFairlaunchWhitelistDisabled, setIsFairlaunchWhitelistDisabled] =
+    useState(true);
+  const [isFairlaunchWhitelistEnabled, setIsFairlaunchWhitelistEnabled] =
+    useState(false);
+  const [fairlaunchBuyBackPercent, setFairlaunchBuyBackPercent] = useState(0);
+  const [
+    isFairlaunchMaxContributionChecked,
+    setIsFairlaunchMaxContributionChecked,
+  ] = useState(false);
+  const [isFairlaunchBuyBackChecked, setIsFairlaunchBuyBackChecked] =
+    useState(false);
+
+  // STEP THREE
+  const [fairlaunchLogo, setFairlaunchLogo] = useState<File | null>();
+  const [fairlaunchWebsiteURL, setFairlaunchWebsiteURL] = useState("");
+  const [fairlaunchTelegramURL, setFairlaunchTelegramURL] = useState("");
+  const [fairlaunchTwitterURL, setFairlaunchTwitterURL] = useState("");
+  const [fairlaunchDiscordURL, setFairlaunchDiscordURL] = useState("");
+  const [fairlaunchInstagramURL, setFairlaunchInstagramURL] = useState("");
+  const [fairlaunchGithubURL, setFairlaunchGithubURL] = useState("");
+  const [fairlaunchFacebookURL, setFairlaunchFacebookURL] = useState("");
+  const [fairlaunchYoutubeURL, setFairlaunchYoutubeURL] = useState("");
+  const [fairlaunchDescription, setFairlaunchDescription] = useState("");
+  // STEP FOUR
+  const [isFairlaunchSpendingApproved, setIsFairlaunchSpendingApproved] =
+    useState(false);
 
   const handleFairlaunchNextStep = () => {
     setFairlaunchCurrentStep?.(Number(fairlaunchCurrentStep) + 1);
@@ -152,19 +200,7 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [liquidityLockup, setLiquidityLockup] = useState("");
   const [firstRelease, setFirstRelease] = useState("");
   const [vestingPeriod, setVestingPeriod] = useState("");
-  // const [presaleToken, setPresaleToken] = useState("");
   const [error, setError] = useState("");
-  const [websiteURL, setWebsiteURL] = useState("");
-  const [telegramURL, setTelegramURL] = useState("");
-  const [twitterURL, setTwitterURL] = useState("");
-  const [discordURL, setDiscordURL] = useState("");
-  const [instagramURL, setInstagramURL] = useState("");
-  const [githubURL, setGithubURL] = useState("");
-  const [facebookURL, setFacebookURL] = useState("");
-  const [youtubeURL, setYoutubeURL] = useState("");
-  const [description, setDescription] = useState("");
-  const [totalSellingAmount, setTotalSellingAmount] = useState("");
-  const [nameOfToken, setNameOfToken] = useState("");
 
   const tabs = [
     {
@@ -267,18 +303,8 @@ export function LaunchpadContextProvider({ children }: Props) {
   const value = {
     tabs,
     currencyOptions,
-    // currentStep,
     selectedTab,
     error,
-    websiteURL,
-    telegramURL,
-    twitterURL,
-    discordURL,
-    instagramURL,
-    githubURL,
-    facebookURL,
-    youtubeURL,
-    description,
     selectedCurrency,
     softcap,
     hardcap,
@@ -293,89 +319,86 @@ export function LaunchpadContextProvider({ children }: Props) {
     liquidityLockup,
     firstRelease,
     vestingPeriod,
-    totalSellingAmount,
     isModalShowing,
-    nameOfToken,
+
+    // PRESALE
     presaleTokenAddress,
     presaleSelectedCurrency,
     presaleCurrentStep,
     isPresaleFeeOptionOneChecked,
     isPresaleFeeOptionTwoChecked,
-    // presaleRate,
-    // presaleToken,
-    // presaleHardcap,
-    // presaleMaxBuy,
-    // presaleMinBuy,
-    // presaleSoftcap,
-    // presaleRouter,
-    // presaleRefundType,
-    // presaleLiquidity,
-    // presaleListingRate,
-    // presaleEndDate,
-    // presaleStartDate,
-    // presaleLiquidityLockup,
-    // presaleFirstRelease,
-    // presaleVestingPeriod,
-    // isPresaleVestingContributionChecked,
-    // isPresaleWhitelistDisabled,
-    // isPresaleWhitelistEnabled,
-    // setPresaleRefundType,
-    // setPresaleListingRate,
-    // setPresaleStartDate,
-    // setPresaleLiquidityLockup,
-    // setPresaleVestingPeriod,
-    // setIsPresaleWhitelistDisabled,
-    // setIsPresaleWhitelistEnabled,
-    // setIsPresaleVestingContributionChecked,
-    // setPresaleRouter,
-    // setPresaleEndDate,
-    // setPresaleFirstRelease,
-    // setPresaleLiquidity,
-    // setPresaleHardcap,
-    // setPresaleMaxBuy,
-    // setPresaleMinBuy,
-    // setPresaleSoftcap,
-    // setPresaleToken,
-    // setPresaleRate,
+    presaleRate,
+    presaleToken,
+    presaleHardcap,
+    presaleMaxBuy,
+    presaleMinBuy,
+    presaleSoftcap,
+    presaleRouter,
+    presaleRefundType,
+    presaleLiquidity,
+    presaleListingRate,
+    presaleEndDate,
+    presaleStartDate,
+    presaleLiquidityLockup,
+    presaleFirstRelease,
+    presaleVestingPeriod,
+    isPresaleVestingContributionChecked,
+    isPresaleWhitelistDisabled,
+    isPresaleWhitelistEnabled,
+    setPresaleRefundType,
+    setPresaleListingRate,
+    setPresaleStartDate,
+    setPresaleLiquidityLockup,
+    setPresaleVestingPeriod,
+    setIsPresaleWhitelistDisabled,
+    setIsPresaleWhitelistEnabled,
+    setIsPresaleVestingContributionChecked,
+    setPresaleRouter,
+    setPresaleEndDate,
+    setPresaleFirstRelease,
+    setPresaleLiquidity,
+    setPresaleHardcap,
+    setPresaleMaxBuy,
+    setPresaleMinBuy,
+    setPresaleSoftcap,
+    setPresaleToken,
+    setPresaleRate,
     setIsPresaleFeeOptionTwoChecked,
     setIsPresaleFeeOptionOneChecked,
     setPresaleCurrentStep,
     setPresaleTokenAddress,
     setPresaleSelectedCurrency,
-    setNameOfToken,
     setIsModalShowing,
-    setTotalSellingAmount,
     handlePresalePreviousStep,
     handlePresaleNextStep,
     handleFairlaunchPreviousStep,
     handleFairlaunchNextStep,
-    setSoftcap,
-    setHardcap,
-    setMinBuy,
-    setMaxBuy,
-    setRouter,
-    setRefundType,
-    setLiquidity,
-    setListingRate,
-    setStartDate,
-    setEndDate,
-    setFirstRelease,
-    setVestingPeriod,
-    // setCurrentStep,
-    setLiquidityLockup,
-    setSelectedCurrency,
-    setError,
-    setDescription,
-    setYoutubeURL,
-    setFacebookURL,
-    setGithubURL,
-    setInstagramURL,
-    setTwitterURL,
-    setSelectedTab,
-    setDiscordURL,
-    setTelegramURL,
-    setWebsiteURL,
+    // Step Three
+    presaleLogo,
+    presaleWebsiteURL,
+    presaleTelegramURL,
+    presaleTwitterURL,
+    presaleDiscordURL,
+    presaleInstagramURL,
+    presaleGithubURL,
+    presaleFacebookURL,
+    presaleYoutubeURL,
+    presaleDescription,
+    setPresaleLogo,
+    setPresaleWebsiteURL,
+    setPresaleTelegramURL,
+    setPresaleTwitterURL,
+    setPresaleDiscordURL,
+    setPresaleInstagramURL,
+    setPresaleGithubURL,
+    setPresaleFacebookURL,
+    setPresaleYoutubeURL,
+    setPresaleDescription,
+    // Step Four
+    isPresaleSpendingApproved,
+    setIsPresaleSpendingApproved,
 
+    // ------------------------------------------------------
     // FAIR LAUNCH
     fairlaunchCurrentStep,
     fairlaunchSelectedCurrency,
@@ -383,6 +406,62 @@ export function LaunchpadContextProvider({ children }: Props) {
     setFairlaunchCurrentStep,
     setFairlaunchSelectedCurrency,
     setFairlaunchTokenAddress,
+    isFairlaunchFeeOptionOneChecked,
+    isFairlaunchFeeOptionTwoChecked,
+    setIsFairlaunchFeeOptionOneChecked,
+    setIsFairlaunchFeeOptionTwoChecked,
+
+    // Step Two
+    fairlaunchTotalSellingAmount,
+    fairlaunchSoftcap,
+    fairlaunchRouter,
+    fairlaunchLiquidity,
+    fairlaunchLiquidityLockup,
+    fairlaunchStartDate,
+    fairlaunchEndDate,
+    fairlaunchMaxContribution,
+    isFairlaunchWhitelistDisabled,
+    isFairlaunchWhitelistEnabled,
+    fairlaunchBuyBackPercent,
+    isFairlaunchMaxContributionChecked,
+    isFairlaunchBuyBackChecked,
+    setIsFairlaunchBuyBackChecked,
+    setIsFairlaunchMaxContributionChecked,
+    setFairlaunchBuyBackPercent,
+    setIsFairlaunchWhitelistEnabled,
+    setIsFairlaunchWhitelistDisabled,
+    setFairlaunchMaxContribution,
+    setFairlaunchEndDate,
+    setFairlaunchStartDate,
+    setFairlaunchLiquidityLockup,
+    setFairlaunchLiquidity,
+    setFairlaunchSoftcap,
+    setFairlaunchRouter,
+    setFairlaunchTotalSellingAmount,
+    // Step Three
+    fairlaunchLogo,
+    fairlaunchWebsiteURL,
+    fairlaunchTelegramURL,
+    fairlaunchTwitterURL,
+    fairlaunchDiscordURL,
+    fairlaunchInstagramURL,
+    fairlaunchGithubURL,
+    fairlaunchFacebookURL,
+    fairlaunchYoutubeURL,
+    fairlaunchDescription,
+    setFairlaunchDescription,
+    setFairlaunchYoutubeURL,
+    setFairlaunchFacebookURL,
+    setFairlaunchGithubURL,
+    setFairlaunchInstagramURL,
+    setFairlaunchDiscordURL,
+    setFairlaunchTwitterURL,
+    setFairlaunchTelegramURL,
+    setFairlaunchWebsiteURL,
+    setFairlaunchLogo,
+    // Step Four
+    isFairlaunchSpendingApproved,
+    setIsFairlaunchSpendingApproved,
 
     // PRIVATE SALE
     privateSaleCurrentStep,

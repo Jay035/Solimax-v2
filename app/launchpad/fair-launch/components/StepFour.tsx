@@ -3,7 +3,11 @@ import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
 export default function StepFour() {
-  const { handleFairlaunchPreviousStep, setIsModalShowing } = GlobalContext();
+  const {
+    handleFairlaunchPreviousStep,
+    isFairlaunchSpendingApproved,
+    setIsFairlaunchSpendingApproved,
+  } = GlobalContext();
   const [error, setError] = useState("");
 
   return (
@@ -41,7 +45,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Token name
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -49,7 +53,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Token decimals
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -57,7 +61,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Presale rate
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -65,7 +69,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Listing rate
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -73,7 +77,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Sales method
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -81,7 +85,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Hardcap
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -89,7 +93,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Softcap
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -97,7 +101,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Unsold tokens
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -105,7 +109,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Minimum buy
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -113,7 +117,7 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Maximum buy
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -121,7 +125,39 @@ export default function StepFour() {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
-                Total token
+                Liquidity
+              </p>
+              <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
+                145,342 SLM
+              </p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
+                Start time
+              </p>
+              <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
+                145,342 SLM
+              </p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
+                End time
+              </p>
+              <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
+                145,342 SLM
+              </p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
+                Liquidity lock time
+              </p>
+              <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
+                145,342 SLM
+              </p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="text-[0.875rem] tracking-[-0.00875rem] text-[#D1D1D6] ">
+                Website
               </p>
               <p className="text-[#E4E4E7] text-[0.875rem] tracking-[-0.00875rem]">
                 145,342 SLM
@@ -153,8 +189,12 @@ export default function StepFour() {
             <input
               className="w-4 h-4 accent-[#A4D0F2]"
               type="checkbox"
-              name="whitelist"
+              name="approve-spending"
               id="approve-spending"
+              checked={isFairlaunchSpendingApproved}
+              onChange={(e: any) =>
+                setIsFairlaunchSpendingApproved?.(e.target.checked)
+              }
             />
             <p>
               {" "}
@@ -175,11 +215,11 @@ export default function StepFour() {
             <button
               onClick={(e: any) => {
                 e.preventDefault();
-                window.scrollTo(0, 0);
-                setIsModalShowing?.(true);
-                if (typeof window != "undefined" && window.document) {
-                  document.body.style.overflow = "hidden";
-                }
+                // window.scrollTo(0, 0);
+                // setIsModalShowing?.(true);
+                // if (typeof window != "undefined" && window.document) {
+                //   document.body.style.overflow = "hidden";
+                // }
               }}
               className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
             >

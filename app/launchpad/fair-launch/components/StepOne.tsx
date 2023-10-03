@@ -8,20 +8,15 @@ import { toast } from "react-toastify";
 
 export default function StepOne() {
   const [error, setError] = useState("");
-  const [isFeeOptionOneChecked, setIsFeeOptionOneChecked] =
-    useState<boolean>(true);
-  const [isFeeOptionTwoChecked, setIsFeeOptionTwoChecked] =
-    useState<boolean>(false);
-  const [isAddressVerified, setIsAddressVerified] = useState<boolean>(false);
-
   const {
     currencyOptions,
-    fairlaunchCurrentStep,
     fairlaunchSelectedCurrency,
     fairlaunchTokenAddress,
+    isFairlaunchFeeOptionOneChecked,
+    isFairlaunchFeeOptionTwoChecked,
+    setIsFairlaunchFeeOptionOneChecked,
+    setIsFairlaunchFeeOptionTwoChecked,
     handleFairlaunchNextStep,
-    // fairlaunchCurrentStep,
-    // setFairlaunchCurrentStep,
     setFairlaunchSelectedCurrency,
     setFairlaunchTokenAddress,
   } = GlobalContext();
@@ -117,21 +112,21 @@ export default function StepOne() {
           >
             <div
               className={`rounded-full flex cursor-pointer ${
-                isFeeOptionOneChecked
+                isFairlaunchFeeOptionOneChecked
                   ? "border-2 p-0.5 border-[#A4D0F2]"
                   : "border-2 border-white"
               }`}
             >
               <input
                 className={`appearance-none bg-[#26272B] rounded-full ${
-                  isFeeOptionOneChecked ? "w-5 h-5" : "w-6 h-6"
+                  isFairlaunchFeeOptionOneChecked ? "w-5 h-5" : "w-6 h-6"
                 } checked:bg-[#A4D0F2]`}
                 type="radio"
                 // defaultChecked
-                checked={isFeeOptionOneChecked}
+                checked={isFairlaunchFeeOptionOneChecked}
                 onChange={(event: any) => {
-                  setIsFeeOptionOneChecked(event.target.checked);
-                  setIsFeeOptionTwoChecked(false);
+                  setIsFairlaunchFeeOptionOneChecked?.(event.target.checked);
+                  setIsFairlaunchFeeOptionTwoChecked?.(false);
                 }}
                 name="fee-option"
                 id="fee-option-(%-BNB-raised)"
@@ -146,21 +141,21 @@ export default function StepOne() {
           >
             <div
               className={`rounded-full cursor-pointer flex ${
-                isFeeOptionTwoChecked
+                isFairlaunchFeeOptionTwoChecked
                   ? "border-2 p-0.5 border-[#A4D0F2]"
                   : "border-2 border-white"
               }`}
             >
               <input
                 className={`appearance-none bg-[#26272B] rounded-full ${
-                  isFeeOptionTwoChecked ? "w-5 h-5" : "w-6 h-6"
+                  isFairlaunchFeeOptionTwoChecked ? "w-5 h-5" : "w-6 h-6"
                 } checked:bg-[#A4D0F2]`}
                 type="radio"
                 // defaultChecked
-                checked={isFeeOptionTwoChecked}
+                checked={isFairlaunchFeeOptionTwoChecked}
                 onChange={(event: any) => {
-                  setIsFeeOptionOneChecked(false);
-                  setIsFeeOptionTwoChecked(event.target.checked);
+                  setIsFairlaunchFeeOptionOneChecked?.(false);
+                  setIsFairlaunchFeeOptionTwoChecked?.(event.target.checked);
                 }}
                 name="fee-option"
                 id="fee-option-(1.5%-BNB-raised + 1.5%-token-raised)"
@@ -177,7 +172,6 @@ export default function StepOne() {
           disabled={fairlaunchTokenAddress === ""}
           onClick={(e: any) => {
             e.preventDefault();
-           // setIsAddressVerified(status);
             if (status === true) {
               handleFairlaunchNextStep?.(e);
             } else {
