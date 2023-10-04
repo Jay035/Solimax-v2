@@ -46,7 +46,7 @@ export default function page({ params }: { params: { title: string } }) {
           {/* 1st card */}
           <div className="bg-[#1D1C20] border border-[#3F3F46] rounded-[0.65rem] px-5 py-4">
             {/* top */}
-            <section className="pb-[1.12rem] mb-[1.12rem] flex justify-between items-center border-b border-[#3F3F46]">
+            <section className="pb-[1.12rem] mb-[1.12rem] flex flex-col gap-3 md:flex-row justify-between md:items-center border-b border-[#3F3F46]">
               {/* project name */}
               <div className="flex items-center gap-4 text-2xl">
                 <Image className="w-16 2xl:w-[4.04rem]" src={img2} alt="icon" />
