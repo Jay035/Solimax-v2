@@ -1,7 +1,7 @@
 "use client";
 import {Newsletter} from "@/components/Newsletter";
 import Image from "next/image";
-import banner from "../../../../../public/images/detail banner.png";
+import banner from "../../../../public/images/detail banner.png";
 import { useState } from "react";
 
 type Props = {};
