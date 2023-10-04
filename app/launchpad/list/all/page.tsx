@@ -12,7 +12,7 @@ export default function LaunchpadList({}: Props) {
   const [email, setEmail] = useState<string>("");
 
   return (
-    <section className="pl-[1.69rem] pr-[1.69rem] pt-6 xl:pr-10 pb-32 xl:border-t xl:border-[#424242]">
+    <section className="px-[1.69rem] pt-6 xl:pr-10 pb-32 xl:border-t xl:border-[#424242]">
       <Navigation />
       <Filter />
       <div className="mb-[6.25rem] grid md:grid-cols-2 xl:grid-cols-3 gap-x-[1.59rem] gap-y-8">

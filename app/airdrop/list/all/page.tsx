@@ -10,14 +10,14 @@ export default function LaunchpadList({}: Props) {
   return (
     <section className="pl-8 pr-10 sm:pr-16 pb-32 xl:border-t xl:border-[#424242]">
       <div className="mt-[2.81rem] mb-8 p-[1px] rounded-[0.625rem] bg-gradient-to-r from-[#77cdeb] via-[#953ddd] to-[#a56ef4]">
-        <div className="bg-[#1D1C20] rounded-[0.625rem] py-[3.2rem] flex justify-center items-center">
-          <section className="flex flex-col items-center border-r border-[#3F3F46] pr-[6.75rem] gap-4">
+        <div className="bg-[#1D1C20] rounded-[0.625rem] py-8 md:py-[3.2rem] flex justify-center gap-6 flex-col md:flex-row md:items-center">
+          <section className="flex flex-col items-center border-b md:border-b-0 md:border-r border-[#3F3F46] pb-4 md:pb-0 md:pr-[6.75rem] gap-4">
             <p className="text-[#E4E4E7]">TOTAL PROJECTS</p>
-            <h2 className="text-[2rem] leading-6 text-white">32</h2>
+            <h2 className="text-xl md:text-[2rem] leading-6 font-medium text-white">32</h2>
           </section>
-          <section className="flex flex-col items-center pl-[6.75rem] gap-4">
+          <section className="flex flex-col items-center pt-4 md:pt-0 md:pl-[6.75rem] gap-4">
             <p className="text-[#E4E4E7]">TOTAL PARTICIPANTS</p>
-            <h2 className="text-[2rem] leading-6 text-white">1002</h2>
+            <h2 className="text-xl md:text-[2rem] leading-6 font-medium text-white">1002</h2>
           </section>
         </div>
       </div>

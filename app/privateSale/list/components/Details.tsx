@@ -12,7 +12,7 @@ export default function Details({}: Props) {
         </p>
         <div className="flex gap-[0.12rem] items-start text-right">
           <div className="flex flex-col">
-            <span className="tracking-[-0.0075rem] underline text-xs">
+            <span className="tracking-[-0.0075rem] max-w-[10rem] md:max-w-none break-words underline text-xs">
               0x8Fc6d87464Bf8c6a93eb99d729273eda2905d39c
             </span>
             <span className="text-[#A4D0F2] text-[0.625rem]">
