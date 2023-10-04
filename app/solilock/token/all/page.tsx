@@ -176,7 +176,7 @@ export default function AllTokens({}: Props) {
         </div>
         {/* <TokenTable /> */}
         <section className="w-full pt-[1.56rem] pb-[0.88rem] grid grid-cols-1 overflow-x-auto rounded-[0.625rem] border border-[#51525C] bg-[#1D1C20]">
-          <div className="grid grid-cols-3 gap-4 px-10 lg:px-[4.12rem] tracking-[-0.01rem] pb-[1.63rem]">
+          <div className="grid grid-cols-3 gap-20 lg:gap-4 px-7 lg:px-[4.12rem] tracking-[-0.01rem] pb-[1.63rem]">
             <h1>Token</h1>
             <h1>Amount</h1>
             <h1>&nbsp;&nbsp;</h1>
@@ -187,7 +187,7 @@ export default function AllTokens({}: Props) {
               ?.map((token: any, index: number) => (
                 <li
                   key={index}
-                  className="grid grid-cols-3 px-10 lg:px-[4.12rem] pt-8 pb-5 gap-4 border-t border-[#51525C]"
+                  className="grid grid-cols-3 px-8 lg:px-[4.12rem] pt-8 pb-5 gap-20 lg:gap-4 border-t border-[#51525C]"
                 >
                   <div className="flex items-center gap-2">
                     <Image
@@ -197,7 +197,7 @@ export default function AllTokens({}: Props) {
                       src={token?.logo}
                       alt="token logo"
                     />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col ">
                       <span className="text-[#F4F4F5]">{token?.name}</span>
                       <span className="text-[#A0A0AB]">{token?.symbol}</span>
                     </div>

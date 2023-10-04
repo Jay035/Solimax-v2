@@ -3,9 +3,7 @@ import Image from "next/image";
 import img2 from "../../../../public/icons/icon-2.svg";
 import banner from "../../../../public/images/detail banner.png";
 import Details from "./components/Details";
-import Link from "next/link";
-import Newsletter from "@/components/Newsletter";
-import RightCol from "./components/RightCol";
+import Link from "next/link";import RightCol from "./components/RightCol";
 
 // export async function generateMetadata({
 //     params: { id },

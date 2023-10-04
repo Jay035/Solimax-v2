@@ -136,30 +136,28 @@ export default function AllLiquidityLocks({}: Props) {
               ?.map((token: any, index: number) => (
                 <li
                   key={index}
-                  className="grid grid-cols-2 px-10 lg:px-[4.12rem] pt-8 pb-5 gap-4 border-t border-[#51525C]"
+                  className="grid grid-cols-3 px-8 lg:px-[4.12rem] pt-8 pb-5 gap-20 lg:gap-4 border-t border-[#51525C]"
                 >
                   <div className="flex items-center gap-2">
                     <Image
                       className="bg-white rounded-full"
-                      width={56}
-                      height={56}
+                      width={32}
+                      height={32}
                       src={token?.logo}
                       alt="token logo"
                     />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col ">
                       <span className="text-[#F4F4F5]">{token?.name}</span>
                       <span className="text-[#A0A0AB]">{token?.symbol}</span>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <p>{token?.amount}</p>
-                    <Link
-                      href={`/solilock/liquidityLock/all/${index}`}
-                      className="text-[#A4D0F2] pr-16 text-center tracking-[-0.00875rem] text-sm"
-                    >
-                      View
-                    </Link>
-                  </div>
+                  <p>{token?.amount}</p>
+                  <Link
+                    href={`/solilock/token/all/${index}`}
+                    className="text-[#A4D0F2] text-center tracking-[-0.00875rem] text-sm"
+                  >
+                    View
+                  </Link>
                 </li>
               ))}
           </ul>

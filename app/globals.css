@@ -186,7 +186,7 @@ input[type="date"]:valid + span::after {
 /* PAGINATION */
 
 .paginationBtns {
-  @apply flex justify-between items-center text-sm text-[#A0A0AB] mt-8 bg-[#1D1C20] rounded-[0.625rem] px-6 pt-3 pb-4;
+  @apply flex justify-between items-center text-sm text-[#A0A0AB] mt-8 bg-[#1D1C20] rounded-[0.625rem] px-6 pt-3 pb-4 border-t border-[#51525C];
 }
 
 .paginationDisabled {

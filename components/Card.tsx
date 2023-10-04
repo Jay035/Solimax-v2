@@ -1,9 +1,4 @@
-import img1 from "../../../../public/icons/gamer 1.svg";
-import img2 from "../../../../public/icons/icon-2.svg";
-import img3 from "../../../../public/icons/deer 1.svg";
-import img4 from "../../../../public/icons/icon-1.svg";
-import img5 from "../../../../public/icons/delivery-drone 1.svg";
-import img6 from "../../../../public/icons/icon-3.svg";
+import img1 from "../public/icons/gamer 1.svg";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -13,6 +8,7 @@ type Props = {};
 export function Card({ item }: any) {
   const router = useRouter();
   const [isAddedToFavorites, setIsAddedToFavorites] = useState<boolean>(false);
+  
   return (
     <div className="p-[0.07rem] bg-gradient-to-b from-[#51525C] to-[#414149] rounded-[0.72294rem]">
       <article className="bg-[#1d1c20] w-full rounded-[0.72294rem] p-[1.74rem] pb-[0.86rem] xl:p-4">

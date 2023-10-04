@@ -8,7 +8,7 @@ export default function SolilockForm() {
   const [error, setError] = useState("");
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between gap-2 md:items-center">
         <h1 className="tracking-[-0.015rem] text-2xl text-white">
         Create your lock
         </h1>
