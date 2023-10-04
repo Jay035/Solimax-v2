@@ -72,7 +72,7 @@ export default function LockForm() {
         {anotherUserUsed && (
           <div className="">
             <CustomInput
-              id="max-contribution"
+              id="owner"
               className="mt-4 flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] cursor-pointer rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Owner"
@@ -83,7 +83,7 @@ export default function LockForm() {
                 setOwner?.(e.target.value);
                 setError?.("");
               }}
-              isRequired={true}
+              isRequired={false}
             />
             <p className="mt-[0.62rem] text-xs tracking-[-0.0075rem]">
               The address you input here will receive the tokens once they are
@@ -223,7 +223,7 @@ export default function LockForm() {
       <div className="mt-2 bg-gradient-to-r from-[#77CDEB] via-[#953DDD] to-[#A56EF4] p-0.5 rounded-[0.62rem]">
         <p className="text-sm text-[#F4F4F5] rounded-[0.625rem] py-[0.88rem] px-[1.19rem] bg-[#1C1C20]">
           Please exclude{" "}
-          <span className="text-[#A4D0F2]">
+          <span className="text-[#A4D0F2] break-words">
             Solimax Launchpad address 0x56b153049AE32C6537afEa4B1F075889485c5609
           </span>{" "}
           from fees, rewards, max tx amount to start locking tokens. We do not

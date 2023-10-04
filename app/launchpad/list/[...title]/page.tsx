@@ -4,8 +4,8 @@ import img2 from "../../../../public/icons/icon-2.svg";
 import banner from "../../../../public/images/detail banner.png";
 import Details from "./components/Details";
 import Link from "next/link";
-import Newsletter from "@/components/Newsletter";
 import RightCol from "./components/RightCol";
+import RedirectButton from "@/components/RedirectButton";
 
 // export async function generateMetadata({
 //     params: { id },
@@ -20,29 +20,10 @@ import RightCol from "./components/RightCol";
 //   }
 
 export default function page({ params }: { params: { title: string } }) {
-  
   return (
     <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
-      <div className="flex justify-between items-center mb-9">
-        {/* chevron left */}
-        <Link href="/launchpad/list/all">
-          <svg
-            className="cursor-pointer"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
+      <div className="flex justify-between flex-col md:flex-row md:items-center mb-9">
+        <RedirectButton route="" />
         <div className="flex items-center gap-2 text-white">
           <Image
             width={44}
@@ -65,7 +46,7 @@ export default function page({ params }: { params: { title: string } }) {
           {/* 1st card */}
           <div className="bg-[#1D1C20] border border-[#3F3F46] rounded-[0.65rem] px-5 py-4">
             {/* top */}
-            <section className="pb-[1.12rem] mb-[1.12rem] flex justify-between items-center border-b border-[#3F3F46]">
+            <section className="pb-[1.12rem] mb-[1.12rem] flex flex-col gap-3 md:flex-row justify-between md:items-center border-b border-[#3F3F46]">
               {/* project name */}
               <div className="flex items-center gap-4 text-2xl">
                 <Image className="w-16 2xl:w-[4.04rem]" src={img2} alt="icon" />

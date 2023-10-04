@@ -32,7 +32,7 @@ export function LockInformation({}: Props) {
       {/* OWNER */}
       <section className="pb-2 mb-2 flex justify-between gap-4 pt-4 border-b border-[#3F3F46] px-[1.19rem] items-center">
         <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">Owner</p>
-        <p className="tracking-[-0.0075rem] text-[#A4D0F2] underline text-xs">
+        <p className="tracking-[-0.0075rem] max-w-[10rem] md:max-w-none break-words text-right text-[#A4D0F2] underline text-xs">
           0x8Fc6d87464Bf8c6a93eb99d729273eda2905d39c
         </p>
       </section>

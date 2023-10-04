@@ -103,7 +103,7 @@ export default function Filter({}: Props) {
   return (
     <section
       id="filter"
-      className="mt-4 mb-[3.31rem] flex items-end gap-4 w-full"
+      className="mt-8 xl:mt-4 mb-[3.31rem] flex flex-col lg:flex-row items-end gap-6 md:gap-4 w-full"
     >
       <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] rounded-[0.625rem]">
         <div className="bg-[#26272B] flex items-center gap-[0.62rem] rounded-[0.625rem] py-[0.88rem] px-[1.19rem]">
@@ -117,8 +117,8 @@ export default function Filter({}: Props) {
           />
         </div>
       </div>
-      <div className="flex items-center gap-2 w-full">
-        <div className="w-full min-w-[7.3rem] max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
+      <div className="grid grid-cols-2 sm:flex items-center gap-3 w-full">
+        <div className="w-full min-w-[7.3rem] lg:max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <p>Status</p>
           <CustomSelect
             options={statusOptions}
@@ -126,7 +126,7 @@ export default function Filter({}: Props) {
             setHeader={setStatusSelected}
           />
         </div>
-        <div className="w-full min-w-[7.3rem] max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
+        <div className="w-full min-w-[7.3rem] lg:max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <p>Pool type</p>
           <CustomSelect
             options={poolTypeOptions}
@@ -134,7 +134,7 @@ export default function Filter({}: Props) {
             setHeader={setPoolTypeSelected}
           />
         </div>
-        <div className="w-full min-w-[7.3rem] max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
+        <div className="w-full min-w-[7.3rem] lg:max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <p>Sort by</p>
           <CustomSelect
             options={sortOptions}
@@ -142,7 +142,7 @@ export default function Filter({}: Props) {
             setHeader={setSortOptionSelected}
           />
         </div>
-        <div className="w-full min-w-[7.3rem] max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
+        <div className="w-full min-w-[7.3rem] lg:max-w-[7.3rem] text-[#E4E4E7] tracking-[-0.01rem] flex flex-col gap-[0.62rem]">
           <p>Chain</p>
           <CustomSelect
             options={chainOptions}

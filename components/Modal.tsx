@@ -8,10 +8,8 @@ type Props = {
   children: ReactNode;
 };
 
-
-export default function CreateTokenModal(
-  // {children} : Props
-  ) {
+export default function CreateTokenModal() {
+// {children} : Props
   const {
     error,
     setError,
@@ -161,9 +159,9 @@ export default function CreateTokenModal(
           />
           <div className="flex gap-2 md:items-center ml-auto w-fit">
             <button
-              onClick={(e: any) => {
-                e.preventDefault();
-                // handlePreviousStep?.(e);
+              onClick={() => {
+                setIsModalShowing?.(false);
+                document.body.style.overflow = "unset";
               }}
               className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
             >

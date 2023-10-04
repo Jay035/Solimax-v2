@@ -201,6 +201,7 @@ export default function Navbar() {
                     setMenuOpen((prevState) => !prevState);
                   }}
                   className={`${nav.className} ${
+                    // pathname.includes("/launchpad/list/") ||
                     pathname === nav?.route ||
                     (nav?.title === "Create token" && isModalShowing)
                       ? "text-[#A4D0F2]"
