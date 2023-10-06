@@ -1,7 +1,7 @@
 "use client";
 import {Newsletter} from "@/components/Newsletter";
 import Image from "next/image";
-import banner from "../../../../../public/images/detail banner.png";
+import banner from "../../../../public/images/detail banner.png";
 import { useState } from "react";
 
 type Props = {};
@@ -79,7 +79,7 @@ export default function RightCol({}: Props) {
           </section>
         </div>
         <div className="p-0.5">
-          <Newsletter className="px-6 py-10 bg-[#18181B] bordr-[#E4E4E7] mt-7 text-white rounded-2xl" email={email} setEmail={setEmail} />
+          <Newsletter className="px-6 py-10 bg-[#18181B] bordr-[#E4E4E7] mt-7 text-white text-center rounded-2xl" email={email} setEmail={setEmail} />
         </div>
       </div>
     </section>

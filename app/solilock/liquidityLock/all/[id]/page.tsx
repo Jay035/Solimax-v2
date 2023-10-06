@@ -7,7 +7,7 @@ type Props = {};
 
 export default function page({ params }: { params: { id: number } }) {
   return (
-    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
+    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20">
       <RedirectButton route="" />
       <LockInformation />
       <LockRecords id={params?.id} />

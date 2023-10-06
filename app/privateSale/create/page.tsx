@@ -39,7 +39,7 @@ export default function CreatePrivateSale({}: Props) {
     },
   ];
   return (
-    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] xl:border-t xl:border-[#424242]">
+    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem]">
       <LatestPools />
       <main className="mt-[2.5rem] text-white mr-[1.68rem] xl:mr-10 grid lg:grid-cols-[17rem_auto] lg:items-start gap-8">
         {/* LEFT COLUMN */}
