@@ -3,9 +3,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-type Props = {};
+type Props = {
+  item: any;
+  route: string;
+};
 
-export function Card({ item }: any) {
+export function Card({ item, route }: Props) {
   const router = useRouter();
   const [isAddedToFavorites, setIsAddedToFavorites] = useState<boolean>(false);
   
@@ -38,7 +41,7 @@ export function Card({ item }: any) {
           <h1
             className="text-2xl cursor-pointer tracking-[-0.0174rem]"
             onClick={() => {
-              router.push(`/launchpad/list/${item?.title}`);
+              router.push(`${route}/${item?.title}`);
             }}
           >
             {item?.title}

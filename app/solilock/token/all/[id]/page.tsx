@@ -5,7 +5,7 @@ import { LockRecords } from "./components/LockRecords";
 
 export default function TokenPage({ params }: { params: { id: number } }) {
   return (
-    <main className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
+    <main className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20">
       <RedirectButton route="/solilock/token/all" />
 
       <LockInformation />

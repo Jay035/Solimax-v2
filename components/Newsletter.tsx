@@ -42,7 +42,7 @@ export function Newsletter({ email, setEmail, className }: Props) {
           </form>
         </div>
       </div>
-      <p className="mt-3 underline text-center text-sm sm:text-base text-[#d1d1d6]">
+      <p className="my-3 underline text-center text-sm sm:text-base text-[#d1d1d6]">
         We care about your data in our privacy policy.
       </p>
     </div>

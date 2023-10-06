@@ -10,7 +10,7 @@ export default function SingleLockRecord({
   console.log(params.recordId);
 
   return (
-    <main className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
+    <main className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20">
       <RedirectButton route="" />
       <div className="mt-[2.81rem] mb-8 p-[1px] rounded-[0.625rem] bg-gradient-to-r from-[#77cdeb] via-[#953ddd] to-[#a56ef4]">
         <div className="bg-[#1D1C20] rounded-[0.625rem] py-[3.2rem] flex flex-col gap-4 justify-center items-center">
