@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "@/components/ButtonGroup";
 import VerifyURL from "@/hooks/VerifyURL";
+import { toast } from "react-toastify";
 
 export default function StepThree() {
   const {
@@ -252,7 +253,12 @@ export default function StepThree() {
             disabled={presaleLogo === undefined || presaleWebsiteURL === ""}
             onClick={(e: any) => {
               e.preventDefault();
-              handlePresaleNextStep?.(e);
+              if(isUrlValid === true){
+
+                handlePresaleNextStep?.(e);
+              }else{
+                toast.error("URL is not valid")
+              }
             }}
             className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
           >
