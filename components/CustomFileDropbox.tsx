@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 
 interface CustomFileDropboxProps {
-  selectedFile: File | null;
+  selectedFile: File | undefined;
   inputRef: any;
-  onFileSelected: (files: File | null) => void;
+  onFileSelected: (files: File | undefined) => void;
   onButtonClick: (files: any) => void;
 }
 

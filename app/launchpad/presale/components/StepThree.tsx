@@ -1,8 +1,9 @@
 import CustomInput from "@/components/CustomInput";
 import CustomFileDropbox from "@/components/CustomFileDropbox";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "@/components/ButtonGroup";
+import VerifyURL from "@/hooks/VerifyURL";
 
 export default function StepThree() {
   const {
@@ -31,17 +32,22 @@ export default function StepThree() {
   } = GlobalContext();
 
   const [error, setError] = useState("");
+  const isUrlValid = VerifyURL(presaleWebsiteURL!);
   const inputRef = useRef<any>(null);
 
-  const handleFileSelected = (file: File | null) => {
+  const handleFileSelected = (file: File | undefined) => {
     setPresaleLogo?.(file);
-    
+
     // console.log(file?.clientWidth)
   };
 
   const onButtonClick = () => {
     inputRef?.current?.click();
   };
+
+  useEffect(() => {
+    console.log(isUrlValid);
+  }, [presaleWebsiteURL]);
 
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
@@ -93,6 +99,7 @@ export default function StepThree() {
               setPresaleWebsiteURL?.(e.target.value);
               setError?.("");
             }}
+            onMouseLeave={() => VerifyURL(presaleWebsiteURL!)}
             isRequired={true}
           />
         </section>
@@ -214,10 +221,10 @@ export default function StepThree() {
         </div>
         <label htmlFor="description" className="flex flex-col gap-[0.62rem]">
           Description
-          <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
+          <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:border hover:border-[#F4F4F5] rounded-[0.625rem]">
             <textarea
               id="description"
-              className="bg-[#26272B] w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              className="bg-[#26272B] resize-none outline-none w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               placeholder="Leave a short description about your project"
               value={presaleDescription}
               onChange={(e) => {
@@ -241,7 +248,8 @@ export default function StepThree() {
             Back
           </button>
           <button
-            disabled={presaleLogo === null || presaleWebsiteURL === ""}
+            type="submit"
+            disabled={presaleLogo === undefined || presaleWebsiteURL === ""}
             onClick={(e: any) => {
               e.preventDefault();
               handlePresaleNextStep?.(e);
