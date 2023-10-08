@@ -37,7 +37,7 @@ const CustomFileDropbox: React.FC<CustomFileDropboxProps> = ({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files && event.target.files[0];
-    onFileSelected(file);
+    onFileSelected(file!);
   };
 
   return (

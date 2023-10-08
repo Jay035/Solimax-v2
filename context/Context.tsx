@@ -251,14 +251,12 @@ export function LaunchpadContextProvider({ children }: Props) {
     if (
       storedPresaleFeeOptionOneChecked &&
       storedPresaleFeeOptionOneChecked == "true"
-    )
-    {
-
+    ) {
       setIsPresaleFeeOptionOneChecked(
         Boolean(storedPresaleFeeOptionOneChecked!)
-        );
-        // setIsPresaleFeeOptionTwoChecked(false);
-      }
+      );
+      // setIsPresaleFeeOptionTwoChecked(false);
+    }
 
     const storedPresaleFeeOptionTwoChecked = localStorage.getItem(
       "presaleFeeOptionTwoChecked"
@@ -409,6 +407,156 @@ export function LaunchpadContextProvider({ children }: Props) {
     );
     if (storedFairlaunchSelectedCurrency)
       setFairlaunchSelectedCurrency(storedFairlaunchSelectedCurrency!);
+
+    const storedFairlaunchFeeOptionOneChecked = localStorage.getItem(
+      "fairlaunchFeeOptionOneChecked"
+    );
+    if (
+      storedFairlaunchFeeOptionOneChecked &&
+      storedFairlaunchFeeOptionOneChecked == "true"
+    ) {
+      setIsFairlaunchFeeOptionOneChecked(
+        Boolean(storedFairlaunchFeeOptionOneChecked!)
+      );
+    }
+
+    const storedFairlaunchFeeOptionTwoChecked = localStorage.getItem(
+      "fairlaunchFeeOptionTwoChecked"
+    );
+    if (
+      storedFairlaunchFeeOptionTwoChecked &&
+      storedFairlaunchFeeOptionTwoChecked == "true"
+    ) {
+      setIsFairlaunchFeeOptionTwoChecked(
+        Boolean(storedFairlaunchFeeOptionTwoChecked!)
+      );
+    }
+
+    const storedFairlaunchTotalSellingAmount = localStorage.getItem(
+      "fairlaunchTotalSellingAmount"
+    );
+    if (storedFairlaunchTotalSellingAmount)
+      setFairlaunchTotalSellingAmount(
+        Number(storedFairlaunchTotalSellingAmount!)
+      );
+
+    const storedFairlaunchWhitelistDisabled = localStorage.getItem(
+      "fairlaunchWhitelistDisabled"
+    );
+    if (storedPresaleWhitelistDisabled)
+      setIsPresaleWhitelistDisabled(
+        Boolean(storedFairlaunchWhitelistDisabled!)
+      );
+
+    const storedFairlaunchWhitelistEnabled = localStorage.getItem(
+      "fairlaunchWhitelistEnabled"
+    );
+    if (storedFairlaunchWhitelistEnabled)
+      setIsFairlaunchWhitelistEnabled(
+        Boolean(storedFairlaunchWhitelistEnabled!)
+      );
+
+    const storedFairlaunchSoftcap = localStorage.getItem("fairlaunchSoftcap");
+    if (storedFairlaunchSoftcap)
+      setFairlaunchSoftcap(Number(storedFairlaunchSoftcap!));
+
+    const storedFairlaunchMaxContribution = localStorage.getItem(
+      "fairlaunchMaxContribution"
+    );
+    if (storedFairlaunchMaxContribution)
+      setFairlaunchMaxContribution(Number(storedFairlaunchMaxContribution!));
+
+    const storedFairlaunchRouter = localStorage.getItem("fairlaunchRouter");
+    if (storedFairlaunchRouter) setFairlaunchRouter(storedFairlaunchRouter!);
+
+    const storedFairlaunchBuyBackPercent = localStorage.getItem(
+      "fairlaunchBuyBackPercent"
+    );
+    if (storedFairlaunchBuyBackPercent)
+      setFairlaunchBuyBackPercent(Number(storedFairlaunchBuyBackPercent!));
+
+    const storedFairlaunchLiquidity = localStorage.getItem(
+      "fairlaunchLiquidity"
+    );
+    if (storedFairlaunchLiquidity)
+      setFairlaunchLiquidity(Number(storedFairlaunchLiquidity!));
+
+    const storedFairlaunchStartDate = localStorage.getItem(
+      "fairlaunchStartDate"
+    );
+    if (storedFairlaunchStartDate)
+      setFairlaunchStartDate(storedFairlaunchStartDate!);
+
+    const storedFairlaunchEndDate = localStorage.getItem("fairlaunchEndDate");
+    if (storedFairlaunchEndDate) setFairlaunchEndDate(storedFairlaunchEndDate!);
+
+    const storedFairlaunchLiquidityLockup = localStorage.getItem(
+      "fairlaunchLiquidityLockup"
+    );
+    if (storedFairlaunchLiquidityLockup)
+      setFairlaunchLiquidityLockup(Number(storedFairlaunchLiquidityLockup!));
+
+    const storedFairlaunchWebsiteURL = localStorage.getItem(
+      "fairlaunchWebsiteURL"
+    );
+    if (storedFairlaunchWebsiteURL)
+      setFairlaunchWebsiteURL(storedFairlaunchWebsiteURL!);
+
+    const storedFairlaunchTelegramURL = localStorage.getItem(
+      "fairlaunchTelegramURL"
+    );
+    if (storedFairlaunchTelegramURL)
+      setFairlaunchTelegramURL(storedFairlaunchTelegramURL!);
+
+    const storedFairlaunchTwitterURL = localStorage.getItem(
+      "fairlaunchTwitterURL"
+    );
+    if (storedFairlaunchTwitterURL)
+      setFairlaunchTwitterURL(storedFairlaunchTwitterURL!);
+
+    const storedFairlaunchDiscordURL = localStorage.getItem(
+      "fairlaunchDiscordURL"
+    );
+    if (storedFairlaunchDiscordURL)
+      setFairlaunchDiscordURL(storedFairlaunchDiscordURL!);
+
+    const storedFairlaunchInstagramURL = localStorage.getItem(
+      "fairlaunchInstagramURL"
+    );
+    if (storedFairlaunchInstagramURL)
+      setFairlaunchInstagramURL(storedPresaleInstagramURL!);
+
+    const storedFairlaunchGithubURL = localStorage.getItem(
+      "fairlaunchGithubURL"
+    );
+    if (storedFairlaunchGithubURL)
+      setFairlaunchGithubURL(storedFairlaunchGithubURL!);
+
+    const storedFairlaunchFacebookURL = localStorage.getItem(
+      "fairlaunchFacebookURL"
+    );
+    if (storedFairlaunchFacebookURL)
+      setFairlaunchFacebookURL(storedFairlaunchFacebookURL!);
+
+    const storedFairlaunchYoutubeURL = localStorage.getItem(
+      "fairlaunchYoutubeURL"
+    );
+    if (storedFairlaunchYoutubeURL)
+      setFairlaunchYoutubeURL(storedFairlaunchYoutubeURL!);
+
+    const storedFairlaunchDescription = localStorage.getItem(
+      "fairlaunchDescription"
+    );
+    if (storedPresaleDescription)
+      setFairlaunchDescription(storedFairlaunchDescription!);
+
+    const storedFairlaunchSpendingApproved = localStorage.getItem(
+      "fairlaunchSpendingApproved"
+    );
+    if (storedFairlaunchSpendingApproved)
+      setIsFairlaunchSpendingApproved(
+        Boolean(storedFairlaunchSpendingApproved!)
+      );
   }, []);
 
   // Save user data to local storage whenever it changes
@@ -612,7 +760,7 @@ export function LaunchpadContextProvider({ children }: Props) {
     presaleTwitterURL,
     presaleWebsiteURL,
     presaleYoutubeURL,
-    presaleLogo,
+    // presaleLogo,
     isPresaleSpendingApproved,
   ]);
 
@@ -621,22 +769,167 @@ export function LaunchpadContextProvider({ children }: Props) {
     if (fairlaunchTokenAddress) {
       localStorage.setItem("fairlaunchTokenAddress", fairlaunchTokenAddress);
     }
+
     if (fairlaunchCurrentStep) {
       localStorage.setItem(
         "fairlaunchCurrentStep",
         String(fairlaunchCurrentStep)
       );
     }
+
     if (fairlaunchSelectedCurrency) {
       localStorage.setItem(
         "fairlaunchSelectedCurrency",
         fairlaunchSelectedCurrency
       );
     }
+
+    if (isFairlaunchFeeOptionOneChecked) {
+      localStorage.setItem(
+        "fairlaunchFeeOptionOneChecked",
+        String(isFairlaunchFeeOptionOneChecked)
+      );
+    }
+
+    if (isFairlaunchFeeOptionTwoChecked) {
+      localStorage.setItem(
+        "fairlaunchFeeOptionTwoChecked",
+        String(isFairlaunchFeeOptionTwoChecked)
+      );
+    }
+
+    if (fairlaunchTotalSellingAmount) {
+      localStorage.setItem(
+        "fairlaunchTotalSellingAmount",
+        String(fairlaunchTotalSellingAmount)
+      );
+    }
+
+    if (isFairlaunchWhitelistDisabled) {
+      localStorage.setItem(
+        "fairlaunchWhitelistDisabled",
+        String(isFairlaunchWhitelistDisabled)
+      );
+    }
+
+    if (isFairlaunchWhitelistEnabled) {
+      localStorage.setItem(
+        "fairlaunchWhitelistEnabled",
+        String(isFairlaunchWhitelistEnabled)
+      );
+    }
+
+    if (fairlaunchSoftcap) {
+      localStorage.setItem("fairlaunchSoftcap", String(fairlaunchSoftcap));
+    }
+
+    if (fairlaunchRouter) {
+      localStorage.setItem("fairlaunchRouter", fairlaunchRouter);
+    }
+
+    if (fairlaunchMaxContribution) {
+      localStorage.setItem(
+        "fairlaunchMaxContribution",
+        String(fairlaunchMaxContribution)
+      );
+    }
+
+    if (fairlaunchBuyBackPercent) {
+      localStorage.setItem(
+        "fairlaunchBuyBackPercent",
+        String(fairlaunchBuyBackPercent)
+      );
+    }
+
+    if (fairlaunchLiquidity) {
+      localStorage.setItem("fairlaunchLiquidity", String(fairlaunchLiquidity));
+    }
+
+    if (fairlaunchStartDate) {
+      localStorage.setItem("fairlaunchStartDate", fairlaunchStartDate);
+    }
+
+    if (fairlaunchEndDate) {
+      localStorage.setItem("fairlaunchEndDate", fairlaunchEndDate);
+    }
+
+    if (fairlaunchLiquidityLockup) {
+      localStorage.setItem(
+        "fairlaunchLiquidityLockup",
+        String(fairlaunchLiquidityLockup)
+      );
+    }
+
+    if (fairlaunchWebsiteURL) {
+      localStorage.setItem("fairlaunchWebsiteURL", fairlaunchWebsiteURL);
+    }
+
+    if (fairlaunchTelegramURL) {
+      localStorage.setItem("fairlaunchTelegramURL", fairlaunchTelegramURL);
+    }
+
+    if (fairlaunchTwitterURL) {
+      localStorage.setItem("fairlaunchTwitterURL", fairlaunchTwitterURL);
+    }
+
+    if (fairlaunchDiscordURL) {
+      localStorage.setItem("fairlaunchDiscordURL", fairlaunchDiscordURL);
+    }
+
+    if (fairlaunchInstagramURL) {
+      localStorage.setItem("fairlaunchInstagramURL", fairlaunchInstagramURL);
+    }
+
+    if (fairlaunchGithubURL) {
+      localStorage.setItem("fairlaunchGithubURL", fairlaunchGithubURL);
+    }
+
+    if (fairlaunchFacebookURL) {
+      localStorage.setItem("fairlaunchFacebookURL", fairlaunchFacebookURL);
+    }
+
+    if (fairlaunchYoutubeURL) {
+      localStorage.setItem("fairlaunchYoutubeURL", fairlaunchYoutubeURL);
+    }
+
+    if (fairlaunchDescription) {
+      localStorage.setItem("fairlaunchDescription", fairlaunchDescription);
+    }
+
+    if (isFairlaunchSpendingApproved) {
+      localStorage.setItem(
+        "fairlaunchSpendingApproved",
+        String(isFairlaunchSpendingApproved)
+      );
+    }
   }, [
     fairlaunchTokenAddress,
     fairlaunchCurrentStep,
     fairlaunchSelectedCurrency,
+    fairlaunchRouter,
+    fairlaunchSoftcap,
+    isFairlaunchFeeOptionOneChecked,
+    isFairlaunchFeeOptionTwoChecked,
+    fairlaunchTotalSellingAmount,
+    isFairlaunchWhitelistDisabled,
+    isFairlaunchWhitelistEnabled,
+    fairlaunchMaxContribution,
+    fairlaunchBuyBackPercent,
+    fairlaunchLiquidity,
+    fairlaunchStartDate,
+    fairlaunchEndDate,
+    fairlaunchLiquidityLockup,
+    fairlaunchDescription,
+    fairlaunchDiscordURL,
+    fairlaunchFacebookURL,
+    fairlaunchInstagramURL,
+    fairlaunchGithubURL,
+    fairlaunchTelegramURL,
+    fairlaunchTwitterURL,
+    fairlaunchWebsiteURL,
+    fairlaunchYoutubeURL,
+    // fairlaunchLogo,
+    isFairlaunchSpendingApproved,
   ]);
 
   const value = {
