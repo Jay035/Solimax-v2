@@ -24,10 +24,10 @@ export default function StepThree({
   const [youtubeURL, setYoutubeURL] = useState("");
   const [description, setDescription] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | undefined>();
   const inputRef = useRef<any>(null);
 
-  const handleFileSelected = (file: File | null) => {
+  const handleFileSelected = (file: File | undefined) => {
     setSelectedFile(file);
   };
 
@@ -215,7 +215,7 @@ export default function StepThree({
         <div className="p-[0.07rem] pb-0 w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
           <textarea
             id="description"
-            className="bg-[#26272B] w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            className="bg-[#26272B] resize-none w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             placeholder="Leave a short description about your project"
             value={description}
             onChange={(e) => {

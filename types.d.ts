@@ -12,38 +12,16 @@ interface AccordionProps {
 
 interface FormProps {
   currencyOptions?: any;
-  // currentStep: number;
-  tokenAddress?: string;
-  softcap?: number;
-  hardcap?: number;
-  minBuy?: number;
-  maxBuy?: number;
-  listingRate?: number;
-  refundType?: string;
-  liquidity?: number;
-  selectedCurrency?: string;
-  router?: string;
   options?: any[];
   error?: string;
   tabs?: any;
   selectedTab?: string;
-  startDate?: string;
-  endDate?: string;
-  liquidityLockup?: string;
-  vestingPeriod?: string;
-  firstRelease?: string;
-  websiteURL?: string;
-  twitterURL?: string;
-  telegramURL?: string;
-  discordURL?: string;
-  instagramURL?: string;
-  githubURL?: string;
-  facebookURL?: string;
-  youtubeURL?: string;
-  description?: string;
-  totalSellingAmount?: string;
-  isModalShowing?: boolean;
   nameOfToken?: string;
+  isModalShowing?: boolean;
+  setIsModalShowing?: (x: boolean) => void;
+  setNameOfToken?: (x: string) => void;
+  setSelectedTab?: (x: string) => void;
+  setError?: (x: string) => void;
 
   // PRESALE
   // --------------------------
@@ -52,17 +30,17 @@ interface FormProps {
   presaleTokenAddress?: string;
   presaleSelectedCurrency?: string;
   isPresaleFeeOptionOneChecked?: boolean;
-  isPresaleFeeOptionTwoChecked?: boolean;
-  presaleRate?: number;
+  isPresaleFeeOptionTwoChecked?: boolean ;
+  presaleRate?:  string | number;
   presaleToken?: string | number;
-  presaleSoftcap?: number;
-  presaleHardcap?: number;
-  presaleMinBuy?: number;
-  presaleMaxBuy?: number;
+  presaleSoftcap?: string | number;
+  presaleHardcap?: string | number;
+  presaleMinBuy?: string | number;
+  presaleMaxBuy?: string | number;
   presaleRouter?: string;
   presaleRefundType?: string;
-  presaleLiquidity?: number;
-  presaleListingRate?: number;
+  presaleLiquidity?: string | number;
+  presaleListingRate?: string | number;
   presaleStartDate?: string;
   presaleEndDate?: string;
   presaleLiquidityLockup?: string;
@@ -71,8 +49,8 @@ interface FormProps {
   isPresaleWhitelistDisabled?: boolean;
   isPresaleWhitelistEnabled?: boolean;
   isPresaleVestingContributionChecked?: boolean;
-  isPresaleSpendingApproved?: boolean;
-  presaleLogo?: File | null;
+  isPresaleSpendingApproved?: boolean ;
+  presaleLogo?: File | null ;
   presaleWebsiteURL?: string;
   presaleYoutubeURL?: string;
   presaleTelegramURL?: string;
@@ -111,46 +89,14 @@ interface FormProps {
   setPresaleTokenAddress?: (x: string) => void;
   setPresaleToken?: (x: any) => void;
   setPresaleRate?: (rate: number) => void;
-  setPresaleLogo?: (logo: File | null) => void;
+  setPresaleLogo?: (logo: File | undefined) => void;
   setIsPresaleSpendingApproved?: (x: boolean) => void;
-
-  setNameOfToken?: (x: string) => void;
-  setIsModalShowing?: (x: any) => void;
-  setTotalSellingAmount?: (x: string) => void;
-  setDescription?: (x: string) => void;
-  setYoutubeURL?: (x: string) => void;
-  setFacebookURL?: (x: string) => void;
-  setGithubURL?: (x: string) => void;
-  setInstagramURL?: (x: string) => void;
-  setDiscordURL?: (x: string) => void;
-  setTelegramURL?: (x: string) => void;
-  setTwitterURL?: (x: string) => void;
-  setWebsiteURL?: (x: string) => void;
-  setFirstRelease?: (x: string) => void;
-  setVestingPeriod?: (x: string) => void;
   handlePresalePreviousStep?: (x: string | number) => void;
   handlePresaleNextStep?: (x: string | number) => void;
   setPresaleCurrentStep?: (step: any) => void;
   setIsPresaleFeeOptionTwoChecked?: (x: boolean) => void;
   setIsPresaleFeeOptionOneChecked?: (x: boolean) => void;
   setPresaleSelectedCurrency?: (currency: string) => void;
-
-  setLiquidityLockup?: (x: string) => void;
-  setEndDate?: (x: string) => void;
-  setStartDate?: (x: string) => void;
-  setSelectedTab?: (x: string) => void;
-  setRouter?: (x: string) => void;
-  setSoftcap?: (x: number) => void;
-  setMinBuy?: (x: number) => void;
-  setHardcap?: (x: number) => void;
-  setMaxBuy?: (x: number) => void;
-  setRefundType?: (x: string) => void;
-  setLiquidity?: (x: number) => void;
-  setListingRate?: (x: any) => void;
-  setError?: (err: string) => void;
-  setTokenAddress?: (address: string) => void;
-  setSelectedCurrency?: (currency: string) => void;
-  setCurrentStep?: (step: number) => void;
 
   // -------------------------------------------
   // FAIRLAUNCH
@@ -197,7 +143,7 @@ interface FormProps {
 
   // Step Three
   isFairlaunchSpendingApproved?: boolean;
-  fairlaunchLogo?: File | null;
+  fairlaunchLogo?: File | undefined;
   fairlaunchWebsiteURL?: string;
   fairlaunchYoutubeURL?: string;
   fairlaunchTelegramURL?: string;
@@ -216,7 +162,7 @@ interface FormProps {
   setFairlaunchTelegramURL?: (x: string) => void;
   setFairlaunchYoutubeURL?: (x: string) => void;
   setFairlaunchWebsiteURL?: (x: string) => void;
-  setFairlaunchLogo?: (x: File | null) => void;
+  setFairlaunchLogo?: (x: File | undefined) => void;
   setIsFairlaunchSpendingApproved?: (x: boolean) => void;
 
   handleFairlaunchPreviousStep?: (x: string | number) => void;

@@ -26,6 +26,10 @@ export default function Checkbox({
           checked={valueChecked}
           onChange={(event: any) => {
             setValueChecked(event.target.checked);
+            // localStorage.setItem(
+            //   String(text),
+            //   String(event.target.checked)
+            // );
           }}
         />
         <i

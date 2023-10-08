@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 
 interface CustomFileDropboxProps {
-  selectedFile: File | null;
+  selectedFile: File | undefined;
   inputRef: any;
-  onFileSelected: (files: File | null) => void;
+  onFileSelected: (files: File | undefined) => void;
   onButtonClick: (files: any) => void;
 }
 
@@ -37,7 +37,7 @@ const CustomFileDropbox: React.FC<CustomFileDropboxProps> = ({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files && event.target.files[0];
-    onFileSelected(file);
+    onFileSelected(file!);
   };
 
   return (

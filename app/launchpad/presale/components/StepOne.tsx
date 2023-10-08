@@ -2,7 +2,7 @@ import CustomInput from "@/components/CustomInput";
 import ButtonGroup from "@/components/ButtonGroup";
 import CustomSelect from "@/components/launchpad/CustomSelect";
 import { GlobalContext } from "@/context/Context";
-import { useState} from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import VerifyAddress from "@/hooks/VerifyAddress";
 
@@ -109,10 +109,10 @@ export default function StepOne() {
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
             <div
-              className={`rounded-full flex cursor-pointer ${
+              className={`rounded-full flex cursor-pointer border-2 ${
                 isPresaleFeeOptionOneChecked
-                  ? "border-2 p-0.5 border-[#A4D0F2]"
-                  : "border-2 border-white"
+                  ? " p-0.5 border-[#A4D0F2]"
+                  : " border-white"
               }`}
             >
               <input
@@ -124,6 +124,10 @@ export default function StepOne() {
                 onChange={(event: any) => {
                   setIsPresaleFeeOptionOneChecked?.(event.target.checked);
                   setIsPresaleFeeOptionTwoChecked?.(false);
+                  localStorage.setItem(
+                    "presaleFeeOptionTwoChecked",
+                    String(false)
+                  );
                 }}
                 name="fee-option"
                 id="option-1"
@@ -137,10 +141,10 @@ export default function StepOne() {
             className="text-[#F4F4F5] text-[0.875rem] tracking-[-0.00875rem] flex items-center gap-[0.62rem]"
           >
             <div
-              className={`rounded-full cursor-pointer flex ${
+              className={`rounded-full cursor-pointer flex border-2 ${
                 isPresaleFeeOptionTwoChecked
-                  ? "border-2 p-0.5 border-[#A4D0F2]"
-                  : "border-2 border-white"
+                  ? "p-0.5 border-[#A4D0F2]"
+                  : "border-white"
               }`}
             >
               <input
@@ -152,6 +156,10 @@ export default function StepOne() {
                 onChange={(event: any) => {
                   setIsPresaleFeeOptionOneChecked?.(false);
                   setIsPresaleFeeOptionTwoChecked?.(event.target.checked);
+                  localStorage.setItem(
+                    "presaleFeeOptionOneChecked",
+                    String(false)
+                  );
                 }}
                 name="fee-option"
                 id="option-2"

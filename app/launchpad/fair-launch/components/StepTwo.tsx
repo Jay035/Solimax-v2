@@ -37,6 +37,7 @@ export default function StepTwo() {
     setFairlaunchRouter,
     setFairlaunchTotalSellingAmount,
   } = GlobalContext();
+
   const [error, setError] = useState("");
   const routerOptions = [
     {
@@ -232,7 +233,7 @@ export default function StepTwo() {
             {isFairlaunchBuyBackChecked && (
               <div className="">
                 <CustomInput
-                  id="max-contribution"
+                  id="buy-back-percent"
                   className="mt-4 flex flex-col gap-[0.62rem]"
                   inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                   label="Buyback percent (%)"
@@ -245,18 +246,20 @@ export default function StepTwo() {
                   }}
                   isRequired={true}
                 />
-                <div className="bg-[#18181B] border border-[#F4F4F5] px-6 py-[0.875rem] mt-[0.6rem] rounded-[0.6rem]">
-                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] pb-[0.62rem]">
-                    <p className="">Amount Per Buyback</p>
-                    <p>1BNB</p>
-                  </div>
-                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] py-[0.62rem]">
-                    <p className="">Min Buyback Delay</p>
-                    <p>5 mins</p>
-                  </div>
-                  <div className="text-sm text-[#F4F4F5] flex items-center justify-between pt-[0.62rem]">
-                    <p className="">Max Buyback Delay</p>
-                    <p>2 days</p>
+                <div className="p-[0.07rem] w-full group bg-gradient-to-b mt-[0.6rem] from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
+                  <div className="bg-[#18181B] px-6 py-[0.875rem] rounded-[0.6rem]">
+                    <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] pb-[0.62rem]">
+                      <p className="">Amount Per Buyback</p>
+                      <p>1BNB</p>
+                    </div>
+                    <div className="text-sm text-[#F4F4F5] flex items-center justify-between border-b border-[#26272B] py-[0.62rem]">
+                      <p className="">Min Buyback Delay</p>
+                      <p>5 mins</p>
+                    </div>
+                    <div className="text-sm text-[#F4F4F5] flex items-center justify-between pt-[0.62rem]">
+                      <p className="">Max Buyback Delay</p>
+                      <p>2 days</p>
+                    </div>
                   </div>
                 </div>
               </div>

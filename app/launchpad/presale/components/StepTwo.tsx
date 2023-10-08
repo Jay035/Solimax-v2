@@ -135,6 +135,10 @@ export default function StepTwo() {
                   onChange={(event: any) => {
                     setIsPresaleWhitelistDisabled?.(event.target.checked);
                     setIsPresaleWhitelistEnabled?.(false);
+                    localStorage.setItem(
+                      "presaleWhitelistEnabled",
+                      String(false)
+                    );
                   }}
                   name="whitelist"
                   id="disable"
@@ -163,6 +167,10 @@ export default function StepTwo() {
                   onChange={(event: any) => {
                     setIsPresaleWhitelistDisabled?.(false);
                     setIsPresaleWhitelistEnabled?.(event.target.checked);
+                    localStorage.setItem(
+                      "presaleWhitelistDisabled",
+                      String(false)
+                    );
                   }}
                   name="whitelist"
                   id="enable"
@@ -461,7 +469,7 @@ export default function StepTwo() {
                   presaleHardcap === 0 ||
                   presaleMinBuy === 0 ||
                   presaleMaxBuy === 0 ||
-                  presaleRefundType === "" ||
+                  // presaleRefundType === "" ||
                   presaleRouter === "Select router exchange" ||
                   presaleLiquidity === 0 ||
                   presaleListingRate === 0 ||
