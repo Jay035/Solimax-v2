@@ -6,6 +6,7 @@ import Details from "./components/Details";
 import favIcon from "../../../../public/icons/heart-filled.svg";
 import RedirectButton from "@/components/RedirectButton";
 import RightCol from "./components/RightCol";
+import Allocations from "./components/Allocations";
 
 // export async function generateMetadata({
 //     params: { id },
@@ -22,7 +23,7 @@ import RightCol from "./components/RightCol";
 export default function page({ params }: { params: { title: string } }) {
   return (
     <section className="text-white pt-6 pb-20 px-[1.67rem] md:pr-10">
-      <div className="flex justify-between flex-col md:flex-row md:items-center mb-9">
+      <div className="flex justify-between mb-9">
         <RedirectButton route="" />
         <div className="flex items-center gap-2 text-white">
           <Image
@@ -32,10 +33,64 @@ export default function page({ params }: { params: { title: string } }) {
             alt="heart icon"
           />
           {/* status */}
-          <p className="p-[0.72294rem] text-sm md:text-[1.01rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
-            Upcoming <span className="opacity-50 text-[1.01rem]">|</span> sales
-            starts in <span className="text-[#C38CC3]">00:25:13</span>
+          <p className="p-[0.72rem] tracking-[-0.01013rem] text-sm md:text-[1.01rem] flex items-center gap-[0.72rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
+            {/* <span className="block rounded-full w-2 h-2 bg-gradient-to-r from-[#EFAD2E]/[12.48%] via-[#F5472A] to-[#ACD44D]"></span>  */}
+            {/* status color  */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="9"
+              height="9"
+              viewBox="0 0 9 9"
+              fill="none"
+            >
+              <circle
+                cx="4.21631"
+                cy="4.06738"
+                r="4"
+                fill="url(#paint0_linear_2273_4600)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_2273_4600"
+                  x1="1.21443"
+                  y1="4.80268"
+                  x2="8.86171"
+                  y2="4.80268"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#EFAD2E" />
+                  <stop offset="1" stopColor="#F5472A" />
+                  <stop offset="1" stopColor="#ACD44D" />
+                </linearGradient>
+              </defs>
+            </svg>
+            Upcoming
           </p>
+        </div>
+      </div>
+      <div className="mt-[2.81rem] mb-8 p-[1px] rounded-[0.625rem] bg-gradient-to-r from-[#77cdeb] via-[#953ddd] to-[#a56ef4]">
+        <div className="bg-[#1D1C20] rounded-[0.625rem] py-8 md:py-[3.2rem] flex flex-col gap-4 justify-center items-center">
+          <p className="text-lg tracking-[-0.01125rem]">Airdrop starts in</p>
+          <section className="bg-[#14221E] flex gap-2 rounded-lg border-[0.5px] border-[#81C8F2] p-2 md:py-4 md:px-6">
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
+              <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
+                01
+              </span>{" "}
+              Hour
+            </p>
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
+              <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
+                25
+              </span>{" "}
+              Min
+            </p>
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
+              <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
+                45
+              </span>{" "}
+              Sec
+            </p>
+          </section>
         </div>
       </div>
       <div className="grid lg:grid-cols-2 gap-[1.87rem]">
@@ -159,6 +214,7 @@ export default function page({ params }: { params: { title: string } }) {
             </p>
           </div>
           <Details />
+          <Allocations />
         </section>
         {/* right column */}
         <RightCol />
