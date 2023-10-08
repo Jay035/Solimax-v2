@@ -70,7 +70,7 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [presaleDescription, setPresaleDescription] = useState("");
   // STEP FOUR
   const [isPresaleSpendingApproved, setIsPresaleSpendingApproved] =
-    useState(false);
+    useState<boolean>(false);
 
   const handlePresaleNextStep = () => {
     setPresaleCurrentStep?.(Number(presaleCurrentStep) + 1);
@@ -123,7 +123,7 @@ export function LaunchpadContextProvider({ children }: Props) {
     useState(false);
 
   // STEP THREE
-  const [fairlaunchLogo, setFairlaunchLogo] = useState<File | null>();
+  const [fairlaunchLogo, setFairlaunchLogo] = useState<File | undefined>();
   const [fairlaunchWebsiteURL, setFairlaunchWebsiteURL] = useState("");
   const [fairlaunchTelegramURL, setFairlaunchTelegramURL] = useState("");
   const [fairlaunchTwitterURL, setFairlaunchTwitterURL] = useState("");

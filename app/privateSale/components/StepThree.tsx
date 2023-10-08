@@ -18,10 +18,10 @@ export default function StepThree() {
   const [youtubeURL, setYoutubeURL] = useState("");
   const [description, setDescription] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | undefined>();
   const inputRef = useRef<any>(null);
 
-  const handleFileSelected = (file: File | null) => {
+  const handleFileSelected = (file: File | undefined) => {
     setSelectedFile(file);
   };
 

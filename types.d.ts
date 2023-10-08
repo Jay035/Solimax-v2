@@ -17,6 +17,9 @@ interface FormProps {
   tabs?: any;
   selectedTab?: string;
   isModalShowing?: boolean;
+  setIsModalShowing?: (x: boolean) => void;
+  setSelectedTab?: (x: string) => void;
+  setError?: (x: string) => void;
 
   // PRESALE
   // --------------------------
@@ -44,7 +47,7 @@ interface FormProps {
   isPresaleWhitelistDisabled?: boolean;
   isPresaleWhitelistEnabled?: boolean;
   isPresaleVestingContributionChecked?: boolean;
-  isPresaleSpendingApproved?: boolean | string;
+  isPresaleSpendingApproved?: boolean ;
   presaleLogo?: File | null ;
   presaleWebsiteURL?: string;
   presaleYoutubeURL?: string;
@@ -138,7 +141,7 @@ interface FormProps {
 
   // Step Three
   isFairlaunchSpendingApproved?: boolean;
-  fairlaunchLogo?: File | null;
+  fairlaunchLogo?: File | undefined;
   fairlaunchWebsiteURL?: string;
   fairlaunchYoutubeURL?: string;
   fairlaunchTelegramURL?: string;
@@ -157,7 +160,7 @@ interface FormProps {
   setFairlaunchTelegramURL?: (x: string) => void;
   setFairlaunchYoutubeURL?: (x: string) => void;
   setFairlaunchWebsiteURL?: (x: string) => void;
-  setFairlaunchLogo?: (x: File | null) => void;
+  setFairlaunchLogo?: (x: File | undefined) => void;
   setIsFairlaunchSpendingApproved?: (x: boolean) => void;
 
   handleFairlaunchPreviousStep?: (x: string | number) => void;

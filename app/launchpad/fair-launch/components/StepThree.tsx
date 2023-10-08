@@ -33,7 +33,7 @@ export default function StepThree() {
 
   const inputRef = useRef<any>(null);
 
-  const handleFileSelected = (file: File | null) => {
+  const handleFileSelected = (file: File | undefined) => {
     setFairlaunchLogo?.(file);
   };
 
