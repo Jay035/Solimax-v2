@@ -16,8 +16,10 @@ interface FormProps {
   error?: string;
   tabs?: any;
   selectedTab?: string;
+  nameOfToken?: string;
   isModalShowing?: boolean;
   setIsModalShowing?: (x: boolean) => void;
+  setNameOfToken?: (x: string) => void;
   setSelectedTab?: (x: string) => void;
   setError?: (x: string) => void;
 

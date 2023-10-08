@@ -20,6 +20,8 @@ type Props = {
 
 export function LaunchpadContextProvider({ children }: Props) {
   const [isModalShowing, setIsModalShowing] = useState(false);
+  const [ nameOfToken,
+    setNameOfToken,] = useState("");
 
   // ---------------------------------
   // PRESALE PAGE
@@ -952,6 +954,8 @@ export function LaunchpadContextProvider({ children }: Props) {
     firstRelease,
     vestingPeriod,
     isModalShowing,
+    nameOfToken,
+    setNameOfToken,
 
     // PRESALE
     presaleTokenAddress,
