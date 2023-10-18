@@ -20,8 +20,7 @@ type Props = {
 
 export function LaunchpadContextProvider({ children }: Props) {
   const [isModalShowing, setIsModalShowing] = useState(false);
-  const [ nameOfToken,
-    setNameOfToken,] = useState("");
+  const [nameOfToken, setNameOfToken] = useState("");
 
   // ---------------------------------
   // PRESALE PAGE
@@ -162,6 +161,35 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [privateSaleName, setPrivateSaleName] = useState<string>("");
   const [privateSaleSelectedCurrency, setPrivateSaleSelectedCurrency] =
     useState("BNB");
+  // STEP TWO
+  const [privateSaleSoftcap, setPrivateSaleSoftcap] = useState(0);
+  const [privateSaleHardcap, setPrivateSaleHardcap] = useState(0);
+  const [privateSaleMinBuy, setPrivateSaleMinBuy] = useState(0);
+  const [privateSaleMaxBuy, setPrivateSaleMaxBuy] = useState(0);
+  const [privateSaleStartDate, setPrivateSaleStartDate] = useState("");
+  const [privateSaleEndDate, setPrivateSaleEndDate] = useState("");
+  const [privateSaleFirstRelease, setPrivateSaleFirstRelease] = useState("");
+  const [privateSalePresaleToken, setPrivateSalePresaleToken] = useState("");
+  const [privateSaleFundVesting, setPrivateSaleFundVesting] = useState("");
+  const [isPrivateSaleWhitelistDisabled, setIsPrivateSaleWhitelistDisabled] =
+    useState<boolean>(true);
+  const [isPrivateSaleWhitelistEnabled, setIsPrivateSaleWhitelistEnabled] =
+    useState<boolean>(false);
+
+  // STEP THREE
+  const [privateSaleLogo, setPrivateSaleLogo] = useState<File | undefined>();
+  const [privateSaleWebsiteURL, setPrivateSaleWebsiteURL] = useState("");
+  const [privateSaleTelegramURL, setPrivateSaleTelegramURL] = useState("");
+  const [privateSaleTwitterURL, setPrivateSaleTwitterURL] = useState("");
+  const [privateSaleDiscordURL, setPrivateSaleDiscordURL] = useState("");
+  const [privateSaleInstagramURL, setPrivateSaleInstagramURL] = useState("");
+  const [privateSaleGithubURL, setPrivateSaleGithubURL] = useState("");
+  const [privateSaleFacebookURL, setPrivateSaleFacebookURL] = useState("");
+  const [privateSaleYoutubeURL, setPrivateSaleYoutubeURL] = useState("");
+  const [privateSaleDescription, setPrivateSaleDescription] = useState("");
+  // STEP FOUR
+  const [isPrivateSaleSpendingApproved, setIsPrivateSaleSpendingApproved] =
+    useState<boolean>(false);
 
   const handlePrivateSaleNextStep = () => {
     setPrivateSaleCurrentStep?.(Number(privateSaleCurrentStep) + 1);
@@ -184,26 +212,30 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [solilockTokenAddress, setSolilockTokenAddress] = useState("");
   const [solilockAmount, setSolilockAmount] = useState("");
   const [solilockLockTime, setSolilockLockTime] = useState("");
+  const [solilockOwner, setSolilockOwner] = useState("");
+  const [solilockTGEDate, setSolilockTGEDate] = useState("");
+  const [solilockTGEPercent, setSolilockTGEPercent] = useState(0);
+  const [solilockCycleDays, setSolilockCycleDays] = useState("");
+  const [solilockCycleReleasePercent, setSolilockCycleReleasePercent] =
+    useState("");
+  const [solilockAnotherUserUsed, setSolilockAnotherUserUsed] = useState(false);
+  const [solilockVestingUsed, setSolilockVestingUsed] = useState(false);
 
   // AIRDROP
   const [airdropTokenAddress, setAirdropTokenAddress] = useState("");
   const [airdropCurrentStep, setAirdropCurrentStep] = useState(1);
+  const [airdropTitle, setAirdropTitle] = useState("");
+  const [airdropWebsiteURL, setAirdropWebsiteURL] = useState("");
+  const [airdropTelegramURL, setAirdropTelegramURL] = useState("");
+  const [airdropTwitterURL, setAirdropTwitterURL] = useState("");
+  const [airdropDiscordURL, setAirdropDiscordURL] = useState("");
+  const [airdropInstagramURL, setAirdropInstagramURL] = useState("");
+  const [airdropGithubURL, setAirdropGithubURL] = useState("");
+  const [airdropFacebookURL, setAirdropFacebookURL] = useState("");
+  const [airdropYoutubeURL, setAirdropYoutubeURL] = useState("");
+  const [airdropDescription, setAirdropDescription] = useState("");
 
   const [selectedTab, setSelectedTab] = useState("presale");
-  const [selectedCurrency, setSelectedCurrency] = useState("BNB");
-  const [softcap, setSoftcap] = useState(0);
-  const [hardcap, setHardcap] = useState(0);
-  const [minBuy, setMinBuy] = useState(0);
-  const [maxBuy, setMaxBuy] = useState(0);
-  const [router, setRouter] = useState("Select router exchange");
-  const [refundType, setRefundType] = useState("Burn");
-  const [liquidity, setLiquidity] = useState(0);
-  const [listingRate, setListingRate] = useState(0);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [liquidityLockup, setLiquidityLockup] = useState("");
-  const [firstRelease, setFirstRelease] = useState("");
-  const [vestingPeriod, setVestingPeriod] = useState("");
   const [error, setError] = useState("");
 
   const tabs = [
@@ -445,8 +477,8 @@ export function LaunchpadContextProvider({ children }: Props) {
     const storedFairlaunchWhitelistDisabled = localStorage.getItem(
       "fairlaunchWhitelistDisabled"
     );
-    if (storedPresaleWhitelistDisabled)
-      setIsPresaleWhitelistDisabled(
+    if (storedFairlaunchWhitelistDisabled)
+      setIsFairlaunchWhitelistDisabled(
         Boolean(storedFairlaunchWhitelistDisabled!)
       );
 
@@ -526,7 +558,7 @@ export function LaunchpadContextProvider({ children }: Props) {
       "fairlaunchInstagramURL"
     );
     if (storedFairlaunchInstagramURL)
-      setFairlaunchInstagramURL(storedPresaleInstagramURL!);
+      setFairlaunchInstagramURL(storedFairlaunchInstagramURL!);
 
     const storedFairlaunchGithubURL = localStorage.getItem(
       "fairlaunchGithubURL"
@@ -549,7 +581,7 @@ export function LaunchpadContextProvider({ children }: Props) {
     const storedFairlaunchDescription = localStorage.getItem(
       "fairlaunchDescription"
     );
-    if (storedPresaleDescription)
+    if (storedFairlaunchDescription)
       setFairlaunchDescription(storedFairlaunchDescription!);
 
     const storedFairlaunchSpendingApproved = localStorage.getItem(
@@ -559,6 +591,203 @@ export function LaunchpadContextProvider({ children }: Props) {
       setIsFairlaunchSpendingApproved(
         Boolean(storedFairlaunchSpendingApproved!)
       );
+
+    // ----------------------------------------------
+    // PRIVATE SALE
+    const storedPrivateSaleCurrentStep = localStorage.getItem(
+      "privateSaleCurrentStep"
+    );
+    if (storedPrivateSaleCurrentStep)
+      setPrivateSaleCurrentStep(Number(storedPrivateSaleCurrentStep));
+
+    const storedPrivateSaleName = localStorage.getItem("privateSaleName");
+    if (storedPrivateSaleName)
+      setPrivateSaleName(storedPrivateSaleCurrentStep!);
+
+    const storedPrivateSaleSelectedCurrency = localStorage.getItem(
+      "privateSaleSelectedCurrency"
+    );
+    if (storedPrivateSaleSelectedCurrency)
+      setPrivateSaleSelectedCurrency(storedPrivateSaleSelectedCurrency!);
+
+    const storedPrivateSaleSoftcap = localStorage.getItem("privateSaleSoftcap");
+    if (storedPrivateSaleSoftcap)
+      setPrivateSaleSoftcap(Number(storedPrivateSaleSoftcap));
+
+    const storedPrivateSaleHardcap = localStorage.getItem("privateSaleHardcap");
+    if (storedPrivateSaleHardcap)
+      setPrivateSaleHardcap(Number(storedPrivateSaleHardcap));
+
+    const storedPrivateSaleMinBuy = localStorage.getItem("privateSaleMinBuy");
+    if (storedPrivateSaleMinBuy)
+      setPrivateSaleMinBuy(Number(storedPrivateSaleMinBuy));
+
+    const storedPrivateSaleMaxBuy = localStorage.getItem("privateSaleMaxBuy");
+    if (storedPrivateSaleMaxBuy)
+      setPrivateSaleMaxBuy(Number(storedPrivateSaleMaxBuy));
+
+    const storedPrivateSaleStartDate = localStorage.getItem(
+      "privateSaleStartDate"
+    );
+    if (storedPrivateSaleStartDate)
+      setPrivateSaleStartDate(storedPrivateSaleStartDate);
+
+    const storedPrivateSaleEndDate = localStorage.getItem("privateSaleEndDate");
+    if (storedPrivateSaleEndDate)
+      setPrivateSaleEndDate(storedPrivateSaleEndDate);
+
+    const storedPrivateSaleFirstRelease = localStorage.getItem(
+      "privateSaleFirstRelease"
+    );
+    if (storedPrivateSaleFirstRelease)
+      setPrivateSaleFirstRelease(storedPrivateSaleFirstRelease);
+
+    const storedPrivateSalePresaleToken = localStorage.getItem(
+      "privateSalePresaleToken"
+    );
+    if (storedPrivateSalePresaleToken)
+      setPrivateSalePresaleToken(storedPrivateSalePresaleToken);
+
+    const storedPrivateSaleFundVesting = localStorage.getItem(
+      "privateSaleFundVesting"
+    );
+    if (storedPrivateSaleFundVesting)
+      setPrivateSaleFundVesting(storedPrivateSaleFundVesting);
+
+    const storedPrivateSaleWebsiteURL = localStorage.getItem(
+      "privateSaleWebsiteURL"
+    );
+    if (storedPrivateSaleWebsiteURL)
+      setPrivateSaleWebsiteURL(storedPrivateSaleWebsiteURL!);
+
+    const storedPrivateSaleTelegramURL = localStorage.getItem(
+      "privateSaleTelegramURL"
+    );
+    if (storedPrivateSaleTelegramURL)
+      setPrivateSaleTelegramURL(storedPrivateSaleTelegramURL!);
+
+    const storedPrivateSaleTwitterURL = localStorage.getItem(
+      "privateSaleTwitterURL"
+    );
+    if (storedPrivateSaleTwitterURL)
+      setPrivateSaleTwitterURL(storedPrivateSaleTwitterURL!);
+
+    const storedPrivateSaleDiscordURL = localStorage.getItem(
+      "privateSaleDiscordURL"
+    );
+    if (storedPrivateSaleDiscordURL)
+      setPrivateSaleDiscordURL(storedPrivateSaleDiscordURL!);
+
+    const storedPrivateSaleInstagramURL = localStorage.getItem(
+      "privateSaleInstagramURL"
+    );
+    if (storedPrivateSaleInstagramURL)
+      setPrivateSaleInstagramURL(storedPrivateSaleInstagramURL!);
+
+    const storedPrivateSaleGithubURL = localStorage.getItem(
+      "privateSaleGithubURL"
+    );
+    if (storedPrivateSaleGithubURL)
+      setPrivateSaleGithubURL(storedPrivateSaleGithubURL!);
+
+    const storedPrivateSaleFacebookURL = localStorage.getItem(
+      "privateSaleFacebookURL"
+    );
+    if (storedPrivateSaleFacebookURL)
+      setPrivateSaleFacebookURL(storedPrivateSaleFacebookURL!);
+
+    const storedPrivateSaleYoutubeURL = localStorage.getItem(
+      "privateSaleYoutubeURL"
+    );
+    if (storedPrivateSaleYoutubeURL)
+      setPrivateSaleYoutubeURL(storedPrivateSaleYoutubeURL!);
+
+    const storedPrivateSaleDescription = localStorage.getItem(
+      "privateSaleDescription"
+    );
+    if (storedPrivateSaleDescription)
+      setPrivateSaleDescription(storedPrivateSaleDescription!);
+
+    // ----------------------------------------------
+    // SOLILOCK
+    const storedSolilockTokenAddress = localStorage.getItem(
+      "solilockTokenAddress"
+    );
+    if (storedSolilockTokenAddress)
+      setSolilockTokenAddress(storedSolilockTokenAddress!);
+
+    const storedSolilockAmount = localStorage.getItem("solilockAmount");
+    if (storedSolilockAmount) setSolilockAmount(storedSolilockAmount!);
+
+    const storedSolilockLockTime = localStorage.getItem("solilockLockTime");
+    if (storedSolilockLockTime) setSolilockLockTime(storedSolilockLockTime!);
+
+    const storedSolilockOwner = localStorage.getItem("solilockOwner");
+    if (storedSolilockOwner) setSolilockOwner(storedSolilockOwner!);
+
+    const storedSolilockTGEDate = localStorage.getItem("solilockTGEDate");
+    if (storedSolilockTGEDate) setSolilockTGEDate(storedSolilockTGEDate!);
+
+    const storedSolilockTGEPercent = localStorage.getItem("solilockTGEPercent");
+    if (storedSolilockTGEPercent)
+      setSolilockTGEPercent(Number(storedSolilockTGEPercent!));
+
+    const storedSolilockCycleDays = localStorage.getItem("solilockCycleDays");
+    if (storedSolilockCycleDays) setSolilockCycleDays(storedSolilockCycleDays!);
+
+    const storedSolilockCycleReleasePercent = localStorage.getItem(
+      "solilockCycleReleasePercent"
+    );
+    if (storedSolilockCycleReleasePercent)
+      setSolilockCycleReleasePercent(storedSolilockCycleReleasePercent!);
+
+    // -----------------------------------------
+    // AIRDROP
+    const storedAirdropCurrentStep = localStorage.getItem("airdropCurrentStep");
+    if (storedAirdropCurrentStep)
+      setAirdropCurrentStep(Number(storedAirdropCurrentStep!));
+
+    const storedAirdropTokenAddress = localStorage.getItem(
+      "airdropTokenAddress"
+    );
+    if (storedAirdropTokenAddress)
+      setAirdropTokenAddress(storedAirdropTokenAddress!);
+
+    const storedAirdropTitle = localStorage.getItem("airdropTitle");
+    if (storedAirdropTitle) setAirdropTitle(storedAirdropTitle!);
+
+    const storedAirdropDescription = localStorage.getItem("airdropDescription");
+    if (storedAirdropDescription)
+      setAirdropDescription(storedAirdropDescription!);
+
+    const storedAirdropDiscordURL = localStorage.getItem("airdropDiscordURL");
+    if (storedAirdropDiscordURL) setAirdropDiscordURL(storedAirdropDiscordURL!);
+
+    const storedAirdropFacebookURL = localStorage.getItem("airdropFacebookURL");
+    if (storedAirdropFacebookURL)
+      setAirdropFacebookURL(storedAirdropFacebookURL!);
+
+    const storedAirdropGithubURL = localStorage.getItem("airdropGithubURL");
+    if (storedAirdropGithubURL) setAirdropGithubURL(storedAirdropGithubURL!);
+
+    const storedAirdropInstagramURL = localStorage.getItem(
+      "airdropInstagramURL"
+    );
+    if (storedAirdropInstagramURL)
+      setAirdropInstagramURL(storedAirdropInstagramURL!);
+
+    const storedAirdropTwitterURL = localStorage.getItem("airdropTwitterURL");
+    if (storedAirdropTwitterURL) setAirdropTwitterURL(storedAirdropTwitterURL!);
+
+    const storedAirdropWebsiteURL = localStorage.getItem("airdropWebsiteURL");
+    if (storedAirdropWebsiteURL) setAirdropWebsiteURL(storedAirdropWebsiteURL!);
+
+    const storedAirdropTelegramURL = localStorage.getItem("airdropTelegramURL");
+    if (storedAirdropTelegramURL)
+      setAirdropTelegramURL(storedAirdropTelegramURL!);
+
+    const storedAirdropYoutubeURL = localStorage.getItem("airdropYoutubeURL");
+    if (storedAirdropYoutubeURL) setAirdropYoutubeURL(storedAirdropYoutubeURL!);
   }, []);
 
   // Save user data to local storage whenever it changes
@@ -934,25 +1163,238 @@ export function LaunchpadContextProvider({ children }: Props) {
     isFairlaunchSpendingApproved,
   ]);
 
+  // PRIVATE SALE
+  useEffect(() => {
+    if (privateSaleCurrentStep) {
+      localStorage.setItem(
+        "privateSaleCurrentStep",
+        String(privateSaleCurrentStep)
+      );
+    }
+
+    if (privateSaleName) {
+      localStorage.setItem("privateSaleName", privateSaleName);
+    }
+
+    if (privateSaleSelectedCurrency) {
+      localStorage.setItem(
+        "privateSaleSelectedCurrency",
+        privateSaleSelectedCurrency
+      );
+    }
+
+    if (privateSaleSoftcap) {
+      localStorage.setItem("privateSaleSoftcap", String(privateSaleSoftcap));
+    }
+
+    if (privateSaleHardcap) {
+      localStorage.setItem("privateSaleHardcap", String(privateSaleHardcap));
+    }
+
+    if (privateSaleMinBuy) {
+      localStorage.setItem("privateSaleMinBuy", String(privateSaleMinBuy));
+    }
+
+    if (privateSaleMaxBuy) {
+      localStorage.setItem("privateSaleMaxBuy", String(privateSaleMaxBuy));
+    }
+
+    if (privateSaleStartDate) {
+      localStorage.setItem("privateSaleStartDate", privateSaleStartDate);
+    }
+
+    if (privateSaleEndDate) {
+      localStorage.setItem("privateSaleEndDate", privateSaleEndDate);
+    }
+
+    if (privateSaleFirstRelease) {
+      localStorage.setItem("privateSaleFirstRelease", privateSaleFirstRelease);
+    }
+
+    if (privateSalePresaleToken) {
+      localStorage.setItem("privateSalePresaleToken", privateSalePresaleToken);
+    }
+
+    if (privateSaleFundVesting) {
+      localStorage.setItem("privateSaleFundVesting", privateSaleFundVesting);
+    }
+
+    if (privateSaleWebsiteURL) {
+      localStorage.setItem("privateSaleWebsiteURL", privateSaleWebsiteURL);
+    }
+
+    if (privateSaleFacebookURL) {
+      localStorage.setItem("privateSaleFacebookURL", privateSaleFacebookURL);
+    }
+
+    if (privateSaleTwitterURL) {
+      localStorage.setItem("privateSaleTwitterURL", privateSaleTwitterURL);
+    }
+
+    if (privateSaleTelegramURL) {
+      localStorage.setItem("privateSaleTelegramURL", privateSaleTelegramURL);
+    }
+
+    if (privateSaleDiscordURL) {
+      localStorage.setItem("privateSaleDiscordURL", privateSaleDiscordURL);
+    }
+
+    if (privateSaleInstagramURL) {
+      localStorage.setItem("privateSaleInstagramURL", privateSaleInstagramURL);
+    }
+
+    if (privateSaleGithubURL) {
+      localStorage.setItem("privateSaleGithubURL", privateSaleGithubURL);
+    }
+
+    if (privateSaleYoutubeURL) {
+      localStorage.setItem("privateSaleYoutubeURL", privateSaleYoutubeURL);
+    }
+
+    if (privateSaleDescription) {
+      localStorage.setItem("privateSaleDescription", privateSaleDescription);
+    }
+  }, [
+    privateSaleCurrentStep,
+    privateSaleSelectedCurrency,
+    privateSalePresaleToken,
+    privateSaleFundVesting,
+    privateSaleName,
+    privateSaleStartDate,
+    privateSaleEndDate,
+    privateSaleHardcap,
+    privateSaleSoftcap,
+    privateSaleMaxBuy,
+    privateSaleMinBuy,
+    privateSaleDescription,
+    privateSaleFirstRelease,
+    privateSaleFacebookURL,
+    privateSaleGithubURL,
+    privateSaleTelegramURL,
+    privateSaleTwitterURL,
+    privateSaleInstagramURL,
+    privateSaleDiscordURL,
+    privateSaleWebsiteURL,
+    privateSaleYoutubeURL,
+  ]);
+
+  // Solilock
+  useEffect(() => {
+    if (solilockTokenAddress) {
+      localStorage.setItem("solilockTokenAddress", solilockTokenAddress);
+    }
+
+    if (solilockAmount) {
+      localStorage.setItem("solilockAmount", solilockAmount);
+    }
+
+    if (solilockLockTime) {
+      localStorage.setItem("solilockLockTime", solilockLockTime);
+    }
+
+    if (solilockOwner) {
+      localStorage.setItem("solilockOwner", solilockOwner);
+    }
+
+    if (solilockTGEDate) {
+      localStorage.setItem("solilockTGEDate", solilockTGEDate);
+    }
+
+    if (solilockTGEPercent) {
+      localStorage.setItem("solilockTGEPercent", String(solilockTGEPercent));
+    }
+
+    if (solilockCycleDays) {
+      localStorage.setItem("solilockCycleDays", solilockCycleDays);
+    }
+
+    if (solilockCycleReleasePercent) {
+      localStorage.setItem(
+        "solilockCycleReleasePercent",
+        solilockCycleReleasePercent
+      );
+    }
+  }, [
+    solilockAmount,
+    solilockCycleDays,
+    solilockCycleReleasePercent,
+    solilockLockTime,
+    solilockTGEPercent,
+    solilockTGEDate,
+    solilockTokenAddress,
+    solilockOwner,
+  ]);
+
+  // ---------------------------------------------------
+  // AIRDROP
+  useEffect(() => {
+    if (airdropCurrentStep) {
+      localStorage.setItem("airdropCurrentStep", String(airdropCurrentStep));
+    }
+
+    if (airdropTokenAddress) {
+      localStorage.setItem("airdropTokenAddress", airdropTokenAddress);
+    }
+
+    if (airdropTitle) {
+      localStorage.setItem("airdropTitle", airdropTitle);
+    }
+
+    if (airdropDescription) {
+      localStorage.setItem("airdropDescription", airdropDescription);
+    }
+
+    if (airdropDiscordURL) {
+      localStorage.setItem("airdropDiscordURL", airdropDiscordURL);
+    }
+
+    if (airdropFacebookURL) {
+      localStorage.setItem("airdropFacebookURL", airdropFacebookURL);
+    }
+
+    if (airdropGithubURL) {
+      localStorage.setItem("airdropGithubURL", airdropGithubURL);
+    }
+
+    if (airdropInstagramURL) {
+      localStorage.setItem("airdropInstagramURL", airdropInstagramURL);
+    }
+
+    if (airdropTwitterURL) {
+      localStorage.setItem("airdropTwitterURL", airdropTwitterURL);
+    }
+
+    if (airdropWebsiteURL) {
+      localStorage.setItem("airdropWebsiteURL", airdropWebsiteURL);
+    }
+
+    if (airdropTelegramURL) {
+      localStorage.setItem("airdropTelegramURL", airdropTelegramURL);
+    }
+
+    if (airdropYoutubeURL) {
+      localStorage.setItem("airdropYoutubeURL", airdropYoutubeURL);
+    }
+  }, [
+    airdropCurrentStep,
+    airdropDescription,
+    airdropDiscordURL,
+    airdropFacebookURL,
+    airdropGithubURL,
+    airdropInstagramURL,
+    airdropTelegramURL,
+    airdropTitle,
+    airdropTokenAddress,
+    airdropWebsiteURL,
+    airdropYoutubeURL,
+    airdropTwitterURL,
+  ]);
+
   const value = {
     tabs,
     currencyOptions,
     selectedTab,
     error,
-    selectedCurrency,
-    softcap,
-    hardcap,
-    minBuy,
-    maxBuy,
-    router,
-    refundType,
-    liquidity,
-    listingRate,
-    startDate,
-    endDate,
-    liquidityLockup,
-    firstRelease,
-    vestingPeriod,
     isModalShowing,
     nameOfToken,
     setNameOfToken,
@@ -1103,9 +1545,54 @@ export function LaunchpadContextProvider({ children }: Props) {
     privateSaleCurrentStep,
     privateSaleName,
     privateSaleSelectedCurrency,
+    privateSaleSoftcap,
+    privateSaleHardcap,
+    privateSaleMinBuy,
+    privateSaleMaxBuy,
+    privateSaleStartDate,
+    privateSaleEndDate,
+    privateSaleFirstRelease,
+    privateSalePresaleToken,
+    privateSaleFundVesting,
+    isPrivateSaleWhitelistDisabled,
+    isPrivateSaleWhitelistEnabled,
+    setIsPrivateSaleWhitelistEnabled,
+    setIsPrivateSaleWhitelistDisabled,
+    setPrivateSaleFundVesting,
+    setPrivateSalePresaleToken,
+    setPrivateSaleFirstRelease,
+    setPrivateSaleEndDate,
+    setPrivateSaleStartDate,
+    setPrivateSaleMaxBuy,
+    setPrivateSaleMinBuy,
+    setPrivateSaleHardcap,
+    setPrivateSaleSoftcap,
     setPrivateSaleCurrentStep,
     setPrivateSaleName,
     setPrivateSaleSelectedCurrency,
+
+    privateSaleLogo,
+    privateSaleWebsiteURL,
+    privateSaleTelegramURL,
+    privateSaleTwitterURL,
+    privateSaleDiscordURL,
+    privateSaleInstagramURL,
+    privateSaleGithubURL,
+    privateSaleFacebookURL,
+    privateSaleYoutubeURL,
+    privateSaleDescription,
+    isPrivateSaleSpendingApproved,
+    setIsPrivateSaleSpendingApproved,
+    setPrivateSaleDescription,
+    setPrivateSaleYoutubeURL,
+    setPrivateSaleFacebookURL,
+    setPrivateSaleGithubURL,
+    setPrivateSaleInstagramURL,
+    setPrivateSaleDiscordURL,
+    setPrivateSaleTwitterURL,
+    setPrivateSaleTelegramURL,
+    setPrivateSaleWebsiteURL,
+    setPrivateSaleLogo,
     handlePrivateSaleNextStep,
     handlePrivateSalePreviousStep,
 
@@ -1113,6 +1600,20 @@ export function LaunchpadContextProvider({ children }: Props) {
     solilockAmount,
     solilockLockTime,
     solilockTokenAddress,
+    solilockOwner,
+    solilockTGEDate,
+    solilockTGEPercent,
+    solilockCycleDays,
+    solilockCycleReleasePercent,
+    solilockAnotherUserUsed,
+    solilockVestingUsed,
+    setSolilockVestingUsed,
+    setSolilockAnotherUserUsed,
+    setSolilockCycleReleasePercent,
+    setSolilockCycleDays,
+    setSolilockTGEPercent,
+    setSolilockTGEDate,
+    setSolilockOwner,
     setSolilockAmount,
     setSolilockLockTime,
     setSolilockTokenAddress,
@@ -1120,8 +1621,28 @@ export function LaunchpadContextProvider({ children }: Props) {
     // AIRDROP
     airdropCurrentStep,
     airdropTokenAddress,
+    airdropDescription,
+    airdropDiscordURL,
+    airdropFacebookURL,
+    airdropGithubURL,
+    airdropInstagramURL,
+    airdropTitle,
+    airdropTwitterURL,
+    airdropWebsiteURL,
+    airdropTelegramURL,
+    airdropYoutubeURL,
     setAirdropCurrentStep,
     setAirdropTokenAddress,
+    setAirdropTitle,
+    setAirdropWebsiteURL,
+    setAirdropTelegramURL,
+    setAirdropTwitterURL,
+    setAirdropDiscordURL,
+    setAirdropInstagramURL,
+    setAirdropGithubURL,
+    setAirdropFacebookURL,
+    setAirdropYoutubeURL,
+    setAirdropDescription,
   };
   return (
     <LaunchpadContext.Provider value={value}>

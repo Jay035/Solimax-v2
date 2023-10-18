@@ -2,7 +2,7 @@ import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
 export default function StepFour() {
-  const { handlePrivateSaleNextStep, handlePrivateSalePreviousStep, setIsModalShowing } = GlobalContext();
+  const { handlePrivateSaleNextStep, handlePrivateSalePreviousStep, isPrivateSaleSpendingApproved, setIsPrivateSaleSpendingApproved} = GlobalContext();
   const [error, setError] = useState("");
 
   return (

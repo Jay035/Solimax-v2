@@ -3,21 +3,33 @@ import { GlobalContext } from "@/context/Context";
 import { useState } from "react";
 
 export default function StepTwo() {
-  const { handlePrivateSaleNextStep, handlePrivateSalePreviousStep } =
-    GlobalContext();
-  const [softcap, setSoftcap] = useState();
-  const [hardcap, setHardcap] = useState();
-  const [minBuy, setMinBuy] = useState();
-  const [maxBuy, setMaxBuy] = useState();
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [liquidityLockup, setLiquidityLockup] = useState("");
-  const [firstRelease, setFirstRelease] = useState("");
-  const [vestingPeriod, setVestingPeriod] = useState("");
-  const [presaleToken, setPresaleToken] = useState("");
-  const [fundVesting, setFundVesting] = useState("");
+  const {
+    handlePrivateSaleNextStep,
+    handlePrivateSalePreviousStep,
+    privateSaleSoftcap,
+    privateSaleHardcap,
+    privateSaleMinBuy,
+    privateSaleMaxBuy,
+    privateSaleStartDate,
+    privateSaleEndDate,
+    privateSaleFirstRelease,
+    privateSalePresaleToken,
+    privateSaleFundVesting,
+    isPrivateSaleWhitelistDisabled,
+    isPrivateSaleWhitelistEnabled,
+    setIsPrivateSaleWhitelistEnabled,
+    setIsPrivateSaleWhitelistDisabled,
+    setPrivateSaleFundVesting,
+    setPrivateSalePresaleToken,
+    setPrivateSaleFirstRelease,
+    setPrivateSaleEndDate,
+    setPrivateSaleStartDate,
+    setPrivateSaleMaxBuy,
+    setPrivateSaleMinBuy,
+    setPrivateSaleHardcap,
+    setPrivateSaleSoftcap,
+  } = GlobalContext();
   const [error, setError] = useState("");
-  const [totalSellingAmount, setTotalSellingAmount] = useState("");
 
   const routerOptions = [
     {
@@ -34,22 +46,6 @@ export default function StepTwo() {
     },
   ];
 
-  const [buybackPercent, setBuybackPercent] = useState<string>("");
-  const [maxContribution, setMaxContribution] = useState<string>("");
-  const [isMaxContributionChecked, setIsMaxContributionChecked] =
-    useState<boolean>(false);
-  const [isBuyBackChecked, setIsBuyBackChecked] = useState<boolean>(false);
-  const [isWhitelistDisabled, setIsWhitelistDisabled] = useState<boolean>(true);
-  const [isWhitelistEnabled, setIsWhitelistEnabled] = useState<boolean>(false);
-
-  const handleCheckboxChange = (event: any) => {
-    // setIsChecked(event.target.checked);
-    if (event.target.checked) {
-      // Run your function when checkbox is checked
-      console.log("Checkbox is checked!");
-      // You can replace the console.log with your desired function call
-    }
-  };
   return (
     <form className="flex flex-col gap-6">
       {/* WHITELIST */}
@@ -63,21 +59,21 @@ export default function StepTwo() {
         >
           <div
             className={`rounded-full flex ${
-              isWhitelistDisabled
+              isPrivateSaleWhitelistDisabled
                 ? "border-2 p-0.5 border-[#A4D0F2]"
                 : "border-2 border-white"
             }`}
           >
             <input
               className={`appearance-none bg-[#26272B] rounded-full ${
-                isWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
+                isPrivateSaleWhitelistDisabled ? "w-5 h-5" : "w-6 h-6"
               } checked:bg-[#A4D0F2] cursor-pointer`}
               type="radio"
               defaultChecked
-              checked={isWhitelistDisabled}
+              checked={isPrivateSaleWhitelistDisabled}
               onChange={(event: any) => {
-                setIsWhitelistDisabled(event.target.checked);
-                setIsWhitelistEnabled(false);
+                setIsPrivateSaleWhitelistDisabled?.(event.target.checked);
+                setIsPrivateSaleWhitelistEnabled?.(false);
               }}
               name="whitelist"
               id="disable"
@@ -91,21 +87,21 @@ export default function StepTwo() {
         >
           <div
             className={`rounded-full flex ${
-              isWhitelistEnabled
+              isPrivateSaleWhitelistEnabled
                 ? "border-2 p-0.5 border-[#A4D0F2]"
                 : "border-2 border-white"
             }`}
           >
             <input
               className={`appearance-none bg-[#26272B] rounded-full ${
-                isWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
+                isPrivateSaleWhitelistEnabled ? "w-5 h-5" : "w-6 h-6"
               } checked:bg-[#A4D0F2] cursor-pointer`}
               type="radio"
               // defaultChecked
-              checked={isWhitelistEnabled}
+              checked={isPrivateSaleWhitelistEnabled}
               onChange={(event: any) => {
-                setIsWhitelistDisabled(false);
-                setIsWhitelistEnabled(event.target.checked);
+                setIsPrivateSaleWhitelistDisabled?.(false);
+                setIsPrivateSaleWhitelistEnabled?.(event.target.checked);
               }}
               name="whitelist"
               id="disable"
@@ -128,9 +124,9 @@ export default function StepTwo() {
             label="Softcap (BNB)"
             type="number"
             placeholder="0"
-            value={softcap}
+            value={privateSaleSoftcap}
             onChange={(e) => {
-              setSoftcap?.(e.target.value);
+              setPrivateSaleSoftcap?.(e.target.value);
               setError?.("");
             }}
             isRequired={true}
@@ -147,9 +143,9 @@ export default function StepTwo() {
           label="Hardcap (BNB)"
           type="number"
           placeholder="0"
-          value={hardcap}
+          value={privateSaleHardcap}
           onChange={(e) => {
-            setHardcap?.(e.target.value);
+            setPrivateSaleHardcap?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -165,9 +161,9 @@ export default function StepTwo() {
             label="Minimium buy"
             type="number"
             placeholder="0"
-            value={minBuy}
+            value={privateSaleMinBuy}
             onChange={(e) => {
-              setMinBuy?.(e.target.value);
+              setPrivateSaleMinBuy?.(e.target.value);
               setError?.("");
             }}
             isRequired={true}
@@ -181,9 +177,9 @@ export default function StepTwo() {
           label="Maximum buy"
           type="number"
           placeholder="0"
-          value={maxBuy}
+          value={privateSaleMaxBuy}
           onChange={(e) => {
-            setMaxBuy?.(e.target.value);
+            setPrivateSaleMaxBuy?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -198,9 +194,9 @@ export default function StepTwo() {
           label="Start date (UTC)"
           type="date"
           placeholder="0"
-          value={startDate}
+          value={privateSaleStartDate}
           onChange={(e) => {
-            setStartDate?.(e.target.value);
+            setPrivateSaleStartDate?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -213,9 +209,9 @@ export default function StepTwo() {
           label="End date (UTC)"
           type="date"
           placeholder="0"
-          value={endDate}
+          value={privateSaleEndDate}
           onChange={(e) => {
-            setEndDate?.(e.target.value);
+            setPrivateSaleEndDate?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -230,9 +226,9 @@ export default function StepTwo() {
           label="First release for presale (%)"
           type="number"
           placeholder="Ex 40"
-          value={firstRelease}
+          value={privateSaleFirstRelease}
           onChange={(e) => {
-            setFirstRelease?.(e.target.value);
+            setPrivateSaleFirstRelease?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -245,9 +241,9 @@ export default function StepTwo() {
           label="Presale token release each cycle (%)"
           type="text"
           placeholder="Ex 20"
-          value={presaleToken}
+          value={privateSalePresaleToken}
           onChange={(e) => {
-            setPresaleToken?.(e.target.value);
+            setPrivateSalePresaleToken?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -261,9 +257,9 @@ export default function StepTwo() {
         label="Fund Vesting Period Each Cycle (days)"
         type="text"
         placeholder="Ex 3"
-        value={fundVesting}
+        value={privateSaleFundVesting}
         onChange={(e) => {
-          setFundVesting?.(e.target.value);
+          setPrivateSaleFundVesting?.(e.target.value);
           setError?.("");
         }}
         isRequired={true}
@@ -282,15 +278,15 @@ export default function StepTwo() {
         </button>
         <button
           disabled={
-            softcap === null ||
-            hardcap === null ||
-            minBuy === null ||
-            maxBuy === null ||
-            startDate === "" ||
-            endDate  === "" ||
-            firstRelease === null ||
-            presaleToken  === "" ||
-            fundVesting === "" 
+            privateSaleSoftcap === 0 ||
+            privateSaleHardcap === 0 ||
+            privateSaleMinBuy === 0 ||
+            privateSaleMaxBuy === 0 ||
+            privateSaleStartDate === "" ||
+            privateSaleEndDate === "" ||
+            privateSaleFirstRelease === "" ||
+            privateSalePresaleToken === "" ||
+            privateSaleFundVesting === ""
           }
           onClick={(e: any) => {
             e.preventDefault();
