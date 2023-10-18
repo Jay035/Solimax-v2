@@ -1,34 +1,43 @@
 import CustomFileDropbox from "@/components/CustomFileDropbox";
 import CustomInput from "@/components/CustomInput";
-import { useRef, useState } from "react";
+import { GlobalContext } from "@/context/Context";
+import { useRef } from "react";
 
 type Props = {
-  currentStep: number;
   setError: (error: string) => void;
-  setCurrentStep: (step: number) => void;
 };
 
-export default function StepThree({
-  currentStep,
-  setError,
-  setCurrentStep,
-}: Props) {
-  const [airdropTitle, setAirdropTitle] = useState("");
-  const [websiteURL, setWebsiteURL] = useState("");
-  const [telegramURL, setTelegramURL] = useState("");
-  const [twitterURL, setTwitterURL] = useState("");
-  const [discordURL, setDiscordURL] = useState("");
-  const [instagramURL, setInstagramURL] = useState("");
-  const [githubURL, setGithubURL] = useState("");
-  const [facebookURL, setFacebookURL] = useState("");
-  const [youtubeURL, setYoutubeURL] = useState("");
-  const [description, setDescription] = useState("");
-
-  const [selectedFile, setSelectedFile] = useState<File | undefined>();
+export default function StepThree({ setError }: Props) {
+  const {
+    airdropCurrentStep,
+    airdropDescription,
+    airdropDiscordURL,
+    airdropFacebookURL,
+    airdropGithubURL,
+    airdropInstagramURL,
+    airdropTitle,
+    airdropTwitterURL,
+    airdropWebsiteURL,
+    airdropTelegramURL,
+    airdropYoutubeURL,
+    airdropLogo,
+    setAirdropLogo,
+    setAirdropCurrentStep,
+    setAirdropTitle,
+    setAirdropWebsiteURL,
+    setAirdropTelegramURL,
+    setAirdropTwitterURL,
+    setAirdropDiscordURL,
+    setAirdropInstagramURL,
+    setAirdropGithubURL,
+    setAirdropFacebookURL,
+    setAirdropYoutubeURL,
+    setAirdropDescription,
+  } = GlobalContext();
   const inputRef = useRef<any>(null);
 
   const handleFileSelected = (file: File | undefined) => {
-    setSelectedFile(file);
+    setAirdropLogo?.(file);
   };
 
   const onButtonClick = () => {
@@ -36,7 +45,7 @@ export default function StepThree({
   };
 
   const handlePreviousStep = () => {
-    if (currentStep > 1) setCurrentStep?.(currentStep - 1);
+    if (airdropCurrentStep > 1) setAirdropCurrentStep?.(airdropCurrentStep - 1);
   };
   return (
     <form className="flex flex-col gap-6">
@@ -63,11 +72,11 @@ export default function StepThree({
           </p>
           <CustomFileDropbox
             inputRef={inputRef}
-            selectedFile={selectedFile}
+            selectedFile={airdropLogo}
             onFileSelected={handleFileSelected}
             onButtonClick={onButtonClick}
           />
-          {selectedFile && (
+          {airdropLogo && (
             <span className="text-[#A4D0F2]" onClick={onButtonClick}>
               Change file
             </span>
@@ -86,9 +95,9 @@ export default function StepThree({
           type="url"
           // pattern="https://.*\..*"
           placeholder="www."
-          value={websiteURL}
+          value={airdropWebsiteURL}
           onChange={(e) => {
-            setWebsiteURL?.(e.target.value);
+            setAirdropWebsiteURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -103,9 +112,9 @@ export default function StepThree({
           label="Telegram"
           type="website"
           placeholder="www."
-          value={telegramURL}
+          value={airdropTelegramURL}
           onChange={(e) => {
-            setTelegramURL?.(e.target.value);
+            setAirdropTelegramURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -118,9 +127,9 @@ export default function StepThree({
           label="Twitter"
           type="website"
           placeholder="www."
-          value={twitterURL}
+          value={airdropTwitterURL}
           onChange={(e) => {
-            setTwitterURL?.(e.target.value);
+            setAirdropTwitterURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -135,9 +144,9 @@ export default function StepThree({
           label="Discord"
           type="website"
           placeholder="www."
-          value={discordURL}
+          value={airdropDiscordURL}
           onChange={(e) => {
-            setDiscordURL?.(e.target.value);
+            setAirdropDiscordURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -150,9 +159,9 @@ export default function StepThree({
           label="Instagram"
           type="website"
           placeholder="www."
-          value={instagramURL}
+          value={airdropInstagramURL}
           onChange={(e) => {
-            setInstagramURL?.(e.target.value);
+            setAirdropInstagramURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -167,9 +176,9 @@ export default function StepThree({
           label="Github"
           type="website"
           placeholder="www."
-          value={githubURL}
+          value={airdropGithubURL}
           onChange={(e) => {
-            setGithubURL?.(e.target.value);
+            setAirdropGithubURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -182,9 +191,9 @@ export default function StepThree({
           label="Facebook"
           type="website"
           placeholder="www."
-          value={facebookURL}
+          value={airdropFacebookURL}
           onChange={(e) => {
-            setFacebookURL?.(e.target.value);
+            setAirdropFacebookURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -198,9 +207,9 @@ export default function StepThree({
           label="Youtube video"
           type="url"
           placeholder="www."
-          value={youtubeURL}
+          value={airdropYoutubeURL}
           onChange={(e) => {
-            setYoutubeURL?.(e.target.value);
+            setAirdropYoutubeURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -217,9 +226,9 @@ export default function StepThree({
             id="description"
             className="bg-[#26272B] resize-none w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             placeholder="Leave a short description about your project"
-            value={description}
+            value={airdropDescription}
             onChange={(e) => {
-              setDescription?.(e.target.value);
+              setAirdropDescription?.(e.target.value);
               setError?.("");
             }}
             rows={4}
@@ -232,14 +241,14 @@ export default function StepThree({
         <button
           onClick={(e: any) => {
             e.preventDefault();
-            setCurrentStep?.(currentStep - 1);
+            setAirdropCurrentStep?.(airdropCurrentStep - 1);
           }}
           className="bg-[#26272B] text-[#F2F4F7] hover:bg-[#26272B]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[0.875rem]"
         >
           Back
         </button>
         <button
-          disabled={!selectedFile || websiteURL === ""}
+          disabled={!airdropLogo || airdropWebsiteURL === ""}
           onClick={(e: any) => {
             e.preventDefault();
             // setCurrentStep?.(currentStep + 1);

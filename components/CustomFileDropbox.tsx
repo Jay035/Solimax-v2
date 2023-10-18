@@ -49,6 +49,7 @@ const CustomFileDropbox: React.FC<CustomFileDropboxProps> = ({
       onDragLeave={handleDragLeave}
     >
       <input
+      id="fileInput"
         ref={inputRef}
         type="file"
         className="hidden"

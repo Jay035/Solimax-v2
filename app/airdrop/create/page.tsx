@@ -3,13 +3,13 @@ import { useState } from "react";
 import LatestPools from "@/components/LatestPools";
 import StepOne from "../components/StepOne";
 import StepTwo from "../components/StepTwo";
+import { GlobalContext } from "@/context/Context";
 
 type Props = {};
 
 export default function CreateAirdrop({}: Props) {
-  const [currentStep, setCurrentStep] = useState<number>(1);
+  const { airdropCurrentStep } = GlobalContext();
   const [error, setError] = useState<string>("");
-  const [tokenAddress, setTokenAddress] = useState<string>("");
 
   return (
     <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem]">
@@ -33,22 +33,8 @@ export default function CreateAirdrop({}: Props) {
               <p className="text-[#F04438] text-sm sm:text-base">{error}</p>
             )}
           </div>
-          {currentStep === 1 && (
-            <StepOne
-              currentStep={currentStep}
-              tokenAddress={tokenAddress}
-              setError={setError}
-              setCurrentStep={setCurrentStep}
-              setTokenAddress={setTokenAddress}
-            />
-          )}
-          {currentStep === 2 && (
-            <StepTwo
-              currentStep={currentStep}
-              setError={setError}
-              setCurrentStep={setCurrentStep}
-            />
-          )}
+          {airdropCurrentStep === 1 && <StepOne setError={setError} />}
+          {airdropCurrentStep === 2 && <StepTwo setError={setError} />}
         </section>
         <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">
           Disclaimer: Solimax Presale will never endorse or encourage that you
