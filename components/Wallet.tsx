@@ -3,27 +3,27 @@ import logoIcon from "/public/icons/bsc-icon.svg";
 import { useIsMounted } from "@/hooks/useIsMounted";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useSignMessage, useAccount, useNetwork } from "wagmi";
-import { SiweMessage } from "siwe";
-import type { GetServerSideProps, NextPage } from 'next';
-import { getServerSession } from 'next-auth';
-import { getAuthOptions } from '../app/api/auth/[...nextauth]';
+// import { SiweMessage } from "siwe";
+// import type { GetServerSideProps, NextPage } from 'next';
+// import { getServerSession } from 'next-auth';
+// import { getAuthOptions } from '../app/api/auth/[...nextauth]';
 
 type Props = {};
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  return {
-    props: {
-      session: await getServerSession(req, res, getAuthOptions(req)),
-    },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+//   return {
+//     props: {
+//       session: await getServerSession(req, res, getAuthOptions(req)),
+//     },
+//   };
+// };
 
 export default function Wallet({}: Props) {
   const { address } = useAccount();
   const { chain } = useNetwork();
   const mounted = useIsMounted();
   const { signMessageAsync } = useSignMessage();
-  
+
   return (
     <section className="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]">
       <ConnectButton.Custom>
@@ -79,10 +79,6 @@ export default function Wallet({}: Props) {
                   );
                 }
 
-                if (connected) {
-                  // handleSignMessage();
-                }
-
                 return (
                   <div style={{ display: "flex", gap: 12 }}>
                     <button
@@ -127,13 +123,6 @@ export default function Wallet({}: Props) {
                     >
                       {account.displayName}
                     </button>
-                    {/* <button
-                      onClick={signIn}
-                      type="button"
-                      className="bg-[#454FDA] text-white p-[0.625rem] px-4 border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center justify-center gap-[0.62rem]"
-                    >
-                      Sign-In Wallet
-                    </button> */}
                   </div>
                 );
               })()}
@@ -144,3 +133,4 @@ export default function Wallet({}: Props) {
     </section>
   );
 }
+//
