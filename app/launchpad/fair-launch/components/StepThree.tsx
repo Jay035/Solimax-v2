@@ -1,8 +1,10 @@
 import CustomInput from "@/components/CustomInput";
 import CustomFileDropbox from "@/components/CustomFileDropbox";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GlobalContext } from "@/context/Context";
 import ButtonGroup from "@/components/ButtonGroup";
+import VerifyURL from "@/hooks/VerifyURL";
+import { toast } from "react-toastify";
 
 export default function StepThree() {
   const {
@@ -32,14 +34,19 @@ export default function StepThree() {
   const [error, setError] = useState("");
 
   const inputRef = useRef<any>(null);
+  const isUrlValid = VerifyURL(fairlaunchWebsiteURL!);
 
-  const handleFileSelected = (file: File | null) => {
+  const handleFileSelected = (file: File | undefined) => {
     setFairlaunchLogo?.(file);
   };
 
   const onButtonClick = () => {
     inputRef?.current?.click();
   };
+
+  useEffect(() => {
+    console.log(isUrlValid);
+  }, [fairlaunchWebsiteURL]);
   return (
     <section className="flex flex-col gap-6 bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
       <ButtonGroup />
@@ -87,6 +94,7 @@ export default function StepThree() {
               setFairlaunchWebsiteURL?.(e.target.value);
               setError?.("");
             }}
+            onMouseLeave={() => VerifyURL(fairlaunchWebsiteURL!)}
             isRequired={true}
           />
         </section>
@@ -211,7 +219,7 @@ export default function StepThree() {
           <div className="p-[0.07rem] pb-0 w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
             <textarea
               id="description"
-              className="bg-[#26272B] w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+              className="bg-[#26272B] resize-none w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               placeholder="Leave a short description about your project"
               value={fairlaunchDescription}
               onChange={(e) => {
@@ -238,7 +246,11 @@ export default function StepThree() {
             disabled={fairlaunchLogo === null || fairlaunchWebsiteURL === ""}
             onClick={(e: any) => {
               e.preventDefault();
-              handleFairlaunchNextStep?.(e);
+              if (isUrlValid === true) {
+                handleFairlaunchNextStep?.(e);
+              } else {
+                toast.error("URL is invalid");
+              }
             }}
             className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
           >

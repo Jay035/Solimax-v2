@@ -2,27 +2,37 @@ import CustomInput from "@/components/CustomInput";
 import CustomFileDropbox from "@/components/CustomFileDropbox";
 import { useRef, useState } from "react";
 import { GlobalContext } from "@/context/Context";
-import ButtonGroup from "@/components/ButtonGroup";
 
 export default function StepThree() {
-  const { handlePrivateSaleNextStep, handlePrivateSalePreviousStep } =
-    GlobalContext();
+  const {
+    handlePrivateSaleNextStep,
+    handlePrivateSalePreviousStep,
+    privateSaleLogo,
+    privateSaleWebsiteURL,
+    privateSaleTelegramURL,
+    privateSaleTwitterURL,
+    privateSaleDiscordURL,
+    privateSaleInstagramURL,
+    privateSaleGithubURL,
+    privateSaleFacebookURL,
+    privateSaleYoutubeURL,
+    privateSaleDescription,
+    setPrivateSaleDescription,
+    setPrivateSaleYoutubeURL,
+    setPrivateSaleFacebookURL,
+    setPrivateSaleGithubURL,
+    setPrivateSaleInstagramURL,
+    setPrivateSaleDiscordURL,
+    setPrivateSaleTwitterURL,
+    setPrivateSaleTelegramURL,
+    setPrivateSaleWebsiteURL,
+    setPrivateSaleLogo,
+  } = GlobalContext();
   const [error, setError] = useState("");
-  const [websiteURL, setWebsiteURL] = useState("");
-  const [telegramURL, setTelegramURL] = useState("");
-  const [twitterURL, setTwitterURL] = useState("");
-  const [discordURL, setDiscordURL] = useState("");
-  const [instagramURL, setInstagramURL] = useState("");
-  const [githubURL, setGithubURL] = useState("");
-  const [facebookURL, setFacebookURL] = useState("");
-  const [youtubeURL, setYoutubeURL] = useState("");
-  const [description, setDescription] = useState("");
-
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const inputRef = useRef<any>(null);
 
-  const handleFileSelected = (file: File | null) => {
-    setSelectedFile(file);
+  const handleFileSelected = (file: File | undefined) => {
+    setPrivateSaleLogo?.(file);
   };
 
   const onButtonClick = () => {
@@ -38,11 +48,11 @@ export default function StepThree() {
           </p>
           <CustomFileDropbox
             inputRef={inputRef}
-            selectedFile={selectedFile}
+            selectedFile={privateSaleLogo}
             onFileSelected={handleFileSelected}
             onButtonClick={onButtonClick}
           />
-          {selectedFile && (
+          {privateSaleLogo && (
             <span className="text-[#A4D0F2]" onClick={onButtonClick}>
               Change file
             </span>
@@ -60,9 +70,9 @@ export default function StepThree() {
           label="Website URL"
           type="website"
           placeholder="www."
-          value={websiteURL}
+          value={privateSaleWebsiteURL}
           onChange={(e) => {
-            setWebsiteURL?.(e.target.value);
+            setPrivateSaleWebsiteURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={true}
@@ -77,9 +87,9 @@ export default function StepThree() {
           label="Telegram"
           type="website"
           placeholder="www."
-          value={telegramURL}
+          value={privateSaleTelegramURL}
           onChange={(e) => {
-            setTelegramURL?.(e.target.value);
+            setPrivateSaleTelegramURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -92,9 +102,9 @@ export default function StepThree() {
           label="Twitter"
           type="website"
           placeholder="www."
-          value={twitterURL}
+          value={privateSaleTwitterURL}
           onChange={(e) => {
-            setTwitterURL?.(e.target.value);
+            setPrivateSaleTwitterURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -109,9 +119,9 @@ export default function StepThree() {
           label="Discord"
           type="website"
           placeholder="www."
-          value={discordURL}
+          value={privateSaleDiscordURL}
           onChange={(e) => {
-            setDiscordURL?.(e.target.value);
+            setPrivateSaleDiscordURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -124,9 +134,9 @@ export default function StepThree() {
           label="Instagram"
           type="website"
           placeholder="www."
-          value={instagramURL}
+          value={privateSaleInstagramURL}
           onChange={(e) => {
-            setInstagramURL?.(e.target.value);
+            setPrivateSaleInstagramURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -141,9 +151,9 @@ export default function StepThree() {
           label="Github"
           type="website"
           placeholder="www."
-          value={githubURL}
+          value={privateSaleGithubURL}
           onChange={(e) => {
-            setGithubURL?.(e.target.value);
+            setPrivateSaleGithubURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -156,9 +166,9 @@ export default function StepThree() {
           label="Facebook"
           type="website"
           placeholder="www."
-          value={facebookURL}
+          value={privateSaleFacebookURL}
           onChange={(e) => {
-            setFacebookURL?.(e.target.value);
+            setPrivateSaleFacebookURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -172,9 +182,9 @@ export default function StepThree() {
           label="Youtube video"
           type="url"
           placeholder="www."
-          value={youtubeURL}
+          value={privateSaleYoutubeURL}
           onChange={(e) => {
-            setYoutubeURL?.(e.target.value);
+            setPrivateSaleYoutubeURL?.(e.target.value);
             setError?.("");
           }}
           isRequired={false}
@@ -186,14 +196,14 @@ export default function StepThree() {
       </div>
       <label htmlFor="description" className="flex flex-col gap-[0.62rem]">
         Description
-        <div className="p-[0.07rem] w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
+        <div className="p-[0.07rem] pb-0 w-full bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
           <textarea
             id="description"
-            className="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+            className="bg-[#26272B] resize-none rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB] w-full"
             placeholder="Leave a short description about your project"
-            value={description}
+            value={privateSaleDescription}
             onChange={(e) => {
-              setDescription?.(e.target.value);
+              setPrivateSaleDescription?.(e.target.value);
               setError?.("");
             }}
             rows={4}
@@ -213,7 +223,9 @@ export default function StepThree() {
           Back
         </button>
         <button
-          disabled={selectedFile === null || websiteURL === ""}
+          disabled={
+            privateSaleLogo === undefined || privateSaleWebsiteURL === ""
+          }
           onClick={(e: any) => {
             e.preventDefault();
             handlePrivateSaleNextStep?.(e);

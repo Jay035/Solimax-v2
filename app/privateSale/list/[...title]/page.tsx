@@ -1,30 +1,40 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import img2 from "../../../../public/icons/icon-2.svg";
-import banner from "../../../../public/images/detail banner.png";
-import Link from "next/link";
-import Details from "@/app/launchpad/list/[...title]/components/Details";
+import favIcon from "../../../../public/icons/heart-filled.svg";
+import telegram from "../../../../public/icons/telegram.svg";
+import Details from "../components/Details";
+import RightCol from "../components/RightCol";
 import RedirectButton from "@/components/RedirectButton";
-type Props = {};
+
+// export async function generateMetadata({
+//     params: { id },
+//   }: any): Promise<Metadata> {
+//     // const hospitalData = getHospital(id);
+//     // const hospital = await hospitalData;
+
+//     return {
+//     //   title: hospital?.name,
+//       description: ``,
+//     };
+//   }
 
 export default function page({ params }: { params: { title: string } }) {
   return (
-    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
-      <div className="flex justify-between items-center mb-9">
-        {/* chevron left */}
+    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20">
+      <div className="flex justify-between flex-col sm:flex-row md:items-center mb-9">
         <RedirectButton route="" />
         <div className="flex items-center gap-2 text-white">
           <Image
-            width={44}
-            height={44}
-            className="cursor-pointer"
+            className="cursor-pointer w-10 md:w-11"
             // onClick={() => setIsAddedToFavorites((prevState) => !prevState)}
-            src="/icons/heart-filled.svg"
+            src={favIcon}
             alt="heart icon"
           />
           {/* status */}
-          <p className="p-[0.72294rem] text-[1.01rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
-            Upcoming | sales starts in{" "}
-            <span className="text-[#C38CC3]">00:25:13</span>
+          <p className="p-[0.72294rem] text-sm md:text-[1.01rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
+            Upcoming <span className="opacity-50 text-[1.01rem]">|</span> sales
+            starts in <span className="text-[#C38CC3]">00:25:13</span>
           </p>
         </div>
       </div>
@@ -34,14 +44,18 @@ export default function page({ params }: { params: { title: string } }) {
           {/* 1st card */}
           <div className="bg-[#1D1C20] border border-[#3F3F46] rounded-[0.65rem] px-5 py-4">
             {/* top */}
-            <section className="pb-[1.12rem] mb-[1.12rem] flex justify-between items-center border-b border-[#3F3F46]">
+            <section className="pb-[1.12rem] mb-[1.12rem] flex flex-col gap-3 sm:flex-row justify-between md:items-center border-b border-[#3F3F46]">
               {/* project name */}
-              <div className="flex items-center gap-4 text-2xl">
-                <Image className="w-16 2xl:w-[4.04rem]" src={img2} alt="icon" />
+              <div className="flex items-center gap-4 text-xl md:text-2xl">
+                <Image
+                  className="w-10 md:w-16 2xl:w-[4.04rem]"
+                  src={img2}
+                  alt="icon"
+                />
                 {params.title}
               </div>
               {/* social icons */}
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-4 justify-end sm:items-center">
                 {/* telegram */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +63,7 @@ export default function page({ params }: { params: { title: string } }) {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
+                  className="w-5 md:w-6"
                 >
                   <g clipPath="url(#clip0_1311_2881)">
                     <path
@@ -68,6 +83,7 @@ export default function page({ params }: { params: { title: string } }) {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
+                  className="w-5 md:w-6"
                   fill="none"
                 >
                   <g clipPath="url(#clip0_1311_2885)">
@@ -88,6 +104,7 @@ export default function page({ params }: { params: { title: string } }) {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
+                  className="w-5 md:w-6"
                   fill="none"
                 >
                   <g clipPath="url(#clip0_1311_2889)">
@@ -117,6 +134,7 @@ export default function page({ params }: { params: { title: string } }) {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
+                  className="w-5 md:w-6"
                 >
                   <g clipPath="url(#clip0_1311_2894)">
                     <path
@@ -132,7 +150,7 @@ export default function page({ params }: { params: { title: string } }) {
                 </svg>
               </div>
             </section>
-            <p>
+            <p className="">
               The memecoin for Jabronis around the world. Tired of missing the
               next meta, not getting at least a 2x on your investment and
               becoming a community member instead of trader? This is your last
@@ -143,109 +161,7 @@ export default function page({ params }: { params: { title: string } }) {
           <Details />
         </section>
         {/* right column */}
-        <section className="flex flex-col gap-6 text-white">
-          <Image className="w-full" src={banner} alt="banner" />
-          <div className="bg-[#1D1C20] pt-[1.13rem] border border-[#3F3F46] rounded-[0.65rem] px-5">
-            {/* PROGRESS */}
-            <div className="">
-              <div className="flex justify-between items-center text-[#e4e4e7] text-[0.72rem]">
-                <p className="tracking-[-0.0073rem]">Progress</p>
-                <p className="tracking-[-0.0073rem]">67%</p>
-              </div>
-              {/* progress bar */}
-              <div className="bg-[#70707b] w-full h-[0.434rem] rounded-[0.58rem] my-[0.29rem]">
-                <div className="bg-[#454FDA] w-[67%] h-full rounded-[0.58rem]"></div>
-              </div>
-              <div className="flex justify-between items-center text-[#e4e4e7] text-[0.72rem]">
-                <p className="tracking-[-0.0073rem]">870 BNB</p>
-                <p className="tracking-[-0.0073rem] text-[#f3ce92]">1000 BNB</p>
-              </div>
-            </div>
-            {/* pool state */}
-            <p className="bg-[#a1f381]/[0.05] text-center text-[0.875rem] tracking-[-0.00875rem] mt-[1.05rem] mb-[2.37rem] p-[0.65rem] rounded-[0.65rem]">
-              This pool is active
-            </p>
-            <div className="border-b border-[#26272B]">
-              {/* Status */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-                  Status
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-[#12B76A] text-sm">
-                  Active
-                </p>
-              </section>
-              {/* Sale type */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-                  Sale type
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-[#86CB3C] text-sm">
-                  Whitelist
-                </p>
-              </section>
-              {/* Max buy */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">Maximum buy</p>
-                <p className="tracking-[-0.00875rem] text-right  text-sm">
-                  0.033 BNB{" "}
-                </p>
-              </section>
-              {/* Min buy */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">Minimum buy</p>
-                <p className="tracking-[-0.00875rem] text-right  text-sm">
-                  3.3 BNB{" "}
-                </p>
-              </section>
-              {/* My contributions */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">
-                  My contributions
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-sm">
-                  0.0 BNB{" "}
-                </p>
-              </section>
-              {/* My contributions */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">
-                  Total contributors
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-sm">69 </p>
-              </section>
-            </div>
-            <div className="py-10 px-6 bg-[#18181B] bordr-[#E4E4E7] mt-7 text-white rounded-2xl">
-              <h1 className="text-[#fcfcfd] tracking-[-0.045rem] text-[1.875rem] md:text-4xl">
-                Stay in the loop about all projects
-              </h1>
-              <p className="mt-5 mb-8 text-[#e4e4e7] text-sm">
-                Sign up our mailing list to receive our new presales, features,
-                tips and reviews for next 100X projects.
-              </p>
-              <form className="flex gap-4 flex-col">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-[0.87rem] py-3 rounded-lg bg-[#26272B] border border-[#A0A0AB] shadow-[0px_1px_2px_0px] shadow-[#101828]/[0.05] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                  name=""
-                  id=""
-                />
-                <p className="mt-[0.38rem] text-left text-[#d1d1d6]">
-                  We care about your data in our privacy policy.
-                </p>
-                <button
-                  className="rounded-lg border border-[#454fda] bg-[#454fda] px-5 py-3"
-                  // onClick={(e: any) => {
-                  //   e.preventDefault();
-                  // }}
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
+        <RightCol />
       </div>
       {/* page {params.title} */}
     </section>

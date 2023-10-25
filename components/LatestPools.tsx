@@ -11,7 +11,7 @@ export default function LatestPools({}: Props) {
           LATEST POOLS
         </span>
       </div>
-      <div className="overflow-hidden w-[50vw] sm:w-full sm:max-w-md lg:max-w-none lg:w-full">
+      <div className="overflow-hidden w-[53vw] sm:w-full sm:max-w-md lg:max-w-none lg:w-full">
         <ul
           id="scroll-text-group"
           className=" whitespace-nowrap flex gap-2 items-center"

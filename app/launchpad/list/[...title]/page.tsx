@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import img2 from "../../../../public/icons/icon-2.svg";
-import banner from "../../../../public/images/detail banner.png";
+import favIcon from "../../../../public/icons/heart-filled.svg";
 import Details from "./components/Details";
-import Link from "next/link";
-import Newsletter from "@/components/Newsletter";
 import RightCol from "./components/RightCol";
+import RedirectButton from "@/components/RedirectButton";
 
 // export async function generateMetadata({
 //     params: { id },
@@ -20,42 +19,21 @@ import RightCol from "./components/RightCol";
 //   }
 
 export default function page({ params }: { params: { title: string } }) {
-  
   return (
-    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
-      <div className="flex justify-between items-center mb-9">
-        {/* chevron left */}
-        <Link href="/launchpad/list/all">
-          <svg
-            className="cursor-pointer"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
+    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20">
+      <div className="flex justify-between flex-col sm:flex-row md:items-center mb-9">
+        <RedirectButton route="" />
         <div className="flex items-center gap-2 text-white">
           <Image
-            width={44}
-            height={44}
-            className="cursor-pointer"
+            className="cursor-pointer w-10 md:w-11"
             // onClick={() => setIsAddedToFavorites((prevState) => !prevState)}
-            src="/icons/heart-filled.svg"
+            src={favIcon}
             alt="heart icon"
           />
           {/* status */}
-          <p className="p-[0.72294rem] text-[1.01rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
-            Upcoming | sales starts in{" "}
-            <span className="text-[#C38CC3]">00:25:13</span>
+          <p className="p-[0.72294rem] text-sm md:text-[1.01rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
+            Upcoming <span className="opacity-50 text-[1.01rem]">|</span> sales
+            starts in <span className="text-[#C38CC3]">00:25:13</span>
           </p>
         </div>
       </div>
@@ -65,14 +43,18 @@ export default function page({ params }: { params: { title: string } }) {
           {/* 1st card */}
           <div className="bg-[#1D1C20] border border-[#3F3F46] rounded-[0.65rem] px-5 py-4">
             {/* top */}
-            <section className="pb-[1.12rem] mb-[1.12rem] flex justify-between items-center border-b border-[#3F3F46]">
+            <section className="pb-[1.12rem] mb-[1.12rem] flex flex-col gap-3 sm:flex-row justify-between md:items-center border-b border-[#3F3F46]">
               {/* project name */}
-              <div className="flex items-center gap-4 text-2xl">
-                <Image className="w-16 2xl:w-[4.04rem]" src={img2} alt="icon" />
+              <div className="flex items-center gap-4 text-xl md:text-2xl">
+                <Image
+                  className="w-10 md:w-16 2xl:w-[4.04rem]"
+                  src={img2}
+                  alt="icon"
+                />
                 {params.title}
               </div>
               {/* social icons */}
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-4 justify-end sm:items-center">
                 {/* telegram */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +62,7 @@ export default function page({ params }: { params: { title: string } }) {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
+                  className="w-5 md:w-6"
                 >
                   <g clipPath="url(#clip0_1311_2881)">
                     <path
@@ -99,6 +82,7 @@ export default function page({ params }: { params: { title: string } }) {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
+                  className="w-5 md:w-6"
                   fill="none"
                 >
                   <g clipPath="url(#clip0_1311_2885)">
@@ -119,6 +103,7 @@ export default function page({ params }: { params: { title: string } }) {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
+                  className="w-5 md:w-6"
                   fill="none"
                 >
                   <g clipPath="url(#clip0_1311_2889)">
@@ -148,6 +133,7 @@ export default function page({ params }: { params: { title: string } }) {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
+                  className="w-5 md:w-6"
                 >
                   <g clipPath="url(#clip0_1311_2894)">
                     <path
@@ -163,7 +149,7 @@ export default function page({ params }: { params: { title: string } }) {
                 </svg>
               </div>
             </section>
-            <p>
+            <p className="">
               The memecoin for Jabronis around the world. Tired of missing the
               next meta, not getting at least a 2x on your investment and
               becoming a community member instead of trader? This is your last

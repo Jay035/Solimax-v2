@@ -1,5 +1,5 @@
 "use client";
-import {Newsletter} from "@/components/Newsletter";
+import { Newsletter } from "@/components/Newsletter";
 import Image from "next/image";
 import banner from "../../../../../public/images/detail banner.png";
 import { useState } from "react";
@@ -11,7 +11,7 @@ export default function RightCol({}: Props) {
 
   return (
     <section className="flex flex-col gap-6 text-white">
-      <Image className="w-full" src={banner} alt="banner" />
+      {/* <Image className="w-full" src={banner} alt="banner" /> */}
       <div className="bg-[#1D1C20] pt-[1.13rem] border border-[#3F3F46] rounded-[0.65rem] px-5">
         {/* PROGRESS */}
         <div className="">
@@ -28,58 +28,59 @@ export default function RightCol({}: Props) {
             <p className="tracking-[-0.0073rem] text-[#f3ce92]">1000 BNB</p>
           </div>
         </div>
-        {/* pool state */}
-        <p className="bg-[#a1f381]/[0.05] text-center text-[0.875rem] tracking-[-0.00875rem] mt-[1.05rem] mb-[2.37rem] p-[0.65rem] rounded-[0.65rem]">
-          This pool is active
-        </p>
-        <div className="border-b border-[#26272B]">
-          {/* Status */}
+        <div className="border-b border-[#26272B] mt-[2.05rem]">
+          {/* Start time */}
           <section className="pb-2 mb-2 flex justify-between items-center">
             <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-              Status
+              Start time
             </p>
-            <p className="tracking-[-0.00875rem] text-right text-[#12B76A] text-sm">
-              Active
-            </p>
-          </section>
-          {/* Sale type */}
-          <section className="pb-2 mb-2 flex justify-between items-center">
-            <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-              Sale type
-            </p>
-            <p className="tracking-[-0.00875rem] text-right text-[#86CB3C] text-sm">
-              Whitelist
-            </p>
-          </section>
-          {/* Max buy */}
-          <section className="pb-2 mb-2 flex justify-between items-center">
-            <p className="text-sm tracking-[-0.00875rem]">Maximum buy</p>
-            <p className="tracking-[-0.00875rem] text-right  text-sm">
-              0.033 BNB{" "}
-            </p>
-          </section>
-          {/* Min buy */}
-          <section className="pb-2 mb-2 flex justify-between items-center">
-            <p className="text-sm tracking-[-0.00875rem]">Minimum buy</p>
-            <p className="tracking-[-0.00875rem] text-right  text-sm">
-              3.3 BNB{" "}
-            </p>
-          </section>
-          {/* My contributions */}
-          <section className="pb-2 mb-2 flex justify-between items-center">
-            <p className="text-sm tracking-[-0.00875rem]">My contributions</p>
             <p className="tracking-[-0.00875rem] text-right text-sm">
-              0.0 BNB{" "}
+              11/07/2023 21:30 (UTC)
             </p>
           </section>
-          {/* My contributions */}
+          {/* End time */}
           <section className="pb-2 mb-2 flex justify-between items-center">
-            <p className="text-sm tracking-[-0.00875rem]">Total contributors</p>
-            <p className="tracking-[-0.00875rem] text-right text-sm">69 </p>
+            <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+              End time
+            </p>
+            <p className="tracking-[-0.00875rem] text-right text-sm">
+              11/07/2023 21:30 (UTC)
+            </p>
+          </section>
+          {/* Your allocation */}
+          <section className="pb-2 mb-2 flex justify-between items-center">
+            <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+              Your allocation
+            </p>
+            <p className="tracking-[-0.00875rem] text-right text-sm">
+              40000 AST
+            </p>
+          </section>
+          {/* Distributed */}
+          <section className="pb-2 mb-2 flex justify-between items-center">
+            <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+              Distributed
+            </p>
+            <p className="tracking-[-0.00875rem] text-right text-sm">
+              30000 AST
+            </p>
+          </section>
+          {/* Next distribution */}
+          <section className="pb-2 mb-2 flex justify-between items-center">
+            <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
+              Next distribution
+            </p>
+            <p className="tracking-[-0.00875rem] text-right text-sm">
+              11/07/2023 21:30 (UTC)
+            </p>
           </section>
         </div>
         <div className="p-0.5">
-          <Newsletter className="px-6 py-10 bg-[#18181B] bordr-[#E4E4E7] mt-7 text-white rounded-2xl text-center" email={email} setEmail={setEmail} />
+          <Newsletter
+            className="px-6 py-10 bg-[#18181B] bordr-[#E4E4E7] mt-7 text-white rounded-2xl text-center"
+            email={email}
+            setEmail={setEmail}
+          />
         </div>
       </div>
     </section>

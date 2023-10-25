@@ -19,7 +19,7 @@ export function TokenInformation() {
           Token Address
         </p>
         <div className="flex gap-[0.12rem] items-start text-right">
-          <span className="tracking-[-0.0075rem] text-[#A4D0F2] underline text-xs">
+          <span className="tracking-[-0.0075rem] max-w-[10rem] md:max-w-none text-right break-words text-[#A4D0F2] underline text-xs">
             0x8Fc6d87464Bf8c6a93eb99d729273eda2905d39c
           </span>
           <Image

@@ -21,38 +21,16 @@ interface AccordionProps {
 
 interface FormProps {
   currencyOptions?: any;
-  // currentStep: number;
-  tokenAddress?: string;
-  softcap?: number;
-  hardcap?: number;
-  minBuy?: number;
-  maxBuy?: number;
-  listingRate?: number;
-  refundType?: string;
-  liquidity?: number;
-  selectedCurrency?: string;
-  router?: string;
   options?: any[];
   error?: string;
   tabs?: any;
   selectedTab?: string;
-  startDate?: string;
-  endDate?: string;
-  liquidityLockup?: string;
-  vestingPeriod?: string;
-  firstRelease?: string;
-  websiteURL?: string;
-  twitterURL?: string;
-  telegramURL?: string;
-  discordURL?: string;
-  instagramURL?: string;
-  githubURL?: string;
-  facebookURL?: string;
-  youtubeURL?: string;
-  description?: string;
-  totalSellingAmount?: string;
-  isModalShowing?: boolean;
   nameOfToken?: string;
+  isModalShowing?: boolean;
+  setIsModalShowing?: (x: boolean) => void;
+  setNameOfToken?: (x: string) => void;
+  setSelectedTab?: (x: string) => void;
+  setError?: (x: string) => void;
 
   // PRESALE
   // --------------------------
@@ -62,16 +40,16 @@ interface FormProps {
   presaleSelectedCurrency?: string;
   isPresaleFeeOptionOneChecked?: boolean;
   isPresaleFeeOptionTwoChecked?: boolean;
-  presaleRate?: number;
+  presaleRate?: string | number;
   presaleToken?: string | number;
-  presaleSoftcap?: number;
-  presaleHardcap?: number;
-  presaleMinBuy?: number;
-  presaleMaxBuy?: number;
+  presaleSoftcap?: string | number;
+  presaleHardcap?: string | number;
+  presaleMinBuy?: string | number;
+  presaleMaxBuy?: string | number;
   presaleRouter?: string;
   presaleRefundType?: string;
-  presaleLiquidity?: number;
-  presaleListingRate?: number;
+  presaleLiquidity?: string | number;
+  presaleListingRate?: string | number;
   presaleStartDate?: string;
   presaleEndDate?: string;
   presaleLiquidityLockup?: string;
@@ -120,46 +98,14 @@ interface FormProps {
   setPresaleTokenAddress?: (x: string) => void;
   setPresaleToken?: (x: any) => void;
   setPresaleRate?: (rate: number) => void;
-  setPresaleLogo?: (logo: File | null) => void;
+  setPresaleLogo?: (logo: File | undefined) => void;
   setIsPresaleSpendingApproved?: (x: boolean) => void;
-
-  setNameOfToken?: (x: string) => void;
-  setIsModalShowing?: (x: any) => void;
-  setTotalSellingAmount?: (x: string) => void;
-  setDescription?: (x: string) => void;
-  setYoutubeURL?: (x: string) => void;
-  setFacebookURL?: (x: string) => void;
-  setGithubURL?: (x: string) => void;
-  setInstagramURL?: (x: string) => void;
-  setDiscordURL?: (x: string) => void;
-  setTelegramURL?: (x: string) => void;
-  setTwitterURL?: (x: string) => void;
-  setWebsiteURL?: (x: string) => void;
-  setFirstRelease?: (x: string) => void;
-  setVestingPeriod?: (x: string) => void;
   handlePresalePreviousStep?: (x: string | number) => void;
   handlePresaleNextStep?: (x: string | number) => void;
   setPresaleCurrentStep?: (step: any) => void;
   setIsPresaleFeeOptionTwoChecked?: (x: boolean) => void;
   setIsPresaleFeeOptionOneChecked?: (x: boolean) => void;
   setPresaleSelectedCurrency?: (currency: string) => void;
-
-  setLiquidityLockup?: (x: string) => void;
-  setEndDate?: (x: string) => void;
-  setStartDate?: (x: string) => void;
-  setSelectedTab?: (x: string) => void;
-  setRouter?: (x: string) => void;
-  setSoftcap?: (x: number) => void;
-  setMinBuy?: (x: number) => void;
-  setHardcap?: (x: number) => void;
-  setMaxBuy?: (x: number) => void;
-  setRefundType?: (x: string) => void;
-  setLiquidity?: (x: number) => void;
-  setListingRate?: (x: any) => void;
-  setError?: (err: string) => void;
-  setTokenAddress?: (address: string) => void;
-  setSelectedCurrency?: (currency: string) => void;
-  setCurrentStep?: (step: number) => void;
 
   // -------------------------------------------
   // FAIRLAUNCH
@@ -205,8 +151,7 @@ interface FormProps {
   setIsFairlaunchWhitelistEnabled?: (x: boolean) => void;
 
   // Step Three
-  isFairlaunchSpendingApproved?: boolean;
-  fairlaunchLogo?: File | null;
+  fairlaunchLogo?: File | undefined;
   fairlaunchWebsiteURL?: string;
   fairlaunchYoutubeURL?: string;
   fairlaunchTelegramURL?: string;
@@ -225,26 +170,87 @@ interface FormProps {
   setFairlaunchTelegramURL?: (x: string) => void;
   setFairlaunchYoutubeURL?: (x: string) => void;
   setFairlaunchWebsiteURL?: (x: string) => void;
-  setFairlaunchLogo?: (x: File | null) => void;
-  setIsFairlaunchSpendingApproved?: (x: boolean) => void;
-
+  setFairlaunchLogo?: (x: File | undefined) => void;
   handleFairlaunchPreviousStep?: (x: string | number) => void;
   handleFairlaunchNextStep?: (x: string | number) => void;
+  isFairlaunchSpendingApproved?: boolean;
+  setIsFairlaunchSpendingApproved?: (x: boolean) => void;
 
   // PRIVATE SALE
   privateSaleCurrentStep: number;
   privateSaleName?: string;
   privateSaleSelectedCurrency?: string;
+  privateSaleSoftcap?: number;
+  privateSaleHardcap?: number;
+  privateSaleMinBuy?: number;
+  privateSaleMaxBuy?: number;
+  privateSaleStartDate?: string;
+  privateSaleEndDate?: string;
+  privateSaleFirstRelease?: string;
+  privateSalePresaleToken?: string;
+  privateSaleFundVesting?: string;
+  isPrivateSaleWhitelistDisabled?: boolean;
+  isPrivateSaleWhitelistEnabled?: boolean;
+  setPrivateSaleFundVesting?: (x: string) => void;
+  setPrivateSalePresaleToken?: (x: string) => void;
+  setPrivateSaleFirstRelease?: (x: string) => void;
+  setPrivateSaleEndDate?: (x: string) => void;
+  setPrivateSaleStartDate?: (x: string) => void;
+  setPrivateSaleMaxBuy?: (x: number) => void;
+  setPrivateSaleMinBuy?: (x: number) => void;
+  setPrivateSaleHardcap?: (x: number) => void;
+  setPrivateSaleSoftcap?: (x: number) => void;
   setPrivateSaleName?: (x: string) => void;
   setPrivateSaleCurrentStep?: (step: any) => void;
   setPrivateSaleSelectedCurrency?: (currency: string) => void;
+  setIsPrivateSaleWhitelistDisabled?: (x: boolean) => void;
+  setIsPrivateSaleWhitelistEnabled?: (x: boolean) => void;
+
   handlePrivateSalePreviousStep?: (x: string | number) => void;
   handlePrivateSaleNextStep?: (x: string | number) => void;
+
+  // Step Three
+  privateSaleLogo?: File | undefined;
+  privateSaleWebsiteURL?: string;
+  privateSaleYoutubeURL?: string;
+  privateSaleTelegramURL?: string;
+  privateSaleTwitterURL?: string;
+  privateSaleDescription?: string;
+  privateSaleGithubURL?: string;
+  privateSaleDiscordURL?: string;
+  privateSaleFacebookURL?: string;
+  privateSaleInstagramURL?: string;
+  setPrivateSaleInstagramURL?: (x: string) => void;
+  setPrivateSaleDiscordURL?: (x: string) => void;
+  setPrivateSaleGithubURL?: (x: string) => void;
+  setPrivateSaleFacebookURL?: (x: string) => void;
+  setPrivateSaleDescription?: (x: string) => void;
+  setPrivateSaleTwitterURL?: (x: string) => void;
+  setPrivateSaleTelegramURL?: (x: string) => void;
+  setPrivateSaleYoutubeURL?: (x: string) => void;
+  setPrivateSaleWebsiteURL?: (x: string) => void;
+  setPrivateSaleLogo?: (x: File | undefined) => void;
+  isPrivateSaleSpendingApproved?: boolean;
+  setIsPrivateSaleSpendingApproved?: (x: boolean) => void;
 
   // SOLILOCK
   solilockTokenAddress?: string;
   solilockLockTime?: string;
+  solilockOwner?: string;
+  solilockTGEDate?: string;
   solilockAmount?: number | string;
+  solilockTGEPercent?: number | string;
+  solilockVestingUsed?: boolean;
+  solilockCycleDays?: string;
+  solilockCycleReleasePercent?: string;
+  solilockAnotherUserUsed?: boolean;
+  setSolilockTGEPercent?: (x: number) => void;
+  setSolilockVestingUsed?: (x: boolean) => void;
+  setSolilockAnotherUserUsed?: (x: boolean) => void;
+  setSolilockCycleDays?: (x: string) => void;
+  setSolilockCycleReleasePercent?: (x: string) => void;
+  setSolilockTGEDate?: (x: string) => void;
+  setSolilockOwner?: (x: string) => void;
   setSolilockTokenAddress?: (x: string) => void;
   setSolilockLockTime?: (x: string) => void;
   setSolilockAmount?: (x: any) => void;
@@ -252,8 +258,30 @@ interface FormProps {
   // AIRDROP
   airdropTokenAddress?: string;
   airdropCurrentStep: number;
+  airdropTitle?: string;
+  airdropLogo?: File | undefined;
+  airdropWebsiteURL?: string;
+  airdropYoutubeURL?: string;
+  airdropTelegramURL?: string;
+  airdropTwitterURL?: string;
+  airdropDescription?: string;
+  airdropGithubURL?: string;
+  airdropDiscordURL?: string;
+  airdropFacebookURL?: string;
+  airdropInstagramURL?: string;
+  setAirdropTitle?: (address: string) => void;
   setAirdropTokenAddress?: (address: string) => void;
   setAirdropCurrentStep?: (step: number) => void;
+  setAirdropInstagramURL?: (x: string) => void;
+  setAirdropDiscordURL?: (x: string) => void;
+  setAirdropGithubURL?: (x: string) => void;
+  setAirdropFacebookURL?: (x: string) => void;
+  setAirdropDescription?: (x: string) => void;
+  setAirdropTwitterURL?: (x: string) => void;
+  setAirdropTelegramURL?: (x: string) => void;
+  setAirdropYoutubeURL?: (x: string) => void;
+  setAirdropWebsiteURL?: (x: string) => void;
+  setAirdropLogo?: (x: File | undefined) => void;
 }
 
 type stepTitleProps = {

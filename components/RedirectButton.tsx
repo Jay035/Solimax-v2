@@ -11,7 +11,7 @@ export default function RedirectButton({ route }: Props) {
   return (
     <button
       onClick={() => router.back()}
-      className="w-fit cursor-pointer mb-[2.06rem]"
+      className="w-fit cursor-pointer "
     >
       <svg
         className=""

@@ -3,20 +3,20 @@ import { useState } from "react";
 import LatestPools from "@/components/LatestPools";
 import StepOne from "../components/StepOne";
 import StepTwo from "../components/StepTwo";
+import { GlobalContext } from "@/context/Context";
 
 type Props = {};
 
 export default function CreateAirdrop({}: Props) {
-  const [currentStep, setCurrentStep] = useState<number>(1);
+  const { airdropCurrentStep } = GlobalContext();
   const [error, setError] = useState<string>("");
-  const [tokenAddress, setTokenAddress] = useState<string>("");
 
   return (
-    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem] xl:border-t xl:border-[#424242]">
+    <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem]">
       <LatestPools />
       <main className="mt-[2.5rem] text-white mr-[1.69rem] xl:mr-10">
         <section className="bg-[#1D1C20] w-full pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8">
-          <div className="flex justify-between items-center mb-10">
+          <div className="flex flex-col md:flex-row justify-between gap-2 md:items-center mb-10">
             <h1 className="tracking-[-0.015rem] text-2xl text-white">
               Create new airdrop
             </h1>
@@ -33,22 +33,8 @@ export default function CreateAirdrop({}: Props) {
               <p className="text-[#F04438] text-sm sm:text-base">{error}</p>
             )}
           </div>
-          {currentStep === 1 && (
-            <StepOne
-              currentStep={currentStep}
-              tokenAddress={tokenAddress}
-              setError={setError}
-              setCurrentStep={setCurrentStep}
-              setTokenAddress={setTokenAddress}
-            />
-          )}
-          {currentStep === 2 && (
-            <StepTwo
-              currentStep={currentStep}
-              setError={setError}
-              setCurrentStep={setCurrentStep}
-            />
-          )}
+          {airdropCurrentStep === 1 && <StepOne setError={setError} />}
+          {airdropCurrentStep === 2 && <StepTwo setError={setError} />}
         </section>
         <p className="mt-8 text-[0.875rem] text-[#D1D1D6] max-w-[44.6rem]">
           Disclaimer: Solimax Presale will never endorse or encourage that you

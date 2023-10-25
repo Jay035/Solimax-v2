@@ -1,23 +1,20 @@
 import CustomInput from "@/components/CustomInput";
+import { GlobalContext } from "@/context/Context";
 import VerifyAddress from "@/hooks/VerifyAddress";
 import { toast } from "react-toastify";
 
 type Props = {
-  tokenAddress: string;
-  currentStep: number;
-  setTokenAddress: (address: string) => void;
   setError: (error: string) => void;
-  setCurrentStep: (step: number) => void;
 };
 
-export default function StepOne({
-  tokenAddress,
-  currentStep,
-  setTokenAddress,
-  setError,
-  setCurrentStep,
-}: Props) {
-  const status = VerifyAddress(tokenAddress);
+export default function StepOne({ setError }: Props) {
+  const {
+    airdropTokenAddress,
+    setAirdropTokenAddress,
+    airdropCurrentStep,
+    setAirdropCurrentStep,
+  } = GlobalContext();
+  const status = VerifyAddress(airdropTokenAddress!);
 
   return (
     <form>
@@ -29,11 +26,12 @@ export default function StepOne({
           label="Token address"
           type="text"
           placeholder="Enter token or LP address"
-          value={tokenAddress}
+          value={airdropTokenAddress}
           onChange={(e) => {
-            setTokenAddress?.(e.target.value);
+            setAirdropTokenAddress?.(e.target.value);
             setError?.("");
           }}
+          onMouseLeave={() => VerifyAddress(airdropTokenAddress!)}
           isRequired={true}
         />
         {/* create pool fee */}
@@ -43,12 +41,12 @@ export default function StepOne({
       </div>
       <div className="flex mt-8">
         <button
-          disabled={tokenAddress === ""}
+          disabled={airdropTokenAddress === ""}
           type="submit"
           onClick={(e: any) => {
             e.preventDefault();
             if (status) {
-              setCurrentStep(currentStep + 1);
+              setAirdropCurrentStep?.(airdropCurrentStep + 1);
             } else {
               toast.error("Token address is not valid!");
             }

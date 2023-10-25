@@ -44,8 +44,10 @@ export default function CustomInput({
             id={id}
             name={id}
             className={`${inputClassName} ${
-              id === "amount" ? "w-[90%]" : "w-full"
-            } outline-none group-hover:border-[0.2px] group-hover:border-white`}
+              id === "amount"
+                ? "w-[90%]"
+                : "w-full group-hover:border-[0.2px] group-hover:border-white"
+            } outline-none `}
             type={type}
             autoComplete="off"
             defaultChecked={defaultChecked}

@@ -3,7 +3,10 @@ import Image from "next/image";
 import img2 from "../../../../public/icons/icon-2.svg";
 import banner from "../../../../public/images/detail banner.png";
 import Details from "./components/Details";
-import Link from "next/link";
+import favIcon from "../../../../public/icons/heart-filled.svg";
+import RedirectButton from "@/components/RedirectButton";
+import RightCol from "./components/RightCol";
+import Allocations from "./components/Allocations";
 
 // export async function generateMetadata({
 //     params: { id },
@@ -19,41 +22,75 @@ import Link from "next/link";
 
 export default function page({ params }: { params: { title: string } }) {
   return (
-    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20 xl:border-t xl:border-[#424242]">
-      <div className="flex justify-between items-center mb-9">
-        {/* chevron left */}
-        <Link href="/airdrop/list/all">
-          <svg
-            className="cursor-pointer"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M15 18L9 12L15 6"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
+    <section className="text-white pt-6 pb-20 px-[1.67rem] md:pr-10">
+      <div className="flex justify-between mb-9">
+        <RedirectButton route="" />
         <div className="flex items-center gap-2 text-white">
           <Image
-            width={44}
-            height={44}
-            className="cursor-pointer"
+            className="cursor-pointer w-10 md:w-11"
             // onClick={() => setIsAddedToFavorites((prevState) => !prevState)}
-            src="/icons/heart-filled.svg"
+            src={favIcon}
             alt="heart icon"
           />
           {/* status */}
-          <p className="p-[0.72294rem] text-[1.01rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
-            Upcoming | sales starts in{" "}
-            <span className="text-[#C38CC3]">00:25:13</span>
+          <p className="p-[0.72rem] tracking-[-0.01013rem] text-sm md:text-[1.01rem] flex items-center gap-[0.72rem] rounded-[0.72294rem] bg-[#a4d0f2]/[0.05]">
+            {/* <span className="block rounded-full w-2 h-2 bg-gradient-to-r from-[#EFAD2E]/[12.48%] via-[#F5472A] to-[#ACD44D]"></span>  */}
+            {/* status color  */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="9"
+              height="9"
+              viewBox="0 0 9 9"
+              fill="none"
+            >
+              <circle
+                cx="4.21631"
+                cy="4.06738"
+                r="4"
+                fill="url(#paint0_linear_2273_4600)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_2273_4600"
+                  x1="1.21443"
+                  y1="4.80268"
+                  x2="8.86171"
+                  y2="4.80268"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#EFAD2E" />
+                  <stop offset="1" stopColor="#F5472A" />
+                  <stop offset="1" stopColor="#ACD44D" />
+                </linearGradient>
+              </defs>
+            </svg>
+            Upcoming
           </p>
+        </div>
+      </div>
+      <div className="mt-[2.81rem] mb-8 p-[1px] rounded-[0.625rem] bg-gradient-to-r from-[#77cdeb] via-[#953ddd] to-[#a56ef4]">
+        <div className="bg-[#1D1C20] rounded-[0.625rem] py-8 md:py-[3.2rem] flex flex-col gap-4 justify-center items-center">
+          <p className="text-lg tracking-[-0.01125rem]">Airdrop starts in</p>
+          <section className="bg-[#14221E] flex gap-2 rounded-lg border-[0.5px] border-[#81C8F2] p-2 md:py-4 md:px-6">
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
+              <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
+                01
+              </span>{" "}
+              Hour
+            </p>
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
+              <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
+                25
+              </span>{" "}
+              Min
+            </p>
+            <p className="tracking-[-0.00875rem] text-sm flex items-center gap-1">
+              <span className="text-2xl tracking-[-0.015rem] font-[450] font-neueHaas">
+                45
+              </span>{" "}
+              Sec
+            </p>
+          </section>
         </div>
       </div>
       <div className="grid lg:grid-cols-2 gap-[1.87rem]">
@@ -62,14 +99,18 @@ export default function page({ params }: { params: { title: string } }) {
           {/* 1st card */}
           <div className="bg-[#1D1C20] border border-[#3F3F46] rounded-[0.65rem] px-5 py-4">
             {/* top */}
-            <section className="pb-[1.12rem] mb-[1.12rem] flex justify-between items-center border-b border-[#3F3F46]">
+            <section className="pb-[1.12rem] mb-[1.12rem] flex flex-col gap-3 sm:flex-row justify-between md:items-center border-b border-[#3F3F46]">
               {/* project name */}
-              <div className="flex items-center gap-4 text-2xl">
-                <Image className="w-16 2xl:w-[4.04rem]" src={img2} alt="icon" />
+              <div className="flex items-center gap-4 text-xl md:text-2xl">
+                <Image
+                  className="w-10 md:w-16 2xl:w-[4.04rem]"
+                  src={img2}
+                  alt="icon"
+                />
                 {params.title}
               </div>
               {/* social icons */}
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-4 justify-end sm:items-center">
                 {/* telegram */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,6 +118,7 @@ export default function page({ params }: { params: { title: string } }) {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
+                  className="w-5 md:w-6"
                 >
                   <g clipPath="url(#clip0_1311_2881)">
                     <path
@@ -96,6 +138,7 @@ export default function page({ params }: { params: { title: string } }) {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
+                  className="w-5 md:w-6"
                   fill="none"
                 >
                   <g clipPath="url(#clip0_1311_2885)">
@@ -116,6 +159,7 @@ export default function page({ params }: { params: { title: string } }) {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
+                  className="w-5 md:w-6"
                   fill="none"
                 >
                   <g clipPath="url(#clip0_1311_2889)">
@@ -145,6 +189,7 @@ export default function page({ params }: { params: { title: string } }) {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
+                  className="w-5 md:w-6"
                 >
                   <g clipPath="url(#clip0_1311_2894)">
                     <path
@@ -160,7 +205,7 @@ export default function page({ params }: { params: { title: string } }) {
                 </svg>
               </div>
             </section>
-            <p>
+            <p className="text-sm md:text-base">
               The memecoin for Jabronis around the world. Tired of missing the
               next meta, not getting at least a 2x on your investment and
               becoming a community member instead of trader? This is your last
@@ -169,111 +214,10 @@ export default function page({ params }: { params: { title: string } }) {
             </p>
           </div>
           <Details />
+          <Allocations />
         </section>
         {/* right column */}
-        <section className="flex flex-col gap-6 text-white">
-          <Image className="w-full" src={banner} alt="banner" />
-          <div className="bg-[#1D1C20] pt-[1.13rem] border border-[#3F3F46] rounded-[0.65rem] px-5">
-            {/* PROGRESS */}
-            <div className="">
-              <div className="flex justify-between items-center text-[#e4e4e7] text-[0.72rem]">
-                <p className="tracking-[-0.0073rem]">Progress</p>
-                <p className="tracking-[-0.0073rem]">67%</p>
-              </div>
-              {/* progress bar */}
-              <div className="bg-[#70707b] w-full h-[0.434rem] rounded-[0.58rem] my-[0.29rem]">
-                <div className="bg-[#454FDA] w-[67%] h-full rounded-[0.58rem]"></div>
-              </div>
-              <div className="flex justify-between items-center text-[#e4e4e7] text-[0.72rem]">
-                <p className="tracking-[-0.0073rem]">870 BNB</p>
-                <p className="tracking-[-0.0073rem] text-[#f3ce92]">1000 BNB</p>
-              </div>
-            </div>
-            {/* pool state */}
-            <p className="bg-[#a1f381]/[0.05] text-center text-[0.875rem] tracking-[-0.00875rem] mt-[1.05rem] mb-[2.37rem] p-[0.65rem] rounded-[0.65rem]">
-              This pool is active
-            </p>
-            <div className="border-b border-[#26272B]">
-              {/* Status */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-                  Status
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-[#12B76A] text-sm">
-                  Active
-                </p>
-              </section>
-              {/* Sale type */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem] text-[#E4E4E7]">
-                  Sale type
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-[#86CB3C] text-sm">
-                  Whitelist
-                </p>
-              </section>
-              {/* Max buy */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">Maximum buy</p>
-                <p className="tracking-[-0.00875rem] text-right  text-sm">
-                  0.033 BNB{" "}
-                </p>
-              </section>
-              {/* Min buy */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">Minimum buy</p>
-                <p className="tracking-[-0.00875rem] text-right  text-sm">
-                  3.3 BNB{" "}
-                </p>
-              </section>
-              {/* My contributions */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">
-                  My contributions
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-sm">
-                  0.0 BNB{" "}
-                </p>
-              </section>
-              {/* My contributions */}
-              <section className="pb-2 mb-2 flex justify-between items-center">
-                <p className="text-sm tracking-[-0.00875rem]">
-                  Total contributors
-                </p>
-                <p className="tracking-[-0.00875rem] text-right text-sm">69 </p>
-              </section>
-            </div>
-            <div className="py-10 px-6 bg-[#18181B] bordr-[#E4E4E7] mt-7 text-white rounded-2xl">
-              <h1 className="text-[#fcfcfd] tracking-[-0.045rem] text-[1.875rem] md:text-4xl">
-                Stay in the loop about all projects
-              </h1>
-              <p className="mt-5 mb-8 text-[#e4e4e7] text-sm">
-                Sign up our mailing list to receive our new presales, features,
-                tips and reviews for next 100X projects.
-              </p>
-              <form className="flex gap-4 flex-col">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-[0.87rem] py-3 rounded-lg bg-[#26272B] border border-[#A0A0AB] shadow-[0px_1px_2px_0px] shadow-[#101828]/[0.05] bg-transparent outline-none tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
-                  name=""
-                  id=""
-                />
-                <p className="mt-[0.38rem] text-left text-[#d1d1d6]">
-                  We care about your data in our privacy policy.
-                </p>
-                <button
-                  className="rounded-lg border border-[#454fda] bg-[#454fda] px-5 py-3"
-                  // onClick={(e: any) => {
-                  //   e.preventDefault();
-                  // }}
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
+        <RightCol />
       </div>
       {/* page {params.title} */}
     </section>

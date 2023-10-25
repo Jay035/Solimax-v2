@@ -12,6 +12,7 @@ export default function FairLaunchForm() {
   useEffect(() => {
     console.log(fairlaunchCurrentStep)
   }, [fairlaunchCurrentStep])
+  
   return (
     <section>
       {/* ------------------------------------- */}
