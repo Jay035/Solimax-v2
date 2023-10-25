@@ -22,6 +22,13 @@ import {
   goerli,
 } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from "@rainbow-me/rainbowkit-siwe-next-auth";
+import type { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+import type { AppProps } from "next/app";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -67,18 +74,36 @@ const wagmiConfig = createConfig({
   webSocketPublicClient,
 });
 
-export function Providers({ children }: { children: React.ReactNode }) {
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: "Sign in to the RainbowKit + SIWE example app",
+});
+
+export function Providers(
+  { children }: { children: React.ReactNode },
+  {
+    Component,
+    pageProps,
+  }: AppProps<{
+    session: Session;
+  }>
+) {
   const mounted = useIsMounted();
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
-        appInfo={demoAppInfo}
-        theme={darkTheme()}
-        coolMode
-      >
-        {mounted && children}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <SessionProvider refetchInterval={0} {...pageProps}>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitSiweNextAuthProvider
+          getSiweMessageOptions={getSiweMessageOptions}
+        >
+          <RainbowKitProvider
+            chains={chains}
+            appInfo={demoAppInfo}
+            theme={darkTheme()}
+            coolMode
+          >
+            {mounted && children}
+          </RainbowKitProvider>
+        </RainbowKitSiweNextAuthProvider>
+      </WagmiConfig>
+    </SessionProvider>
   );
 }
