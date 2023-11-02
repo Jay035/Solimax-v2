@@ -1,11 +1,8 @@
+import { AccordionProps } from "@/types";
 import Image from "next/image";
 import React, { useState } from "react";
 
-export const Accordion: React.FC<AccordionProps> = ({
-  title,
-  titleImg,
-  children,
-}) => {
+export const Accordion = ({ title, titleImg, children }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
