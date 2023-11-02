@@ -1,4 +1,5 @@
 "use client";
+import { FormProps } from "@/types";
 import {
   ReactNode,
   useState,

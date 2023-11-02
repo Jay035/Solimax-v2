@@ -1,4 +1,5 @@
 import { GlobalContext } from "@/context/Context";
+import { stepTitleProps } from "@/types";
 
 type Props = {
   stepTitles: any[];

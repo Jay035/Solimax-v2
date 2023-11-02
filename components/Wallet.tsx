@@ -98,7 +98,7 @@ export default function Wallet({}: Props) {
                           }}
                         >
                           {chain.iconUrl && (
-                            <img
+                            <Image
                               alt={chain.name ?? "Chain icon"}
                               src={chain.iconUrl}
                               className="w-auto h-auto xl:w-9 xl:h-9"
