@@ -1,7 +1,15 @@
+import { Web3GlobalContext } from "@/app/Web3GlobalProvider";
 import CustomInput from "@/components/CustomInput";
 import { GlobalContext } from "@/context/Context";
 import VerifyAddress from "@/hooks/VerifyAddress";
-import { useState } from "react";
+import useCreatLockerMutation from "@/hooks/useContractMutations/useCreatLockerMutation";
+import {
+	useGetSignerBalanceQuery,
+	useGetTokenDetailsQuery,
+} from "@/hooks/useContractQueries";
+import useConverDateToEpoch from "@/hooks/useConverDateToEpoch";
+import { useEthersSigner } from "@/web3/adapters";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function LockForm() {
@@ -27,9 +35,20 @@ export default function LockForm() {
 		setSolilockLockTime,
 		setSolilockTokenAddress,
 	} = GlobalContext();
+	const signer = useEthersSigner();
+	const { queryEnabled, setQueryEnabled } = Web3GlobalContext();
 	const [error, setError] = useState<string>("");
+	const [addressStatus, setAddressStatus] = useState(true);
+	let status = VerifyAddress(solilockTokenAddress!);
+	const createLockerFn = useCreatLockerMutation();
+	const getTokenDetailsFn = useGetTokenDetailsQuery();
+	const epochDate = useConverDateToEpoch(solilockLockTime);
+	const getUsersTokenBalance = useGetSignerBalanceQuery();
+	//console.log(address, isConnected);
 
-	const status = VerifyAddress(solilockTokenAddress!);
+	useEffect(() => {
+		console.log({ getTokenDetailsFn });
+	}, [solilockAmount]);
 
 	return (
 		<form className="flex flex-col gap-6">
@@ -45,11 +64,23 @@ export default function LockForm() {
 					value={solilockTokenAddress}
 					onChange={(e) => {
 						setSolilockTokenAddress?.(e.target.value);
+						//console.log(getUsersTokenBalance.data);
+
+						if (status) {
+							setQueryEnabled(true);
+						}
 						setError?.("");
 					}}
 					onMouseLeave={() => VerifyAddress(solilockTokenAddress!)}
 					isRequired={true}
 				/>
+				{
+					<>
+						Token Symbols : {getTokenDetailsFn.data.symbol} Token
+						TotalSupply : {getTokenDetailsFn.data.totalSupply} Token
+						Decimal : {getTokenDetailsFn.data.decimals}
+					</>
+				}
 				<label
 					htmlFor="another-user-used"
 					className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
@@ -163,6 +194,7 @@ export default function LockForm() {
 								value={solilockTGEDate}
 								onChange={(e) => {
 									setSolilockTGEDate?.(e.target.value);
+
 									setError?.("");
 								}}
 								isRequired={true}
@@ -231,6 +263,8 @@ export default function LockForm() {
 				value={solilockLockTime}
 				onChange={(e) => {
 					setSolilockLockTime?.(e.target.value);
+					console.log(e.target.value);
+
 					setError?.("");
 				}}
 				isRequired={true}
@@ -256,21 +290,20 @@ export default function LockForm() {
 				type="submit"
 				onClick={(e: any) => {
 					e.preventDefault();
-					if (status === true && !solilockVestingUsed) {
-						if (solilockVestingUsed) {
-							if (
-								solilockTGEDate === "" ||
-								solilockTGEPercent === null ||
-								solilockCycleDays === "" ||
-								solilockCycleReleasePercent === ""
-							) {
-								toast.error("Fill in all required fields");
-							} else {
-								// handlePresaleNextStep?.(e);
-							}
-						}
+					if (status) {
+						//token Approve
+
+						//perform transactions
+						const lockerProps: any = {
+							tokenAddress: solilockTokenAddress!,
+							name: getTokenDetailsFn.data.symbol + "-lock",
+							withdrawer: signer?.getAddress(),
+							amount: solilockAmount!,
+							withdrawTime: epochDate,
+						};
+						createLockerFn.mutate(lockerProps);
 					} else {
-						toast.error("Token address is not valid!");
+						toast.error("Invalid Form");
 					}
 				}}
 				className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"

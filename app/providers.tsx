@@ -20,15 +20,17 @@ import {
 	base,
 	zora,
 	goerli,
+	optimismGoerli,
 } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
-import Web3GlobalProvider from "./Web3GlobalProvider";
+import { Web3GlobalProvider } from "./Web3GlobalProvider";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
 	[
 		mainnet,
 		polygon,
 		optimism,
+		optimismGoerli,
 		arbitrum,
 		base,
 		zora,

@@ -17,18 +17,16 @@ export default class LockerContract {
 		withdrawer: string,
 		withdrawTime: string
 	) {
-		try {
-			const tx = await this.contract.createLocker(
-				tokenAddress,
-				name,
-				amount,
-				withdrawer,
-				withdrawTime,
-				{ value: parseEther("0.5") }
-			);
-			return tx;
-		} catch (error) {
-			return error;
-		}
+		//console.log("here jer");
+
+		const tx = await this.contract.createLocker(
+			tokenAddress,
+			name,
+			amount,
+			withdrawer,
+			withdrawTime,
+			{ value: parseEther("1") }
+		);
+		return tx;
 	}
 }
