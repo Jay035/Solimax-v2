@@ -47,6 +47,7 @@ export default function LockForm() {
 	//console.log(address, isConnected);
 
 	useEffect(() => {
+		console.log(solilockLockTime);
 		console.log({ getTokenDetailsFn });
 	}, [solilockAmount]);
 

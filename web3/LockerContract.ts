@@ -25,8 +25,11 @@ export default class LockerContract {
 			amount,
 			withdrawer,
 			withdrawTime,
-			{ value: parseEther("1") }
+			//{ value: parseEther("0.00000000000003") },
+			
+	
 		);
+		console.log(tx)
 		return tx;
 	}
 }
