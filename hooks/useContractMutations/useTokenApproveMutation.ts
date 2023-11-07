@@ -1,26 +1,24 @@
+import { useMutation } from "@tanstack/react-query";
 import { Web3GlobalContext } from "@/app/Web3GlobalProvider";
-import LockerContract from "@/web3/LockerContract";
-// import { useMutation } from "@tanstack/react-query";
-import { useMutation } from "wagmi";
+import Erc20Contract from '@/web3/Erc20Contract'
 
-export default function useTokenApproveMutation() {
-	const { signer, lockerFactoryAddress } = Web3GlobalContext();
-	const tokenLockerContract = new LockerContract(
-		lockerFactoryAddress,
+export default  function useTokenApprovalMutation() {
+    const { signer, usdtAddress} = Web3GlobalContext()
+
+	const tokenContract = new Erc20Contract(
+		usdtAddress,
 		signer
-	);
-	return useMutation({
-		mutationFn: async (createLockerProps: createLockProps) => {
-			const { tokenAddress, name, withdrawer, amount, withdrawTime } =
-				createLockerProps;
-			console.log(createLockerProps);
-			return await tokenLockerContract.createLocker(
-				tokenAddress,
-				name,
-				amount,
-				withdrawer,
-				withdrawTime
-			);
-		},
-	});
+	)
+
+return useMutation({
+	mutationFn: async (approveProps:any) => {
+		const { SpenderAddress, amount } =
+				approveProps;
+			;
+		return await tokenContract.getContactApprove(
+			SpenderAddress,
+			amount
+		)
+	}
+})
 }

@@ -3,6 +3,7 @@ import CustomInput from "@/components/CustomInput";
 import { GlobalContext } from "@/context/Context";
 import VerifyAddress from "@/hooks/VerifyAddress";
 import useCreatLockerMutation from "@/hooks/useContractMutations/useCreatLockerMutation";
+import useTokenApprovalMutation from "@/hooks/useContractMutations/useTokenApproveMutation";
 import {
 	useGetSignerBalanceQuery,
 	useGetTokenDetailsQuery,
@@ -36,18 +37,19 @@ export default function LockForm() {
 		setSolilockTokenAddress,
 	} = GlobalContext();
 	const signer = useEthersSigner();
-	const { queryEnabled, setQueryEnabled } = Web3GlobalContext();
+	const { queryEnabled, setQueryEnabled, lockerFactoryAddress } = Web3GlobalContext();
 	const [error, setError] = useState<string>("");
 	const [addressStatus, setAddressStatus] = useState(true);
 	let status = VerifyAddress(solilockTokenAddress!);
 	const createLockerFn = useCreatLockerMutation();
+	const ApproveFn = useTokenApprovalMutation()
 	const getTokenDetailsFn = useGetTokenDetailsQuery();
 	const epochDate = useConverDateToEpoch(solilockLockTime);
 	const getUsersTokenBalance = useGetSignerBalanceQuery();
 	//console.log(address, isConnected);
 
 	useEffect(() => {
-		console.log(solilockLockTime);
+		console.log(epochDate);
 		console.log({ getTokenDetailsFn });
 	}, [solilockAmount]);
 
@@ -75,11 +77,15 @@ export default function LockForm() {
 					onMouseLeave={() => VerifyAddress(solilockTokenAddress!)}
 					isRequired={true}
 				/>
-				{
+				{ getTokenDetailsFn.data.symbol  ? 
 					<>
 						Token Symbols : {getTokenDetailsFn.data.symbol} Token
 						TotalSupply : {getTokenDetailsFn.data.totalSupply} Token
 						Decimal : {getTokenDetailsFn.data.decimals}
+					</>
+					:
+					<>
+					
 					</>
 				}
 				<label
@@ -292,6 +298,11 @@ export default function LockForm() {
 				onClick={(e: any) => {
 					e.preventDefault();
 					if (status) {
+						const approveProps: any = {
+							SpenderAddress: '0xe3bacaA390bB3E80A497592E420c5C5dDCb94a3a',
+		                 	amount: solilockAmount!
+						}
+						ApproveFn.mutate(approveProps)
 						//token Approve
 
 						//perform transactions

@@ -2,7 +2,7 @@ import { Erc20, Erc20__factory } from "@/types/contracts";
 import { AddressLike, Signer, formatUnits, parseUnits } from "ethers";
 import React, { Component } from "react";
 
-export default class Erc20Contract {
+export default class Erc20Contract  {
 	contract: Erc20;
 	signer: Signer;
 	constructor(address: string, signer: Signer) {
@@ -22,6 +22,8 @@ export default class Erc20Contract {
 	async getTotalSupply() {
 		return await this.contract.totalSupply();
 	}
+
+	
 
 	// getToken details
 	async getFullTokenDetails() {
@@ -46,4 +48,17 @@ export default class Erc20Contract {
 	async getUserBalanceOf() {
 		return await this.balanceOf(await this.signer.getAddress());
 	}
+
+	async getContactApprove(
+		SpenderAddress: string,
+		amount: string,
+	) {
+		//console.log("here jer");
+        return await this.contract.approve(
+			SpenderAddress,
+			amount
+		)
+		
+	}
+	
 }

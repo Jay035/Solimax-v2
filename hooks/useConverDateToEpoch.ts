@@ -6,7 +6,7 @@ export default function useConverDateToEpoch(date: any): string {
 	const [epochDate, setEpochDate]: any = useState();
 	useEffect(() => {
 		if (date) {
-			const epochTime = new Date(date.toString()).getTime() / 100000; // Convert to second
+			const epochTime = new Date(date.toString()).getTime() / 1000; // Convert to second
 			setEpochDate(epochTime);
 			console.log({ epochTime });
 		}

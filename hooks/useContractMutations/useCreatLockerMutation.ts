@@ -5,6 +5,7 @@ import React from "react";
 
 export default function useCreatLockerMutation() {
 	const { signer, lockerFactoryAddress } = Web3GlobalContext();
+	
 	const tokenLockerContract = new LockerContract(
 		lockerFactoryAddress,
 		signer
@@ -14,7 +15,8 @@ export default function useCreatLockerMutation() {
 			const { tokenAddress, name, withdrawer, amount, withdrawTime } =
 				createLockerProps;
 			console.log(createLockerProps);
-			return await tokenLockerContract.createLocker(
+			return await tokenLockerContract.createLocker
+			(
 				tokenAddress,
 				name,
 				amount,

@@ -4,7 +4,7 @@ ChainAddress.set(420, {
 	idoFactoryAddress: "",
 	tokenDeployerAddress: "",
 	lockerFactoryAddress: "0x202E0b96Ee4359c5793e0f3D218E3BB784133814",
-	usdtAddress: "",
+	usdtAddress: "0xe3bacaA390bB3E80A497592E420c5C5dDCb94a3a",
 	weth: "",
 });
 ChainAddress.set(5, {
