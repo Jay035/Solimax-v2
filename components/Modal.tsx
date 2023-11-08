@@ -3,6 +3,7 @@ import { GlobalContext } from "@/context/Context";
 import CustomSelect from "./launchpad/CustomSelect";
 import { ReactNode, useState } from "react";
 import CustomInput from "./CustomInput";
+import useDeployTokenMutation from "@/hooks/useContractMutations/useDeployToken";
 
 type Props = {
   children: ReactNode;
@@ -23,6 +24,7 @@ export default function CreateTokenModal() {
   const [symbol, setSymbol] = useState<string>("");
   const [decimals, setDecimals] = useState<number>();
   const [tokenSupply, setTokenSupply] = useState<number>();
+  const deployFn = useDeployTokenMutation()
   const tokenTypes = [
     {
       id: 0,
@@ -169,11 +171,22 @@ export default function CreateTokenModal() {
             </button>
             <button
               onClick={(e: any) => {
+                alert('clicked')
                 e.preventDefault();
+
+                const deployProps: any = {
+                  nameOfToken,
+                  symbol,
+                  totalSupply: Number(tokenSupply),
+                }
+                console.log(deployProps)
+                deployFn.mutate(deployProps)
+                console.log(deployFn.error)
+
               }}
               className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[10.625rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
             >
-              Create token
+              {deployFn?.isLoading ? 'Loading' : 'Create token'}
             </button>
           </div>
         </form>

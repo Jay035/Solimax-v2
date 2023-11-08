@@ -10,7 +10,7 @@ import LockerContract from "@/web3/LockerContract";
 import { ethers, Provider } from "ethers";
 
 const queryClient = new QueryClient();
-export async function  Web3GlobalProvider({ children }: any) {
+export function  Web3GlobalProvider({ children }: any) {
 
 	const signer = useEthersSigner();
 	const optGoerli: chainAddressConfigType = ChainAddress.get(420)!;
@@ -39,6 +39,7 @@ export async function  Web3GlobalProvider({ children }: any) {
 					usdtAddress,
 					queryEnabled,
 					setQueryEnabled,
+					tokenDeployerAddress,
 				}}
 			>
 				{children}

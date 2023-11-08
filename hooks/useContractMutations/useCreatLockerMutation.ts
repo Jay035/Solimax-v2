@@ -1,3 +1,4 @@
+'use client'
 import { Web3GlobalContext } from "@/app/Web3GlobalProvider";
 import LockerContract from "@/web3/LockerContract";
 import { useMutation } from "@tanstack/react-query";

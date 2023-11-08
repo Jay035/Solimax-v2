@@ -3,3 +3,5 @@
 /* eslint-disable */
 export { Erc20__factory } from "./Erc20__factory";
 export { TokenLockerFactory__factory } from "./TokenLockerFactory__factory";
+export { Factory__factory} from './Factory__factory'
+export { Token__factory} from './Token__factory'

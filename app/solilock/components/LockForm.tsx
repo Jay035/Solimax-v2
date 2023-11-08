@@ -1,3 +1,4 @@
+
 import { Web3GlobalContext } from "@/app/Web3GlobalProvider";
 import CustomInput from "@/components/CustomInput";
 import { GlobalContext } from "@/context/Context";
@@ -10,6 +11,8 @@ import {
 } from "@/hooks/useContractQueries";
 import useConverDateToEpoch from "@/hooks/useConverDateToEpoch";
 import { useEthersSigner } from "@/web3/adapters";
+import { ethers } from "ethers";
+import { stringify } from "querystring";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -37,6 +40,7 @@ export default function LockForm() {
 		setSolilockTokenAddress,
 	} = GlobalContext();
 	const signer = useEthersSigner();
+	const [isApproved ,setIsApproved] = useState(false)
 	const { queryEnabled, setQueryEnabled, lockerFactoryAddress } = Web3GlobalContext();
 	const [error, setError] = useState<string>("");
 	const [addressStatus, setAddressStatus] = useState(true);
@@ -288,21 +292,20 @@ export default function LockForm() {
 					<span className="text-[#A4D0F2]">rebase tokens</span>
 				</p>
 			</div>
-			<button
+			{
+				ApproveFn.isSuccess ? 
+				<>
+				<button
 				disabled={
 					solilockTokenAddress === "" ||
 					solilockAmount === null ||
 					solilockLockTime === ""
 				}
 				type="submit"
-				onClick={(e: any) => {
+				onClick={async (e: any) => {
 					e.preventDefault();
 					if (status) {
-						const approveProps: any = {
-							SpenderAddress: '0xe3bacaA390bB3E80A497592E420c5C5dDCb94a3a',
-		                 	amount: solilockAmount!
-						}
-						ApproveFn.mutate(approveProps)
+						
 						//token Approve
 
 						//perform transactions
@@ -322,6 +325,42 @@ export default function LockForm() {
 			>
 				Lock
 			</button>
+				</>
+				 :
+				<>
+				<button
+				disabled={
+					solilockTokenAddress === "" ||
+					solilockAmount === null ||
+					solilockLockTime === ""
+				}
+				type="submit"
+				onClick={async (e: any) => {
+					e.preventDefault();
+					if (status) {
+						const approveProps: any = {
+							SpenderAddress: '0x202E0b96Ee4359c5793e0f3D218E3BB784133814',
+		                 	amount: ethers.parseEther('100000000000000')
+						}
+					    ApproveFn.mutate(approveProps);
+						
+						if(ApproveFn.isSuccess) {
+							setIsApproved(true)
+						}
+						
+						//token Approve
+
+						
+					} else {
+						toast.error("Invalid Form");
+					}
+				}}
+				className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+			>
+				{ApproveFn.isLoading ? 'Loading..' : 'Approve'}
+			</button>
+				</>
+			}
 		</form>
 	);
 }

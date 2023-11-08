@@ -1,3 +1,4 @@
+'use client'
 import { useMutation } from "@tanstack/react-query";
 import { Web3GlobalContext } from "@/app/Web3GlobalProvider";
 import Erc20Contract from '@/web3/Erc20Contract'
