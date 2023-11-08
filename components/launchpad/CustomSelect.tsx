@@ -1,4 +1,5 @@
 "use client";
+import { SelectProps } from "@/types";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";

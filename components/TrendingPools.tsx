@@ -1,6 +1,7 @@
 import Image from "next/image";
 import chevronDown from "../public/icons/chevron-down.svg";
 import { TrendingPoolsData } from "./data";
+import { PoolsDataProps } from "@/types";
 
 type Props = {};
 

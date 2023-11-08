@@ -1,4 +1,5 @@
 import { GlobalContext } from "@/context/Context";
+import { ButtonProps } from "@/types";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";
 

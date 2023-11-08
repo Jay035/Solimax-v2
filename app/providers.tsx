@@ -71,6 +71,7 @@ const wagmiConfig = createConfig({
 });
 
 export function Providers({ children }: { children: React.ReactNode }) {
+
 	const mounted = useIsMounted();
 	return (
 		<WagmiConfig config={wagmiConfig}>
@@ -85,3 +86,4 @@ export function Providers({ children }: { children: React.ReactNode }) {
 		</WagmiConfig>
 	);
 }
+
