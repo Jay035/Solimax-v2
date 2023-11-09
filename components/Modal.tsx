@@ -170,23 +170,25 @@ export default function CreateTokenModal() {
               Back
             </button>
             <button
-              onClick={(e: any) => {
+              onClick={ async (e: any) => {
                 alert('clicked')
                 e.preventDefault();
 
-                const deployProps: any = {
-                  nameOfToken,
-                  symbol,
-                  totalSupply: Number(tokenSupply),
+               
+
+                const Deploy: any = {
+                  name: nameOfToken,
+                  ticker: symbol,
+                  supply: tokenSupply,
                 }
-                console.log(deployProps)
-                deployFn.mutate(deployProps)
+                await deployFn.mutate(Deploy)
                 console.log(deployFn.error)
 
               }}
               className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[10.625rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
             >
               {deployFn?.isLoading ? 'Loading' : 'Create token'}
+              
             </button>
           </div>
         </form>

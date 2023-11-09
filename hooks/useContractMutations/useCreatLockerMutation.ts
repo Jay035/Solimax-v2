@@ -6,7 +6,7 @@ import React from "react";
 
 export default function useCreatLockerMutation() {
 	const { signer, lockerFactoryAddress } = Web3GlobalContext();
-	
+	console.log(signer)
 	const tokenLockerContract = new LockerContract(
 		lockerFactoryAddress,
 		signer

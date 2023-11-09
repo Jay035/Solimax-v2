@@ -4,6 +4,7 @@ import CustomInput from "@/components/CustomInput";
 import { GlobalContext } from "@/context/Context";
 import VerifyAddress from "@/hooks/VerifyAddress";
 import useCreatLockerMutation from "@/hooks/useContractMutations/useCreatLockerMutation";
+import useDeployTokenMutation from "@/hooks/useContractMutations/useDeployToken";
 import useTokenApprovalMutation from "@/hooks/useContractMutations/useTokenApproveMutation";
 import {
 	useGetSignerBalanceQuery,
@@ -47,6 +48,7 @@ export default function LockForm() {
 	let status = VerifyAddress(solilockTokenAddress!);
 	const createLockerFn = useCreatLockerMutation();
 	const ApproveFn = useTokenApprovalMutation()
+	const DeployFn = useDeployTokenMutation()
 	const getTokenDetailsFn = useGetTokenDetailsQuery();
 	const epochDate = useConverDateToEpoch(solilockLockTime);
 	const getUsersTokenBalance = useGetSignerBalanceQuery();
