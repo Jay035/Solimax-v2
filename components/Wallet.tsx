@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import logoIcon from "/public/icons/bsc-icon.svg";
 import { useIsMounted } from "@/hooks/useIsMounted";
@@ -60,7 +61,9 @@ export default function Wallet({}: Props) {
                     <button
                       onClick={openConnectModal}
                       type="button"
-                      className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-[9.38rem] h-14 bg-[#454FDA] text-white border-[#424242]"
+
+                      className="rounded-[3.125rem] p-[0.42rem] border-[0.5px] w-[9.38rem] h-10 bg-[#454FDA] text-white border-[#424242]"
+
                     >
                       Connect Wallet
                     </button>
@@ -72,7 +75,8 @@ export default function Wallet({}: Props) {
                     <button
                       onClick={openChainModal}
                       type="button"
-                      className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-fit h-12 bg-[#9e2f2f] text-white border-[#424242]"
+                      className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-fit h-10 bg-[#9e2f2f] text-white border-[#424242]"
+
                     >
                       Wrong network
                     </button>
@@ -85,11 +89,12 @@ export default function Wallet({}: Props) {
                       onClick={openChainModal}
                       style={{ display: "flex", alignItems: "center" }}
                       type="button"
-                      className="bg-[#28282B] text-white p-[0.625rem] border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]"
+                      className="bg-[#28282B] text-white p-[0.625rem] h-10 border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]"
                     >
                       {chain.hasIcon && (
                         <div
-                          className="w-auto h-auto xl:w-9 xl:h-9"
+                          className="w-auto h-auto xl:w-7 xl:h-7"
+
                           style={{
                             background: chain.iconBackground,
                             borderRadius: 999,
@@ -100,16 +105,20 @@ export default function Wallet({}: Props) {
                           {chain.iconUrl && (
                             <Image
                               alt={chain.name ?? "Chain icon"}
+                              height={5}
+                              width={5}
                               src={chain.iconUrl}
-                              className="w-auto h-auto xl:w-9 xl:h-9"
+                              className="w-auto h-auto xl:w-7 xl:h-7"
                             />
                           )}
                         </div>
                       )}
                       {chain.name}
                       <Image
-                        width={16}
-                        height={16}
+
+                        width={10}
+                        height={10}
+
                         className="hidden xl:inline-block"
                         src="/icons/chevron-down.svg"
                         alt="chevron-down"
@@ -119,7 +128,9 @@ export default function Wallet({}: Props) {
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className="bg-[#28282B] text-white p-[0.625rem] px-4 border-[0.5px] rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]"
+
+                      className="bg-[#28282B] text-white p-[0.625rem] px-4 border-[0.5px] h-10 rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]"
+
                     >
                       {account.displayName}
                     </button>

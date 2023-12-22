@@ -1,42 +1,46 @@
 {
-  "name": "solimax-v2",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@rainbow-me/rainbowkit": "^1.0.11",
-    "@rainbow-me/rainbowkit-siwe-next-auth": "^0.3.1",
-    "@types/node": "20.4.9",
-    "@types/react": "18.2.19",
-    "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.14",
-    "axios": "^1.5.1",
-    "eslint": "8.46.0",
-    "eslint-config-next": "13.4.13",
-    "ethers": "^6.7.1",
-    "gsap": "^3.12.2",
-    "iron-session": "^6.3.1",
-    "lokijs": "^1.5.12",
-    "next": "13.5.4",
-    "pino-pretty": "^10.2.0",
-    "postcss": "8.4.27",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-paginate": "^8.2.0",
-    "react-toastify": "^9.1.3",
-    "sharp": "^0.32.5",
-    "siwe": "^2.1.4",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.1.6",
-    "validator": "^13.11.0",
-    "wagmi": "^1.4.2"
-  },
-  "devDependencies": {
-    "encoding": "^0.1.13"
-  }
+
+	"name": "solimax-v2",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"generate-types": " npx typechain --target ethers-v6 --out-dir types/contracts 'web3/abis/*.json'"
+	},
+	"dependencies": {
+		"@rainbow-me/rainbowkit": "^1.0.11",
+		"@tanstack/react-query": "^4.36.1",
+		"@typechain/ethers-v6": "^0.5.1",
+		"@types/node": "20.4.9",
+		"@types/react": "18.2.19",
+		"@types/react-dom": "18.2.7",
+		"autoprefixer": "10.4.14",
+		"eslint": "8.46.0",
+		"eslint-config-next": "13.4.13",
+		"ethers": "^6.7.1",
+		"gsap": "^3.12.2",
+		"lokijs": "^1.5.12",
+		"next": "13.4.13",
+		"pino-pretty": "^10.2.0",
+		"postcss": "8.4.27",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-paginate": "^8.2.0",
+		"react-toastify": "^9.1.3",
+		"sharp": "^0.32.5",
+		"tailwindcss": "3.3.3",
+		"typescript": "5.1.6",
+		"use-debounce": "^9.0.4",
+		"validator": "^13.11.0",
+		"wagmi": "^1.4.2",
+		"web3.storage": "^4.5.5"
+	},
+	"devDependencies": {
+		"@tanstack/eslint-plugin-query": "^5.0.5",
+		"encoding": "^0.1.13",
+		"typechain": "^8.3.2"
+	}
 }
