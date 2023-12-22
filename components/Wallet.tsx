@@ -59,6 +59,7 @@ export default function Wallet({}: Props) {
                 if (!connected) {
                   return (
                     <button
+                    data-aos="fade-left"
                       onClick={openConnectModal}
                       type="button"
 

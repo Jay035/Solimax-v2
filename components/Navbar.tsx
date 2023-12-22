@@ -140,6 +140,7 @@ export default function Navbar() {
         </div>
         {/* logo */}
         <Link
+          data-aos="fade-in"
           href="/"
           className="gap-[0.67rem] items-center cursor-pointer hidden xl:flex"
         >
@@ -154,6 +155,7 @@ export default function Navbar() {
       </div>
       {/* menu */}
       <div
+        // data-aos="fade-right"
         className={`${
           menuOpen
             ? "left-0 top-0 px-10 pt-8 xl:px-0 xl:pt-0"

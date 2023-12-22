@@ -11,6 +11,7 @@ export default function BodyComponent({
   children: React.ReactNode;
 }) {
   const { isModalShowing } = GlobalContext();
+  
 
   return (
     <main className="font-questrial grid xl:grid-cols-[16.5rem_auto]">

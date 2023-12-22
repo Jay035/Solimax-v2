@@ -8,7 +8,10 @@ type Props = {};
 export default function TrendingPools({}: Props) {
   return (
     <section className="text-white pr-[1.06rem] sm:pr-8">
-      <div className="mb-[1.88rem] flex justify-between items-center">
+      <div
+        data-aos="fade-in"
+        className="mb-[1.88rem] flex justify-between items-center"
+      >
         <div className="flex items-center gap-1">
           <Image
             width={24}
@@ -45,42 +48,49 @@ export default function TrendingPools({}: Props) {
                 &nbsp;
               </th>
               <th
+                data-aos="fade-left"
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="project-name"
               >
                 PROJECT
               </th>
               <th
+                data-aos="fade-left"
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="sale-type"
               >
                 SALE TYPE
               </th>
               <th
+                data-aos="fade-left"
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="price"
               >
                 PRICE
               </th>
               <th
+                data-aos="fade-left"
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="min-buy"
               >
                 MIN BUY
               </th>
               <th
+                data-aos="fade-left"
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="max-buy"
               >
                 MAX BUY
               </th>
               <th
+                data-aos="fade-left"
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="total-supply"
               >
                 TOTAL SUPPLY
               </th>
               <th
+                data-aos="fade-left"
                 className="text-[#D1D1D6] text-[0.75rem] tracking-[-0.0075rem]"
                 id="date-of-completion"
               >
@@ -97,15 +107,27 @@ export default function TrendingPools({}: Props) {
                 >
                   {data?.id}.
                 </th>
-                <td headers={`project ${data?.id}`}>{data?.projectName}</td>
-                <td headers={`sale-type ${data?.id}`}>{data?.saleType}</td>
-                <td headers={`price ${data?.id}`}>{data?.price}</td>
-                <td headers={`min-buy ${data?.id}`}>{data?.minBuy}</td>
-                <td headers={`max-buy ${data?.id}`}>{data?.maxBuy}</td>
-                <td headers={`total-supply ${data?.id}`}>
+                <td data-aos="fade-left" headers={`project ${data?.id}`}>
+                  {data?.projectName}
+                </td>
+                <td data-aos="fade-left" headers={`sale-type ${data?.id}`}>
+                  {data?.saleType}
+                </td>
+                <td data-aos="fade-left" headers={`price ${data?.id}`}>
+                  {data?.price}
+                </td>
+                <td data-aos="fade-left" headers={`min-buy ${data?.id}`}>
+                  {data?.minBuy}
+                </td>
+                <td data-aos="fade-left" headers={`max-buy ${data?.id}`}>
+                  {data?.maxBuy}
+                </td>
+                <td data-aos="fade-left" headers={`total-supply ${data?.id}`}>
                   {data?.totalSupply}
                 </td>
-                <td headers={`date ${data?.id}`}>{data?.dateOfCompletion}</td>
+                <td data-aos="fade-left" headers={`date ${data?.id}`}>
+                  {data?.dateOfCompletion}
+                </td>
               </tr>
             ))}
           </tbody>
