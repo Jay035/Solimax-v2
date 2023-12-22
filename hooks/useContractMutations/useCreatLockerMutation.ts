@@ -1,8 +1,8 @@
 'use client'
 import { Web3GlobalContext } from "@/app/Web3GlobalProvider";
+import { createLockProps } from "@/types";
 import LockerContract from "@/web3/LockerContract";
 import { useMutation } from "@tanstack/react-query";
-import React from "react";
 
 export default function useCreatLockerMutation() {
 	const { signer, lockerFactoryAddress } = Web3GlobalContext();
