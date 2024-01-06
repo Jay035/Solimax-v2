@@ -87,7 +87,7 @@ export default function StepThree() {
               SVG, PNG, JPG or GIF (max. 400x400px)
             </p>
           </div>
-          {/* url URL */}
+          {/* Website URL */}
           <CustomInput
             id="WebsiteURL"
             className="flex flex-col gap-[0.62rem]"

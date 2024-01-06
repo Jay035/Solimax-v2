@@ -49,25 +49,27 @@ const CustomFileDropbox: React.FC<CustomFileDropboxProps> = ({
       onDragLeave={handleDragLeave}
     >
       <input
-      id="fileInput"
+        id="fileInput"
         ref={inputRef}
         type="file"
         className="hidden"
         onChange={handleFileInputChange}
         accept="image/*" // You can change this to accept other file types
       />
-      {!selectedFile && (
-        <label htmlFor="fileInput" className="cursor-pointer group">
-          <span
-            className="font-bold group-hover:underline bg-gradient-to-r from-[#77CDEB] to-[#1177C8] bg-clip-text text-transparent"
-            onClick={onButtonClick}
-          >
-            Click to upload file
-          </span>{" "}
-          or drag and drop.
-        </label>
+      {!selectedFile ? (
+        <span
+          className="group-hover:underline cursor-pointer text-[#69FF77]"
+          onClick={(event) => {
+            event.stopPropagation();
+            onButtonClick;
+          }}
+        >
+          Click to upload file{" "}
+          <span className="text-[#D1D1D6]"> or drag and drop</span>
+        </span>
+      ) : (
+        <p className="truncate">{selectedFile.name}</p>
       )}
-      {selectedFile && <p className="truncate">{selectedFile.name}</p>}
     </div>
   );
 };
