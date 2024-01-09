@@ -54,7 +54,7 @@ interface FormProps {
 	presaleStartDate?: string;
 	presaleEndDate?: string;
 	presaleLiquidityLockup?: string;
-	presaleFirstRelease?: string;
+	presaleFirstRelease?: number;
 	presaleVestingPeriod?: string;
 	isPresaleWhitelistDisabled?: boolean;
 	isPresaleWhitelistEnabled?: boolean;
@@ -83,7 +83,7 @@ interface FormProps {
 	setIsPresaleVestingContributionChecked?: (x: boolean) => void;
 	setIsPresaleWhitelistEnabled?: (x: boolean) => void;
 	setIsPresaleWhitelistDisabled?: (x: boolean) => void;
-	setPresaleFirstRelease?: (x: string) => void;
+	setPresaleFirstRelease?: (x: number) => void;
 	setPresaleVestingPeriod?: (x: string) => void;
 	setPresaleLiquidityLockup?: (x: string) => void;
 	setPresaleEndDate?: (x: string) => void;

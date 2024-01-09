@@ -58,10 +58,10 @@ const CustomFileDropbox: React.FC<CustomFileDropboxProps> = ({
       />
       {!selectedFile ? (
         <span
-          className="group-hover:underline cursor-pointer text-[#69FF77]"
+          className="group-hover:underline cursor-pointer text-transparent bg-clip-text bg-gradient-linear from-[#77CDEB] to-[#1177C8] via-[#d9d9d9]"
           onClick={(event) => {
             event.stopPropagation();
-            onButtonClick;
+            onButtonClick?.(inputRef);
           }}
         >
           Click to upload file{" "}
