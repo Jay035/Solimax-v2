@@ -9,7 +9,7 @@ export default function Bridge({}: Props) {
       <RedirectButton route="" />
       <section className="">
         <div className="mt-10 mb-12 md:mb-20">
-          <h1 className="text-2xl tracking-[-0.015rem]">Bridge</h1>
+          <h1 className="text-2xl tracking-[-0.015rem] mb-3">Bridge</h1>
           <p className="text-sm text-[#E4E4E7] tracking-[-0.00875rem]">
             Transfer cryptocurrency assets across blockchain ecosystems
           </p>

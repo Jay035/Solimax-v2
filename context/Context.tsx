@@ -20,10 +20,62 @@ type Props = {
 };
 
 export function LaunchpadContextProvider({ children }: Props) {
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [isModalShowing, setIsModalShowing] = useState(false);
   const [nameOfToken, setNameOfToken] = useState("");
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalHeader, setModalHeader] = useState<string>("");
 
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
+  function toggleModal() {
+    setShowModal((prevState) => !prevState);
+  }
+
+  // --------------------------------------
+  // BRIDGE
+  const [bridgeDestinationChain, setBridgeDestinationChain] =
+    useState("Fantom");
+  const [bridgeSourceLogo, setBridgeSourceLogo] = useState("");
+  const [bridgeDestinationLogo, setBridgeDestinationLogo] = useState("");
+  const [bridgeSourceChain, setBridgeSourceChain] = useState("BSC Chain");
+  const [query, setQuery] = useState("");
+  const destinationChainOptions = [
+    {
+      value: "Fantom",
+      logo: "/icons/fantom.svg",
+    },
+  ];
+
+  const sourceChainOptions = [
+    {
+      value: "BSC Chain",
+      logo: "/icons/bsc-chain.svg",
+    },
+    {
+      value: "Optimism",
+      logo: "/icons/optimism-ethereum-op-logo.svg",
+    },
+    {
+      value: "Kava",
+      logo: "/icons/kava-logo.svg",
+    },
+  ];
+  const [bridgeSourceChains, setBridgeSourceChains] =
+    useState(sourceChainOptions);
+
+  function handleSearchQuery() {
+    console.log(query)
+    setBridgeSourceChains(sourceChainOptions);
+    // return;
+
+    if (query !== "") {
+      const filteredData = sourceChainOptions.filter((item) =>
+        item.value.toLowerCase().includes(query.toLowerCase())
+      );
+      setBridgeSourceChains(filteredData);
+      console.log(filteredData);
+    }
+  }
+  // --------------------------------------
 
   // ---------------------------------
   // PRESALE PAGE
@@ -1398,9 +1450,35 @@ export function LaunchpadContextProvider({ children }: Props) {
     currencyOptions,
     selectedTab,
     error,
-    isModalShowing,
     nameOfToken,
     isWalletConnected,
+
+    // MODAL
+    isModalShowing,
+    showModal,
+    modalHeader,
+    setModalHeader,
+    setShowModal,
+    toggleModal,
+    // ------------
+
+    // BRIDGE
+    bridgeSourceChain,
+    bridgeSourceChains,
+    bridgeDestinationChain,
+    query,
+    destinationChainOptions,
+    sourceChainOptions,
+    bridgeDestinationLogo,
+    bridgeSourceLogo,
+    handleSearchQuery,
+    setBridgeDestinationLogo,
+    setBridgeSourceLogo,
+    setQuery,
+    setBridgeDestinationChain,
+    setBridgeSourceChain,
+    setBridgeSourceChains,
+    // -------
     setIsWalletConnected,
     setNameOfToken,
 

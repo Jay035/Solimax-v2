@@ -13,7 +13,7 @@ import unlockIcon from "../public/icons/unlock.svg";
 import airdropIcon from "../public/icons/airdrop 1.svg";
 
 export default function Navbar() {
-  const { isModalShowing, setIsModalShowing } = GlobalContext();
+  const { isModalShowing, setIsModalShowing, toggleModal, setModalHeader } = GlobalContext();
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +25,9 @@ export default function Navbar() {
   const showCreateTokenModal = (e: any) => {
     e.preventDefault();
     window.scrollTo(0, 0);
-    setIsModalShowing?.(true);
+    toggleModal?.()
+    setModalHeader?.("Create token")
+    // setIsModalShowing?.(true);
     setMenuOpen((prevState) => !prevState);
     if (typeof window != "undefined" && window.document) {
       document.body.style.overflow = "hidden";

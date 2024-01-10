@@ -9,6 +9,8 @@ export default function ButtonGroup() {
     selectedTab,
     setSelectedTab,
     setIsModalShowing,
+    toggleModal,
+    setModalHeader,
   } = GlobalContext();
   const router = useRouter();
   const pathname = usePathname();
@@ -54,7 +56,9 @@ export default function ButtonGroup() {
         onClick={(e: any) => {
           e.preventDefault();
           window.scrollTo(0, 0);
-          setIsModalShowing?.(true);
+          toggleModal?.()
+          setModalHeader?.("Create token")
+          // setIsModalShowing?.(true);
           if (typeof window != "undefined" && window.document) {
             document.body.style.overflow = "hidden";
           }
