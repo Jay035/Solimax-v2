@@ -23,6 +23,8 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [isModalShowing, setIsModalShowing] = useState(false);
   const [nameOfToken, setNameOfToken] = useState("");
 
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
+
   // ---------------------------------
   // PRESALE PAGE
   const [presaleCurrentStep, setPresaleCurrentStep] = useState(1);
@@ -48,9 +50,9 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [presaleStartDate, setPresaleStartDate] = useState("");
   const [presaleEndDate, setPresaleEndDate] = useState("");
   const [presaleLiquidityLockup, setPresaleLiquidityLockup] = useState("");
-  const [presaleFirstRelease, setPresaleFirstRelease] = useState("");
+  const [presaleFirstRelease, setPresaleFirstRelease] = useState<number>(0);
   const [presaleVestingPeriod, setPresaleVestingPeriod] = useState("");
-  const [presaleToken, setPresaleToken] = useState("");
+  const [presaleToken, setPresaleToken] = useState<number>(0);
   const [isPresaleWhitelistDisabled, setIsPresaleWhitelistDisabled] =
     useState<boolean>(true);
   const [isPresaleWhitelistEnabled, setIsPresaleWhitelistEnabled] =
@@ -350,7 +352,7 @@ export function LaunchpadContextProvider({ children }: Props) {
       "presaleFirstRelease"
     );
     if (storedPresaleFirstRelease)
-      setPresaleFirstRelease(storedPresaleFirstRelease!);
+      setPresaleFirstRelease(Number(storedPresaleFirstRelease!));
 
     const storedPresaleVestingPeriod = localStorage.getItem(
       "presaleVestingPeriod"
@@ -359,7 +361,7 @@ export function LaunchpadContextProvider({ children }: Props) {
       setPresaleVestingPeriod(storedPresaleVestingPeriod!);
 
     const storedPresaleToken = localStorage.getItem("presaleToken");
-    if (storedPresaleToken) setPresaleToken(storedPresaleToken!);
+    if (storedPresaleToken) setPresaleToken(Number(storedPresaleToken!));
 
     const storedPresaleWhitelistDisabled = localStorage.getItem(
       "presaleWhitelistDisabled"
@@ -881,7 +883,7 @@ export function LaunchpadContextProvider({ children }: Props) {
     }
 
     if (presaleFirstRelease) {
-      localStorage.setItem("presaleFirstRelease", presaleFirstRelease);
+      localStorage.setItem("presaleFirstRelease", String(presaleFirstRelease));
     }
 
     if (presaleVestingPeriod) {
@@ -889,7 +891,7 @@ export function LaunchpadContextProvider({ children }: Props) {
     }
 
     if (presaleToken) {
-      localStorage.setItem("presaleToken", presaleToken);
+      localStorage.setItem("presaleToken", String(presaleToken));
     }
 
     if (isPresaleWhitelistDisabled) {
@@ -1398,6 +1400,8 @@ export function LaunchpadContextProvider({ children }: Props) {
     error,
     isModalShowing,
     nameOfToken,
+    isWalletConnected,
+    setIsWalletConnected,
     setNameOfToken,
 
     // PRESALE

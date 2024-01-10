@@ -1,3 +1,5 @@
+import { usePathname } from "next/navigation";
+
 type FormProps = {
   type: string;
   inputClassName: string;
@@ -5,6 +7,7 @@ type FormProps = {
   label: string;
   value?: string | number;
   id: string;
+  balance?: string;
   defaultChecked?: boolean;
   isRequired: boolean;
   placeholder?: string;
@@ -19,6 +22,7 @@ export default function CustomInput({
   className,
   type,
   id,
+  balance,
   isRequired,
   placeholder,
   value,
@@ -27,11 +31,13 @@ export default function CustomInput({
   onMouseLeave,
   pattern,
 }: FormProps) {
+  const pathname = usePathname()
   return (
     <div className={className}>
-      <label htmlFor={id}>
+      <label htmlFor={id} className={`${pathname === "/bridge" && "flex justify-between items-center"}`}>
         {label}
         {isRequired && <span className="text-[#F04438]">*</span>}
+        <span>Balance: {balance} SLM</span>
       </label>
       <div className="p-[0.07rem] w-full group bg-gradient-to-b from-[#51525C] to-[#414149] hover:bg-[#F4F4F5] rounded-[0.625rem]">
         <div
@@ -58,7 +64,7 @@ export default function CustomInput({
             required={isRequired}
           />
           {id === "amount" && (
-            <p className="text-[#A4D0F2] text-sm absolute right-[1.18rem] top-[0.88rem]">
+            <p className={`text-[#A4D0F2] tracking-[-0.00875rem] text-sm absolute right-[1.18rem] top-[0.88rem] ${pathname === "/bridge" && "w-[2.7rem] rounded-[1.25rem] text-center text-[#F4F4F5] bg-gradient-to-b from-[#6b03b8]/90 to-[#a818ba]/90 via-[#e22bbb]/90"}`}>
               MAX
             </p>
           )}

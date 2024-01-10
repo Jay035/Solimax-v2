@@ -13,10 +13,9 @@ export default function Home() {
       <LatestPools />
 
       {/* HERO CONTENT */}
-      <div className="mt-10 text-white text-center xl:text-left pr-[1.06rem] sm:pr-8 ">
+      <div  data-aos="fade-in" className="mt-10 text-white text-center xl:text-left pr-[1.06rem] sm:pr-8 ">
         <h1
-          data-aos="fade-up"
-          className="text-5xl mb-3 sm:mb-2 sm:text-[2.5rem] tracking-[-0.075rem] sm:leading-[3.375rem]"
+          className="text-5xl mb-3 sm:mb-2 tracking-[-0.075rem] sm:leading-[3.375rem]"
         >
           The{" "}
           <span className="bg-gradient-linear bg-clip-text text-transparent">
@@ -25,8 +24,6 @@ export default function Home() {
           for everyone
         </h1>
         <p
-          data-aos="fade-up"
-          data-aos-delay="50"
           className="text-[#D1D1D6] mb-8 tracking-[-0.01125rem] text-lg md:text-xl w-full xl:pr-52"
         >
           Our easy to use platform makes creation of your own tokens and token
@@ -57,7 +54,6 @@ export default function Home() {
       <div className="mt-[3.69rem] mb-[5.19rem] whitespace-nowrap pr-[1.06rem] sm:pr-8 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[0.88rem]">
         {/* TOTAL LIQUIDITY RAISED */}
         <section
-          data-aos="fade-left"
           className="w-full text-center xl:text-left md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]"
         >
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
@@ -71,7 +67,6 @@ export default function Home() {
         </section>
         {/* TOTAL PROJECTS LAUNCHED */}
         <section
-          data-aos="fade-left"
           className="w-full text-center xl:text-left md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]"
         >
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
@@ -85,7 +80,6 @@ export default function Home() {
         </section>
         {/* TOTAL PARTICIPANTS */}
         <section
-          data-aos="fade-left"
           className="w-full text-center xl:text-left md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]"
         >
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">
@@ -99,7 +93,6 @@ export default function Home() {
         </section>
         {/* TOTAL VALUE LOCKED */}
         <section
-          data-aos="fade-left"
           className="w-full text-center xl:text-left md:min-w-[12rem] bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5 rounded-[0.62rem]"
         >
           <div className="bg-[#1D1C20] rounded-[0.625rem] w-full">

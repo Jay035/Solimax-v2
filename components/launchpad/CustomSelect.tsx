@@ -45,15 +45,44 @@ export default function CustomSelect({
       >
         <div
           className={`dropdown-header flex items-center gap-1 ${
-            header === "Select router exchange" && "text-[#A0A0AB]"
-          }`}
+            pathname === "/bridge" && "gap-2"
+          } ${header === "Select router exchange" && "text-[#A0A0AB]"}`}
           id="currency"
         >
-          {header !== "Select" && header !== "Select router exchange" && (
+          {pathname !== "/bridge" &&
+            header !== "Select" &&
+            header !== "Select router exchange" && (
+              <Image
+                width={20}
+                height={20}
+                src="/icons/check.svg"
+                alt="check icon"
+              />
+            )}
+          {pathname === "/bridge" && header === "SLM" && (
             <Image
-              width={20}
-              height={20}
-              src="/icons/check.svg"
+              width="0"
+              height="0"
+              className="w-[2.125rem] h-[2.125rem]"
+              src="/icons/logo-frame.svg"
+              alt="check icon"
+            />
+          )}
+          {pathname === "/bridge" && header === "BSC Chain" && (
+            <Image
+              width="0"
+              height="0"
+              className="w-[2.125rem] h-[2.125rem]"
+              src="/icons/bsc-chain.svg"
+              alt="check icon"
+            />
+          )}
+          {pathname === "/bridge" && header === "Fantom" && (
+            <Image
+              width="0"
+              height="0"
+              className="w-[2.125rem] h-[2.125rem]"
+              src="/icons/fantom.svg"
               alt="check icon"
             />
           )}

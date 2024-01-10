@@ -28,6 +28,8 @@ interface FormProps {
 	selectedTab?: string;
 	nameOfToken?: string;
 	isModalShowing?: boolean;
+	isWalletConnected?: boolean;
+	setIsWalletConnected?: (x: boolean) => void;
 	setIsModalShowing?: (x: boolean) => void;
 	setNameOfToken?: (x: string) => void;
 	setSelectedTab?: (x: string) => void;

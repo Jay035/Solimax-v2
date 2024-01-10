@@ -18,9 +18,9 @@ import RedirectButton from "@/components/RedirectButton";
 //     };
 //   }
 
-export default function page({ params }: { params: { title: string } }) {
+export default function LaunchpadListDetail({ params }: { params: { title: string } }) {
   return (
-    <section className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20">
+    <main className="text-white pt-6 pb-20 px-8 md:px-[2.37rem] xl:pr-20">
       <div className="flex justify-between flex-col sm:flex-row md:items-center mb-9">
         <RedirectButton route="" />
         <div className="flex items-center gap-2 text-white">
@@ -163,6 +163,6 @@ export default function page({ params }: { params: { title: string } }) {
         <RightCol />
       </div>
       {/* page {params.title} */}
-    </section>
+    </main>
   );
 }

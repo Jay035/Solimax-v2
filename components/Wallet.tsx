@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import logoIcon from "/public/icons/bsc-icon.svg";
 import { useIsMounted } from "@/hooks/useIsMounted";
@@ -9,7 +8,10 @@ import { useSignMessage, useAccount, useNetwork } from "wagmi";
 // import { getServerSession } from 'next-auth';
 // import { getAuthOptions } from '../app/api/auth/[...nextauth]';
 
-type Props = {};
+type Props = {
+  className: string
+  containerClassName: string
+};
 
 // export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 //   return {
@@ -19,14 +21,14 @@ type Props = {};
 //   };
 // };
 
-export default function Wallet({}: Props) {
+export default function Wallet({className, containerClassName}: Props) {
   const { address } = useAccount();
   const { chain } = useNetwork();
   const mounted = useIsMounted();
   const { signMessageAsync } = useSignMessage();
 
   return (
-    <section className="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]">
+    <section className={containerClassName}>
       <ConnectButton.Custom>
         {({
           account,
@@ -59,13 +61,9 @@ export default function Wallet({}: Props) {
                 if (!connected) {
                   return (
                     <button
-                    data-aos="fade-left"
                       onClick={openConnectModal}
                       type="button"
-
-                      className="rounded-[3.125rem] p-[0.42rem] border-[0.5px] w-[9.38rem] h-10 bg-[#454FDA] text-white border-[#424242]"
-
-                    >
+                      className={className} >
                       Connect Wallet
                     </button>
                   );
@@ -77,7 +75,6 @@ export default function Wallet({}: Props) {
                       onClick={openChainModal}
                       type="button"
                       className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-fit h-10 bg-[#9e2f2f] text-white border-[#424242]"
-
                     >
                       Wrong network
                     </button>
@@ -95,7 +92,6 @@ export default function Wallet({}: Props) {
                       {chain.hasIcon && (
                         <div
                           className="w-auto h-auto xl:w-7 xl:h-7"
-
                           style={{
                             background: chain.iconBackground,
                             borderRadius: 999,
@@ -116,10 +112,8 @@ export default function Wallet({}: Props) {
                       )}
                       {chain.name}
                       <Image
-
                         width={10}
                         height={10}
-
                         className="hidden xl:inline-block"
                         src="/icons/chevron-down.svg"
                         alt="chevron-down"
@@ -129,9 +123,7 @@ export default function Wallet({}: Props) {
                     <button
                       onClick={openAccountModal}
                       type="button"
-
                       className="bg-[#28282B] text-white p-[0.625rem] px-4 border-[0.5px] h-10 rounded-[3.125rem] border-[#424242] flex items-center gap-[0.62rem]"
-
                     >
                       {account.displayName}
                     </button>

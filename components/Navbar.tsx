@@ -151,7 +151,7 @@ export default function Navbar() {
         </Link>
       </section>
       <div className="xl:hidden overflow-hidden">
-        <Wallet />
+        <Wallet containerClassName="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]" className="rounded-[3.125rem] p-[0.42rem] border-[0.5px] w-[9.38rem] h-10 bg-[#454FDA] text-white border-[#424242]" />
       </div>
       {/* menu */}
       <div
@@ -331,6 +331,25 @@ export default function Navbar() {
               />
               Docs
             </li>
+            {/* Bridge */}
+            {/* <li
+             className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer
+             ${
+              pathname === "/bridge" && "text-[#A4D0F2]"
+            }`}
+              onClick={() => {
+                changeRoute("/bridge");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
+              <Image
+                src="/icons/arrow-swap-horizontal.svg"
+                width={18}
+                height={18}
+                alt="document icon"
+              />
+              Bridge
+            </li> */}
           </ul>
         </section>
         {/* SOCIAL SECTION */}
