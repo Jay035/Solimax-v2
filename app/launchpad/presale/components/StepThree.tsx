@@ -38,8 +38,6 @@ export default function StepThree() {
 
   const handleFileSelected = (file: File | undefined) => {
     setPresaleLogo?.(file);
-
-    // console.log(file?.clientWidth)
   };
 
   const onButtonClick = () => {

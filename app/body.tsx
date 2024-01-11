@@ -50,9 +50,20 @@ export default function BodyComponent({
     {
       value: "Standard token",
     },
+    {
+      value: "Liquidity Generator token",
+    },
+    {
+      value: "Baby token",
+    },
+    {
+      value: "Buyback Baby token",
+    },
   ];
 
-  const handleQueryInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQueryInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { value } = event.target;
     setQuery?.(value);
     // console.log("query:", query)
