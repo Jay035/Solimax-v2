@@ -23,8 +23,8 @@ export default function BodyComponent({
     setNameOfToken,
     toggleModal,
     modalHeader,
-    query,
-    setQuery,
+    // query,
+    // setQuery,
     handleSearchQuery,
     bridgeSourceChains,
     setModalHeader,
@@ -39,26 +39,25 @@ export default function BodyComponent({
     setBridgeDestinationChain,
     setBridgeSourceChain,
   } = GlobalContext();
+  const [query, setQuery] = useState<string>("");
   const [selectedTokenType, setSelectedTokenType] =
     useState<string>("Standard token");
   const [symbol, setSymbol] = useState<string>("");
-  const [decimals, setDecimals] = useState<number>();
-  const [tokenSupply, setTokenSupply] = useState<number>();
+  const [decimals, setDecimals] = useState<number>(0);
+  const [tokenSupply, setTokenSupply] = useState<number>(0);
   const deployFn = useDeployTokenMutation();
   const tokenTypes = [
     {
-      id: 0,
-      value: "Standard token",
-    },
-    {
-      id: 1,
-      value: "Standard token",
-    },
-    {
-      id: 2,
       value: "Standard token",
     },
   ];
+
+  const handleQueryInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setQuery?.(value);
+    // console.log("query:", query)
+    handleSearchQuery?.(value);
+  };
 
   return (
     <main className="font-questrial grid xl:grid-cols-[16.5rem_auto]">
@@ -165,7 +164,8 @@ export default function BodyComponent({
               />
               <div className="flex gap-2 md:items-center ml-auto w-fit">
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     toggleModal?.();
                     document.body.style.overflow = "unset";
                   }}
@@ -174,8 +174,14 @@ export default function BodyComponent({
                   Back
                 </button>
                 <button
+                  disabled={
+                    nameOfToken === "" ||
+                    symbol === "" ||
+                    decimals === 0 ||
+                    tokenSupply === 0
+                  }
                   onClick={(e: any) => {
-                    alert("clicked");
+                    console.log("clicked");
                     e.preventDefault();
 
                     const deployProps: any = {
@@ -206,34 +212,36 @@ export default function BodyComponent({
                 type="text"
                 placeholder="Search chain by name"
                 value={query}
-                onChange={(e) => {
-                  setQuery?.(e.target.value);
-                  handleSearchQuery?.();
-                }}
+                onChange={handleQueryInputChange}
                 isRequired={false}
               />
-              <section className="grid grid-cols-2 lg:grid-cols-3 gap-4 text-white">
-                {bridgeSourceChains?.map(
-                  (chain: BridgeProps, index: number) => (
-                    <button
-                      key={index}
-                      className={`flex items-center gap-3 bg-[#26272B] rounded-2xl py-[0.81rem] px-4 w-full md:px-8 tracking-[-0.01rem] whitespace-nowrap`}
-                      onClick={() => {
-                        setBridgeSourceChain?.(chain.value);
-                        toggleModal?.();
-                      }}
-                    >
-                      <Image
-                        width={20}
-                        height={20}
-                        src={chain.logo}
-                        alt="chain logo"
-                      />
-                      {chain.value}
-                    </button>
-                  )
-                )}
-              </section>
+              {bridgeSourceChains?.length > 0 ? (
+                <section className="grid grid-cols-2 lg:grid-cols-3 gap-4 text-white">
+                  {bridgeSourceChains?.map(
+                    (chain: BridgeProps, index: number) => (
+                      <button
+                        key={index}
+                        className={`flex items-center gap-3 bg-[#26272B] rounded-2xl py-[0.81rem] px-4 w-full md:px-8 tracking-[-0.01rem] whitespace-nowrap`}
+                        onClick={() => {
+                          setBridgeSourceChain?.(chain.value);
+                          setBridgeSourceLogo?.(chain.logo);
+                          toggleModal?.();
+                        }}
+                      >
+                        <Image
+                          width={20}
+                          height={20}
+                          src={chain.logo}
+                          alt="chain logo"
+                        />
+                        {chain.value}
+                      </button>
+                    )
+                  )}
+                </section>
+              ) : (
+                <p className="text-white text-center">No results found</p>
+              )}
             </div>
           </Modal>
         )}

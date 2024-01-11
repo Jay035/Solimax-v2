@@ -3,6 +3,8 @@ import logoIcon from "/public/icons/bsc-icon.svg";
 import { useIsMounted } from "@/hooks/useIsMounted";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useSignMessage, useAccount, useNetwork } from "wagmi";
+import { GlobalContext } from "@/context/Context";
+import { useEffect } from "react";
 // import { SiweMessage } from "siwe";
 // import type { GetServerSideProps, NextPage } from 'next';
 // import { getServerSession } from 'next-auth';
@@ -26,7 +28,7 @@ export default function Wallet({className, containerClassName}: Props) {
   const { chain } = useNetwork();
   const mounted = useIsMounted();
   const { signMessageAsync } = useSignMessage();
-
+ 
   return (
     <section className={containerClassName}>
       <ConnectButton.Custom>
@@ -45,6 +47,7 @@ export default function Wallet({className, containerClassName}: Props) {
             account &&
             chain &&
             (!authenticationStatus || authenticationStatus === "authenticated");
+            
 
           return (
             <div

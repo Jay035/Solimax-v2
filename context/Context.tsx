@@ -34,7 +34,10 @@ export function LaunchpadContextProvider({ children }: Props) {
   // BRIDGE
   const [bridgeDestinationChain, setBridgeDestinationChain] =
     useState("Fantom");
-  const [bridgeSourceLogo, setBridgeSourceLogo] = useState("");
+  const [bridgeSourceLogo, setBridgeSourceLogo] = useState(
+    "/icons/bsc-chain.svg"
+  );
+  const [bridgeAmountToMax, setBridgeAmountToMax] = useState(false);
   const [bridgeDestinationLogo, setBridgeDestinationLogo] = useState("");
   const [bridgeSourceChain, setBridgeSourceChain] = useState("BSC Chain");
   const [query, setQuery] = useState("");
@@ -59,20 +62,18 @@ export function LaunchpadContextProvider({ children }: Props) {
       logo: "/icons/kava-logo.svg",
     },
   ];
+  
   const [bridgeSourceChains, setBridgeSourceChains] =
     useState(sourceChainOptions);
 
-  function handleSearchQuery() {
-    console.log(query)
-    setBridgeSourceChains(sourceChainOptions);
-    // return;
-
-    if (query !== "") {
+  function handleSearchQuery(searchVal: string) {
+    if (searchVal !== "") {
       const filteredData = sourceChainOptions.filter((item) =>
-        item.value.toLowerCase().includes(query.toLowerCase())
+        item.value.toLowerCase().includes(searchVal.toLowerCase())
       );
       setBridgeSourceChains(filteredData);
-      console.log(filteredData);
+    } else {
+      setBridgeSourceChains(sourceChainOptions);
     }
   }
   // --------------------------------------
@@ -1471,6 +1472,8 @@ export function LaunchpadContextProvider({ children }: Props) {
     sourceChainOptions,
     bridgeDestinationLogo,
     bridgeSourceLogo,
+    bridgeAmountToMax,
+    setBridgeAmountToMax,
     handleSearchQuery,
     setBridgeDestinationLogo,
     setBridgeSourceLogo,

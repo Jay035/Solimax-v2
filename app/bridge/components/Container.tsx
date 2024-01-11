@@ -7,20 +7,23 @@ import { GlobalContext } from "@/context/Context";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useAccount } from "wagmi";
 
 type Props = {};
 
 export default function Container({}: Props) {
   const {
-    isWalletConnected,
+    // isWalletConnected,
     setIsWalletConnected,
     toggleModal,
     setModalHeader,
     bridgeDestinationChain,
     bridgeSourceChain,
+    bridgeSourceLogo,
   } = GlobalContext();
+  const {isConnected} = useAccount()
   const pathname = usePathname();
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
   const [asset, setAsset] = useState("SLM");
   const [destinationChain, setDestinationChain] = useState("Fantom");
   const [sourceChain, setSourceChain] = useState("BSC Chain");
@@ -97,15 +100,13 @@ export default function Container({}: Props) {
             >
               <div className="custom-dropdown">
                 <div className="dropdown-header flex items-center gap-1">
-                  {pathname === "/bridge" && sourceChain === "BSC Chain" && (
-                    <Image
-                      width="0"
-                      height="0"
-                      className="w-[2.125rem] h-[2.125rem]"
-                      src="/icons/bsc-chain.svg"
-                      alt="check icon"
-                    />
-                  )}
+                  <Image
+                    width="0"
+                    height="0"
+                    className="w-[2.125rem] h-[2.125rem]"
+                    src={bridgeSourceLogo!}
+                    alt="check icon"
+                  />
                   {bridgeSourceChain}
                 </div>
               </div>
@@ -167,8 +168,8 @@ export default function Container({}: Props) {
           }}
           isRequired={false}
         />
-        {isWalletConnected ? (
-          <button className="w-full flex items-center justify-center p-[0.625rem] border-[0.5px] mt-[0.7rem] border-[#424242] rounded-[0.625rem] h-14 md:h-16 bg-[#454FDA]">
+        {isConnected ? (
+          <button disabled={amount === 0} className="w-full flex items-center justify-center p-[0.625rem] border-[0.5px] mt-[0.7rem] border-[#424242] rounded-[0.625rem] h-14 md:h-16 bg-[#454FDA] disabled:bg-[#454FDA]/80">
             Bridge Asset
           </button>
         ) : (

@@ -13,7 +13,7 @@ import unlockIcon from "../public/icons/unlock.svg";
 import airdropIcon from "../public/icons/airdrop 1.svg";
 
 export default function Navbar() {
-  const { isModalShowing, setIsModalShowing, toggleModal, setModalHeader } = GlobalContext();
+  const { showModal, toggleModal, setModalHeader } = GlobalContext();
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -207,7 +207,7 @@ export default function Navbar() {
                   className={`${nav.className} ${
                     // pathname.includes("/launchpad/list/") ||
                     pathname === nav?.route ||
-                    (nav?.title === "Create token" && isModalShowing)
+                    (nav?.title === "Create token" && showModal)
                       ? "text-[#A4D0F2]"
                       : ""
                   }`}

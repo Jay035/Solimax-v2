@@ -41,8 +41,10 @@ interface FormProps {
   bridgeSourceChain?: string;
   bridgeSourceChains?: any;
   bridgeSourceLogo?: string;
+  bridgeAmountToMax?: boolean;
+  setBridgeAmountToMax?: (x: boolean) => void
   query?: string;
-  handleSearchQuery?: () => void
+  handleSearchQuery?: (x: string) => void
   setQuery?: (x: string) => void;
   setBridgeDestinationLogo?: (x: string) => void;
   setBridgeDestinationChain?: (x: string) => void;
