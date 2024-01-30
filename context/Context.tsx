@@ -37,6 +37,7 @@ export function LaunchpadContextProvider({ children }: Props) {
   const [bridgeSourceLogo, setBridgeSourceLogo] = useState(
     "/icons/bsc-chain.svg"
   );
+  
   const [bridgeAmountToMax, setBridgeAmountToMax] = useState(false);
   const [bridgeDestinationLogo, setBridgeDestinationLogo] = useState("");
   const [bridgeSourceChain, setBridgeSourceChain] = useState("BSC Chain");
