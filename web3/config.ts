@@ -1,0 +1,10 @@
+export const BridgeConfigurations = {
+	OPT_Goerli: {
+		nlu: "0x330412dDf650a6d13EBD2Ff88923eC4D97940A4E",
+		bridge: "0x6015E38F337904449F4D5ED59Bf4bB8c50916df8",
+	},
+	GOERLI: {
+		nlu: "0x330412dDf650a6d13EBD2Ff88923eC4D97940A4E",
+		bridge: "0x6015E38F337904449F4D5ED59Bf4bB8c50916df8",
+	},
+};
