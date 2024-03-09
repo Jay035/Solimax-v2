@@ -334,7 +334,7 @@ export default function Navbar() {
               Docs
             </li>
             {/* Bridge */}
-            {/* <li
+             <li
              className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer
              ${
               pathname === "/bridge" && "text-[#A4D0F2]"
@@ -351,7 +351,7 @@ export default function Navbar() {
                 alt="document icon"
               />
               Bridge
-            </li> */}
+            </li> 
           </ul>
         </section>
         {/* SOCIAL SECTION */}
