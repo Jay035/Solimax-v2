@@ -3,7 +3,10 @@
 /* eslint-disable */
 
 import { Contract, Interface, type ContractRunner } from "ethers";
-import type { Factory, FactoryInterface } from "../Factory";
+import type {
+  FactoryInterface,
+  FactoryInterfaceInterface,
+} from "../FactoryInterface";
 
 const _abi = [
   {
@@ -82,12 +85,15 @@ const _abi = [
   },
 ] as const;
 
-export class Factory__factory {
+export class FactoryInterface__factory {
   static readonly abi = _abi;
-  static createInterface(): FactoryInterface {
-    return new Interface(_abi) as FactoryInterface;
+  static createInterface(): FactoryInterfaceInterface {
+    return new Interface(_abi) as FactoryInterfaceInterface;
   }
-  static connect(address: string, runner?: ContractRunner | null): Factory {
-    return new Contract(address, _abi, runner) as unknown as Factory;
+  static connect(
+    address: string,
+    runner?: ContractRunner | null
+  ): FactoryInterface {
+    return new Contract(address, _abi, runner) as unknown as FactoryInterface;
   }
 }
