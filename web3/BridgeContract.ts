@@ -4,6 +4,8 @@ import ethers, {
 	parseEther,
 	MaxUint256,
 	Contract,
+	JsonRpcSigner,
+	toBigInt,
 } from "ethers";
 import BridgeAbi from "./abis/Bridge.json";
 import { Bridge } from "@/types/contracts";
@@ -13,7 +15,7 @@ import { BridgeInterface } from "@/types/contracts/Bridge";
 export type BridgeContractProps = {
 	nlu: string;
 	bridge: string;
-	signer: Signer;
+	signer: Signer | JsonRpcSigner;
 	provider: Provider;
 };
 export class BridgeContract {
@@ -38,6 +40,29 @@ export class BridgeContract {
 		const parseAmount = parseEther(amount);
 		const tx = await this.contract.lockTokens(parseAmount, toChain);
 		return tx;
+	}
+	async checkAllowance() {
+		const abi = [
+			"function allowance(address owner, address spender) view returns (uint256)",
+		];
+		const address = await this.props.signer.getAddress();
+		const contract = new Contract(this.props.nlu, abi, this.props.signer);
+		const result = await contract.allowance(address, this.props.bridge);
+
+		console.log("result", toBigInt(result) === toBigInt(MaxUint256));
+		return toBigInt(result) === toBigInt(MaxUint256);
+	}
+	async balanceOf() {
+		const abi = [
+			"function balanceOf(address account) view returns (uint256)",
+		];
+
+		const address = await this.props.signer.getAddress();
+		const contract = new Contract(this.props.nlu, abi, this.props.signer);
+		const result = await contract.balanceOf(address);
+
+		console.log("result", result);
+		return result.toString();
 	}
 
 	async approve() {

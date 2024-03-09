@@ -3,10 +3,10 @@
 /* eslint-disable */
 export type { Bridge } from "./Bridge";
 export type { Erc20 } from "./Erc20";
-export type { FactoryInterface } from "./FactoryInterface";
+export type { Factory } from "./Factory";
 export type { TokenLockerFactory } from "./TokenLockerFactory";
 export * as factories from "./factories";
 export { Bridge__factory } from "./factories/Bridge__factory";
 export { Erc20__factory } from "./factories/Erc20__factory";
-export { FactoryInterface__factory } from "./factories/FactoryInterface__factory";
+export { Factory__factory } from "./factories/Factory__factory";
 export { TokenLockerFactory__factory } from "./factories/TokenLockerFactory__factory";
