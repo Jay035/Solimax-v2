@@ -361,7 +361,7 @@ export default function Navbar() {
           </h2>
           <ul className="text-white flex flex-col gap-5">
             {/* twitter */}
-            <li
+            <a href="https://x.com/solimax_"
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -375,7 +375,7 @@ export default function Navbar() {
                 alt="home icon"
               />
               Twitter
-            </li>
+            </a>
             {/* telegram */}
             <li
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
