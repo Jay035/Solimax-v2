@@ -40,7 +40,7 @@ export default function CreateFairLaunch() {
 
   return (
     <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem]">
-      <LatestPools />
+      {/* <LatestPools /> */}
       <main className="mt-[2.5rem] text-white flex flex-col mr-[1.69rem] xl:mr-10 lg:flex-row lg:items-start gap-8">
         {/* LEFT COLUMN */}
         <CreationSteps

@@ -40,7 +40,7 @@ export default function AllTokens({}: Props) {
   };
   return (
     <div className="pt-5 ml-[1.68rem] pb-32">
-      <LatestPools />
+      {/* <LatestPools /> */}
       {tokens?.length > 0 ? (
         <main className="mt-[2.5rem] text-white pr-[1.68rem] xl:pr-10">
           <Navigation

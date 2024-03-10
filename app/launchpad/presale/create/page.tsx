@@ -39,7 +39,7 @@ export default function CreateLaunchpad() {
 
   return (
     <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem]">
-      <LatestPools />
+      {/* <LatestPools /> */}
       <main className="mt-[2.5rem] mr-[1.69rem] xl:mr-10 text-white grid lg:grid-cols-[17rem_auto] lg:items-start gap-8">
         {/* LEFT COLUMN */}
         <CreationSteps stepTitles={stepTitles} currentStep={presaleCurrentStep} setCurrentStep={setPresaleCurrentStep} />
