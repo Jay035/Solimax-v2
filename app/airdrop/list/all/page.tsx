@@ -29,25 +29,27 @@ export default function LaunchpadList({}: Props) {
           </section>
         </div>
       </div>
-      <Navigation />
       {airdropListDetails?.length > 0 ? (
         <div className="">
+          <Navigation />
           <Filter />
           <div className="mb-[6.25rem] grid lg:grid-cols-3 gap-x-[1.59rem] gap-y-8">
             {airdropListDetails?.map((item: any, index: number) => (
               <Card key={index} item={item} route="/airdrop/list" />
             ))}
           </div>
-      <div className="p-0.5">
-        <Newsletter
-          className="md:py-12 p-6 md:px-16 bg-[#1d1d21] text-white text-center rounded-2xl"
-          email={email}
-          setEmail={setEmail}
-        />
-      </div>
+          <div className="p-0.5">
+            <Newsletter
+              className="md:py-12 p-6 md:px-16 bg-[#1d1d21] text-white text-center rounded-2xl"
+              email={email}
+              setEmail={setEmail}
+            />
+          </div>
         </div>
       ) : (
-        <div className="text-lg md:text-xl text-white text-center">No Information yet</div>
+        <div className="text-lg md:text-xl mt-6 text-white text-center">
+          No Information yet
+        </div>
       )}
     </section>
   );

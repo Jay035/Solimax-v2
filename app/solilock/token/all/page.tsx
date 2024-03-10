@@ -116,7 +116,7 @@ export default function AllTokens({}: Props) {
           />
         </main>
       ) : (
-        <div className="text-lg md:text-xl text-white text-center">No Information yet</div>
+        <div className="text-lg mt-6 md:text-xl text-white text-center">No Information yet</div>
       )}
     </div>
   );
