@@ -18,24 +18,30 @@ export default function LaunchpadList({}: Props) {
           <section className="flex flex-col items-center border-b md:border-b-0 md:border-r border-[#3F3F46] pb-4 md:pb-0 md:pr-[6.75rem] gap-4">
             <p className="text-[#E4E4E7]">TOTAL PROJECTS</p>
             <h2 className="text-xl md:text-[2rem] leading-6 font-medium text-white">
-              32
+              0
             </h2>
           </section>
           <section className="flex flex-col items-center pt-4 md:pt-0 md:pl-[6.75rem] gap-4">
             <p className="text-[#E4E4E7]">TOTAL PARTICIPANTS</p>
             <h2 className="text-xl md:text-[2rem] leading-6 font-medium text-white">
-              1002
+              0
             </h2>
           </section>
         </div>
       </div>
       <Navigation />
-      <Filter />
-      <div className="mb-[6.25rem] grid lg:grid-cols-3 gap-x-[1.59rem] gap-y-8">
-        {airdropListDetails?.map((item: any, index: number) => (
-          <Card key={index} item={item} route="/airdrop/list" />
-        ))}
-      </div>
+      {airdropListDetails?.length > 0 ? (
+        <div className="">
+          <Filter />
+          <div className="mb-[6.25rem] grid lg:grid-cols-3 gap-x-[1.59rem] gap-y-8">
+            {airdropListDetails?.map((item: any, index: number) => (
+              <Card key={index} item={item} route="/airdrop/list" />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="text-lg text-center">No Information yet</div>
+      )}
       <div className="p-0.5">
         <Newsletter
           className="md:py-12 p-6 md:px-16 bg-[#1d1d21] text-white text-center rounded-2xl"

@@ -61,7 +61,7 @@ export default function Home() {
               TOTAL LIQUIDITY RAISED
             </h3>
             <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
-              $422.6M
+              0
             </h1>
           </div>
         </section>
@@ -74,7 +74,7 @@ export default function Home() {
               TOTAL PROJECTS LAUNCHED
             </h3>
             <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
-              540
+             0
             </h1>
           </div>
         </section>
@@ -87,7 +87,7 @@ export default function Home() {
               TOTAL PARTICIPANTS
             </h3>
             <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
-              500.2K
+              0
             </h1>
           </div>
         </section>
@@ -100,19 +100,19 @@ export default function Home() {
               TOTAL VALUE LOCKED
             </h3>
             <h1 className="tracking-[-0.02rem] font-neueHaas text-3xl sm:text-[2rem] font-medium pt-4 pb-5 sm:pt-6 sm:pb-[1.94rem] px-5 sm:leading-[1.375rem] text-white">
-              $222.4M
+              0
             </h1>
           </div>
         </section>
       </div>
-      <TrendingPools />
+      {/* <TrendingPools />
       <div
         data-aos="fade-in"
         className="mt-[3.12rem] grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-8 pr-[1.06rem] sm:pr-8"
       >
         <HotAirdrops />
         <NewTokens />
-      </div>
+      </div> */}
     </div>
   );
 }

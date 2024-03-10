@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logoIcon from "/public/icons/bsc-icon.svg";
+// import logoIcon from "/public/icons/bsc-icon.svg";
 import { useIsMounted } from "@/hooks/useIsMounted";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useSignMessage, useAccount, useNetwork } from "wagmi";
@@ -11,8 +11,8 @@ import { useEffect } from "react";
 // import { getAuthOptions } from '../app/api/auth/[...nextauth]';
 
 type Props = {
-  className: string
-  containerClassName: string
+  className: string;
+  containerClassName: string;
 };
 
 // export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -23,12 +23,12 @@ type Props = {
 //   };
 // };
 
-export default function Wallet({className, containerClassName}: Props) {
+export default function Wallet({ className, containerClassName }: Props) {
   const { address } = useAccount();
   const { chain } = useNetwork();
   const mounted = useIsMounted();
   const { signMessageAsync } = useSignMessage();
- 
+
   return (
     <section className={containerClassName}>
       <ConnectButton.Custom>
@@ -47,7 +47,6 @@ export default function Wallet({className, containerClassName}: Props) {
             account &&
             chain &&
             (!authenticationStatus || authenticationStatus === "authenticated");
-            
 
           return (
             <div
@@ -66,7 +65,8 @@ export default function Wallet({className, containerClassName}: Props) {
                     <button
                       onClick={openConnectModal}
                       type="button"
-                      className={className} >
+                      className={className}
+                    >
                       Connect Wallet
                     </button>
                   );

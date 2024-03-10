@@ -14,12 +14,18 @@ export default function LaunchpadList({}: Props) {
   return (
     <section className="px-[1.69rem] pt-6 xl:pr-10 pb-32">
       <Navigation />
-      <Filter />
-      <div className="mb-[6.25rem] grid md:grid-cols-2 xl:grid-cols-3 gap-x-[1.59rem] gap-y-8">
-        {cardDetails?.map((item: any, index: number) => (
-          <Card key={index} item={item} route="/launchpad/list" />
-        ))}
-      </div>
+      {cardDetails?.length > 0 ? (
+        <div className="">
+          <Filter />
+          <div className="mb-[6.25rem] grid md:grid-cols-2 xl:grid-cols-3 gap-x-[1.59rem] gap-y-8">
+            {cardDetails?.map((item: any, index: number) => (
+              <Card key={index} item={item} route="/launchpad/list" />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="text-lg text-center">No Launchpads yet</div>
+      )}
       <div className="p-0.5">
         <Newsletter
           className="md:py-12 p-6 md:px-16 bg-[#1d1d21] text-white text-center rounded-2xl"
