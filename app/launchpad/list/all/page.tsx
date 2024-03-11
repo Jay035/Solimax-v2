@@ -22,17 +22,19 @@ export default function LaunchpadList({}: Props) {
               <Card key={index} item={item} route="/launchpad/list" />
             ))}
           </div>
+          <div className="p-0.5">
+            <Newsletter
+              className="md:py-12 p-6 md:px-16 bg-[#1d1d21] text-white text-center rounded-2xl"
+              email={email}
+              setEmail={setEmail}
+            />
+          </div>
         </div>
       ) : (
-        <div className="text-lg text-center">No Launchpads yet</div>
+        <div className="text-lg md:text-xl text-white text-center">
+          No Launchpads yet
+        </div>
       )}
-      <div className="p-0.5">
-        <Newsletter
-          className="md:py-12 p-6 md:px-16 bg-[#1d1d21] text-white text-center rounded-2xl"
-          email={email}
-          setEmail={setEmail}
-        />
-      </div>
     </section>
   );
 }
