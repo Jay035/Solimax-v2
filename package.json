@@ -6,23 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-types": " npx typechain --target ethers-v6 --out-dir types/contracts 'web3/abis/*.json'"
+  },
+  "browser": {
+    "fs": false,
+    "tls": false,
+    "net": false
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^1.0.11",
-    "@rainbow-me/rainbowkit-siwe-next-auth": "^0.3.1",
+    "@tanstack/react-query": "^4.36.1",
+    "@typechain/ethers-v6": "^0.5.1",
     "@types/node": "20.4.9",
     "@types/react": "18.2.19",
     "@types/react-dom": "18.2.7",
+    "aos": "^2.3.4",
     "autoprefixer": "10.4.14",
-    "axios": "^1.5.1",
+    "axios": "^1.6.2",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "ethers": "^6.7.1",
-    "gsap": "^3.12.2",
-    "iron-session": "^6.3.1",
     "lokijs": "^1.5.12",
-    "next": "13.5.4",
+    "next": "13.4.13",
     "pino-pretty": "^10.2.0",
     "postcss": "8.4.27",
     "react": "18.2.0",
@@ -30,13 +36,17 @@
     "react-paginate": "^8.2.0",
     "react-toastify": "^9.1.3",
     "sharp": "^0.32.5",
-    "siwe": "^2.1.4",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
+    "use-debounce": "^9.0.4",
     "validator": "^13.11.0",
-    "wagmi": "^1.4.2"
+    "wagmi": "^1.4.2",
+    "web3.storage": "^4.5.5"
   },
   "devDependencies": {
-    "encoding": "^0.1.13"
+    "@tanstack/eslint-plugin-query": "^5.0.5",
+    "@types/aos": "^3.0.7",
+    "encoding": "^0.1.13",
+    "typechain": "^8.3.2"
   }
 }

@@ -7,7 +7,7 @@ type Props = {};
 
 export default function TrendingPools({}: Props) {
   return (
-    <section className="text-white pr-[1.06rem] sm:pr-8">
+    <section data-aos="fade-in" className="text-white pr-[1.06rem] sm:pr-8">
       <div className="mb-[1.88rem] flex justify-between items-center">
         <div className="flex items-center gap-1">
           <Image
@@ -105,7 +105,9 @@ export default function TrendingPools({}: Props) {
                 <td headers={`total-supply ${data?.id}`}>
                   {data?.totalSupply}
                 </td>
-                <td headers={`date ${data?.id}`}>{data?.dateOfCompletion}</td>
+                <td headers={`date-of-completion ${data?.id}`}>
+                  {data?.dateOfCompletion}
+                </td>
               </tr>
             ))}
           </tbody>

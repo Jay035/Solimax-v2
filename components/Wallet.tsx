@@ -1,14 +1,19 @@
 import Image from "next/image";
-import logoIcon from "/public/icons/bsc-icon.svg";
+// import logoIcon from "/public/icons/bsc-icon.svg";
 import { useIsMounted } from "@/hooks/useIsMounted";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useSignMessage, useAccount, useNetwork } from "wagmi";
+import { GlobalContext } from "@/context/Context";
+import { useEffect } from "react";
 // import { SiweMessage } from "siwe";
 // import type { GetServerSideProps, NextPage } from 'next';
 // import { getServerSession } from 'next-auth';
 // import { getAuthOptions } from '../app/api/auth/[...nextauth]';
 
-type Props = {};
+type Props = {
+  className: string;
+  containerClassName: string;
+};
 
 // export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 //   return {
@@ -18,14 +23,14 @@ type Props = {};
 //   };
 // };
 
-export default function Wallet({}: Props) {
+export default function Wallet({ className, containerClassName }: Props) {
   const { address } = useAccount();
   const { chain } = useNetwork();
   const mounted = useIsMounted();
   const { signMessageAsync } = useSignMessage();
 
   return (
-    <section className="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]">
+    <section className={containerClassName}>
       <ConnectButton.Custom>
         {({
           account,
@@ -60,7 +65,7 @@ export default function Wallet({}: Props) {
                     <button
                       onClick={openConnectModal}
                       type="button"
-                      className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-[9.38rem] h-14 bg-[#454FDA] text-white border-[#424242]"
+                      className={className}
                     >
                       Connect Wallet
                     </button>
@@ -72,7 +77,7 @@ export default function Wallet({}: Props) {
                     <button
                       onClick={openChainModal}
                       type="button"
-                      className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-fit h-12 bg-[#9e2f2f] text-white border-[#424242]"
+                      className="rounded-[3.125rem] p-[0.62rem] border-[0.5px] w-fit h-10 bg-[#9e2f2f] text-white border-[#424242]"
                     >
                       Wrong network
                     </button>

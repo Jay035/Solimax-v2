@@ -76,8 +76,6 @@ export default function StepTwo() {
     },
   ];
 
-
-
   return (
     <section className="flex flex-col gap-6 ">
       <div className="bg-[#1D1C20] pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8 text-white">
@@ -396,16 +394,16 @@ export default function StepTwo() {
             className="flex flex-col gap-[0.62rem]"
             inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
             label="First release for presale (%)"
-            type="text"
+            type="number"
             placeholder="40%"
             value={presaleFirstRelease}
             onChange={(e) => {
               setPresaleFirstRelease?.(e.target.value);
               setError?.("");
             }}
-            onMouseLeave={(e) =>
-              AppendPercentToInput(presaleFirstRelease, setPresaleFirstRelease!)
-            }
+            // onMouseLeave={(e) =>
+            //   AppendPercentToInput(presaleFirstRelease, setPresaleFirstRelease!)
+            // }
             isRequired={true}
           />
 
@@ -431,16 +429,16 @@ export default function StepTwo() {
               className="flex flex-col gap-[0.62rem]"
               inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
               label="Presale token release each cycle (%)"
-              type="text"
+              type="number"
               placeholder="20%"
               value={presaleToken}
               onChange={(e) => {
                 setPresaleToken?.(e.target.value);
                 setError?.("");
               }}
-              onMouseLeave={(e) =>
-                AppendPercentToInput(presaleToken, setPresaleToken!)
-              }
+              // onMouseLeave={(e) =>
+              //   AppendPercentToInput(presaleToken, setPresaleToken!)
+              // }
               isRequired={true}
             />
           </section>
@@ -476,7 +474,7 @@ export default function StepTwo() {
                   presaleStartDate === "" ||
                   presaleEndDate === "" ||
                   presaleLiquidityLockup === "" ||
-                  presaleFirstRelease === "" ||
+                  presaleFirstRelease === 0 ||
                   presaleVestingPeriod === "" ||
                   presaleToken === 0
                 }

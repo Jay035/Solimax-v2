@@ -1,7 +1,18 @@
+import { Web3GlobalContext } from "@/app/Web3GlobalProvider";
 import CustomInput from "@/components/CustomInput";
 import { GlobalContext } from "@/context/Context";
 import VerifyAddress from "@/hooks/VerifyAddress";
-import { useState } from "react";
+import useCreatLockerMutation from "@/hooks/useContractMutations/useCreatLockerMutation";
+import useTokenApprovalMutation from "@/hooks/useContractMutations/useTokenApproveMutation";
+import {
+  useGetSignerBalanceQuery,
+  useGetTokenDetailsQuery,
+} from "@/hooks/useContractQueries";
+import useConverDateToEpoch from "@/hooks/useConverDateToEpoch";
+import { useEthersSigner } from "@/web3/adapters";
+import { ethers } from "ethers";
+import { stringify } from "querystring";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function LockForm() {
@@ -27,9 +38,24 @@ export default function LockForm() {
     setSolilockLockTime,
     setSolilockTokenAddress,
   } = GlobalContext();
+  const signer = useEthersSigner();
+  const [isApproved, setIsApproved] = useState(false);
+  const { queryEnabled, setQueryEnabled, lockerFactoryAddress } =
+    Web3GlobalContext();
   const [error, setError] = useState<string>("");
+  const [addressStatus, setAddressStatus] = useState(true);
+  let status = VerifyAddress(solilockTokenAddress!);
+  const createLockerFn = useCreatLockerMutation();
+  const ApproveFn = useTokenApprovalMutation();
+  const getTokenDetailsFn = useGetTokenDetailsQuery();
+  const epochDate = useConverDateToEpoch(solilockLockTime);
+  const getUsersTokenBalance = useGetSignerBalanceQuery();
+  //console.log(address, isConnected);
 
-  const status = VerifyAddress(solilockTokenAddress!);
+  useEffect(() => {
+    console.log(epochDate);
+    console.log({ getTokenDetailsFn });
+  }, [solilockAmount]);
 
   return (
     <form className="flex flex-col gap-6">
@@ -45,38 +71,56 @@ export default function LockForm() {
           value={solilockTokenAddress}
           onChange={(e) => {
             setSolilockTokenAddress?.(e.target.value);
+            //console.log(getUsersTokenBalance.data);
+
+            if (status) {
+              setQueryEnabled(true);
+            }
             setError?.("");
           }}
           onMouseLeave={() => VerifyAddress(solilockTokenAddress!)}
           isRequired={true}
         />
+        {getTokenDetailsFn.data.symbol ? (
+          <>
+            Token Symbols : {getTokenDetailsFn.data.symbol} Token TotalSupply :{" "}
+            {getTokenDetailsFn.data.totalSupply} Token Decimal :{" "}
+            {getTokenDetailsFn.data.decimals}
+          </>
+        ) : (
+          <></>
+        )}
         <label
           htmlFor="another-user-used"
           className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
         >
-          <div
-            className={`relative flex ${
-              !solilockAnotherUserUsed &&
-              "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
-            } rounded-lg cursor-pointer`}
-          >
-            <input
-              type="checkbox"
-              name="another-user-used"
-              id="another-user-used"
-              className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
-              checked={solilockAnotherUserUsed}
-              onChange={(event: any) => {
-                setSolilockAnotherUserUsed?.(event.target.checked);
-              }}
-            />
-            <i
-              className={`ri-check-line text-xl absolute left-0.5 top-0 ${
-                solilockAnotherUserUsed ? "text-black" : "hidden"
-              }`}
-            ></i>
-          </div>
-          <span className="text-[#F4F4F5]">Use another owner?</span>
+          {/* <div
+						className={`relative flex ${
+							!solilockAnotherUserUsed &&
+							"bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
+						} rounded-lg cursor-pointer`}
+					>
+						<input
+							type="checkbox"
+							name="another-user-used"
+							id="another-user-used"
+							className="h-6 w-6 appearance-none bg-[#26272B] checked:bg-white rounded-md"
+							checked={solilockAnotherUserUsed}
+							onChange={(event: any) => {
+								setSolilockAnotherUserUsed?.(
+									event.target.checked
+								);
+							}}
+						/>
+						<i
+							className={`ri-check-line text-xl absolute left-0.5 top-0 ${
+								solilockAnotherUserUsed
+									? "text-black"
+									: "hidden"
+							}`}
+						></i>
+					</div>
+					<span className="text-[#F4F4F5]">Use another owner?</span> */}
         </label>
         {solilockAnotherUserUsed && (
           <div className="">
@@ -121,7 +165,7 @@ export default function LockForm() {
           htmlFor="vesting-used"
           className="text-[0.875rem] tracking-[-0.00875rem] mt-3 cursor-pointer flex items-center gap-2"
         >
-          <div
+          {/* <div
             className={`relative flex ${
               !solilockVestingUsed &&
               "bg-gradient-to-b from-[#51525c] to-[#28282a] p-0.5"
@@ -143,7 +187,7 @@ export default function LockForm() {
               }`}
             ></i>
           </div>
-          <span className="text-[#F4F4F5]">Use vesting?</span>
+          <span className="text-[#F4F4F5]">Use vesting?</span> */}
         </label>
         {solilockVestingUsed && (
           <div className="mt-[0.94rem] flex flex-col gap-6">
@@ -159,6 +203,7 @@ export default function LockForm() {
                 value={solilockTGEDate}
                 onChange={(e) => {
                   setSolilockTGEDate?.(e.target.value);
+
                   setError?.("");
                 }}
                 isRequired={true}
@@ -225,6 +270,8 @@ export default function LockForm() {
         value={solilockLockTime}
         onChange={(e) => {
           setSolilockLockTime?.(e.target.value);
+          console.log(e.target.value);
+
           setError?.("");
         }}
         isRequired={true}
@@ -239,36 +286,71 @@ export default function LockForm() {
           support <span className="text-[#A4D0F2]">rebase tokens</span>
         </p>
       </div>
-      <button
-        disabled={
-          solilockTokenAddress === "" ||
-          solilockAmount === null ||
-          solilockLockTime === ""
-        }
-        type="submit"
-        onClick={(e: any) => {
-          e.preventDefault();
-          if (status === true && !solilockVestingUsed) {
-            if (solilockVestingUsed) {
-              if (
-                solilockTGEDate === "" ||
-                solilockTGEPercent === null ||
-                solilockCycleDays === "" ||
-                solilockCycleReleasePercent === ""
-              ) {
-                toast.error("Fill in all required fields");
-              } else {
-                // handlePresaleNextStep?.(e);
-              }
+      {ApproveFn.isSuccess ? (
+        <>
+          <button
+            disabled={
+              solilockTokenAddress === "" ||
+              solilockAmount === null ||
+              solilockLockTime === ""
             }
-          } else {
-            toast.error("Token address is not valid!");
-          }
-        }}
-        className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
-      >
-        Lock
-      </button>
+            type="submit"
+            onClick={async (e: any) => {
+              e.preventDefault();
+              if (status) {
+                //token Approve
+
+                //perform transactions
+                const lockerProps: any = {
+                  tokenAddress: solilockTokenAddress!,
+                  name: getTokenDetailsFn.data.symbol + "-lock",
+                  withdrawer: signer?.getAddress(),
+                  amount: solilockAmount!,
+                  withdrawTime: epochDate,
+                };
+                createLockerFn.mutate(lockerProps);
+              } else {
+                toast.error("Invalid Form");
+              }
+            }}
+            className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+          >
+            Lock
+          </button>
+        </>
+      ) : (
+        <>
+          <button
+            disabled={
+              solilockTokenAddress === "" ||
+              solilockAmount === null ||
+              solilockLockTime === ""
+            }
+            type="submit"
+            onClick={async (e: any) => {
+              e.preventDefault();
+              if (status) {
+                const approveProps: any = {
+                  SpenderAddress: "0x202E0b96Ee4359c5793e0f3D218E3BB784133814",
+                  amount: ethers.parseEther("100000000000000"),
+                };
+                ApproveFn.mutate(approveProps);
+
+                if (ApproveFn.isSuccess) {
+                  setIsApproved(true);
+                }
+
+                //token Approve
+              } else {
+                toast.error("Invalid Form");
+              }
+            }}
+            className="bg-[#C38CC3] disabled:bg-[#C38CC3]/50 hover:bg-[#C38CC3]/80 w-[7.375rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"
+          >
+            {ApproveFn.isLoading ? "Loading.." : "Approve"}
+          </button>
+        </>
+      )}
     </form>
   );
 }

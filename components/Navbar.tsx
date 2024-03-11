@@ -13,7 +13,7 @@ import unlockIcon from "../public/icons/unlock.svg";
 import airdropIcon from "../public/icons/airdrop 1.svg";
 
 export default function Navbar() {
-  const { isModalShowing, setIsModalShowing } = GlobalContext();
+  const { showModal, toggleModal, setModalHeader } = GlobalContext();
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +25,9 @@ export default function Navbar() {
   const showCreateTokenModal = (e: any) => {
     e.preventDefault();
     window.scrollTo(0, 0);
-    setIsModalShowing?.(true);
+    toggleModal?.()
+    setModalHeader?.("Create token")
+    // setIsModalShowing?.(true);
     setMenuOpen((prevState) => !prevState);
     if (typeof window != "undefined" && window.document) {
       document.body.style.overflow = "hidden";
@@ -140,6 +142,7 @@ export default function Navbar() {
         </div>
         {/* logo */}
         <Link
+          data-aos="fade-in"
           href="/"
           className="gap-[0.67rem] items-center cursor-pointer hidden xl:flex"
         >
@@ -150,10 +153,11 @@ export default function Navbar() {
         </Link>
       </section>
       <div className="xl:hidden overflow-hidden">
-        <Wallet />
+        <Wallet containerClassName="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]" className="rounded-[3.125rem] p-[0.42rem] border-[0.5px] w-[9.38rem] h-10 bg-[#454FDA] text-white border-[#424242]" />
       </div>
       {/* menu */}
       <div
+        // data-aos="fade-right"
         className={`${
           menuOpen
             ? "left-0 top-0 px-10 pt-8 xl:px-0 xl:pt-0"
@@ -203,7 +207,7 @@ export default function Navbar() {
                   className={`${nav.className} ${
                     // pathname.includes("/launchpad/list/") ||
                     pathname === nav?.route ||
-                    (nav?.title === "Create token" && isModalShowing)
+                    (nav?.title === "Create token" && showModal)
                       ? "text-[#A4D0F2]"
                       : ""
                   }`}
@@ -329,6 +333,25 @@ export default function Navbar() {
               />
               Docs
             </li>
+            {/* Bridge */}
+             <li
+             className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer
+             ${
+              pathname === "/bridge" && "text-[#A4D0F2]"
+            }`}
+              onClick={() => {
+                changeRoute("/bridge");
+                setMenuOpen((prevState) => !prevState);
+              }}
+            >
+              <Image
+                src="/icons/arrow-swap-horizontal.svg"
+                width={18}
+                height={18}
+                alt="document icon"
+              />
+              Bridge
+            </li> 
           </ul>
         </section>
         {/* SOCIAL SECTION */}
