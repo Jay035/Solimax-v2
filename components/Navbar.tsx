@@ -286,7 +286,7 @@ export default function Navbar() {
               Leaderboard
             </li> */}
             {/* Pools alert */}
-            <li
+            {/* <li
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -300,9 +300,9 @@ export default function Navbar() {
                 alt="keyboard icon"
               />
               Pools alert
-            </li>
+            </li> */}
             {/* KYC & audit */}
-            <li
+            {/* <li
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -316,9 +316,9 @@ export default function Navbar() {
                 alt="android icon"
               />
               KYC & Audit
-            </li>
+            </li> */}
             {/* Docs */}
-            <li
+            {/* <li
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -332,7 +332,7 @@ export default function Navbar() {
                 alt="document icon"
               />
               Docs
-            </li>
+            </li> */}
             {/* Bridge */}
              <li
              className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer
