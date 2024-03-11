@@ -112,7 +112,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`pt-6 xl:pt-[2.69rem] z-50 flex justify-between items-center overflow-auto xl:block font-questrial px-[1.06rem] sm:px-7  w-full border-r border-[#424242]`}
+      className={`pt-6 xl:py-[2.69rem] z-50 flex justify-between items-center overflow-auto xl:block font-questrial px-[1.06rem] sm:px-7  w-full border-r border-[#424242]`}
     >
       {/* hamburger and logo group */}
       <section className="flex gap-3 items-center">

@@ -196,7 +196,7 @@ export default function LockForm() {
               <CustomInput
                 id="TGE-date"
                 className="flex flex-col gap-[0.62rem]"
-                inputClassName="bg-[#26272B] rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
+                inputClassName="bg-[#26272B] w-full rounded-[0.625rem] py-[0.875rem] px-[1.1875rem] tracking-[-0.00875rem] text-[0.875rem] text-[#A0A0AB]"
                 label="TGE Date (UTC time)"
                 type="date"
                 placeholder="0"
