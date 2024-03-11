@@ -6,6 +6,9 @@ import ethers, {
 	Contract,
 	JsonRpcSigner,
 	toBigInt,
+	formatEther,
+	JsonRpcProvider,
+	FallbackProvider,
 } from "ethers";
 import BridgeAbi from "./abis/Bridge.json";
 import { Bridge } from "@/types/contracts";
@@ -52,17 +55,20 @@ export class BridgeContract {
 		console.log("result", toBigInt(result) === toBigInt(MaxUint256));
 		return toBigInt(result) === toBigInt(MaxUint256);
 	}
-	async balanceOf() {
+	async balanceOf(
+		provider: JsonRpcProvider | FallbackProvider,
+		signer: JsonRpcSigner
+	) {
 		const abi = [
 			"function balanceOf(address account) view returns (uint256)",
 		];
 
-		const address = await this.props.signer.getAddress();
-		const contract = new Contract(this.props.nlu, abi, this.props.signer);
+		const address = await signer.getAddress();
+		const contract = new Contract(this.props.nlu, abi, provider);
 		const result = await contract.balanceOf(address);
 
-		console.log("result", result);
-		return result.toString();
+		//console.log("result", result);
+		return formatEther(result.toString()).toString();
 	}
 
 	async approve() {
