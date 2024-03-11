@@ -13,7 +13,7 @@ export default function CreateAirdrop({}: Props) {
 
   return (
     <div className="overflow-x-hidden pt-5 mb-20 ml-[1.69rem]">
-      <LatestPools />
+      {/* <LatestPools /> */}
       <main className="mt-[2.5rem] text-white mr-[1.69rem] xl:mr-10">
         <section className="bg-[#1D1C20] w-full pb-[1.19rem] rounded-[0.625rem] px-6 border border-[#26272B] pt-8">
           <div className="flex flex-col md:flex-row justify-between gap-2 md:items-center mb-10">

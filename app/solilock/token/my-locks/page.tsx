@@ -152,7 +152,7 @@ export default function AllTokens({}: Props) {
   };
   return (
     <div className="pt-5 pl-[1.68rem] pb-32">
-      <LatestPools />
+      {/* <LatestPools /> */}
       <main className="mt-[2.5rem] text-white pr-[1.68rem] xl:pr-10">
         <Navigation
           links={links}
