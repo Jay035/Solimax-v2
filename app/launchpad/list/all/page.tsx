@@ -13,9 +13,9 @@ export default function LaunchpadList({}: Props) {
 
   return (
     <section className="px-[1.69rem] pt-6 xl:pr-10 pb-32">
-      <Navigation />
       {cardDetails?.length > 0 ? (
         <div className="">
+          <Navigation />
           <Filter />
           <div className="mb-[6.25rem] grid md:grid-cols-2 xl:grid-cols-3 gap-x-[1.59rem] gap-y-8">
             {cardDetails?.map((item: any, index: number) => (
@@ -31,7 +31,7 @@ export default function LaunchpadList({}: Props) {
           </div>
         </div>
       ) : (
-        <div className="text-lg md:text-xl text-white text-center">
+        <div className="text-lg mt-6 md:text-xl text-white text-center">
           No Launchpads yet
         </div>
       )}
