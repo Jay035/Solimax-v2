@@ -25,8 +25,8 @@ export default function Navbar() {
   const showCreateTokenModal = (e: any) => {
     e.preventDefault();
     window.scrollTo(0, 0);
-    toggleModal?.()
-    setModalHeader?.("Create token")
+    toggleModal?.();
+    setModalHeader?.("Create token");
     // setIsModalShowing?.(true);
     setMenuOpen((prevState) => !prevState);
     if (typeof window != "undefined" && window.document) {
@@ -153,7 +153,10 @@ export default function Navbar() {
         </Link>
       </section>
       <div className="xl:hidden overflow-hidden">
-        <Wallet containerClassName="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]" className="rounded-[3.125rem] p-[0.42rem] border-[0.5px] w-[9.38rem] h-10 bg-[#454FDA] text-white border-[#424242]" />
+        <Wallet
+          containerClassName="flex items-center gap-[0.62rem] justify-end w-full xl:px-20 xl:pt-8 xl:pb-[1.31rem] xl:border-b xl:border-[#424242]"
+          className="rounded-[3.125rem] p-[0.42rem] border-[0.5px] w-[9.38rem] h-10 bg-[#454FDA] text-white border-[#424242]"
+        />
       </div>
       {/* menu */}
       <div
@@ -334,11 +337,9 @@ export default function Navbar() {
               Docs
             </li> */}
             {/* Bridge */}
-             <li
-             className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer
-             ${
-              pathname === "/bridge" && "text-[#A4D0F2]"
-            }`}
+            <li
+              className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer
+             ${pathname === "/bridge" && "text-[#A4D0F2]"}`}
               onClick={() => {
                 changeRoute("/bridge");
                 setMenuOpen((prevState) => !prevState);
@@ -351,7 +352,7 @@ export default function Navbar() {
                 alt="document icon"
               />
               Bridge
-            </li> 
+            </li>
           </ul>
         </section>
         {/* SOCIAL SECTION */}
@@ -361,7 +362,8 @@ export default function Navbar() {
           </h2>
           <ul className="text-white flex flex-col gap-5">
             {/* twitter */}
-            <a href="https://x.com/solimax_"
+            <a
+              href="https://x.com/solimax_"
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -377,7 +379,8 @@ export default function Navbar() {
               Twitter
             </a>
             {/* telegram */}
-            <li
+            <a
+              href="https://t.me/Solimaxis"
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -391,9 +394,10 @@ export default function Navbar() {
                 alt="home icon"
               />
               Telegram
-            </li>
+            </a>
             {/* discord */}
-            <li
+            <a
+              href="https://discord.com/invite/qTU2qEPnwc"
               className="flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer"
               onClick={() => {
                 // changeRoute("/");
@@ -407,7 +411,7 @@ export default function Navbar() {
                 alt="home icon"
               />
               Discord
-            </li>
+            </a>
           </ul>
         </section>
       </div>
