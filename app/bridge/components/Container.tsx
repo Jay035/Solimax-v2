@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
 import BridgeContract from "@/web3/BridgeContract";
 import { BridgeConfigurations } from "@/web3/config";
+import { toast } from "react-toastify";
+
 
 type Props = {};
 
@@ -149,11 +151,11 @@ export default function Container({}: Props) {
 			return await bridgeObject
 				.LockToken(recieveAmount.toString(), toChain)
 				.then((res) => {
-					alert("Token is Bridging..kindly wait" + res.hash);
+					toast.success("Token is Bridging..kindly wait" + res.hash);
 					return res;
 				})
 				.catch((err) => {
-					alert("Bridging Error Occuredd");
+					toast.success("Bridging Error Occuredd");
 					console.log(err);
 					return;
 				});
@@ -161,22 +163,22 @@ export default function Container({}: Props) {
 			return await bridgeObject
 				.approve()
 				.then(async (res) => {
-					alert("Approved Succesfully");
+					toast.success("Approved Succesfully");
 					await bridgeObject
 						.LockToken(recieveAmount.toString(), toChain)
 						.then((res) => {
-							alert("Token is Bridging..kindly wait" + res.hash);
+							toast.success("Token is Bridging..kindly wait" + res.hash);
 							return res;
 						})
 						.catch((err) => {
-							alert("Bridging Error Occuredd");
+							toast.success("Bridging Error Occuredd");
 							console.log(err);
 							return;
 						});
 				})
 				.catch((err) => {
 					console.log(err);
-					alert("Error  Occured");
+					toast.success("Error  Occured");
 				});
 		}
 	};
@@ -225,7 +227,7 @@ export default function Container({}: Props) {
             </button>
             <button
               onClick={(e: any) => {
-                alert("clicked");
+                toast.success("clicked");
                 e.preventDefault();
               }}
               className="bg-[#C38CC3] disabled:bg-[#C38CC3]/80 hover:bg-[#C38CC3]/80 w-[10.625rem] ml-auto text-center rounded-[0.625rem] p-[0.625rem] border-[0.5px] border-[#424242] text-[#1D1C20] text-[0.875rem]"

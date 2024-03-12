@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { toast } from "react-toastify";
+
 
 interface CustomFileDropboxProps {
   selectedFile: File | undefined;
@@ -30,7 +32,7 @@ const CustomFileDropbox: React.FC<CustomFileDropboxProps> = ({
         console.log(`Width: ${img.width}, Height: ${img.height}`);
 
         if (img.width > 400 || img.height > 400) {
-          alert("The image's width or height is more than 400px");
+          toast.success("The image's width or height is more than 400px");
           setImageDimensionSupported(false);
         }
         setImageDimensionSupported(true);

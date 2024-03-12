@@ -4,6 +4,8 @@ import { GlobalContext } from "@/context/Context";
 import { ReactNode } from "react";
 import CustomInput from "./CustomInput";
 import useDeployTokenMutation from "@/hooks/useContractMutations/useDeployToken";
+import { toast } from "react-toastify";
+
 
 type Props = {
   children: ReactNode;
@@ -159,7 +161,7 @@ type Props = {
 //             </button>
 //             <button
 //               onClick={(e: any) => {
-//                 alert("clicked");
+//                 toast.success("clicked");
 //                 e.preventDefault();
 
 //                 const deployProps: any = {
