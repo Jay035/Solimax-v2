@@ -8,6 +8,8 @@ import { Providers } from "./providers";
 import "@rainbow-me/rainbowkit/styles.css";
 import ToastProvider from "@/components/ToastProvider";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const questrial = Questrial({
   weight: "400",

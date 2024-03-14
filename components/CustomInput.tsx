@@ -75,7 +75,7 @@ export default function CustomInput({
 						defaultChecked={defaultChecked}
 						placeholder={placeholder}
 						value={amountMax}
-						onChange={onChange}
+						onChange={(e) => setAmountMax(e.target.value)}
 						onMouseLeave={onMouseLeave}
 						required={isRequired}
 					/>
