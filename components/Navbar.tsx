@@ -22,6 +22,7 @@ export default function Navbar() {
 		router?.push(route);
 	};
 
+
 	const showCreateTokenModal = (e: any) => {
 		e.preventDefault();
 		window.scrollTo(0, 0);
@@ -33,6 +34,7 @@ export default function Navbar() {
 			document.body.style.overflow = "hidden";
 		}
 	};
+
 
 	// DROPDOWN OPTIONS FOR LAUNCHPAD TAB
 	const launchpadNavDropdownOptions = [
@@ -109,6 +111,7 @@ export default function Navbar() {
 			className: "tracking-[-0.00875rem] cursor-pointer",
 		},
 	];
+
 
 	return (
 		<nav
@@ -343,6 +346,7 @@ export default function Navbar() {
               />
               Docs
             </li> */}
+
 						{/* Bridge */}
 						<li
 							className={`flex items-center gap-[0.75rem] tracking-[-0.01rem] cursor-pointer
@@ -424,4 +428,5 @@ export default function Navbar() {
 			</div>
 		</nav>
 	);
+
 }
