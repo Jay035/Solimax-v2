@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 
 type Props = {};
 
-export default function Container({}: Props) {
+export default function Container({ }: Props) {
   const { chain } = useNetwork();
   const signer = useEthersSigner();
 
@@ -100,89 +100,89 @@ export default function Container({}: Props) {
   }, [bridgeSourceChain, toChain]);
 
 
-	useEffect(() => {
-		if (isConnected && signer) {
-			console.log(bridgingChain, "change");
-			if (bridgeSourceChain === "BSC Chain") {
-				BscBridgeObject.balanceOf(provider, signer!)
-					.then((res) => {
-						setSlmBalance(parseFloat(res));
-					})
-					.catch((error) => {
-						console.log(error);
-						setSlmBalance(0);
-					});
-				console.log({ slmBalance });
-			}
-			if (bridgeSourceChain === "Optimism") {
-				OptBridgeObject.balanceOf(provider, signer!)
-					.then((res) => {
-						setSlmBalance(parseFloat(res));
-					})
-					.catch((error) => {
-						console.log(error);
-						setSlmBalance(0);
-					});
-			}
-			if (bridgeSourceChain === "Kava") {
-				KavaBridgeObject.balanceOf(provider, signer!)
-					.then((res) => {
-						setSlmBalance(parseFloat(res));
-					})
-					.catch((error) => {
-						console.log(error);
-						setSlmBalance(0);
-					});
-			}
-			if (bridgingChain == 250) {
-				FantomV1BridgeObject.balanceOf(provider, signer!)
-					.then((res) => {
-						setSlmBalance(parseFloat(res));
-					})
-					.catch((error) => {
-						console.log(error);
-						setSlmBalance(0);
-					});
-			}
-		}
-	}, [bridgeSourceChain, bridgingChain, provider, signer]);
-	const Bridger = async (bridgeObject: BridgeContract, toChain: string) => {
-		const allowanceIsSatisfied = await bridgeObject.checkAllowance();
-		if (allowanceIsSatisfied) {
-			return await bridgeObject
-				.LockToken(recieveAmount.toString(), toChain)
-				.then((res) => {
-					toast.success("Token is Bridging..kindly wait" + res.hash);
-					return res;
-				})
-				.catch((err) => {
-					toast.success("Bridging Error Occuredd");
-					console.log(err);
-					return;
-				});
-		} else {
-			return await bridgeObject
-				.approve()
-				.then(async (res) => {
-					toast.success("Approved Succesfully");
-					await bridgeObject
-						.LockToken(recieveAmount.toString(), toChain)
-						.then((res) => {
-							toast.success("Token is Bridging..kindly wait" + res.hash);
-							return res;
-						})
-						.catch((err) => {
-							toast.success("Bridging Error Occuredd");
-							console.log(err);
-							return;
-						});
-				})
-				.catch((err) => {
-					console.log(err);
-					toast.success("Error  Occured");
-				});
-		}
-	};
+  useEffect(() => {
+    if (isConnected && signer) {
+      console.log(bridgingChain, "change");
+      if (bridgeSourceChain === "BSC Chain") {
+        BscBridgeObject.balanceOf(provider, signer!)
+          .then((res) => {
+            setSlmBalance(parseFloat(res));
+          })
+          .catch((error) => {
+            console.log(error);
+            setSlmBalance(0);
+          });
+        console.log({ slmBalance });
+      }
+      if (bridgeSourceChain === "Optimism") {
+        OptBridgeObject.balanceOf(provider, signer!)
+          .then((res) => {
+            setSlmBalance(parseFloat(res));
+          })
+          .catch((error) => {
+            console.log(error);
+            setSlmBalance(0);
+          });
+      }
+      if (bridgeSourceChain === "Kava") {
+        KavaBridgeObject.balanceOf(provider, signer!)
+          .then((res) => {
+            setSlmBalance(parseFloat(res));
+          })
+          .catch((error) => {
+            console.log(error);
+            setSlmBalance(0);
+          });
+      }
+      if (bridgingChain == 250) {
+        FantomV1BridgeObject.balanceOf(provider, signer!)
+          .then((res) => {
+            setSlmBalance(parseFloat(res));
+          })
+          .catch((error) => {
+            console.log(error);
+            setSlmBalance(0);
+          });
+      }
+    }
+  }, [bridgeSourceChain, bridgingChain, provider, signer]);
+  const Bridger = async (bridgeObject: BridgeContract, toChain: string) => {
+    const allowanceIsSatisfied = await bridgeObject.checkAllowance();
+    if (allowanceIsSatisfied) {
+      return await bridgeObject
+        .LockToken(recieveAmount.toString(), toChain)
+        .then((res) => {
+          toast.success("Token is Bridging..kindly wait" + res.hash);
+          return res;
+        })
+        .catch((err) => {
+          toast.success("Bridging Error Occuredd");
+          console.log(err);
+          return;
+        });
+    } else {
+      return await bridgeObject
+        .approve()
+        .then(async (res) => {
+          toast.success("Approved Succesfully");
+          await bridgeObject
+            .LockToken(recieveAmount.toString(), toChain)
+            .then((res) => {
+              toast.success("Token is Bridging..kindly wait" + res.hash);
+              return res;
+            })
+            .catch((err) => {
+              toast.success("Bridging Error Occuredd");
+              console.log(err);
+              return;
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.success("Error  Occured");
+        });
+    }
+  };
 
   const BridgerMap: any = {
     "10": async (bridgeTxId: string) => {
@@ -355,7 +355,6 @@ export default function Container({}: Props) {
 
               await BridgerMap[bridgingChain.toString()](txIndentifier);
             }}
-            disabled={amount === 0}
             className="w-full flex items-center justify-center p-[0.625rem] border-[0.5px] mt-[0.7rem] border-[#424242] rounded-[0.625rem] h-14 md:h-16 bg-[#454FDA] disabled:bg-[#454FDA]/80"
           >
             Bridge Asset
