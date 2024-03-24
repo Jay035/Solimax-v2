@@ -31,7 +31,7 @@ export default function CustomInput({
 	defaultChecked,
 	onChange,
 	onMouseLeave,
-	pattern,
+	pattern
 }: FormProps) {
 	const pathname = usePathname();
 	const { showModal } = GlobalContext();
@@ -75,7 +75,11 @@ export default function CustomInput({
 						defaultChecked={defaultChecked}
 						placeholder={placeholder}
 						value={amountMax}
-						onChange={(e) => setAmountMax(e.target.value)}
+						onChange={(e) => {
+							setAmountMax(e.target.value);
+							console.log("e.target.value 222", e.target.value);
+							return onChange?.(e);
+						}}
 						onMouseLeave={onMouseLeave}
 						required={isRequired}
 					/>
